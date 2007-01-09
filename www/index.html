@@ -1,84 +1,108 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
-	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ja" lang="ja">
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-<meta http-equiv="Content-Language" content="ja" />
-<meta http-equiv="Content-Style-Type" content="text/css" />
-<meta name="keywords" content="golf, Seasar, The Seasar Project, The Seasar Foundation, OSS, Open Source Software, Java, Framework" />
-<meta name="description" content="golf" />
-<title>golf</title>
-<link rel="stylesheet" type="text/css" href="http://www.seasar.org/theme/main.css" media="screen,projection" />
-<link rel="stylesheet" type="text/css" href="http://www.seasar.org/theme/print.css" media="print" />
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ja" lang="ja"><head><!-- don't edit start --><title>Golf- Seasar Container Rich Client Platform</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><meta http-equiv="Content-Style-Type" content="text/css" /><link href="golf.css" type="text/css" rel="stylesheet" media="screen" /><link href="seasar_b.css" type="text/css" rel="stylesheet" media="screen" /><link href="seasar_p.css" type="text/css" rel="stylesheet" media="print" /><script src="seasar_b.js" type="text/JavaScript" language="JavaScript">
+</script>
+<style type="text/css">
+<!--
+.style1 {
+	font-size: large;
+	font-weight: bold;
+}
+.style4 {color: #3366FF}
+-->
+</style>
 </head>
+<body style="direction: ltr;" onload="preload('ja')"><table align="left" border="0" cellpadding="0" cellspacing="0" width="100%"><tbody><tr><td align="left" valign="top" width="780"><table class="white" border="0" cellpadding="0" cellspacing="0" width="780">
+<tbody><tr><td colspan="7"><img src="images/top01_b.gif" alt="" height="5" width="780" /></td></tr><tr><td><img src="images/top02_b.gif" alt="Seasar" height="117" width="235" /></td><td colspan="3"><img src="images/top03.gif" alt="DI Container with AOP" height="117" width="289" /></td><td colspan="3"><img src="images/spacer.gif" alt="" height="117" width="256" /></td></tr><tr><td rowspan="2"><img src="images/top04.gif" alt="" height="49" width="235" /></td><td><a href="http://www.seasar.org/index.html"><img src="images/menu01_b_ja.gif" alt="" id="menu01" onmouseover="swap(1)" onmouseout="restore(1)" name="menu01" border="0" height="30" width="78" /></a></td><td><a href="http://www.seasar.org/projects.html"><img src="images/menu02_b_ja.gif" alt="" id="menu02" onmouseover="swap(2)" onmouseout="restore(2)" name="menu02" border="0" height="30" width="101" /></a></td><td><a href="http://www.seasar.org/products.html"><img src="images/menu03_b_ja.gif" alt="" id="menu03" onmouseover="swap(3)" onmouseout="restore(3)" name="menu03" border="0" height="30" width="110" /></a></td><td><a href="http://www.seasar.org/resources.html"><img src="images/menu04_b_ja.gif" alt="" id="menu04" onmouseover="swap(4)" onmouseout="restore(4)" name="menu04" border="0" height="30" width="113" /></a></td><td><img src="images/menu05_b_ja.gif" alt="" id="menu05" onmouseover="swap(5)" onmouseout="restore(5)" name="menu05" border="0" height="30" width="109" /></td><td><img src="images/menu06.gif" alt="" height="30" width="34" /></td>
+</tr><tr><td colspan="6"><img src="images/spacer.gif" alt="" height="19" width="545" /></td></tr></tbody></table><table class="white" border="0" cellpadding="0" cellspacing="0" width="780"><tbody><tr align="left" valign="top"><td width="14"><img src="images/spacer.gif" alt="" height="14" width="14" /></td><td class="main" width="740"><!-- don't edit end --><!-- document start --><dl>
+  <dd class="style1">
+    <span class="style4">Golf Project</span>　とは、<span class="style4">Seasar Container</span>と<span class="style4">JGoodies</span>を利用した、 <span class="style4">Rich Client Platform</span>です。
+    <span class="style4">Swing</span>を使い良くするということで、Swingに関係ある 「Golf」　と言う名前にしました。 
+      </dd>
+  <dt>&nbsp; </dt>
+  <dd><br />取り合えず Version 0.1では下記内容となります。<br />   </dd>
+  <dd><br />１．画面の作成は、<span class="style4">Netbeans 5.5</span>で行う。（なお、<span class="style4">Eclipse</span>でのProject設定もしていますので、その後のDicon関連には、EclipseでKijimunaのSupportも可能です） </dd>
+   </dd>   <br />
+   <dd> <br />
+  ２．Validatorの設定は、Dicon に行い、それと画面のFieldとのMappingを、JAVAだけでなく、「CSV File Excelで編集）」で簡単に行える。 下記は Diconの例。<br />　      
+      <dd>&lt;components&gt;<br />
+  &lt;component name=&quot;min3max6string&quot; class=&quot;org.seasar.golf.validator.StringValidator&quot;&gt;<br />
+  &lt;property name=&quot;minLength&quot;&gt;new Integer(3)&lt;/property&gt;<br />
+  &lt;property name=&quot;maxLength&quot;&gt;new Integer(6)&lt;/property&gt;<br />
+  &lt;/component&gt;<br />
+  &lt;/components&gt;　<br />
+  <BR>例えば、一部省略していますが、下記の設定では 「jTextField1」　に、「min3max6string」という名前で、Diconに登録されたValidatorを適用し、 Error Message上に表記には、「Text」　を使用します。 　　<br />
+  画面に入力した時点では、必須 チェックは行いませんが、 「ENTER」ボタン等を押した場合には、 必須チェックを行います。<br />
+  この必須指定を Requiredで行います。 <br />
+  <img src="images/bind1.jpeg" width="476" height="133" /><br >
+  <br >
+  ３．Validationした結果は、画面に定義した、Scroll Paneに即座に自動的に表示されます。 <br>
+  <img src="images/error1.jpeg" width="694" height="345" /><br>
+  <br>
+  ４．JTableを使用する場合は、そのColumn設定とValidationの設定を同様に「CSV File」で簡単に定義出来ます。 <br>
+  <img src="images/table1.jpeg" width="563" height="148" /><br>
+  <img src="images/table2.jpeg" width="692" height="304" /><br>
+  <br><br>５．ブラウザでの表示と同様、コンテナ画面にヘッダー領域やフッター領域などの共通領域を 設定しておき、コンテンツ領域に指定した 画面を合成して簡単に表示できます。この場合TITLE, MENUも変更できます。（開発は、通常のJFrame画面の編集で出来ます） 
+  <br />コンテナ画面  <br />
+  <img src="images/container1.jpeg" width="697" height="567" /> <br />
 
-<body>
+ <br />EX 4-1を押した画面　（タイトル、メニュー、コンテンツ画面が反映されています）
+	  <br />
+<img src="images/container2.jpeg" width="697" height="567" />
+  </dd>  <br />  <br />
+  
+    <dd> 今後の予定 </dt>
+  <dd>
+    </dt>
+  </dd>
+  <dd>
+      <ul>
+          <li>ログイン後、複数のコンテナ画面を使用出来、それらでセッション情報を共有出来る。</li>
+          <li>コンテナ画面のDefaultとして、Menu画面を配置し、Menuを選ぶ事で、同一画面内に該当画面を開く
 
-<div id="wrapper">
-
-<div id="header">
-
-<div class="line"><span class="hide">spacer</span></div>
-
-<div id="logo"><h2 id="h01" class="hide">The Seasar Foundation Project Site</h2><img src="http://www.seasar.org/images/seasar_logo_blue.gif" alt="The Seasar Project" width="390" height="180" /></div>
-
-<div id="tool">
-
-<h2><a href="http://search.seasar.org/">Site Search</a></h2>
-
-<form id="search" name="search" action="http://search.seasar.org/">
-<div>
-	<input id="search_phrase" type="text" name="phrase" size="20" />
-	<input type="hidden" name="perpage" value="30" />
-	<input type="hidden" name="enc" value="UTF-8" />
-	<input id="search_go" type="submit" value="Search" />
-</div>
-</form>
-
-<h2>Seasar Banner</h2>
-
-<p><a href="http://www.seasar.org/images/seasar_banner.gif"><img src="http://www.seasar.org/images/seasar_banner.gif" alt="Seasar Banner" title="Seasar Banner" width="146" height="33" /></a></p>
-
-</div>
-
-</div><!-- header -->
+          <li>どの画面でも、直接 トランザクションコード（画面コード）を入力する事により、メニューに戻らなくても、該当画面に ジャンプ出来る（指定で新たなコンテナ画面を開いてその中にジャンプ
+      </p>
+      　する事も可能）ホストとは、S2Remoting （S2Hessian, S2RMI等）を利用して、ホストの処理する トランザクションコード（Diconに定義した、Action）に処理を委ねる。
+            </p>
 
 
-<div id="contents_left">
+                <li>ホストで処理した結果は、場合により同一画面に単に表示したり、新たな画面を開いて表示したり（WEBアプリケーションの Forwardに該当）、メニューに戻ったり、で指定出来る。
 
-<h2>Menu</h2>
+            尚上記の機能は、複雑な業務で多くの画面を使用する場合、統一的な効率の良い、ユーザーオペレーションと開発の両立を目指しています。
 
+      すでに、C#で 試作していたものを、JAVAに移植しながら改善予定です。
+  </li>
+            </ul>
+      </dd>
+  </dl>
+<h3><a name="document" id="document">ド
+キュメント</a></h3>
 <ul>
-	<li><a href="http://www.seasar.org/">Project Site</a></li>
-</ul>
+  <li><a href="setup.html">セットアップ</a></li>
+<li><a href="sample.html">Sampleを見てみよう</a></li>
 
-</div><!-- contents_left -->
+  </ul>
 
-<div id="contents_center">
+<h3><a name="download" id="download">ダ
+ウンロード</a></h3>
+<h4>最新版</h4>
+<dl>
 
-<div id="article">
+<dd><a href="download/golf-v0.1.zip">Golf V0.1</a>　Golf の最初のVersionで、Exampleも含まれています。 </dd>
 
-<div class="section">
+</dl>
 
-<h2>Welcome to the "golf" project.</h2>
-
-<p>This page is generated by admin-scripts.<br />
-This page is managed in SVN repository, URL is<br />
-<a href="https://www.seasar.org/svn/sandbox/golf/trunk/www/index.html">https://www.seasar.org/svn/sandbox/golf/trunk/www/index.html</a></p>
-
-</div><!-- section -->
-
-</div><!-- article -->
-
-</div><!-- contents_center -->
-
-<div id="footer">
-<address>&copy; Copyright The Seasar Foundation and the others 2006, all rights reserved.</address>
-<div class="line"><span class="hide">spacer</span></div>
-</div><!-- footer -->
-
-</div><!-- wrapper -->
-
-</body>
-</html>
-
+<h3><a name="link" id="link">リンク</a></h3>
+<dl>
+  <dd><a href="http://www.jgoodies.com/">JGoodies</a>　JGoodiesのサイトです</dd>
+</dl> 
+<dl>
+  <dd>&nbsp;</dd>
+</dl> 
+<!-- document end -->
+<!-- don't edit start --></td><td width="14"><img src="images/spacer.gif" alt="" height="14" width="14" /></td></tr><tr><td width="14"><img src="images/spacer.gif" alt="" height="30" width="14" /></td><td width="766"><img src="images/spacer.gif" alt="" height="30" width="592" /></td></tr><tr><td width="14"><img src="images/spacer.gif" alt="" height="14" width="14" /></td><td class="copyright" width="766">Copyright&copy;
+2004-2005, The Seasar Foundation and the others. All rights reserved.</td>
+</tr></tbody></table></td><td class="backright" align="left" valign="top">&nbsp;</td>
+</tr><tr><td class="backunder" align="left" height="16" valign="top" width="780">&nbsp;</td>
+<td class="backcorner" align="left" height="16" valign="top">&nbsp;</td>
+</tr></tbody></table><!-- don't edit end --></body></html>

@@ -1,0 +1,23 @@
+/* CSS Document */
+ 
+.excode {
+background-color:#DDC;
+border:1px solid #CCB;
+}
+.excode h5 {
+margin:0px;
+padding:2px 4px;
+color:#FFF;
+background-color:#887;
+}
+.excode pre {
+margin:0px;
+width:100%;
+overflow:scroll; 
+}
+.articles pre code {
+display:block;
+padding:10px;
+font-size:12px;
+}
+
