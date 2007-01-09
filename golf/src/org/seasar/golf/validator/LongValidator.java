@@ -30,7 +30,8 @@ public class LongValidator extends AbstractValidator{
         "org.seasar.golf.validator.LongValidator.INVALID"};        
     }
 
-    public ValidationMessage validate(Object data, String label, Object key, ValueModel valueModel, FormManager formManager) {
+    public ValidationMessage validate(Object data, String label, Object key, ValueModel valueModel, 
+            FormManager formManager, boolean requiredCheck) {
         Long lValue  = null;
      
         String dataS = getDataString(data);

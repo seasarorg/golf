@@ -20,6 +20,7 @@ import com.jgoodies.binding.value.ValueModel;
 import com.jgoodies.validation.Severity;
 import com.jgoodies.validation.ValidationMessage;
 import com.jgoodies.validation.message.SimpleValidationMessage;
+import org.seasar.golf.util.ValidationUtil;
 
 /**
  *
@@ -27,8 +28,8 @@ import com.jgoodies.validation.message.SimpleValidationMessage;
  */
 public class DateValidator extends AbstractValidator{
     
-    private Integer minLength = null;
-    private Integer maxLength = null;
+    private Integer minRelativeDate = null;
+    private Integer maxRelativeDate = null;
     private DateFormat formatShort = DateFormat.getDateInstance(DateFormat.SHORT);
     private DateFormat formatLong  = DateFormat.getDateInstance(DateFormat.LONG);
     public DateValidator() {
@@ -40,7 +41,9 @@ public class DateValidator extends AbstractValidator{
     private DateFormat parseFormat = formatShort; 
     private DateFormat displayFormat =formatShort; 
 
-    public ValidationMessage validate(Object data, String label, Object key, ValueModel valueModel, FormManager formManager) {
+    public ValidationMessage validate(Object data, String label, Object key, ValueModel valueModel, 
+            FormManager formManager, boolean requiredCheck) {
+        String newDataS = null;
         String dataS = getDataString(data);
         if (dataS.length() == 0) {
             return null;
@@ -50,42 +53,32 @@ public class DateValidator extends AbstractValidator{
         Date dd = null;
         try {
            dd = parseFormat.parse(dataS);
-           String newDataS = displayFormat.format(dd);
+           newDataS = displayFormat.format(dd);
 
            if (!dataS.equals(newDataS)) {
-                if (valueModel != null)    {
-                    valueModel.setValue(newDataS);
-                } else if (key instanceof JTableFieldInfo) {
-                   JTable jt = ((JTableFieldInfo)key).getJtable();
-                   TableModel tm = jt.getModel();
-                   if (tm instanceof GolfTableModel) {
-                       ((GolfTableModel)tm).setValueAt(newDataS,  
-                               ((JTableFieldInfo)key).getRow(), ((JTableFieldInfo)key).getColumn());
-                   }
-                }
+                ValidationUtil.updateValueModel(valueModel, key, newDataS);
            }
 
         } catch (ParseException ex) {
             return new SimpleValidationMessage(displayLabel + getMessage(0, dataS), Severity.ERROR, key );
         }
+        int rdate = ValidationUtil.getRelativeToToday(dd);
+        if (minRelativeDate != null) {
+            if (rdate < minRelativeDate) {
+                 return new SimpleValidationMessage(displayLabel + 
+                        getMessage(1, displayFormat.format(ValidationUtil.getRelativeToToday(minRelativeDate)) ,
+                         newDataS), Severity.ERROR, key );
+            }
+        }
+        if (maxRelativeDate != null) {
+            if (rdate > maxRelativeDate) {
+                 return new SimpleValidationMessage(displayLabel + 
+                        getMessage(2, displayFormat.format(ValidationUtil.getRelativeToToday(maxRelativeDate)) ,
+                         newDataS), Severity.ERROR, key );
+            }
+        }        
         
         return null;
-    }
-
-    public Integer getMinLength() {
-        return minLength;
-    }
-
-    public void setMinLength(Integer minLength) {
-        this.minLength = minLength;
-    }
-
-    public Integer getMaxLength() {
-        return maxLength;
-    }
-
-    public void setMaxLength(Integer maxLength) {
-        this.maxLength = maxLength;
     }
 
     public DateFormat getFormatShort() {
@@ -138,6 +131,22 @@ public class DateValidator extends AbstractValidator{
         } else {
             throw (new IllegalArgumentException("display Format should be L or S"));
         } 
+    }
+
+    public Integer getMinRelativeDate() {
+        return minRelativeDate;
+    }
+
+    public void setMinRelativeDate(Integer minRelativeDate) {
+        this.minRelativeDate = minRelativeDate;
+    }
+
+    public Integer getMaxRelativeDate() {
+        return maxRelativeDate;
+    }
+
+    public void setMaxRelativeDate(Integer maxRelativeDate) {
+        this.maxRelativeDate = maxRelativeDate;
     }
     
 }

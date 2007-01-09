@@ -26,7 +26,8 @@ public class RequiredValidator extends AbstractValidator {
         messageKey = new String[] { "org.seasar.golf.validator.RequiredValidator.REQUIRED"};  
     }
 
-    public ValidationMessage validate(Object data, String label, Object key, ValueModel valueModel, FormManager formManager ) {
+    public ValidationMessage validate(Object data, String label, Object key, ValueModel valueModel, 
+            FormManager formManager, boolean requiredCheck ) {
         String dataS = getDataString(data);
         if (dataS.length() > 0) {
             return null;

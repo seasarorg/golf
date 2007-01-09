@@ -18,7 +18,8 @@ import org.seasar.golf.containerFrame.FormManager;
  * @author shimura
  */
 public interface GolfValidator {
-    public ValidationMessage validate (Object data, String label, Object key, ValueModel valueModel, FormManager formManager) ;
+    public ValidationMessage validate (Object data, String label, Object key, ValueModel valueModel, 
+            FormManager formManager, boolean requiredCheck) ;
     public void setMessage(String[] msg);
     public void setMessageKey(String[] msg);
 

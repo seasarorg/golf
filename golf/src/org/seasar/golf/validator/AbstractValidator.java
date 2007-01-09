@@ -25,7 +25,8 @@ public abstract class AbstractValidator implements GolfValidator{
     protected String[] messages = null;
     protected  String[] messageKey = null;
     
-    abstract public ValidationMessage validate(Object data, String label, Object key, ValueModel valueModel, FormManager formManager) ;
+    abstract public ValidationMessage validate(Object data, String label, Object key, ValueModel valueModel, 
+            FormManager formManager, boolean requiredCheck) ;
 
 
     public void setMessage(String[] msg) {

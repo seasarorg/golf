@@ -60,8 +60,8 @@ public class Example4_2Frame extends javax.swing.JFrame implements GolfFrameInte
                 .add(jTextField1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 80, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(jLabel2)
-                .add(46, 46, 46)
-                .add(jScrollPane1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 415, Short.MAX_VALUE))
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 46, Short.MAX_VALUE)
+                .add(jScrollPane1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 415, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
         );
         ContensPanelLayout.setVerticalGroup(
             ContensPanelLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
@@ -84,7 +84,6 @@ public class Example4_2Frame extends javax.swing.JFrame implements GolfFrameInte
         jMenuBar1.add(jMenu1);
 
         jMenu2.setText("Example 4-2");
-        jMenu2.setActionCommand("Example 4-2");
         jMenuBar1.add(jMenu2);
 
         setJMenuBar(jMenuBar1);

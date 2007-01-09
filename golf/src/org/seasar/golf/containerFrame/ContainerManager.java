@@ -29,7 +29,7 @@ public class ContainerManager {
         this.container = container;
     }
 
-    public void setForm(String newForm) {
+    public JFrame setForm(String newForm) {
         GolfFrameInterface newFrame = null;
         newFrame = (GolfFrameInterface) SingletonS2ContainerFactory.getContainer()
             .getComponent(newForm);
@@ -48,6 +48,7 @@ public class ContainerManager {
         currentPanel = newFrame.getContentPanel();
         newFrame.setContainerFrame(container);
         newFrame.initBinding();
+        return (JFrame)newFrame;
     }
     
 }

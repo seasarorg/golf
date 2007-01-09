@@ -29,7 +29,8 @@ public class StringValidator extends AbstractValidator{
         "org.seasar.golf.validator.StringValidator.MAXIMUM"};        
     }
 
-    public ValidationMessage validate(Object data, String label, Object key, ValueModel valueModel, FormManager formManager) {
+    public ValidationMessage validate(Object data, String label, Object key, ValueModel valueModel, 
+            FormManager formManager, boolean requiredCheck) {
      
         String dataS = getDataString(data);
         if (dataS.length() == 0) {

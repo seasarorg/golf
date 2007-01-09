@@ -181,11 +181,11 @@ public class Example4ContainerFrame extends javax.swing.JFrame implements GolfFr
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        containerMgr.setForm("example4_2Frame");
+        JFrame n = containerMgr.setForm("example4_2Frame");
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        containerMgr.setForm("example4_1Frame");
+        JFrame n = containerMgr.setForm("example4_1Frame");
     }//GEN-LAST:event_jButton1ActionPerformed
     
     /**
