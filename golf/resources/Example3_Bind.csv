@@ -1,0 +1,5 @@
+Class,Name,Validator, DisplayName  ,Required,BindName
+javax.swing.JTextField,jTextField1,,Text,T,
+javax.swing.JTextField,jTextField2,min3max6string,Text,T,
+javax.swing.JTextField,jTextField3,,Text,T,
+javax.swing.JTextField,jTextField4,longDateValidator,Text,T,

@@ -1,0 +1,6 @@
+Class,Name,Validator, DisplayName  ,Required,BindName
+javax.swing.JTextField,jTextField1,min3max6string,Text,T,
+org.seasar.golf.component.IntegerField,integerField1,min1max10long,®”,T,
+javax.swing.JTextField,jTextField3,shortDateValidator,YY/MM/DD“ú•t,,
+javax.swing.JTextField,jTextField4,longDateValidator,YYYY/MM/DD“ú•t,T,
+javax.swing.JComboBox,jComboBox1,,Combo,T,

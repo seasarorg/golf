@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="Shift_JIS"?>
+<!DOCTYPE components PUBLIC "-//SEASAR2.1//DTD S2Container//EN"
+	"http://www.seasar.org/dtd/components21.dtd">
+<components>
+	<component name="min3max6string" class="org.seasar.golf.validator.StringValidator">
+            <property name="minLength">new Integer(3)</property>
+            <property name="maxLength">new Integer(6)</property>
+	</component>
+	<component name="min1max10long" class="org.seasar.golf.validator.LongValidator">
+            <property name="minValue">new Integer(1)</property>
+            <property name="maxValue">new Integer(10)</property>
+	</component>
+	<component name="requiredValidator" class="org.seasar.golf.validator.RequiredValidator">
+	</component>
+	<component name="shortDateValidator" class="org.seasar.golf.validator.DateValidator">
+	</component>
+	<component name="longDateValidator" class="org.seasar.golf.validator.DateValidator">
+            <property name="displayFormat">"L"</property>
+	</component>
+</components>
