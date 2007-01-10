@@ -1,0 +1,221 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ja" lang="ja"><head><!-- don't edit start --><title>Golf-Sample</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><meta http-equiv="Content-Style-Type" content="text/css" /><link href="s2click.css" type="text/css" rel="stylesheet" media="screen" /><link href="seasar_b.css" type="text/css" rel="stylesheet" media="screen" /><link href="seasar_p.css" type="text/css" rel="stylesheet" media="print" /><script src="seasar_b.js" type="text/JavaScript" language="JavaScript">
+</script>
+<style type="text/css">
+<!--
+.style6 {color: #FF0000}
+.style7 {color: #0000FF}
+-->
+</style>
+</head>
+<body style="direction: ltr;" onload="preload('ja')"><table align="left" border="0" cellpadding="0" cellspacing="0" width="100%"><tbody><tr><td align="left" valign="top" width="780"><table class="white" border="0" cellpadding="0" cellspacing="0" width="780">
+<tbody><tr><td colspan="7"><img src="images/top01_b.gif" alt="" height="5" width="780" /></td></tr><tr><td><img src="images/top02_b.gif" alt="Seasar" height="117" width="235" /></td><td colspan="3"><img src="images/top03.gif" alt="DI Container with AOP" height="117" width="289" /></td><td colspan="3"><img src="images/spacer.gif" alt="" height="117" width="256" /></td></tr><tr><td rowspan="2"><img src="images/top04.gif" alt="" height="49" width="235" /></td><td><a href="http://www.seasar.org/index.html"><img src="images/menu01_b_ja.gif" alt="" id="menu01" onmouseover="swap(1)" onmouseout="restore(1)" name="menu01" border="0" height="30" width="78" /></a></td><td><a href="http://www.seasar.org/projects.html"><img src="images/menu02_b_ja.gif" alt="" id="menu02" onmouseover="swap(2)" onmouseout="restore(2)" name="menu02" border="0" height="30" width="101" /></a></td><td><a href="http://www.seasar.org/products.html"><img src="images/menu03_b_ja.gif" alt="" id="menu03" onmouseover="swap(3)" onmouseout="restore(3)" name="menu03" border="0" height="30" width="110" /></a></td><td><a href="http://www.seasar.org/resources.html"><img src="images/menu04_b_ja.gif" alt="" id="menu04" onmouseover="swap(4)" onmouseout="restore(4)" name="menu04" border="0" height="30" width="113" /></a></td><td><img src="images/menu05_b_ja.gif" alt="" id="menu05" onmouseover="swap(5)" onmouseout="restore(5)" name="menu05" border="0" height="30" width="109" /></td><td><img src="images/menu06.gif" alt="" height="30" width="34" /></td>
+</tr><tr><td colspan="6"><img src="images/spacer.gif" alt="" height="19" width="545" /></td></tr></tbody></table><table class="white" border="0" cellpadding="0" cellspacing="0" width="780"><tbody><tr align="left" valign="top"><td width="14"><img src="images/spacer.gif" alt="" height="14" width="14" /></td><td width="740" class="main style3"><!-- don't edit end --><!-- document start -->
+<dl>
+<dd>&nbsp;</dd>
+
+<h3><a name="document" id="document">Sampleの内容
+</a></h3>
+</dl>
+<dl>
+<dd>それでは、Sampleを見ていきましょう。まず最初に、下記のLauncher画面が表示されます
+<br>
+<br><img src="images/launcher.jpeg" />
+
+</dd>
+</dl>
+
+<dl>
+<dd >このボタンをおすと、Exampleが走ります。そのProgramのボタンを押したActionは下記の様になっています。
+
+</dd>
+</dl>
+<!--code start-->
+<div class="excode"><pre>
+<code>
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {                                         
+        launchFrame("example1Frame");
+    }                                        
+
+    private void launchFrame(String frameName) {
+        GolfFrameInterface jFrameT = FormManagerUtil.getFrame(frameName);
+        jFrameT.initBinding();
+        ((JFrame)jFrameT).validate();
+        ((JFrame)jFrameT).pack();
+        ((JFrame)jFrameT).setVisible(true);
+    }
+</code>
+</pre></div>
+<!--code end-->
+<dl>
+<dd>上記は、ｊButton1の場合ですが、２から４もほとんど同じです。
+<br>FormManagerUtil.getFrame(frameName);で、S2Containerに自動登録されている、｢"example1Frame"」を<br>
+生成して、その「initBinding();」 Methodを呼んでいます。
+<br>Golf Frameworkでは、「 GolfFrameInterface」をFrame ClassにImplementsする事により、統一的に
+<br>Initializeが出来ます。
+
+</dd>
+</dl>
+
+<dl>
+<dd>それでは、Example １を見ていきましょう。画面は下記の様に表示されます。
+<br><br><img src="images/example1-1.jpeg" />
+
+
+</dd>
+</dl>
+<dl>
+<dd>それでは、一番上のText Fieldに「１２」と入力して、「TAB」か、他のFieldをクリックして
+<br>入力を完了して見ましょう。下記の様に、ERRORが即座に表示されます。<br>
+（このFieldは ３桁から６桁の文字列を入力する、チェックが掛かっていいます。）<br>
+また、カーソル（Focus)も自動的に最初のエラー 項目に設定される様になっていますので、<br>
+直ぐ修正が出来ます。
+<br><br><img src="images/example1-2.jpeg" />
+
+</dd>
+</dl>
+<dl>
+<dd>それでは、この入力「１２３」として、エラーを解除し、つぎの整数項目に行きます。<br>
+試しに、ここで「A」とか「B」を入力してみて下さい。この項目は、JTextFieldを拡張した<br>
+「org.seasar.golf.component.IntegerField」ですので、整数しか受け付けません。<br>
+それでは、「１２」と入力して見ましょう。下記の様にエラーになります。
+<br><br><img src="images/example1-3.jpeg" />
+</dd>
+</dl>
+<dl>
+<dd>それでは、これも「５」と正常入力して、つぎの Short Date項目に行きます。<br>
+ここは、「YY/MM/DD」項目です。ためしに、「平成１８年１月１０日」といれてみます。
+<br><br><img src="images/example1-4.jpeg" />
+<br><br>それでは、「07/5/10」と修正して見ましょう。（本日より未来の日を入れて下さい）
+<br><br><img src="images/example1-5.jpeg" />
+<br><br>即座に、表示が「07/05/10」に変わりました。自動的にFormatされます。<br>
+「2007/1/10」といれても、同じになります。<br>
+それでは「07/1/8」と入れてみましょう。
+<br>下記の様にERRORになります。このFieldは、本日以降のみ受け付けます。
+<br><br><img src="images/example1-6.jpeg" />
+<br><br>それでは、「07/5/10」など未来日を入力して、エラーを消して、次のLong Dateに行きます。
+<br>ここは、「YYYY/MM/DD」項目です。好きな年月日をいれて下さい。
+<br>入力後、下の「このボタンを押すと・・・・」を押してみて下さい。下記の画面になります。
+<br><br><img src="images/example1-7.jpeg" />
+<br>エラーが表示されましたね。この画面では、「Short Date」以外が必須項目となっていますので、
+<br>未入力だとエラーになります。実際には、HOSTにSUBMITする、「ENTER」ボタンにこの必須チェック
+<br>（必須チェックだけでなく、複数の入力項目の相関 Checkなども可能）機能を実際にHOSTに
+<br>送る前に行い、「エラー」の場合は即座に中止し、「警告」であれば ダイアログなどで確認
+<br>の後、送るのが良いと思います。
+<br>それでは、この画面のProgramを見ましょう。（Matisseで自動作成分を除く）
+</dd>
+</dl>
+<!--code start-->
+<div class="excode"><pre>
+<code>
+   public class Example1Frame extends javax.swing.JFrame  <span class="style6">implements GolfFrameInterface</span> {
+<span class="style6">    private FormManager formManager = null;</span>
+<span class="style7">    public void initBinding() {</span>
+<span class="style6">        formManager = new FormManager(this);
+        formManager.init();
+        formManager.createReportList(jScrollPane1);
+        formManager.setValidationFromCsvResource("Example1_bind.csv");
+        formManager.setBindFromCsvResource("Example1_bind2.csv");
+        ((SelectionInList )formManager.getFormBindingManager().getValueModel("jComboBox1")).setListModel(
+            new javax.swing.DefaultComboBoxModel(new String[] {"", "Item 11", "Item 22", "Item 33", "Item 44" }));</span>
+
+<span class="style7">    }</span>
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {                                         
+
+        <span class="style6">formManager.getFormValidationManager().Validate(true);</span>
+    }
+<span class="style7">   public FormManager getFrameManager() {</span>
+ <span class="style6">       return formManager;</span>
+<span class="style7">    }
+
+    public JMenuBar getMenu() {</span>
+<span class="style6">        return null;</span>
+<span class="style7">    }
+
+    public JPanel getContentPanel() {</span>
+<span class="style6">        return null;</span>
+<span class="style7">    }
+
+    public JFrame getContainerFrame() {</span>
+<span class="style6">        return null;</span>
+   <span class="style7"> }</span>
+
+    <span class="style7">public void setContainerFrame(JFrame container) {
+    }</span></code><span class="style7"><code>
+</code></span></pre>
+</div>
+<!--code end-->
+<dl>
+<dd>「赤」の部分のみが、手で入力しなければならない項目で、大変すくなくなっています。<br>
+また「青」の部分は、GolfInterfaceをImplementsすれば、Netbeansが自動的に作成します。
+<br>なお、Interfaceでこの画面では、不必要でnullのみ返している項目が多くありますが、
+<br>これは、Example ４を見て頂ければ、理由が分かると思います。</dd>
+<br>それでは、「Validator」の設定を行う、CSV Fileの内容を見てみましょう。
+<br><br>[Example1_bind.csv]
+<br><img src="images/example1-8.jpeg" />
+<br><br>一番左の項目は、参考ですので、入力しなくても構いません。
+<br>golfを「Debug」MODE（golf.propetiesで設定）動かすと、自動的に下記のような、JComponentの
+<br>Classと変数名のCSVが作成されますので、これから簡単にコピペ出来ます。
+<br><br>[org.seasar.golf.example.frame.Example1Frame.csv]<br><img src="images/example1-9.jpeg" />
+</dl>
+<dl>
+<dd></dd>
+</dl>
+<dl>
+<dd></dd>
+</dl>
+
+<dl>
+<dd></dd>
+</dl>
+<dl>
+<dd></dd>
+</dl>
+<dl>
+<dd></dd>
+</dl>
+<dl>
+<dd></dd>
+</dl>
+
+<dl>
+<dd></dd>
+</dl>
+<dl>
+<dd></dd>
+</dl>
+<dl>
+<dd></dd>
+</dl>
+
+<dl>
+<dd></dd>
+</dl>
+<dl>
+<dd></dd>
+</dl>
+
+<dl>
+<dd></dd>
+</dl>
+<img src="images/validate1.jpeg" />
+<!--code start-->
+<div class="excode"><pre>
+<code>
+
+</code>
+</pre></div>
+<!--code end-->
+
+<ul>
+<li><a href="datefield.html">datefield サンプル</a></li>
+  </ul>
+<!-- document end -->
+<!-- don't edit start --></td>
+<td width="14"><img src="images/spacer.gif" alt="" height="14" width="14" /></td></tr><tr><td width="14"><img src="images/spacer.gif" alt="" height="30" width="14" /></td><td width="766"><img src="images/spacer.gif" alt="" height="30" width="592" /></td></tr><tr><td width="14"><img src="images/spacer.gif" alt="" height="14" width="14" /></td><td class="copyright" width="766">Copyright&copy;
+2004-2005, The Seasar Foundation and the others. All rights reserved.</td>
+</tr></tbody></table></td><td class="backright" align="left" valign="top">&nbsp;</td>
+</tr><tr><td class="backunder" align="left" height="16" valign="top" width="780">&nbsp;</td>
+<td class="backcorner" align="left" height="16" valign="top">&nbsp;</td>
+</tr></tbody></table><!-- don't edit end --></body></html>
