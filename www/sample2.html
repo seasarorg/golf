@@ -1,0 +1,205 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ja" lang="ja"><head><!-- don't edit start --><title>Golf-Example2</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><meta http-equiv="Content-Style-Type" content="text/css" /><link href="s2click.css" type="text/css" rel="stylesheet" media="screen" /><link href="seasar_b.css" type="text/css" rel="stylesheet" media="screen" /><link href="seasar_p.css" type="text/css" rel="stylesheet" media="print" /><script src="seasar_b.js" type="text/JavaScript" language="JavaScript">
+</script>
+<style type="text/css">
+<!--
+.style1 {color: #FF0000}
+.style2 {color: #0000FF}
+-->
+</style>
+</head>
+<body style="direction: ltr;" onload="preload('ja')"><table align="left" border="0" cellpadding="0" cellspacing="0" width="100%"><tbody><tr><td align="left" valign="top" width="780"><table class="white" border="0" cellpadding="0" cellspacing="0" width="780">
+<tbody><tr><td colspan="7"><img src="images/top01_b.gif" alt="" height="5" width="780" /></td></tr><tr><td><img src="images/top02_b.gif" alt="Seasar" height="117" width="235" /></td><td colspan="3"><img src="images/top03.gif" alt="DI Container with AOP" height="117" width="289" /></td><td colspan="3"><img src="images/spacer.gif" alt="" height="117" width="256" /></td></tr><tr><td rowspan="2"><img src="images/top04.gif" alt="" height="49" width="235" /></td><td><a href="http://www.seasar.org/index.html"><img src="images/menu01_b_ja.gif" alt="" id="menu01" onmouseover="swap(1)" onmouseout="restore(1)" name="menu01" border="0" height="30" width="78" /></a></td><td><a href="http://www.seasar.org/projects.html"><img src="images/menu02_b_ja.gif" alt="" id="menu02" onmouseover="swap(2)" onmouseout="restore(2)" name="menu02" border="0" height="30" width="101" /></a></td><td><a href="http://www.seasar.org/products.html"><img src="images/menu03_b_ja.gif" alt="" id="menu03" onmouseover="swap(3)" onmouseout="restore(3)" name="menu03" border="0" height="30" width="110" /></a></td><td><a href="http://www.seasar.org/resources.html"><img src="images/menu04_b_ja.gif" alt="" id="menu04" onmouseover="swap(4)" onmouseout="restore(4)" name="menu04" border="0" height="30" width="113" /></a></td><td><img src="images/menu05_b_ja.gif" alt="" id="menu05" onmouseover="swap(5)" onmouseout="restore(5)" name="menu05" border="0" height="30" width="109" /></td><td><img src="images/menu06.gif" alt="" height="30" width="34" /></td>
+</tr><tr><td colspan="6"><img src="images/spacer.gif" alt="" height="19" width="545" /></td></tr></tbody></table><table class="white" border="0" cellpadding="0" cellspacing="0" width="780"><tbody><tr align="left" valign="top"><td width="14"><img src="images/spacer.gif" alt="" height="14" width="14" /></td><td class="main" width="740"><!-- don't edit end --><!-- document start -->
+<dl>
+<dd>&nbsp;</dd>
+
+<h3><a name="document" id="document">Example ２
+</a></h3>
+</dl>
+
+<dl>
+<dd>それでは、Example ２を見てみましょう。Launcher画面のExample ２を押すと下記画面が表示されます。
+<br><br>
+<img src="images/example2-1.jpeg" width="705" height="319" /></dd>
+</dl>
+
+<dl>
+<dd>この画面の想定は、Item Noが自動的に１０番毎に振られており、ユーザーはこれを変更する事により、
+<br>表示順を制御できます。 idは、Databaseで自動的にふられますので、本来はユーザーに見せる必要は
+<br>ありません。
+<br>それでは、Stock No欄に「１１」と入力して、TAB　キーか、次のFieldをクリックして、入力を終了
+<br>させて下さい。すぐに下記の様に、エラー表示がされます。このFieldも「min3max6string」の
+<br>ValidatorがSetされていますので、２桁ではエラーとなります。
+<br><br><img src="images/example2-2.jpeg" width="717" height="319" />
+<br><br>それでは、Stock No欄を「１１１１」と入力して、エラーを回避して、つぎにDate欄に
+<br>「07/1/20」と入れて見ましょう。「2007/01/20」と表示が変わります。これはこの欄に
+<br>「longDateValidator」がSetされているからです。
+<br><br><img src="images/example2-3.jpeg" />
+<br>それでは、ここで「このボタンを押すと・・・・」のボタンを押してみましょう。
+<br>Example １と同様、必須 Checkが掛かります。
+<br><br><img src="images/example2-4.jpeg" />
+<br>これは、Qty欄がRequired項目　（ItemNo,StockNO,DateもRequired項目です）と定義されているからです。
+<br>尚、２行目から５行目には、ItemNoがSetされていますが、エラーとなっていません。
+<br>これは、ItemNo,StockNO,Qty,Dateのどれか一つでも入力されている行を有効な行とみなす設定がされて
+<br>いるからです。
+<br>また、id欄やName欄は入力出来ない設定になっています。
+<br>ここまでの、設定はすべて下記のCSV Fileにて、定義されています。
+<br><br><img src="images/example2-c.jpeg" />
+<br>FieldがColumn名、Classが Field属性（golf.properties Fileで、実際のClass名に変換しています）、
+<br>CanEditで、編集可能属性の定義、InsCheckで有効行の判定項目の指定、Validatorの指定、
+<br>DisplayNameでエラー表示時の表示名の設定、Requiredで必須項目の設定を行います。
+
+<br>それでは、一番下の行のStockNoをクリックして、入力モードにして下さい。
+<br><br><img src="images/example2-5.jpeg" />
+<br>00060行が自動的に追加されましたね。最下行をクリックするか、入力すると自動的に次の行が
+<br>追加される様にしています。（勿論 表示のみの場合はこの機能をDisableする事は簡単です）
+<br>またItemNo欄は、既に表示されているItemNOの最大値に増分値を加える様になっています。
+<br>
+それでは、Programを見てみましょう。
+（Matisseで自動作成分を除く）
+</dd>
+</dl>
+<!--code start-->
+<div class="excode"><pre>
+<code>
+public class Example2Frame extends javax.swing.JFrame  
+		<span class="style1">implements GolfFrameInterface {</span>
+<span class="style1">    private FormManager formManager = null;
+    private GolfTableModel golfTableModel= new GolfTableModel();</span>
+    
+    <span class="style2">public void initBinding() {</span>
+<span class="style1">        formManager = new FormManager(this);
+        formManager.init();
+        formManager.createReportList(jScrollPane1);
+        jTable1.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+        formManager.SetTableColumnFromCsvResource(
+    			jTable1, "Test Table", golfTableModel, "Example2_table1.csv");
+        for (int i=0; i < 5; i++) {
+            addNewRow();
+        }
+        TableUtil.SetPreferedColumnWIdth(jTable1, new int[]{15,40,60,150,40,80 });</span>
+    <span class="style2">}</span>
+                     
+    private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {                                     
+  <span class="style1">      addNewRowWhenCursorLastRow(); </span>   
+    }                                    
+
+    private void jTable1KeyPressed(java.awt.event.KeyEvent evt) {                                   
+<span class="style1">        if (TableUtil.checkRowDownEvent(evt)) {
+            addNewRowWhenCursorLastRow();            
+        }</span>
+    }                                  
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {                                         
+<span class="style1">        formManager.getFormValidationManager().ValidateWithForceTableEditEnd(golfTableModel, true);</span>
+    }                                        
+    
+<span class="style2">    public FormManager getFrameManager() {</span>
+  <span class="style1">      return formManager;</span>
+<span class="style2">    }
+
+    public JMenuBar getMenu() {</span>
+ <span class="style1">       return null;</span>
+<span class="style2">    }
+
+    public JPanel getContentPanel() {</span>
+           <span class="style1">     return null;</span>
+ <span class="style2">   }</span>
+
+<span class="style1">    private void addNewRow() {
+                TableUtil.addNewRowWithItemNo (golfTableModel,1,10,5);
+    }
+
+    private void addNewRowWhenCursorLastRow() {
+        if (jTable1.getSelectedRow() == jTable1.getRowCount() -1) {
+            addNewRow();
+      } </span> 
+  <span class="style2">  }
+
+    public JFrame getContainerFrame() {</span>
+<span class="style1">        return null;    </span>    
+<span class="style2">    }
+
+    public void setContainerFrame(JFrame container) {
+    }</span>
+</code>
+</pre>
+</div>
+<!--code end-->
+<dl>
+<dd>
+<div class="excode" >
+</div>
+<!--code end-->
+</dl>
+<dl>
+<dd>Example １と同様「赤」の部分のみが、手で入力しなければならない項目で、大変すくなくなっています。<br>
+また「青」の部分は、GolfInterfaceをImplementsすれば、Netbeansが自動的に作成します。
+</dd>
+</dl>
+
+</dd>
+</dl>
+<dl>
+<dd></dd>
+</dl>
+<dl>
+<dd></dd>
+</dl>
+<dl>
+<dd></dd>
+</dl>
+<dl>
+<dd></dd>
+</dl>
+<dl>
+<dd></dd>
+</dl>
+<dl>
+<dd></dd>
+</dl>
+<dl>
+<dd></dd>
+</dl>
+<dl>
+<dd></dd>
+</dl>
+<dl>
+<dd></dd>
+</dl>
+<dl>
+<dd></dd>
+</dl>
+<dl>
+<dd></dd>
+</dl>
+<dl>
+<dd></dd>
+</dl>
+<dl>
+<dd></dd>
+</dl>
+<dl>
+<dd></dd>
+</dl>
+<img src="images/validate1.jpeg" />
+<!--code start-->
+<div class="excode"><pre>
+<code>
+
+</code>
+</pre></div>
+<!--code end-->
+
+<ul>
+<li><a href="datefield.html">datefield サンプル</a></li>
+  </ul>
+<!-- document end -->
+<!-- don't edit start --></td><td width="14"><img src="images/spacer.gif" alt="" height="14" width="14" /></td></tr><tr><td width="14"><img src="images/spacer.gif" alt="" height="30" width="14" /></td><td width="766"><img src="images/spacer.gif" alt="" height="30" width="592" /></td></tr><tr><td width="14"><img src="images/spacer.gif" alt="" height="14" width="14" /></td><td class="copyright" width="766">Copyright&copy;
+2004-2005, The Seasar Foundation and the others. All rights reserved.</td>
+</tr></tbody></table></td><td class="backright" align="left" valign="top">&nbsp;</td>
+</tr><tr><td class="backunder" align="left" height="16" valign="top" width="780">&nbsp;</td>
+<td class="backcorner" align="left" height="16" valign="top">&nbsp;</td>
+</tr></tbody></table><!-- don't edit end --></body></html>
