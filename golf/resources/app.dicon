@@ -6,6 +6,7 @@
 	<include path="aop.dicon"/>
 	<include path="golfValidator.dicon"/>
     <component class="org.seasar.framework.container.autoregister.ComponentAutoRegister">
+    <property name="instanceDef">@org.seasar.framework.container.deployer.InstanceDefFactory@PROTOTYPE</property>
     <initMethod name="addReferenceClass">
         <arg>@org.seasar.golf.Dummy@class</arg>
     </initMethod>

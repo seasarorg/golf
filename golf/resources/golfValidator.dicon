@@ -10,6 +10,8 @@
             <property name="minValue">new Integer(1)</property>
             <property name="maxValue">new Integer(10)</property>
 	</component>
+	<component name="long" class="org.seasar.golf.validator.LongValidator">
+	</component>
 	<component name="requiredValidator" class="org.seasar.golf.validator.RequiredValidator">
 	</component>
 	<component name="shortDateValidator" class="org.seasar.golf.validator.DateValidator">
