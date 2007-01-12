@@ -12,10 +12,13 @@ import javax.swing.JMenuBar;
 import javax.swing.JPanel;
 import javax.swing.JTable;
 import javax.swing.ListSelectionModel;
+import org.seasar.framework.container.annotation.tiger.Component;
+import org.seasar.framework.container.annotation.tiger.InstanceType;
 import org.seasar.golf.GolfFrameInterface;
 import org.seasar.golf.GolfTableModel;
 import org.seasar.golf.containerFrame.FormManager;
 import org.seasar.golf.util.TableUtil;
+import org.seasar.framework.container.S2Container;
 
 /**
  *

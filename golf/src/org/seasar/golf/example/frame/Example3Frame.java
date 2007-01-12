@@ -10,6 +10,8 @@ import javax.swing.JFrame;
 import javax.swing.JMenuBar;
 import javax.swing.JPanel;
 import javax.swing.ListSelectionModel;
+import org.seasar.framework.container.annotation.tiger.Component;
+import org.seasar.framework.container.annotation.tiger.InstanceType;
 import org.seasar.golf.GolfFrameInterface;
 import org.seasar.golf.GolfTableModel;
 import org.seasar.golf.binding.GolfBindingUtil;
@@ -109,11 +111,6 @@ public class Example3Frame extends javax.swing.JFrame  implements GolfFrameInter
             }
             public void mouseReleased(java.awt.event.MouseEvent evt) {
                 jTable1MouseReleased(evt);
-            }
-        });
-        jTable1.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
-            public void propertyChange(java.beans.PropertyChangeEvent evt) {
-                jTable1PropertyChange(evt);
             }
         });
         jTable1.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -235,11 +232,6 @@ public class Example3Frame extends javax.swing.JFrame  implements GolfFrameInter
         }
 
     }//GEN-LAST:event_jTable1KeyReleased
-    private void jTable1PropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_jTable1PropertyChange
-// TODO add your handling code here:
-        String s = evt.getPropertyName();
-    }//GEN-LAST:event_jTable1PropertyChange
-
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
          formManager.getFormValidationManager().ValidateWithForceTableEditEnd(golfTableModel, true);
     }//GEN-LAST:event_jButton1ActionPerformed
