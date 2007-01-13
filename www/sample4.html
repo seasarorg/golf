@@ -1,14 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN">
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ja" lang="ja"><head><!-- don't edit start --><title>Golf-Example４</title>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ja" lang="ja"><head><!-- don't edit start --><title>Golf- Example 4</title>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><meta http-equiv="Content-Style-Type" content="text/css" /><link href="s2click.css" type="text/css" rel="stylesheet" media="screen" /><link href="seasar_b.css" type="text/css" rel="stylesheet" media="screen" /><link href="seasar_p.css" type="text/css" rel="stylesheet" media="print" /><script src="seasar_b.js" type="text/JavaScript" language="JavaScript">
-</script>
-<style type="text/css">
-<!--
-.style1 {color: #FF0000}
-.style2 {color: #0000FF}
--->
-</style>
-</head>
+</script></head>
 <body style="direction: ltr;" onload="preload('ja')"><table align="left" border="0" cellpadding="0" cellspacing="0" width="100%"><tbody><tr><td align="left" valign="top" width="780"><table class="white" border="0" cellpadding="0" cellspacing="0" width="780">
 <tbody><tr><td colspan="7"><img src="images/top01_b.gif" alt="" height="5" width="780" /></td></tr><tr><td><img src="images/top02_b.gif" alt="Seasar" height="117" width="235" /></td><td colspan="3"><img src="images/top03.gif" alt="DI Container with AOP" height="117" width="289" /></td><td colspan="3"><img src="images/spacer.gif" alt="" height="117" width="256" /></td></tr><tr><td rowspan="2"><img src="images/top04.gif" alt="" height="49" width="235" /></td><td><a href="http://www.seasar.org/index.html"><img src="images/menu01_b_ja.gif" alt="" id="menu01" onmouseover="swap(1)" onmouseout="restore(1)" name="menu01" border="0" height="30" width="78" /></a></td><td><a href="http://www.seasar.org/projects.html"><img src="images/menu02_b_ja.gif" alt="" id="menu02" onmouseover="swap(2)" onmouseout="restore(2)" name="menu02" border="0" height="30" width="101" /></a></td><td><a href="http://www.seasar.org/products.html"><img src="images/menu03_b_ja.gif" alt="" id="menu03" onmouseover="swap(3)" onmouseout="restore(3)" name="menu03" border="0" height="30" width="110" /></a></td><td><a href="http://www.seasar.org/resources.html"><img src="images/menu04_b_ja.gif" alt="" id="menu04" onmouseover="swap(4)" onmouseout="restore(4)" name="menu04" border="0" height="30" width="113" /></a></td><td><img src="images/menu05_b_ja.gif" alt="" id="menu05" onmouseover="swap(5)" onmouseout="restore(5)" name="menu05" border="0" height="30" width="109" /></td><td><img src="images/menu06.gif" alt="" height="30" width="34" /></td>
 </tr><tr><td colspan="6"><img src="images/spacer.gif" alt="" height="19" width="545" /></td></tr></tbody></table><table class="white" border="0" cellpadding="0" cellspacing="0" width="780"><tbody><tr align="left" valign="top"><td width="14"><img src="images/spacer.gif" alt="" height="14" width="14" /></td><td class="main" width="740"><!-- don't edit end --><!-- document start -->
@@ -27,22 +20,24 @@
 <br>を implementsすす必要があります。
 <br>次の画面が、コンテナ画面です。通常の画面と同様に作成します。
 </dd>
-</dl><img src="images/container1.jpeg" />
+</dl><img src="images/container1.jpeg" width="750" />
 
 <dl><dd>それでは、このProgramを見てみましょう。
 </dd>
 </dl>
 <!--code start-->
-<div class="excode"><pre>
+<div class="excode">
+  <pre>
 <code>
-public class Example4ContainerFrame extends javax.swing.JFrame <span class="style1">implements GolfFrameInterface</span>{
+public class Example4ContainerFrame extends javax.swing.JFrame 
+                             <span class="style1">implements GolfFrameInterface</span>{
  <span class="style1">   private ContainerManager containerMgr;</span>
 
-  private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {                                         
-        <span class="style1">JFrame n = containerMgr.setForm("example4_2Frame");</span>
+  private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {    
+       <span class="style1">JFrame n = containerMgr.setForm("example4_2Frame");</span>
     }                                        
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {                                         
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) { 
         <span class="style1">JFrame n = containerMgr.setForm("example4_1Frame");</span>
     }                                        
    
@@ -84,12 +79,13 @@ public class Example4ContainerFrame extends javax.swing.JFrame <span class="styl
 
 </dd>
 </dl>
-<img src="images/container2.jpeg" />
+<img src="images/container2.jpeg" width="746" />
 <!--code start-->
 <div class="excode">
   <pre>
 <code>
-public class Example4_1Frame extends javax.swing.JFrame <span class="style1">implements GolfFormInterface</span>{
+public class Example4_1Frame extends javax.swing.JFrame 
+                      <span class="style1">implements GolfFormInterface</span>{
 <span class="style1">    private JFrame container = null;
     private FormManager formManager = null;
     public FormManager getFormManager() {
@@ -133,6 +129,7 @@ public class Example4_1Frame extends javax.swing.JFrame <span class="style1">imp
 <dl>
   <dd><a href="index.html">GOLF HOMEへのリンク</a></dd>
 </dl>
+<!-- document end -->
 <!-- don't edit start --></td><td width="14"><img src="images/spacer.gif" alt="" height="14" width="14" /></td></tr><tr><td width="14"><img src="images/spacer.gif" alt="" height="30" width="14" /></td><td width="766"><img src="images/spacer.gif" alt="" height="30" width="592" /></td></tr><tr><td width="14"><img src="images/spacer.gif" alt="" height="14" width="14" /></td><td class="copyright" width="766">Copyright&copy;
 2004-2005, The Seasar Foundation and the others. All rights reserved.</td>
 </tr></tbody></table></td><td class="backright" align="left" valign="top">&nbsp;</td>
