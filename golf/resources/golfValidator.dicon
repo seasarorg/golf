@@ -26,4 +26,6 @@
 	<component name="longDateValidator" class="org.seasar.golf.validator.DateValidator">
             <property name="displayFormat">"L"</property>
 	</component>
+	<component name="doubleValidator" class="org.seasar.golf.validator.DoubleValidator">
+	</component>
 </components>
