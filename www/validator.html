@@ -7,32 +7,251 @@
 </tr><tr><td colspan="6"><img src="images/spacer.gif" alt="" height="19" width="545" /></td></tr></tbody></table><table class="white" border="0" cellpadding="0" cellspacing="0" width="780"><tbody><tr align="left" valign="top"><td width="14"><img src="images/spacer.gif" alt="" height="14" width="14" /></td><td class="main" width="740"><!-- don't edit end --><!-- document start -->
 <dl>
 <dd>&nbsp;</dd>
-
-<h3><a name="document" id="document">Validate
+<h3><a name="document" id="document">Golf Validorの説明
 </a></h3>
 </dl>
-
 <dl>
-<dd></dd>
+<dd>GolfのValidationは次の３階層で管理されています。</dd>
 </dl>
 
 <dl>
-<dd></dd>
-</dl>
+<dd>      <ul>
+          <li>FormValidation Manager － 画面毎にあり、すべてのComponent ValidatorをHashtable
+		  に持っていて、順番に実行して、最後にValidationの結果を表示する Eventを発する</li>
+          
+		  <li>Component Validator －　FormBindingManagerおよびGolfTableModelがこのIntefaceを
+		  実装しておりFormValidation Managerから呼ばれる事により、自分で管理しているValidator
+		  に実行させる</li>
+		  
+		  <li>Validator -　個々の Field単位のValidationを行う。原則的には、S2Containerで管理されるが
+		  Programで作成したり、S2Conteinerからインスタンスを取得後、パラメーターの変更をダイナミック
+		  に行うことも可能。</li>
+            </ul>
+      </dd>
+  </dl>
+<dl>
+<dd>当面、Component Validatorを作成する機会は少ないとおもいますので、今回はValidatorについて説明します。
+<br>それでは、比較的簡単な LongValidatorを見てみましょう。プログラムは、以下の通りです。
 
-<img src="images/validate1.jpeg" />
+</dd>
+</dl>
 <!--code start-->
 <div class="excode"><pre>
 <code>
+public class LongValidator extends AbstractValidator{
+    
+    private Long minValue = null;
+    private Long maxValue = null;
+    public LongValidator() {
+        messageKey = new String[] { "org.seasar.golf.validator.LongValidator.MINIMUM",
+        "org.seasar.golf.validator.LongValidator.MAXIMUM",
+        "org.seasar.golf.validator.LongValidator.INVALID"};        
+    }
 
+    public ValidationMessage validate(Object data, String label, Object key, ValueModel valueModel, 
+            FormManager formManager, boolean requiredCheck) {
+        Long lValue  = null;
+     
+        String dataS = getDataString(data);
+        if (dataS.length() == 0) {
+            return null;
+        }
+        String displayLabel = getDisplayLabel(label);
+        try {
+            lValue = Long.parseLong(dataS);
+        } catch (NumberFormatException ex) {
+              return new SimpleValidationMessage(displayLabel + getMessage(2, dataS),
+									Severity.ERROR, key );
+        }
+        if ((minValue != null) &&  (lValue < minValue)) {
+            return new SimpleValidationMessage(displayLabel + getMessage(0, minValue, dataS),
+									Severity.ERROR, key );
+        }
+        if ((maxValue !=null ) && (lValue > maxValue))  {
+            return new SimpleValidationMessage(displayLabel + getMessage(1, maxValue, dataS), 
+									Severity.ERROR, key );          
+        }        
+        return null;
+    }
+
+    public Long getMinValue() {
+        return minValue;
+    }
+
+    public void setMinValue(Long minValue) {
+        this.minValue = minValue;
+    }
+
+    public Long getMaxValue() {
+        return maxValue;
+    }
+
+    public void setMaxValue(Long maxValue) {
+        this.maxValue = maxValue;
+    }
 </code>
 </pre></div>
 <!--code end-->
+<dl>
+<dd>見て分かる通り、非常に簡単に実装できます。Messageは、resouces\org\seasar\golf\validator\Messages.propetiesと
+<br>Messages_ja.propetiesにあります。 Netbeansでは、この編集も日本語と英語を一度に見ながら出来るので大変楽ですね。
+</dd>
+</dl>
 
-<ul>
-<li><a href="datefield.html">datefield サンプル</a></li>
-  </ul>
-<!-- document end -->
+<dl>
+<dd>次に、Validator機能だけでなく、Formatterの機能も兼ね備えた、DateValidatorを見てみましょう。</dd>
+</dl>
+<!--code start-->
+<div class="excode"><pre>
+<code>
+public class DateValidator extends AbstractValidator{
+    
+    private Integer minRelativeDate = null;
+    private Integer maxRelativeDate = null;
+    private DateFormat formatShort = DateFormat.getDateInstance(DateFormat.SHORT);
+    private DateFormat formatLong  = DateFormat.getDateInstance(DateFormat.LONG);
+    public DateValidator() {
+        messageKey = new String[] { 
+            "org.seasar.golf.validator.DateValidator.INVALID",
+            "org.seasar.golf.validator.DateValidator.MINIMUM",
+            "org.seasar.golf.validator.DateValidator.MAXIMUM"};        
+    }
+    private DateFormat parseFormat = formatShort; 
+    private DateFormat displayFormat =formatShort; 
+
+    public ValidationMessage validate(Object data, String label, 
+				Object key, ValueModel valueModel, 
+            FormManager formManager, boolean requiredCheck) {
+        String newDataS = null;
+        String dataS = getDataString(data);
+        if (dataS.length() == 0) {
+            return null;
+        }
+        String displayLabel = getDisplayLabel(label);
+
+        Date dd = null;
+        try {
+           dd = parseFormat.parse(dataS);
+           newDataS = displayFormat.format(dd);
+
+<span class="style1">           if (!dataS.equals(newDataS)) {
+                ValidationUtil.updateValueModel(valueModel, key, newDataS);
+           }</span>
+
+        } catch (ParseException ex) {
+            return new SimpleValidationMessage(
+				displayLabel + getMessage(0, dataS), Severity.ERROR, key );
+        }
+        int rdate = ValidationUtil.getRelativeToToday(dd);
+        if (minRelativeDate != null) {
+            if (rdate < minRelativeDate) {
+                 return new SimpleValidationMessage(displayLabel + 
+                        getMessage(1, displayFormat.format(
+								ValidationUtil.getRelativeToToday(minRelativeDate)) ,
+                         newDataS), Severity.ERROR, key );
+            }
+        }
+        if (maxRelativeDate != null) {
+            if (rdate > maxRelativeDate) {
+                 return new SimpleValidationMessage(displayLabel + 
+                        getMessage(2, displayFormat.
+							format(ValidationUtil.getRelativeToToday(maxRelativeDate)) ,
+                         newDataS), Severity.ERROR, key );
+            }
+        }        
+        
+        return null;
+    }
+
+
+    public DateFormat getFormatShort() {
+        return formatShort;
+    }
+
+    public void setFormatShort(DateFormat formatShort) {
+        this.formatShort = formatShort;
+    }
+
+    public DateFormat getFormatLong() {
+        return formatLong;
+    }
+
+    public void setFormatLong(DateFormat formatLong) {
+        this.formatLong = formatLong;
+    }
+
+    public String getParseFormat() {
+        return getFormatSub(parseFormat);
+    }
+    
+    public String getFormatSub(DateFormat df) {
+          if (df == formatShort) {
+            return "S";
+        }   else {
+           return "L";
+        }      
+    }
+
+    public void setParseFormat(String type) {
+         if (type.toUpperCase().equals("L")) {
+             parseFormat = formatLong;
+        } else if (type.toUpperCase().equals("S")) {
+             parseFormat = formatShort;
+        } else {
+            throw (new IllegalArgumentException(
+					"parse Format should be L or S"));
+        }  
+    }
+    
+    public String getDisplayFormat() {
+         return getFormatSub(displayFormat);
+    }
+
+    public void setDisplayFormat(String type) {
+         if (type.toUpperCase().equals("L")) {
+             displayFormat = formatLong;
+        } else if (type.toUpperCase().equals("S")) {  
+             displayFormat =  formatShort;
+        } else {
+            throw (new IllegalArgumentException(
+					"display Format should be L or S"));
+        } 
+    }
+
+    public Integer getMinRelativeDate() {
+        return minRelativeDate;
+    }
+
+    public void setMinRelativeDate(Integer minRelativeDate) {
+        this.minRelativeDate = minRelativeDate;
+    }
+
+    public Integer getMaxRelativeDate() {
+        return maxRelativeDate;
+    }
+
+    public void setMaxRelativeDate(Integer maxRelativeDate) {
+        this.maxRelativeDate = maxRelativeDate;
+    }
+    
+}
+</code>
+</pre>
+</div>
+<!--code end-->
+<dl>
+<dd>少し、長くなりましたが、ポイントは、赤字の部分で、Formatした結果をValue Modelに戻しています。
+<br>画面のFieldでもTableでもUtility が自動的に判断して、戻す様にしていますので、非常に簡単です。
+<br>今後は、エラーとなった Fieldの色を変えるとか、その他の機能追加も要望があればやって行きたいと思います。
+<br>また Call Paremeterの　requiredCheckは、HostにSubmit時などを想定していますので、ここで、単一項目の内容
+<br>だけでなく、他の項目との関連 チェックなども行える様配慮してあります。
+<br>Hostでプロセス時のエラーも同じ様なFormatで戻って来ることを考えており、自動的にシームレスに処理する予定です。
+</dd>
+</dl>
+<h3><a name="link" id="link">リンク</a></h3>
+<dl>
+  <dd><a href="index.html">GOLF HOMEへのリンク</a></dd>
+</dl>
 <!-- don't edit start --></td><td width="14"><img src="images/spacer.gif" alt="" height="14" width="14" /></td></tr><tr><td width="14"><img src="images/spacer.gif" alt="" height="30" width="14" /></td><td width="766"><img src="images/spacer.gif" alt="" height="30" width="592" /></td></tr><tr><td width="14"><img src="images/spacer.gif" alt="" height="14" width="14" /></td><td class="copyright" width="766">Copyright&copy;
 2004-2005, The Seasar Foundation and the others. All rights reserved.</td>
 </tr></tbody></table></td><td class="backright" align="left" valign="top">&nbsp;</td>
