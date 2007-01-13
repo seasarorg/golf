@@ -18,9 +18,9 @@ import org.seasar.golf.containerFrame.FormManager;
  *
  * @author shimura
  */
-public interface GolfFrameInterface {
+public interface GolfFormInterface {
 
-    FormManager getFrameManager();
+    FormManager getFormManager();
     JMenuBar getMenu();
     JPanel getContentPanel();
     JFrame getContainerFrame();

@@ -5,7 +5,7 @@ import java.util.Hashtable;
 
 import javax.swing.JFrame;
 import org.seasar.framework.container.factory.SingletonS2ContainerFactory;
-import org.seasar.golf.GolfFrameInterface;
+import org.seasar.golf.GolfFormInterface;
 
 import org.seasar.golf.data.TableData;
 import org.seasar.golf.util.GolfSetting;
@@ -41,7 +41,7 @@ public class FormManagerUtil {
 			
 		}
 	}
-         public  static  GolfFrameInterface getFrame(String frameName) {
-            return (GolfFrameInterface) SingletonS2ContainerFactory.getContainer().getComponent(frameName);
+         public  static  GolfFormInterface getFrame(String frameName) {
+            return (GolfFormInterface) SingletonS2ContainerFactory.getContainer().getComponent(frameName);
         }
 }

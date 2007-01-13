@@ -9,14 +9,14 @@ package org.seasar.golf.example.frame;
 import javax.swing.JFrame;
 import javax.swing.JMenuBar;
 import javax.swing.JPanel;
-import org.seasar.golf.GolfFrameInterface;
+import org.seasar.golf.GolfFormInterface;
 import org.seasar.golf.containerFrame.FormManager;
 
 /**
  *
  * @author  shimura
  */
-public class Example4_2Frame extends javax.swing.JFrame implements GolfFrameInterface{
+public class Example4_2Frame extends javax.swing.JFrame implements GolfFormInterface{
     private JFrame container = null;
     private FormManager formManager = null;    
     
@@ -130,7 +130,7 @@ public class Example4_2Frame extends javax.swing.JFrame implements GolfFrameInte
     private javax.swing.JTextField jTextField1;
     // End of variables declaration//GEN-END:variables
 
-    public FormManager getFrameManager() {
+    public FormManager getFormManager() {
         return null;
     }
 

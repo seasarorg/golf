@@ -13,7 +13,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import org.jdesktop.layout.GroupLayout;
 import org.seasar.framework.container.factory.SingletonS2ContainerFactory;
-import org.seasar.golf.GolfFrameInterface;
+import org.seasar.golf.GolfFormInterface;
 import org.seasar.golf.example.frame.Example4ContainerFrame;
 
 /**
@@ -30,8 +30,8 @@ public class ContainerManager {
     }
 
     public JFrame setForm(String newForm) {
-        GolfFrameInterface newFrame = null;
-        newFrame = (GolfFrameInterface) SingletonS2ContainerFactory.getContainer()
+        GolfFormInterface newFrame = null;
+        newFrame = (GolfFormInterface) SingletonS2ContainerFactory.getContainer()
             .getComponent(newForm);
         container.getRootPane().setJMenuBar(newFrame.getMenu());
         String title = ((JFrame)newFrame).getTitle();
@@ -42,7 +42,7 @@ public class ContainerManager {
         }
         GroupLayout layout = (GroupLayout)container.getContentPane().getLayout();
         if (currentPanel == null) {
-            currentPanel = ((GolfFrameInterface)container).getContentPanel();
+            currentPanel = ((GolfFormInterface)container).getContentPanel();
         }
         layout.replace(currentPanel, newFrame.getContentPanel());
         currentPanel = newFrame.getContentPanel();

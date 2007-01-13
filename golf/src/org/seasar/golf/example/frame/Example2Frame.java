@@ -14,7 +14,7 @@ import javax.swing.JTable;
 import javax.swing.ListSelectionModel;
 import org.seasar.framework.container.annotation.tiger.Component;
 import org.seasar.framework.container.annotation.tiger.InstanceType;
-import org.seasar.golf.GolfFrameInterface;
+import org.seasar.golf.GolfFormInterface;
 import org.seasar.golf.GolfTableModel;
 import org.seasar.golf.containerFrame.FormManager;
 import org.seasar.golf.util.TableUtil;
@@ -24,7 +24,7 @@ import org.seasar.framework.container.S2Container;
  *
  * @author  shimura
  */
-public class Example2Frame extends javax.swing.JFrame  implements GolfFrameInterface {
+public class Example2Frame extends javax.swing.JFrame  implements GolfFormInterface {
     private FormManager formManager = null;
     private int currentRow = 999999;
 
@@ -161,7 +161,7 @@ public class Example2Frame extends javax.swing.JFrame  implements GolfFrameInter
         });
     }
 
-    public FormManager getFrameManager() {
+    public FormManager getFormManager() {
         return formManager;
     }
 

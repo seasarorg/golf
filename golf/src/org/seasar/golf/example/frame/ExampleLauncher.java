@@ -8,7 +8,7 @@ package org.seasar.golf.example.frame;
 
 import javax.swing.JFrame;
 import org.seasar.framework.container.factory.SingletonS2ContainerFactory;
-import org.seasar.golf.GolfFrameInterface;
+import org.seasar.golf.GolfFormInterface;
 import org.seasar.golf.containerFrame.FormManager;
 import org.seasar.golf.containerFrame.FormManagerUtil;
 
@@ -122,7 +122,7 @@ public class ExampleLauncher extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void launchFrame(String frameName) {
-        GolfFrameInterface jFrameT = FormManagerUtil.getFrame(frameName);
+        GolfFormInterface jFrameT = FormManagerUtil.getFrame(frameName);
         jFrameT.initBinding();
         ((JFrame)jFrameT).validate();
         ((JFrame)jFrameT).pack();

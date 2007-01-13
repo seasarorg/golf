@@ -13,7 +13,7 @@ import javax.swing.JTextField;
 import javax.swing.ListSelectionModel;
 import org.seasar.framework.container.annotation.tiger.Component;
 import org.seasar.framework.container.annotation.tiger.InstanceType;
-import org.seasar.golf.GolfFrameInterface;
+import org.seasar.golf.GolfFormInterface;
 import org.seasar.golf.GolfTableModel;
 import org.seasar.golf.binding.GolfBindingUtil;
 import org.seasar.golf.binding.TableBindHandler;
@@ -24,9 +24,8 @@ import org.seasar.golf.util.TableUtil;
  *
  * @author  shimura
  */
-public class Example3Frame extends javax.swing.JFrame  implements GolfFrameInterface {
+public class Example3Frame extends javax.swing.JFrame  implements GolfFormInterface {
     private FormManager formManager = null;
-
     private GolfTableModel golfTableModel = new GolfTableModel();
     private TableBindHandler table1BindHandler = null;
     
@@ -48,7 +47,7 @@ public class Example3Frame extends javax.swing.JFrame  implements GolfFrameInter
         }
         TableUtil.SetPreferedColumnWIdth(jTable1, new int[]{15,40,60,150,40,80 });
         table1BindHandler = GolfBindingUtil.createTableBindHandler (golfTableModel);
-        GolfBindingUtil.bindTableRowColumn(table1BindHandler, golfTableModel,"doubleField1","ItemNo");
+        GolfBindingUtil.bindTableRowColumn(table1BindHandler, golfTableModel,"jTextField1","ItemNo");
         GolfBindingUtil.bindTableRowColumn(table1BindHandler, golfTableModel,"jTextField2","StockNo");
         GolfBindingUtil.bindTableRowColumn(table1BindHandler, golfTableModel,"longField1","Qty");
         GolfBindingUtil.bindTableRowColumn(table1BindHandler, golfTableModel,"jTextField4","Date");    
@@ -251,7 +250,7 @@ public class Example3Frame extends javax.swing.JFrame  implements GolfFrameInter
         });
     }
 
-    public FormManager getFrameManager() {
+    public FormManager getFormManager() {
         return formManager;
     }
 
@@ -263,8 +262,8 @@ public class Example3Frame extends javax.swing.JFrame  implements GolfFrameInter
                 return null;
     }
     private void addNewRow() {
-                TableUtil.addNewRow(golfTableModel);
-                //TableUtil.addNewRowWithItemNo (golfTableModel,1,10,5);
+                //TableUtil.addNewRow(golfTableModel);
+                TableUtil.addNewRowWithItemNo (golfTableModel,1,10,5);
     }
                                   
 

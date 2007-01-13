@@ -16,14 +16,14 @@ import javax.swing.JMenuBar;
 import javax.swing.JPanel;
 import javax.swing.text.DateFormatter;
 import javax.swing.text.DefaultFormatterFactory;
-import org.seasar.golf.GolfFrameInterface;
+import org.seasar.golf.GolfFormInterface;
 import org.seasar.golf.containerFrame.FormManager;
 
 /**
  *
  * @author  shimura
  */
-public class Example1Frame extends javax.swing.JFrame  implements GolfFrameInterface {
+public class Example1Frame extends javax.swing.JFrame  implements GolfFormInterface {
     private FormManager formManager = null;
     
     /** Creates new form Example1Frame */
@@ -214,7 +214,7 @@ public class Example1Frame extends javax.swing.JFrame  implements GolfFrameInter
         });
     }
 
-    public FormManager getFrameManager() {
+    public FormManager getFormManager() {
         return formManager;
     }
 

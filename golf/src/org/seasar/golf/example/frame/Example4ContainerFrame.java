@@ -9,7 +9,7 @@ package org.seasar.golf.example.frame;
 import javax.swing.JFrame;
 import javax.swing.JMenuBar;
 import javax.swing.JPanel;
-import org.seasar.golf.GolfFrameInterface;
+import org.seasar.golf.GolfFormInterface;
 import org.seasar.golf.containerFrame.ContainerManager;
 import org.seasar.golf.containerFrame.FormManager;
 
@@ -17,14 +17,11 @@ import org.seasar.golf.containerFrame.FormManager;
  *
  * @author  shimura
  */
-public class Example4ContainerFrame extends javax.swing.JFrame implements GolfFrameInterface{
-    private JFrame container ;
+public class Example4ContainerFrame extends javax.swing.JFrame implements GolfFormInterface{
     private ContainerManager containerMgr;
     /** Creates new form Example4ContainerFrame */
     public Example4ContainerFrame() {
         initComponents();
-        
-        containerMgr = new ContainerManager(this);
     }
     
     /** This method is called from within the constructor to
@@ -214,7 +211,7 @@ public class Example4ContainerFrame extends javax.swing.JFrame implements GolfFr
     private javax.swing.JPanel jPanel3;
     // End of variables declaration//GEN-END:variables
 
-    public FormManager getFrameManager() {
+    public FormManager getFormManager() {
         return null;
     }
 
@@ -226,14 +223,14 @@ public class Example4ContainerFrame extends javax.swing.JFrame implements GolfFr
     }
 
     public void initBinding() {
+           containerMgr = new ContainerManager(this);        
     }
 
     public JFrame getContainerFrame() {
-        return container;
+        return this;
     }
 
     public void setContainerFrame(JFrame container) {
-        this.container = container;
     }
     
 }
