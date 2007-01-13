@@ -1,0 +1,131 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ja" lang="ja"><head><!-- don't edit start --><title>Golf-Example3</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><meta http-equiv="Content-Style-Type" content="text/css" /><link href="s2click.css" type="text/css" rel="stylesheet" media="screen" /><link href="seasar_b.css" type="text/css" rel="stylesheet" media="screen" /><link href="seasar_p.css" type="text/css" rel="stylesheet" media="print" /><script src="seasar_b.js" type="text/JavaScript" language="JavaScript">
+</script>
+<style type="text/css">
+<!--
+.style1 {color: #FF0000}
+-->
+</style>
+</head>
+<body style="direction: ltr;" onload="preload('ja')"><table align="left" border="0" cellpadding="0" cellspacing="0" width="100%"><tbody><tr><td align="left" valign="top" width="780"><table class="white" border="0" cellpadding="0" cellspacing="0" width="780">
+<tbody><tr><td colspan="7"><img src="images/top01_b.gif" alt="" height="5" width="780" /></td></tr><tr><td width="235"><img src="images/top02_b.gif" alt="Seasar" height="117" width="235" /></td><td colspan="3"><img src="images/top03.gif" alt="DI Container with AOP" height="117" width="289" /></td><td colspan="3"><img src="images/spacer.gif" alt="" height="117" width="256" /></td></tr><tr><td rowspan="2"><img src="images/top04.gif" alt="" height="49" width="235" /></td><td width="78"><a href="http://www.seasar.org/index.html"><img src="images/menu01_b_ja.gif" alt="" id="menu01" onmouseover="swap(1)" onmouseout="restore(1)" name="menu01" border="0" height="30" width="78" /></a></td><td width="101"><a href="http://www.seasar.org/projects.html"><img src="images/menu02_b_ja.gif" alt="" id="menu02" onmouseover="swap(2)" onmouseout="restore(2)" name="menu02" border="0" height="30" width="101" /></a></td><td width="110"><a href="http://www.seasar.org/products.html"><img src="images/menu03_b_ja.gif" alt="" id="menu03" onmouseover="swap(3)" onmouseout="restore(3)" name="menu03" border="0" height="30" width="110" /></a></td><td width="113"><a href="http://www.seasar.org/resources.html"><img src="images/menu04_b_ja.gif" alt="" id="menu04" onmouseover="swap(4)" onmouseout="restore(4)" name="menu04" border="0" height="30" width="113" /></a></td><td width="109"><img src="images/menu05_b_ja.gif" alt="" id="menu05" onmouseover="swap(5)" onmouseout="restore(5)" name="menu05" border="0" height="30" width="109" /></td><td width="34"><img src="images/menu06.gif" alt="" height="30" width="34" /></td>
+</tr><tr><td colspan="6"><img src="images/spacer.gif" alt="" height="19" width="545" /></td></tr></tbody></table><table class="white" border="0" cellpadding="0" cellspacing="0" width="780"><tbody><tr align="left" valign="top"><td width="14"><img src="images/spacer.gif" alt="" height="14" width="14" /></td><td class="main" width="752"><!-- don't edit end --><!-- document start -->
+<dl>
+
+<h3><a name="document" id="document">Example ３
+</a></h3>
+</dl>
+<dl><dd>それでは、次のExample ３を見てみましょう。Launcher画面のExample ３を押すと下記画面が表示されます。
+</dd>
+</dl>
+
+<img src="images/example3-1.jpeg" width="700" height="352" />
+<br>
+<br><dl><dd>一番上の行をクリックして見て下さい。下記の様に、右のItemNo欄に「00010」と表示されます。
+</dd></dl><br><br>
+<img src="images/example3-2.jpeg" width="704" height="352" />
+<br><br><dl>それでは、StockNoに「１１」と入力して、Tabを押して下さい。
+<br><br></dd></dl>
+<img src="images/example3-3.jpeg" width="704" height="352" /><br>
+<br><dl><dd>Validatorにより、Errorとなりますね。
+<br>それでは、StockNOは、「１１２２」として、次にDate欄に「07/1/1」といれて、「tab」を押して下さい。
+<br><br></dd></dl><img src="images/example3-4.jpeg" width="704" height="352" />
+<br><br><DL><dd>「2007/01/01」に自動的に変換されましたね。それでは、２行目をクリックしてみましょう。
+<br><br></dd></dl><img src="images/example3-5.jpeg" width="704" height="352" />
+<br><br><dl><dd>右側の表示が、２行目に連動しましたね。
+<br>ここで、「このバタンを・・・・」を押すと、必須Checkがかかり、以下の画面が表示されます。
+<br><br></dd></dl><img src="images/example3-6.jpeg" width="704" height="352" />
+
+<br><dl><dd>この様に、Tableと連動するJTextFieldが簡単にできます。
+<br>なお、Qty欄は、LongFieldという、Golfのコンポーネントで、整数しか受け付けません。
+<br>数字、+-の記号以外を入れても、無視されます。
+<br>また、initBindingで、右寄せになるよう設定してあります。
+<br>浮動小数をあつかう、DoubleFieldも用意してあります。
+<br>多桁の数字を扱うため、近いうちに、BigDecimalも用意しようと思います。
+<br>なおNetBeansでは、自作のコンポーネントも簡単にパレットに追加できます。
+<br>メニューからもできますが、ソースを右クリックして、「ツール」「パレットに追加」
+<br>が簡単です。ソースから直接編集画面のDrag　and DropしてもOKです。これは感動もの。
+<br>それでは、Programをみてみましょう。
+</dd></dl>
+
+<!--code start-->
+<div class="excode"><pre>
+<code>
+public class Example3Frame extends javax.swing.JFrame  implements GolfFormnterface {
+    private FormManager formManager = null;
+    private GolfTableModel golfTableModel = new GolfTableModel();
+    <span class="style1">private TableBindHandler table1BindHandler = null;</span>
+    public void initBinding() {
+        formManager = new FormManager(this);
+        formManager.init();
+        formManager.createReportList(jScrollPane1);
+<span class="style1">        formManager.setValidationFromCsvResource("Example3_bind.csv");
+        formManager.setBindFromCsvResource("Example3_bind2.csv");</span>
+        jTable1.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+        formManager.SetTableColumnFromCsvResource(
+    			jTable1, "Test Table", golfTableModel, "Example3_table1.csv");
+        for (int i=0; i < 5; i++) {
+            addNewRow();
+        }
+        TableUtil.SetPreferedColumnWIdth(jTable1, new int[]{15,40,60,150,40,80 });
+        <span class="style1">table1BindHandler = GolfBindingUtil.createTableBindHandler (golfTableModel);</span>
+<span class="style1">        GolfBindingUtil.bindTableRowColumn(table1BindHandler, 
+			golfTableModel,"jTextField1","ItemNo");
+        GolfBindingUtil.bindTableRowColumn(table1BindHandler, 
+			golfTableModel,"jTextField2","StockNo");
+        GolfBindingUtil.bindTableRowColumn(table1BindHandler, 
+			golfTableModel,"longField1","Qty");
+        GolfBindingUtil.bindTableRowColumn(table1BindHandler, 
+			golfTableModel,"jTextField4","Date");  
+		longField1.setHorizontalAlignment(JTextField.RIGHT);</span>      
+    }
+    private void jTable1MouseClicked(java.awt.event.MouseEvent evt) { 
+        addNewRowWhenCursorLastRow(); 
+    }                                    
+
+    private void jTable1MouseReleased(java.awt.event.MouseEvent evt) { 
+       <span class="style1"> table1BindHandler.mouseReleased(evt);</span>
+    }                                     
+
+    private void jTable1KeyReleased(java.awt.event.KeyEvent evt) { 
+      <span class="style1">  table1BindHandler.keyReleased(evt);</span>
+        if (TableUtil.checkRowDownEvent(evt)) {
+        addNewRowWhenCursorLastRow();            
+        }
+
+    }                                   
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {  
+         formManager.getFormValidationManager().
+			ValidateWithForceTableEditEnd(golfTableModel, true);
+    } 
+</code>
+</pre>
+</div>
+<!--code end-->
+</dd>
+</dl>
+<dl>
+<dd>赤字の所が、Example２に追加した所です。
+<br>TableBindHandlerが新たに追加になり、これがTableとJTextFieldのBindingを管理しています。
+<br>Validatorは、基本的にTableの項目に設定します。JTextFieldにも設定しても構いませんが、
+<BR>エラーが２重に表示されてしまいます。ただし、ShortDateやLognDateのFormatterとして、機能
+<br>させるため、DateValidatorは、JTextFildにも設定した方が良いと思います。
+<br>それでは、次のExampleで、画面の一部のみを置き換える機能を見ていきましょう。
+</dd></dl>
+
+
+<h3><a name="link" id="link">リンク</a></h3>
+<dl>
+  <dd><a href="sample4.html">Example ４へのリンク</a></dd>
+</dl> 
+<dl>
+  <dd><a href="index.html">GOLF HOMEへのリンク</a></dd>
+</dl>
+<!-- document end -->
+<!-- don't edit start --></td><td width="14"><img src="images/spacer.gif" alt="" height="14" width="14" /></td></tr><tr><td width="14"><img src="images/spacer.gif" alt="" height="30" width="14" /></td><td width="752"><img src="images/spacer.gif" alt="" height="30" width="592" /></td></tr><tr><td width="14"><img src="images/spacer.gif" alt="" height="14" width="14" /></td><td class="copyright" width="752">Copyright&copy;
+2004-2005, The Seasar Foundation and the others. All rights reserved.</td>
+</tr></tbody></table></td><td class="backright" align="left" valign="top">&nbsp;</td>
+</tr><tr><td class="backunder" align="left" height="16" valign="top" width="780">&nbsp;</td>
+<td class="backcorner" align="left" height="16" valign="top">&nbsp;</td>
+</tr></tbody></table><!-- don't edit end --></body></html>

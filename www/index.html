@@ -21,10 +21,12 @@
       </dd>
   <dt>&nbsp; </dt>
   <dd><br />取り合えず Version 0.1では下記内容となります。<br />   </dd>
-  <dd><br />１．画面の作成は、<span class="style4">Netbeans 5.5</span>で行う。（なお、<span class="style4">Eclipse</span>でのProject設定もしていますので、その後のDicon関連には、EclipseでKijimunaのSupportも可能です） </dd>
-   </dd>   <br />
+  <dd><br />
+  １．画面の作成は、Matisse で簡単に、自由にデザイン出来る <span class="style4">Netbeans 5.5の使用をお薦めします</span>。（なお、<span class="style4">Eclipse</span>でのProject設定もしていますので、その後のDicon関連には、EclipseでKijimunaのSupportも可能です） </dd>
+   </dd>  
    <dd> <br />
-  ２．Validatorの設定は、Dicon に行い、それと画面のFieldとのMappingを、JAVAだけでなく、「CSV File Excelで編集）」で簡単に行える。 下記は Diconの例。<br />　      
+  ２．Validatorの設定は、Dicon に行い、それと画面のFieldとのMappingを、JAVAだけでなく、「CSV File Excelで編集）」で簡単に行える。 下記は Diconの例。（S2Conatinerの特徴を生かしています。）<br />
+  　      
       <dd>&lt;components&gt;<br />
   &lt;component name=&quot;min3max6string&quot; class=&quot;org.seasar.golf.validator.StringValidator&quot;&gt;<br />
   &lt;property name=&quot;minLength&quot;&gt;new Integer(3)&lt;/property&gt;<br />
@@ -37,31 +39,28 @@
   <img src="images/bind1.jpeg" width="476" height="133" /><br >
   <br >
   ３．Validationした結果は、画面に定義した、Scroll Paneに即座に自動的に表示されます。 <br>
+  </dd></dl>
   <img src="images/error1.jpeg" width="694" height="345" /><br>
-  <br>
+  <dl><dd><br>
   ４．JTableを使用する場合は、そのColumn設定とValidationの設定を同様に「CSV File」で簡単に定義出来ます。 <br>
   <img src="images/table1.jpeg" width="563" height="148" /><br>
+  </dd></dl>
   <img src="images/table2.jpeg" width="692" height="304" /><br>
-  <br><br>５．ブラウザでの表示と同様、コンテナ画面にヘッダー領域やフッター領域などの共通領域を 設定しておき、コンテンツ領域に指定した 画面を合成して簡単に表示できます。この場合TITLE, MENUも変更できます。（開発は、通常のJFrame画面の編集で出来ます） 
-  <br />コンテナ画面  <br />
+  <br><br><dl><dd>５．ブラウザでの表示と同様、コンテナ画面にヘッダー領域やフッター領域などの共通領域を 設定しておき、コンテンツ領域に指定した 画面を合成して簡単に表示できます。この場合TITLE, MENUも変更できます。（開発は、通常のJFrame画面の編集で出来ます） 
+  <br />コンテナ画面  <br /></dd></dl>
   <img src="images/container1.jpeg" width="697" height="567" /> <br />
 
- <br />EX 4-1を押した画面　（タイトル、メニュー、コンテンツ画面が反映されています）
-	  <br />
+ <br /><dl><dd>EX 4-1を押した画面　（タイトル、メニュー、コンテンツ画面が反映されています）
+	  <br />  </dd></dl>
 <img src="images/container2.jpeg" width="697" height="567" />
-  </dd>  <br />  <br />
+  <br />  <br />
   
-    <dd> 今後の予定 </dt>
-  <dd>
-    </dt>
-  </dd>
-  <dd>
+<h3>今後の予定</a></h3>
       <ul>
           <li>ログイン後、複数のコンテナ画面を使用出来、それらでセッション情報を共有出来る。</li>
           <li>コンテナ画面のDefaultとして、Menu画面を配置し、Menuを選ぶ事で、同一画面内に該当画面を開く
 
           <li>どの画面でも、直接 トランザクションコード（画面コード）を入力する事により、メニューに戻らなくても、該当画面に ジャンプ出来る（指定で新たなコンテナ画面を開いてその中にジャンプ
-      </p>
       　する事も可能）ホストとは、S2Remoting （S2Hessian, S2RMI等）を利用して、ホストの処理する トランザクションコード（Diconに定義した、Action）に処理を委ねる。
             </p>
 

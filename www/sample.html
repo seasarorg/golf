@@ -37,13 +37,13 @@
 <div class="excode">
   <pre>
 <code>
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {     
-        launchFrame("example1Frame");
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {
+        <span class="style6">launchFrame("example1Frame");</span>
     }                                        
 
     private void launchFrame(String frameName) {
-        GolfFrameInterface jFrameT = FormManagerUtil.getFrame(frameName);
-        jFrameT.initBinding();
+        GolfFormInterface jFrameT = FormManagerUtil.getFrame(frameName);
+        jFrameT<span class="style6">.initBinding()</span>;
         ((JFrame)jFrameT).validate();
         ((JFrame)jFrameT).pack();
         ((JFrame)jFrameT).setVisible(true);
@@ -56,53 +56,53 @@
 <dd>上記は、ｊButton1の場合ですが、２から４もほとんど同じです。
 <br>FormManagerUtil.getFrame(frameName);で、S2Containerに自動登録されている、｢"example1Frame"」を<br>
 生成して、その「initBinding();」 Methodを呼んでいます。
-<br>Golf Frameworkでは、「 GolfFrameInterface」をFrame ClassにImplementsする事により、統一的に
-<br>Initializeが出来ます。
+<br>Golf Frameworkでは、「 GolfFormInterface」をFrame ClassにImplementsする事により、統一的に
+<br>
+イニシャライズが出来ます。
 
 </dd>
 </dl>
 
 <dl>
 <dd>それでは、Example １を見ていきましょう。画面は下記の様に表示されます。
-<br><br><img src="images/example1-1.jpeg" />
+<br><br></dd></dl><img src="images/example1-1.jpeg" />
 
-
-</dd>
-</dl>
 <dl>
 <dd>それでは、一番上のText Fieldに「１２」と入力して、「TAB」か、他のFieldをクリックして
 <br>入力を完了して見ましょう。下記の様に、ERRORが即座に表示されます。<br>
 （このFieldは ３桁から６桁の文字列を入力する、チェックが掛かっていいます。）<br>
 また、カーソル（Focus)も自動的に最初のエラー 項目に設定される様になっていますので、<br>
 直ぐ修正が出来ます。
-<br><br><img src="images/example1-2.jpeg" />
-
-</dd>
-</dl>
+<br><br></dd></dl><img src="images/example1-2.jpeg" />
 <dl>
 <dd>それでは、この入力「１２３」として、エラーを解除し、つぎの整数項目に行きます。<br>
 試しに、ここで「A」とか「B」を入力してみて下さい。この項目は、JTextFieldを拡張した<br>
 「org.seasar.golf.component.IntegerField」ですので、整数しか受け付けません。<br>
 それでは、「１２」と入力して見ましょう。下記の様にエラーになります。
-<br><br><img src="images/example1-3.jpeg" />
-</dd>
-</dl>
+<br><br></dd>
+</dl><img src="images/example1-3.jpeg" />
+
 <dl>
 <dd>それでは、これも「５」と正常入力して、つぎの Short Date項目に行きます。<br>
 ここは、「YY/MM/DD」項目です。ためしに、「平成１８年１月１０日」といれてみます。
-<br><br><img src="images/example1-4.jpeg" />
-<br><br>それでは、「07/5/10」と修正して見ましょう。（本日より未来の日を入れて下さい）
-<br><br><img src="images/example1-5.jpeg" />
-<br><br>即座に、表示が「07/05/10」に変わりました。自動的にFormatされます。<br>
+<br><br></dd></dl>
+<img src="images/example1-4.jpeg" /><br>
+<br>
+<dl><dd>それでは、「07/5/10」と修正して見ましょう。（本日より未来の日を入れて下さい）
+<br><br></dd>
+</dl><img src="images/example1-5.jpeg" />
+<br><br><dl>
+<dd>>即座に、表示が「07/05/10」に変わりました。自動的にFormatされます。<br>
 「2007/1/10」といれても、同じになります。<br>
 それでは「07/1/8」と入れてみましょう。
 <br>下記の様にERRORになります。このFieldは、本日以降のみ受け付けます。
-<br><br><img src="images/example1-6.jpeg" />
-<br><br>それでは、「07/5/10」など未来日を入力して、エラーを消して、次のLong Dateに行きます。
+<br><br></dd></dl><img src="images/example1-6.jpeg" />
+<br><br><dl><dd>それでは、「07/5/10」など未来日を入力して、エラーを消して、次のLong Dateに行きます。
 <br>ここは、「YYYY/MM/DD」項目です。好きな年月日をいれて下さい。
 <br>入力後、下の「このボタンを押すと・・・・」を押してみて下さい。下記の画面になります。
-<br><br><img src="images/example1-7.jpeg" />
-<br>エラーが表示されましたね。この画面では、「Short Date」以外が必須項目となっていますので、
+<br><br></dd></dl><img src="images/example1-7.jpeg" />
+<br><dl><dd>
+エラーが表示されましたね。この画面では、「Short Date」以外が必須項目となっていますので、
 <br>未入力だとエラーになります。実際には、HOSTにSUBMITする、「ENTER」ボタンにこの必須チェック
 <br>（必須チェックだけでなく、複数の入力項目の相関 Checkなども可能）機能を実際にHOSTに
 <br>送る前に行い、「エラー」の場合は即座に中止し、「警告」であれば ダイアログなどで確認
@@ -115,7 +115,7 @@
   <pre>
 <code>
    public class Example1Frame extends javax.swing.JFrame  
-   <span class="style6">implements GolfFrameInterface</span> {
+   <span class="style6">implements GolfFormInterface</span> {
 <span class="style6">    private FormManager formManager = null;</span>
 <span class="style7">    public void initBinding() {</span>
 <span class="style6">        formManager = new FormManager(this);
@@ -130,9 +130,9 @@
 
 <span class="style7">    }</span>
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {  
-<span class="style6">formManager.getFormValidationManager().Validate(true);</span>
+<span class="style6">　　　　　　　　formManager.getFormValidationManager().Validate(true);</span>
     }
-<span class="style7">   public FormManager getFrameManager() {</span>
+<span class="style7">   public FormManager getFormManager() {</span>
  <span class="style6">       return formManager;</span>
 <span class="style7">    }
 
@@ -157,13 +157,16 @@
 <dd>「赤」の部分のみが、手で入力しなければならない項目で、大変すくなくなっています。<br>
 また「青」の部分は、GolfInterfaceをImplementsすれば、Netbeansが自動的に作成します。
 <br>なお、Interfaceでこの画面では、不必要でnullのみ返している項目が多くありますが、
-<br>これは、Example ４を見て頂ければ、理由が分かると思います。</dd>
+<br>これは、Example ４を見て頂ければ、理由が分かると思います。
 <br>それでは、「Validator」の設定を行う、CSV Fileの内容を見てみましょう。
 <br>
 <code><span class="style6">formManager.setValidationFromCsvResource("Example1_bind.csv");</span></code>
 <br>[Example1_bind.csv]
-<br><img src="images/example1-8.jpeg" width="638" />
-<br>
+<br></dd>
+</dl>
+<img src="images/example1-8.gif" width="730" height="139" /><br>
+<dl>
+<dd>
 <br>一番左の項目は、参考ですので、入力しなくても構いません。
 <br>golfを「Debug」MODE（golf.propetiesで設定）動かすと、自動的に下記のような、JComponentの
 <br>Classと変数名のCSVが作成されますので、これから簡単にコピペ出来ます。
@@ -171,7 +174,8 @@
 </dl>
 <dl>
 <dd>Validatorの設定のDicon Fileは、下記の様になっています。
-<br>
+S2Containerを使って簡単にValidatorのParameterをSet<br>出来るのが判ると思います。<br>
+[golfValidator.dicon]
 </dd>
 </dl>
 <!--code start-->
@@ -200,7 +204,8 @@
 <br>[Example1_bind.csv]
 <br><img src="images/example1-11.jpeg" />
 <br><br><img src="images/example1-12.jpeg" />
-
+<br>それでは、次のExampleで、Tableの機能を見てみましょう。
+<br>またValidatorの詳しい説明もあります。
 </dd>
 </dl>
 

@@ -1,5 +1,5 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN">
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ja" lang="ja"><head><!-- don't edit start --><title>Golf-Example2</title>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ja" lang="ja"><head><!-- don't edit start --><title>S2Click-Validate</title>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><meta http-equiv="Content-Style-Type" content="text/css" /><link href="s2click.css" type="text/css" rel="stylesheet" media="screen" /><link href="seasar_b.css" type="text/css" rel="stylesheet" media="screen" /><link href="seasar_p.css" type="text/css" rel="stylesheet" media="print" /><script src="seasar_b.js" type="text/JavaScript" language="JavaScript">
 </script><style type="text/css">
 <!--
@@ -20,41 +20,42 @@
 
 <dl>
 <dd>それでは、Example ２を見てみましょう。Launcher画面のExample ２を押すと下記画面が表示されます。
-<br><br></dd></dl>
-<img src="images/example2-1.jpeg" width="688" height="319" /></dd>
+<br><br>
+<img src="images/example2-1.jpeg" width="684" height="319" /></dd>
+</dl>
 
-<dl><dd>
-この画面の想定は、Item Noが自動的に１０番毎に振られており、ユーザーはこれを変更する事により、
-<br>表示順を制御できます。 
-<br>idは、Databaseで自動的にふられますので、本来はユーザーに見せる必要はありません。
+<dl>
+<dd>この画面の想定は、Item Noが自動的に１０番毎に振られており、ユーザーはこれを変更する事により、
+<br>表示順を制御できます。 idは、Databaseで自動的にふられますので、本来はユーザーに見せる必要は
+<br>ありません。
 <br>それでは、Stock No欄に「１１」と入力して、TAB　キーか、次のFieldをクリックして、入力を終了
-<br>させて下さい。すぐに下記の様に、エラー表示がされます。このFieldも「min3max6string」
-<br>すなわち、文字列の３桁～６桁が有効かチェックするValidatorがSetされていますので、２桁ではエラーとなります。
-<br><br></dd></dl><img src="images/example2-2.jpeg" width="695" height="319" />
-<br><dl><dd>
+<br>させて下さい。すぐに下記の様に、エラー表示がされます。このFieldも「min3max6string」の
+<br>ValidatorがSetされていますので、２桁ではエラーとなります。
+<br><br><img src="images/example2-2.jpeg" width="684" height="319" />
+<br>
 <br>それでは、Stock No欄を「１１１１」と入力して、エラーを回避して、つぎにDate欄に
 <br>「07/1/20」と入れて見ましょう。「2007/01/20」と表示が変わります。これはこの欄に
-<br>「longDateValidator」（YYYY/MM/DD）がSetされているからです。
-<br><br></dd></dl><img src="images/example2-3.jpeg" width="700" />
-<br><dl><dd>
+<br>「longDateValidator」がSetされているからです。
+<br><br><img src="images/example2-3.jpeg" width="686" />
+<br>
 それでは、ここで「このボタンを押すと・・・・」のボタンを押してみましょう。
 <br>Example １と同様、必須 Checkが掛かります。
-<br><br></dd></dl><img src="images/example2-4.jpeg" width="694" />
-<br><dl><dd>
+<br><br><img src="images/example2-4.jpeg" width="688" />
+<br>
 これは、Qty欄がRequired項目　（ItemNo,StockNO,DateもRequired項目です）と定義されているからです。
 <br>尚、２行目から５行目には、ItemNoがSetされていますが、エラーとなっていません。
 <br>これは、ItemNo,StockNO,Qty,Dateのどれか一つでも入力されている行を有効な行とみなす設定がされて
 <br>いるからです。
 <br>また、id欄やName欄は入力出来ない設定になっています。
 <br>ここまでの、設定はすべて下記のCSV Fileにて、定義されています。
-<br><br></dd></dl><img src="images/example2-c.jpeg" />
-<br><dl><dd>FieldがColumn名、Classが Field属性（golf.properties Fileで、実際のClass名に変換しています）、
+<br><br><img src="images/example2-c.jpeg" />
+<br>FieldがColumn名、Classが Field属性（golf.properties Fileで、実際のClass名に変換しています）、
 <br>CanEditで、編集可能属性の定義、InsCheckで有効行の判定項目の指定、Validatorの指定、
 <br>DisplayNameでエラー表示時の表示名の設定、Requiredで必須項目の設定を行います。
 
 <br>それでは、一番下の行のStockNoをクリックして、入力モードにして下さい。
-<br><br></dd></dl><img src="images/example2-5.jpeg" width="693" />
-<br><dl><dd>
+<br><br><img src="images/example2-5.jpeg" width="688" />
+<br>
 00060行が自動的に追加されましたね。最下行をクリックするか、入力すると自動的に次の行が
 <br>追加される様にしています。（勿論 表示のみの場合はこの機能をDisableする事は簡単です）
 <br>またItemNo欄は、既に表示されているItemNOの最大値に増分値を加える様になっています。
@@ -69,7 +70,7 @@
   <pre>
 <code>
 public class Example2Frame extends javax.swing.JFrame  
-		<span class="style1">implements GolfFormInterface {</span>
+		<span class="style1">implements GolfFrameInterface {</span>
 <span class="style1">    private FormManager formManager = null;
     private GolfTableModel golfTableModel= new GolfTableModel();</span>
     
@@ -86,22 +87,22 @@ public class Example2Frame extends javax.swing.JFrame
         TableUtil.SetPreferedColumnWIdth(jTable1, new int[]{15,40,60,150,40,80 });</span>
     <span class="style2">}</span>
                      
-    private void jTable1MouseClicked(java.awt.event.MouseEvent evt) { 
+    private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {                                     
   <span class="style1">      addNewRowWhenCursorLastRow(); </span>   
     }                                    
 
-    private void jTable1KeyPressed(java.awt.event.KeyEvent evt) {  
+    private void jTable1KeyPressed(java.awt.event.KeyEvent evt) {                                   
 <span class="style1">        if (TableUtil.checkRowDownEvent(evt)) {
             addNewRowWhenCursorLastRow();            
         }</span>
     }                                  
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {  
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {                                         
 <span class="style1">        formManager.getFormValidationManager().
           ValidateWithForceTableEditEnd(golfTableModel, true);</span>
     }                                        
     
-<span class="style2">    public FormManager getFormManager() {</span>
+<span class="style2">    public FormManager getFrameManager() {</span>
   <span class="style1">      return formManager;</span>
 <span class="style2">    }
 
@@ -121,7 +122,7 @@ public class Example2Frame extends javax.swing.JFrame
         if (jTable1.getSelectedRow() == jTable1.getRowCount() -1) {
             addNewRow();
       } </span> 
-	    <span class="style2">  }
+  <span class="style2">  }
 
     public JFrame getContainerFrame() {</span>
 <span class="style1">        return null;    </span>    
@@ -133,13 +134,18 @@ public class Example2Frame extends javax.swing.JFrame
 </pre>
 </div>
 <!--code end-->
+<dl>
+<dd>
+<div class="excode" >
+</div>
+<!--code end-->
 </dl>
 <dl>
 <dd>Example １と同様「赤」の部分のみが、手で入力しなければならない項目で、大変すくなくなっています。<br>
 また「青」の部分は、GolfInterfaceをImplementsすれば、Netbeansが自動的に作成します。<br>
 なお、FormのControl,Validation、Bindingで使う Classの関係は以下の通りとなっています。（参照を保有）
-<br><br></dd></dl><img src="images/example2-6.jpeg" />
-<br><br><dl><dd>また、JTableのModelとしては、GolfTableModelを使用する事により、BindingとValidationの機能が
+<br><br><img src="images/example2-6.jpeg" />
+<br><br>また、JTableのModelとしては、GolfTableModelを使用する事により、BindingとValidationの機能が
 <br>使用できます。
 <br>それでは、次のExampleで、TableとFieldの連動機能を見てみましょう。
 </dd>
