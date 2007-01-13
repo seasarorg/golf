@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="Shift_JIS"?>
+<!DOCTYPE components PUBLIC "-//SEASAR//DTD S2Container 2.4//EN"
+  "http://www.seasar.org/dtd/components24.dtd">
+
+<components>
+	<include path="aop.dicon"/>
+	<include path="golfValidator.dicon"/>
+    <component class="org.seasar.framework.container.autoregister.ComponentAutoRegister">
+    <property name="instanceDef">@org.seasar.framework.container.deployer.InstanceDefFactory@PROTOTYPE</property>
+    <initMethod name="addReferenceClass">
+        <arg>@org.seasar.golf.Dummy@class</arg>
+    </initMethod>
+
+    <initMethod name="addClassPattern">
+        <arg>"org.seasar.golf.example"</arg>
+        <arg>".*Impl,.*Frame"</arg>
+    </initMethod>
+</component>
+
+       
+</components>
