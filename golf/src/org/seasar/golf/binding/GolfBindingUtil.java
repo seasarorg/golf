@@ -28,10 +28,10 @@ public class GolfBindingUtil {
         return handler;
     }
     public static void bindTableRowColumn(TableBindHandler rowBindHandler,
-                 GolfTableModel golfTableModel, String field, String ColumnName ) {
+                 GolfTableModel golfTableModel, String field, String columnName ) {
                     ValueHolder vh = (ValueHolder) golfTableModel.getFormValidationManager().
                             getFrameManager().getFormBindingManager().getValueModel(field);
-                    rowBindHandler.addSrcAndColumn(vh, ColumnName);
+                    rowBindHandler.addSrcAndColumn(vh, columnName);
                     BeanUtils.addPropertyChangeListener(vh,ValueHolder.class, rowBindHandler);
 
     }

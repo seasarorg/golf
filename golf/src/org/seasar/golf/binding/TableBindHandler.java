@@ -19,6 +19,7 @@ import java.util.Hashtable;
 import javax.swing.JTable;
 import javax.swing.event.TableModelEvent;
 import javax.swing.event.TableModelListener;
+import org.seasar.golf.ColumnDef;
 import org.seasar.golf.GolfTableModel;
 
 /**
@@ -27,6 +28,7 @@ import org.seasar.golf.GolfTableModel;
  */
 public class TableBindHandler implements PropertyChangeListener, TableModelListener {
     private Hashtable srcColumnTable = new Hashtable();
+    //private Hashtable srcClassTable = new Hashtable();
     private Hashtable columnSrcTable = new Hashtable();
     private GolfTableModel golfTableModel = null;
     private int currentRow = 999999;
@@ -44,8 +46,23 @@ public class TableBindHandler implements PropertyChangeListener, TableModelListe
         Object src = evt.getSource();
         String column = (String) srcColumnTable.get(src);
         int row = golfTableModel.getJtable().getSelectedRow();
+        Object newValue = evt.getNewValue();
+       // int colNo = ((Integer)srcColumnTable.get(src)).intValue();
+        int columnNo =  golfTableModel.findColumn(column);
+        Class srcClass= ((ColumnDef)golfTableModel.getColumnDef(columnNo
+              )).getType();
         if (row != -1) {
-            golfTableModel.setValueAt(evt.getNewValue(),
+            if (Double.class .isAssignableFrom(srcClass) ) {
+                if (newValue instanceof String) {
+                    newValue = Double.parseDouble((String) newValue);
+                }
+            }
+             if (Integer.class .isAssignableFrom(srcClass) ) {
+                if (newValue instanceof String) {
+                    newValue = Integer.parseInt((String) newValue);
+                }
+            }
+            golfTableModel.setValueAt(newValue,
                 row,golfTableModel.findColumn(column));
         }
     }

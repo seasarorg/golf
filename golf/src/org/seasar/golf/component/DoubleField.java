@@ -19,6 +19,7 @@ import javax.swing.text.PlainDocument;
  * @author shimura
  */
 public class DoubleField extends javax.swing.JTextField  {
+
     
     public DoubleField() {
         super(null, null, 10);
@@ -68,8 +69,7 @@ public class DoubleField extends javax.swing.JTextField  {
             catch ( NumberFormatException e) {
                 return ;
             }           
-            getContent().remove(0, l);
-            super.insertString(0, i.toString(), a);
+            super.insertString(offs, str, a);
          }
     }
         

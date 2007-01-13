@@ -48,7 +48,7 @@ public class Example3Frame extends javax.swing.JFrame  implements GolfFrameInter
         }
         TableUtil.SetPreferedColumnWIdth(jTable1, new int[]{15,40,60,150,40,80 });
         table1BindHandler = GolfBindingUtil.createTableBindHandler (golfTableModel);
-        GolfBindingUtil.bindTableRowColumn(table1BindHandler, golfTableModel,"jTextField1","ItemNo");
+        GolfBindingUtil.bindTableRowColumn(table1BindHandler, golfTableModel,"doubleField1","ItemNo");
         GolfBindingUtil.bindTableRowColumn(table1BindHandler, golfTableModel,"jTextField2","StockNo");
         GolfBindingUtil.bindTableRowColumn(table1BindHandler, golfTableModel,"longField1","Qty");
         GolfBindingUtil.bindTableRowColumn(table1BindHandler, golfTableModel,"jTextField4","Date");    
@@ -171,7 +171,7 @@ public class Example3Frame extends javax.swing.JFrame  implements GolfFrameInter
                             .add(jTextField1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 67, Short.MAX_VALUE)
                             .add(jTextField2, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 67, Short.MAX_VALUE)
                             .add(jTextField4, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 107, Short.MAX_VALUE)
-                            .add(longField1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .add(longField1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 106, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
                         .add(23, 23, 23)
                         .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
                             .add(jLabelD)
@@ -263,8 +263,8 @@ public class Example3Frame extends javax.swing.JFrame  implements GolfFrameInter
                 return null;
     }
     private void addNewRow() {
-                //TableUtil.addNewRow(golfTableModel);
-                TableUtil.addNewRowWithItemNo (golfTableModel,1,10,5);
+                TableUtil.addNewRow(golfTableModel);
+                //TableUtil.addNewRowWithItemNo (golfTableModel,1,10,5);
     }
                                   
 

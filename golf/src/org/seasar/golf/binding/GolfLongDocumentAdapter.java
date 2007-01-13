@@ -102,7 +102,7 @@ import com.jgoodies.binding.value.ValueModel;
  * @see     Document
  * @see     PlainDocument
  */
-public final class GolfDocumentAdapter implements Document, DocumentListener {
+public final class GolfLongDocumentAdapter implements Document, DocumentListener {
 
     /**
      * Holds the underlying ValueModel that is used to read values,
@@ -130,7 +130,7 @@ public final class GolfDocumentAdapter implements Document, DocumentListener {
      * 
      * @throws NullPointerException  if the subject is <code>null</code>
      */
-    public GolfDocumentAdapter(ValueModel subject) {
+    public GolfLongDocumentAdapter(ValueModel subject) {
         this(subject, new PlainDocument(), false);
     }
     
@@ -146,7 +146,7 @@ public final class GolfDocumentAdapter implements Document, DocumentListener {
      *     
      * @throws NullPointerException  if the subject is <code>null</code>
      */
-    public GolfDocumentAdapter(ValueModel subject, boolean filterNewlines) {
+    public GolfLongDocumentAdapter(ValueModel subject, boolean filterNewlines) {
         this(subject, new PlainDocument(), filterNewlines);
     }
     
@@ -161,7 +161,7 @@ public final class GolfDocumentAdapter implements Document, DocumentListener {
      * @throws NullPointerException  
      *     if the subject or document is <code>null</code>
      */
-    public GolfDocumentAdapter(ValueModel subject, Document document) {
+    public GolfLongDocumentAdapter(ValueModel subject, Document document) {
         this(subject, document, false);
     }
     
@@ -180,7 +180,7 @@ public final class GolfDocumentAdapter implements Document, DocumentListener {
      * @throws NullPointerException  
      *     if the subject or document is <code>null</code>
      */
-    public GolfDocumentAdapter(ValueModel subject, Document document, boolean filterNewlines) {
+    public GolfLongDocumentAdapter(ValueModel subject, Document document, boolean filterNewlines) {
         if (subject == null)
             throw new NullPointerException("The subject must not be null.");
         if (document == null)
@@ -657,7 +657,10 @@ public final class GolfDocumentAdapter implements Document, DocumentListener {
         public void propertyChange(PropertyChangeEvent evt) {
             final String oldText = getDocumentText();
             final Object newObject = evt.getNewValue();
-            String newValue = newObject.toString();
+            String newValue = null;
+            if (newObject != null) {
+                newValue = newObject.toString();
+            }
             final String newText = newValue == null
                 ? getSubjectText()
                 : (String) newValue;

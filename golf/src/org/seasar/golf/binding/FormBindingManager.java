@@ -25,6 +25,7 @@ import javax.swing.JRadioButton;
 import javax.swing.JRadioButtonMenuItem;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
+import org.seasar.golf.component.DoubleField;
 import org.seasar.golf.component.LongField;
 import org.seasar.golf.component.LongLabel;
 import org.seasar.golf.containerFrame.FormManager;
@@ -79,11 +80,16 @@ public class FormBindingManager implements PropertyChangeListener, ComponentVali
 //            GolfBindings.bind((LongLabel)jc, vm);
 //      }  
 //       else 
-//           if (jc instanceof LongField) {
-//            GolfBindings.bind((LongField)jc, vm, ((LongField)jc).getDocument()  ,true);
-//      }   
-//       else 
-           if (jc instanceof JTextField) {
+        
+     if (jc instanceof DoubleField) {
+            GolfBindings.bind((DoubleField)jc, vm, ((DoubleField)jc).getDocument()  ,true);
+      }         else 
+      if (jc instanceof LongField) {
+            GolfBindings.bind((LongField)jc, vm, ((LongField)jc).getDocument()  ,true);
+      }   
+
+ 
+       else if (jc instanceof JTextField) {
             Bindings.bind((JTextField)jc, vm, ((JTextField)jc).getDocument()  ,true);
       }
       else if (jc instanceof JCheckBox) {

@@ -53,6 +53,7 @@ import com.jgoodies.binding.value.BufferedValueModel;
 import com.jgoodies.binding.value.ComponentValueModel;
 import com.jgoodies.binding.value.*;
 import com.jgoodies.binding.adapter.*;
+import org.seasar.golf.component.DoubleField;
 import org.seasar.golf.component.LongField;
 import org.seasar.golf.component.LongLabel;
 
@@ -154,13 +155,33 @@ public final class GolfBindings
         ValueModel textModel = commitOnFocusLost
             ? createCommitOnFocusLostModel(valueModel, textField)
             : valueModel;
-        textField.setDocument(new GolfDocumentAdapter(
+        textField.setDocument(new GolfLongDocumentAdapter(
                 textModel, 
                 document, 
                 true /* filterNewlines */));
         
         Bindings.addComponentPropertyHandler(textField, valueModel);
     }
+       
+    static void bind(
+            DoubleField textField, 
+            ValueModel valueModel, 
+            Document document,
+            boolean commitOnFocusLost) {
+        if (valueModel == null)
+            throw new NullPointerException("The value model must not be null.");
+        
+        ValueModel textModel = commitOnFocusLost
+            ? createCommitOnFocusLostModel(valueModel, textField)
+            : valueModel;
+        textField.setDocument(new GolfLongDocumentAdapter(
+                textModel, 
+                document, 
+                true /* filterNewlines */));
+        
+        Bindings.addComponentPropertyHandler(textField, valueModel);        
+
+    }       
     // Binding Methods ********************************************************
     
     
@@ -244,6 +265,8 @@ public final class GolfBindings
         component.addFocusListener(FOCUS_LOST_HANDLER);
         return model;
     }
+
+
 
 
 

@@ -25,8 +25,6 @@ public class LongValidator extends AbstractValidator{
     
     private Long minValue = null;
     private Long maxValue = null;
-    private static DecimalFormat formatDecimal = new DecimalFormat("###,###,###,###,##0"); 
-    
     public LongValidator() {
         messageKey = new String[] { "org.seasar.golf.validator.LongValidator.MINIMUM",
         "org.seasar.golf.validator.LongValidator.MAXIMUM",
@@ -43,8 +41,8 @@ public class LongValidator extends AbstractValidator{
         }
         String displayLabel = getDisplayLabel(label);
         try {
-            lValue = (Long) formatDecimal.parse(dataS);
-        } catch (ParseException ex) {
+            lValue = Long.parseLong(dataS);
+        } catch (NumberFormatException ex) {
               return new SimpleValidationMessage(displayLabel + getMessage(2, dataS), Severity.ERROR, key );
         }
         if ((minValue != null) &&  (lValue < minValue)) {
