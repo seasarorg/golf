@@ -53,7 +53,6 @@ public class Example1Frame extends javax.swing.JFrame  implements GolfFrameInter
         jTextField1 = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         jLabelS = new javax.swing.JLabel();
-        integerField1 = new org.seasar.golf.component.IntegerField();
         jLabel4 = new javax.swing.JLabel();
         jLabelI = new javax.swing.JLabel();
         jComboBox1 = new javax.swing.JComboBox();
@@ -66,15 +65,16 @@ public class Example1Frame extends javax.swing.JFrame  implements GolfFrameInter
         jLabelDL = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
+        longField1 = new org.seasar.golf.component.LongField();
 
-        jLabel6.setFont(new java.awt.Font("?Ωl?Ωr ?Ωo?ΩS?ΩV?Ωb?ΩN", 0, 12));
+        jLabel6.setFont(new java.awt.Font("ÇlÇr ÇoÉSÉVÉbÉN", 0, 12));
         jLabel6.setText("ComboBox \u5fc5\u9808");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setLocationByPlatform(true);
         jScrollPane1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
-        jLabel1.setFont(new java.awt.Font("?Ωl?Ωr ?ΩS?ΩV?Ωb?ΩN", 0, 24));
+        jLabel1.setFont(new java.awt.Font("ÇlÇr ÉSÉVÉbÉN", 0, 24));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Golf Example 1");
 
@@ -82,16 +82,14 @@ public class Example1Frame extends javax.swing.JFrame  implements GolfFrameInter
 
         jLabelS.setText("XXXXXX");
 
-        integerField1.setText("integerField1");
-
-        jLabel4.setFont(new java.awt.Font("?Ωl?Ωr ?Ωo?ΩS?ΩV?Ωb?ΩN", 0, 12));
+        jLabel4.setFont(new java.awt.Font("ÇlÇr ÇoÉSÉVÉbÉN", 0, 12));
         jLabel4.setText("IntegerField MIN 1 MAX\u300010");
 
         jLabelI.setText("XXXXXX");
 
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
-        jLabel3.setFont(new java.awt.Font("?Ωl?Ωr ?Ωo?ΩS?ΩV?Ωb?ΩN", 0, 12));
+        jLabel3.setFont(new java.awt.Font("ÇlÇr ÇoÉSÉVÉbÉN", 0, 12));
         jLabel3.setText("ComboBox \u5fc5\u9808");
 
         jLabelCombo.setText("XXXXXX");
@@ -107,11 +105,13 @@ public class Example1Frame extends javax.swing.JFrame  implements GolfFrameInter
 
         jLabelDL.setText("XXXXXX");
 
-        jLabel5.setFont(new java.awt.Font("?Ωl?Ωr ?Ωo?ΩS?ΩV?Ωb?ΩN", 0, 12));
+        jLabel5.setFont(new java.awt.Font("ÇlÇr ÇoÉSÉVÉbÉN", 0, 12));
         jLabel5.setText("Long Date \u5fc5\u9808");
 
-        jLabel7.setFont(new java.awt.Font("?Ωl?Ωr ?Ωo?ΩS?ΩV?Ωb?ΩN", 0, 12));
+        jLabel7.setFont(new java.awt.Font("ÇlÇr ÇoÉSÉVÉbÉN", 0, 12));
         jLabel7.setText("Short Date");
+
+        longField1.setText("longField1");
 
         org.jdesktop.layout.GroupLayout layout = new org.jdesktop.layout.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -123,14 +123,16 @@ public class Example1Frame extends javax.swing.JFrame  implements GolfFrameInter
                         .addContainerGap()
                         .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING)
                             .add(jLabel2)
-                            .add(jLabel3)
                             .add(jLabel4)
                             .add(jLabel5)
-                            .add(jLabel7))
+                            .add(jLabel7)
+                            .add(layout.createSequentialGroup()
+                                .add(jLabel3)
+                                .add(13, 13, 13)))
                         .add(28, 28, 28)
                         .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING, false)
+                            .add(longField1, 0, 0, Short.MAX_VALUE)
                             .add(jComboBox1, 0, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .add(integerField1, 0, 0, Short.MAX_VALUE)
                             .add(jTextField1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 90, Short.MAX_VALUE)
                             .add(jTextField4)
                             .add(jTextField3))
@@ -167,9 +169,9 @@ public class Example1Frame extends javax.swing.JFrame  implements GolfFrameInter
                     .add(jLabelS))
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
-                    .add(integerField1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                     .add(jLabelI)
-                    .add(jLabel4))
+                    .add(jLabel4)
+                    .add(longField1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
                     .add(layout.createSequentialGroup()
@@ -232,7 +234,6 @@ public class Example1Frame extends javax.swing.JFrame  implements GolfFrameInter
     }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private org.seasar.golf.component.IntegerField integerField1;
     private javax.swing.JButton jButton1;
     private javax.swing.JComboBox jComboBox1;
     private javax.swing.JLabel jLabel1;
@@ -251,6 +252,7 @@ public class Example1Frame extends javax.swing.JFrame  implements GolfFrameInter
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField3;
     private javax.swing.JTextField jTextField4;
+    private org.seasar.golf.component.LongField longField1;
     // End of variables declaration//GEN-END:variables
     
 }

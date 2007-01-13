@@ -25,6 +25,8 @@ import javax.swing.JRadioButton;
 import javax.swing.JRadioButtonMenuItem;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
+import org.seasar.golf.component.LongField;
+import org.seasar.golf.component.LongLabel;
 import org.seasar.golf.containerFrame.FormManager;
 import org.seasar.golf.util.ValidationUtil;
 import org.seasar.golf.validator.ComponentValidator;
@@ -58,6 +60,9 @@ public class FormBindingManager implements PropertyChangeListener, ComponentVali
     public void bind(String name, GolfValidator validator, String displayName, boolean required, Object choice) {
         String valueModelClass = "ValueHolder";
         JComponent jc = formManager.getComponentFromName(name);
+        if (jc ==null) {
+            throw new IllegalArgumentException("name " + name + " not found");
+        }
         if   ((jc instanceof JComboBox)   ||(jc instanceof JList)   )      {
               valueModelClass = "SelectionInList";
         }      
@@ -70,7 +75,15 @@ public class FormBindingManager implements PropertyChangeListener, ComponentVali
     	Bind(jc, vm, null);
     }
     public void Bind(JComponent jc, ValueModel vm, Object choice) {
-        if (jc instanceof JTextField) {
+//       if (jc instanceof LongLabel) {
+//            GolfBindings.bind((LongLabel)jc, vm);
+//      }  
+//       else 
+//           if (jc instanceof LongField) {
+//            GolfBindings.bind((LongField)jc, vm, ((LongField)jc).getDocument()  ,true);
+//      }   
+//       else 
+           if (jc instanceof JTextField) {
             Bindings.bind((JTextField)jc, vm, ((JTextField)jc).getDocument()  ,true);
       }
       else if (jc instanceof JCheckBox) {

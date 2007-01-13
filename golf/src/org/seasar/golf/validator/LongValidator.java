@@ -13,6 +13,8 @@ import com.jgoodies.binding.value.ValueModel;
 import com.jgoodies.validation.Severity;
 import com.jgoodies.validation.ValidationMessage;
 import com.jgoodies.validation.message.SimpleValidationMessage;
+import java.text.DecimalFormat;
+import java.text.ParseException;
 import org.seasar.golf.containerFrame.FormManager;
 
 /**
@@ -23,6 +25,7 @@ public class LongValidator extends AbstractValidator{
     
     private Long minValue = null;
     private Long maxValue = null;
+    private static DecimalFormat formatDecimal = new DecimalFormat("###,###,###,###,##0"); 
     
     public LongValidator() {
         messageKey = new String[] { "org.seasar.golf.validator.LongValidator.MINIMUM",
@@ -39,14 +42,11 @@ public class LongValidator extends AbstractValidator{
             return null;
         }
         String displayLabel = getDisplayLabel(label);
-        
         try {
-            lValue = Long.parseLong(dataS);
+            lValue = (Long) formatDecimal.parse(dataS);
+        } catch (ParseException ex) {
+              return new SimpleValidationMessage(displayLabel + getMessage(2, dataS), Severity.ERROR, key );
         }
-        catch (NumberFormatException  e) {
-            return new SimpleValidationMessage(displayLabel + getMessage(2, dataS), Severity.ERROR, key );
-        }
-        
         if ((minValue != null) &&  (lValue < minValue)) {
             return new SimpleValidationMessage(displayLabel + getMessage(0, minValue, dataS), Severity.ERROR, key );
         }

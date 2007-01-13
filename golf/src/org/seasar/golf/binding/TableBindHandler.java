@@ -72,9 +72,14 @@ public class TableBindHandler implements PropertyChangeListener, TableModelListe
             if (row != -1) {
                 Enumeration e = columnSrcTable.keys();
 			while (e.hasMoreElements()){
-				Integer column = (Integer) e.nextElement();  
-                                ((ValueHolder)columnSrcTable.get(column)).setValue(
-                                    golfTableModel.getValueAt(row, column));
+				Integer column = (Integer) e.nextElement();
+                                Object o = golfTableModel.getValueAt(row, column);
+                                if (o  != null) {
+                                    ((ValueHolder)columnSrcTable.get(column)).setValue(
+                                        golfTableModel.getValueAt(row, column).toString());
+                                } else {
+                                     ((ValueHolder)columnSrcTable.get(column)).setValue(null);
+                                }
                         }
                 currentRow = row;
             }    

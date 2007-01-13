@@ -47,20 +47,20 @@
                           <Component id="jLabel2" alignment="1" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="jTextField3" linkSize="1" alignment="0" min="-2" pref="67" max="-2" attributes="0"/>
-                          <Component id="jTextField1" linkSize="1" alignment="0" min="-2" pref="67" max="-2" attributes="0"/>
-                          <Component id="jTextField2" linkSize="1" alignment="0" min="-2" pref="67" max="-2" attributes="0"/>
-                          <Component id="jTextField4" linkSize="1" alignment="0" min="-2" pref="107" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                          <Component id="jTextField1" linkSize="1" alignment="0" pref="67" max="32767" attributes="1"/>
+                          <Component id="jTextField2" linkSize="1" alignment="0" pref="67" max="32767" attributes="1"/>
+                          <Component id="jTextField4" linkSize="1" alignment="0" pref="107" max="32767" attributes="1"/>
+                          <Component id="longField1" alignment="0" max="32767" attributes="1"/>
                       </Group>
                       <EmptySpace min="-2" pref="23" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="jLabelD" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="jLabelQ" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Component id="jLabelS" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Component id="jLabelI" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="jLabelQ" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="13" max="-2" attributes="0"/>
                   </Group>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
@@ -92,9 +92,9 @@
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="jLabelQ" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jTextField3" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="jLabel6" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jLabelQ" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="longField1" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
@@ -201,16 +201,19 @@
         <Property name="text" type="java.lang.String" value="Date"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="jTextField3">
-    </Component>
     <Component class="javax.swing.JTextField" name="jTextField4">
     </Component>
-    <Component class="javax.swing.JLabel" name="jLabelQ">
+    <Component class="javax.swing.JLabel" name="jLabelD">
       <Properties>
         <Property name="text" type="java.lang.String" value="XXXXX"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="jLabelD">
+    <Component class="org.seasar.golf.component.LongField" name="longField1">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="longField1"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="jLabelQ">
       <Properties>
         <Property name="text" type="java.lang.String" value="XXXXX"/>
       </Properties>

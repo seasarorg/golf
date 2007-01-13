@@ -9,6 +9,7 @@ package org.seasar.golf.example.frame;
 import javax.swing.JFrame;
 import javax.swing.JMenuBar;
 import javax.swing.JPanel;
+import javax.swing.JTextField;
 import javax.swing.ListSelectionModel;
 import org.seasar.framework.container.annotation.tiger.Component;
 import org.seasar.framework.container.annotation.tiger.InstanceType;
@@ -49,8 +50,9 @@ public class Example3Frame extends javax.swing.JFrame  implements GolfFrameInter
         table1BindHandler = GolfBindingUtil.createTableBindHandler (golfTableModel);
         GolfBindingUtil.bindTableRowColumn(table1BindHandler, golfTableModel,"jTextField1","ItemNo");
         GolfBindingUtil.bindTableRowColumn(table1BindHandler, golfTableModel,"jTextField2","StockNo");
-        GolfBindingUtil.bindTableRowColumn(table1BindHandler, golfTableModel,"jTextField3","Qty");
-        GolfBindingUtil.bindTableRowColumn(table1BindHandler, golfTableModel,"jTextField4","Date");        
+        GolfBindingUtil.bindTableRowColumn(table1BindHandler, golfTableModel,"longField1","Qty");
+        GolfBindingUtil.bindTableRowColumn(table1BindHandler, golfTableModel,"jTextField4","Date");    
+        longField1.setHorizontalAlignment(JTextField.RIGHT);
     }
 
 
@@ -74,10 +76,10 @@ public class Example3Frame extends javax.swing.JFrame  implements GolfFrameInter
         jLabelS = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
-        jTextField3 = new javax.swing.JTextField();
         jTextField4 = new javax.swing.JTextField();
-        jLabelQ = new javax.swing.JLabel();
         jLabelD = new javax.swing.JLabel();
+        longField1 = new org.seasar.golf.component.LongField();
+        jLabelQ = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setLocationByPlatform(true);
@@ -133,9 +135,11 @@ public class Example3Frame extends javax.swing.JFrame  implements GolfFrameInter
 
         jLabel7.setText("Date");
 
-        jLabelQ.setText("XXXXX");
-
         jLabelD.setText("XXXXX");
+
+        longField1.setText("longField1");
+
+        jLabelQ.setText("XXXXX");
 
         org.jdesktop.layout.GroupLayout layout = new org.jdesktop.layout.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -163,22 +167,22 @@ public class Example3Frame extends javax.swing.JFrame  implements GolfFrameInter
                             .add(org.jdesktop.layout.GroupLayout.TRAILING, jLabel4)
                             .add(org.jdesktop.layout.GroupLayout.TRAILING, jLabel2))
                         .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                        .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                            .add(jTextField3, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 67, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                            .add(jTextField1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 67, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                            .add(jTextField2, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 67, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                            .add(jTextField4, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 107, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                        .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING, false)
+                            .add(jTextField1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 67, Short.MAX_VALUE)
+                            .add(jTextField2, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 67, Short.MAX_VALUE)
+                            .add(jTextField4, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 107, Short.MAX_VALUE)
+                            .add(longField1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .add(23, 23, 23)
                         .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
                             .add(jLabelD)
-                            .add(jLabelQ)
                             .add(jLabelS)
-                            .add(jLabelI))
-                        .add(25, 25, 25)))
+                            .add(jLabelI)
+                            .add(jLabelQ))
+                        .add(13, 13, 13)))
                 .addContainerGap())
         );
 
-        layout.linkSize(new java.awt.Component[] {jTextField1, jTextField2, jTextField3, jTextField4}, org.jdesktop.layout.GroupLayout.HORIZONTAL);
+        layout.linkSize(new java.awt.Component[] {jTextField1, jTextField2, jTextField4}, org.jdesktop.layout.GroupLayout.HORIZONTAL);
 
         layout.setVerticalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
@@ -203,9 +207,9 @@ public class Example3Frame extends javax.swing.JFrame  implements GolfFrameInter
                             .add(jLabel4))
                         .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                         .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                            .add(jLabel6)
                             .add(jLabelQ)
-                            .add(jTextField3, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                            .add(jLabel6))
+                            .add(longField1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                         .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
                             .add(jLabelD)
@@ -293,8 +297,8 @@ public class Example3Frame extends javax.swing.JFrame  implements GolfFrameInter
     private javax.swing.JTable jTable1;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
     private javax.swing.JTextField jTextField4;
+    private org.seasar.golf.component.LongField longField1;
     // End of variables declaration//GEN-END:variables
     
 }

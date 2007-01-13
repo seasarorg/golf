@@ -9,6 +9,9 @@
 
 package org.seasar.golf.component;
 
+import java.text.DecimalFormat;
+import java.text.ParseException;
+import javax.swing.JTextField;
 import javax.swing.text.AttributeSet;
 import javax.swing.text.BadLocationException;
 import javax.swing.text.Document;
@@ -18,29 +21,38 @@ import javax.swing.text.PlainDocument;
  *
  * @author shimura
  */
-public class DoubleField extends javax.swing.JTextField  {
+public class LongField extends javax.swing.JTextField  {
+
+    /** Creates a new instance of IntegerTextField */
+    public LongField() {
+        super(null, null, 10);
+    }
+        public LongField(String text) {
+        this();
+    }
     
-    public DoubleField() {
-        super(null, null, 10);
-    }
-    public DoubleField(String text) {
-        super(null, null, 10);
-    }
     public void setText(String text){
         super.setText(null);
     }
-    public void setValue(Double i) {
+    
+    public void setValue(Long i) {
         super.setText(i.toString());
     }
-    public Double getValue() {
-        return Double.parseDouble(super.getText());
-    }      
+    public Long getValue() {
+        try {
+            return Long.parseLong(super.getText());
+        } catch (NumberFormatException e) {
+            return null;
+        }
+
+    }  
     protected Document createDefaultModel() {
-        return new DoubleDocument();
+        return new LongDocument();
     }
-    static class DoubleDocument extends PlainDocument {
-         public void insertString(int offs, String str, AttributeSet a) 
- 	          throws BadLocationException {
+    
+    static class LongDocument extends PlainDocument {
+         public void insertString(int offs, String str, AttributeSet a) throws BadLocationException 
+ 	           {
             String cur = null;
             String newStr = "";
             cur = getContent().getString(0,getContent().length()-1);
@@ -61,17 +73,18 @@ public class DoubleField extends javax.swing.JTextField  {
             } else {
                newStr = str;
             }
-            Double i =null;
+            Long i =null;
             try {
-                i = Double.parseDouble(newStr);
+                i =  Long.parseLong(newStr);
+                super.insertString(offs, str, a);
             }
             catch ( NumberFormatException e) {
                 return ;
-            }           
-            getContent().remove(0, l);
-            super.insertString(0, i.toString(), a);
+
+            } 
+         
+
          }
-    }
-        
+     }
 }
 

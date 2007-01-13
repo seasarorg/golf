@@ -161,6 +161,10 @@ public class FormManager {
                             return;
                         }
 			Object jc = getComponentFromName(name);
+                        if (jc == null) {
+                            throw new IllegalArgumentException("name " +name+ " not found");
+                        }
+                        
 			String smodel = ((String) td.getTextAt(i,"model"));
 			formBindingManager.Bind((JComponent)jc, formBindingManager.getValueModel(smodel));
 		}
