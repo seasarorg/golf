@@ -48,7 +48,8 @@ public class LongValidator extends AbstractValidator{
         "org.seasar.golf.validator.LongValidator.INVALID"};        
     }
 
-    public ValidationMessage validate(Object data, String label, Object key, ValueModel valueModel, 
+    public ValidationMessage validate(Object data, String label, 
+	                    Object key, ValueModel valueModel, 
             FormManager formManager, boolean requiredCheck) {
         Long lValue  = null;
      
@@ -60,16 +61,17 @@ public class LongValidator extends AbstractValidator{
         try {
             lValue = Long.parseLong(dataS);
         } catch (NumberFormatException ex) {
-              return new SimpleValidationMessage(displayLabel + getMessage(2, dataS),
-									Severity.ERROR, key );
+              return new SimpleValidationMessage(displayLabel 
+			            + getMessage(2, dataS),
+                        Severity.ERROR, key );
         }
         if ((minValue != null) &&  (lValue < minValue)) {
-            return new SimpleValidationMessage(displayLabel + getMessage(0, minValue, dataS),
-									Severity.ERROR, key );
+            return new SimpleValidationMessage(displayLabel 
+			            + getMessage(0, minValue, dataS),
+                        Severity.ERROR, key );
         }
         if ((maxValue !=null ) && (lValue > maxValue))  {
-            return new SimpleValidationMessage(displayLabel + getMessage(1, maxValue, dataS), 
-									Severity.ERROR, key );          
+                        Severity.ERROR, key );          
         }        
         return null;
     }
@@ -147,7 +149,7 @@ public class DateValidator extends AbstractValidator{
             if (rdate < minRelativeDate) {
                  return new SimpleValidationMessage(displayLabel + 
                         getMessage(1, displayFormat.format(
-								ValidationUtil.getRelativeToToday(minRelativeDate)) ,
+                         ValidationUtil.getRelativeToToday(minRelativeDate)) ,
                          newDataS), Severity.ERROR, key );
             }
         }
@@ -155,7 +157,7 @@ public class DateValidator extends AbstractValidator{
             if (rdate > maxRelativeDate) {
                  return new SimpleValidationMessage(displayLabel + 
                         getMessage(2, displayFormat.
-							format(ValidationUtil.getRelativeToToday(maxRelativeDate)) ,
+                         format(ValidationUtil.getRelativeToToday(maxRelativeDate)) ,
                          newDataS), Severity.ERROR, key );
             }
         }        
