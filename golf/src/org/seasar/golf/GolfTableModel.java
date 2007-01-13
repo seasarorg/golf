@@ -187,7 +187,7 @@ public class GolfTableModel extends AbstractTableModel implements ComponentValid
                         vr = ValidationUtil.validate(vr, vd.getValidator(),  getValueAt(row, column), 
                                 "", getDisplayName(row, column),
                                 new JTableFieldInfo(getJtable(), row, column), vd.getRequired() && requiredCheck,
-                                null, formValidationManager.getFrameManager());
+                                null, formValidationManager.getFormManager());
                     }
                 }
             }

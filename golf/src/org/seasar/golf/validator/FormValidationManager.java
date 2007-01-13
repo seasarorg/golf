@@ -76,11 +76,11 @@ public class FormValidationManager extends AbstractValidationResultModel {
         firePropertyChanges(oldResult, validationResult);
     }
 
-    public FormManager getFrameManager() {
+    public FormManager getFormManager() {
         return formManager;
     }
 
-    public void setFrameManager(FormManager formManager) {
+    public void setFormManager(FormManager formManager) {
         this.formManager = formManager;
     }
 

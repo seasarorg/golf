@@ -30,7 +30,7 @@ public class GolfBindingUtil {
     public static void bindTableRowColumn(TableBindHandler rowBindHandler,
                  GolfTableModel golfTableModel, String field, String columnName ) {
                     ValueHolder vh = (ValueHolder) golfTableModel.getFormValidationManager().
-                            getFrameManager().getFormBindingManager().getValueModel(field);
+                            getFormManager().getFormBindingManager().getValueModel(field);
                     rowBindHandler.addSrcAndColumn(vh, columnName);
                     BeanUtils.addPropertyChangeListener(vh,ValueHolder.class, rowBindHandler);
 

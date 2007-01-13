@@ -50,7 +50,7 @@ public class FormManager {
         formValidationManager.addValidator(formBindingManager);
         addAllJcomponent();
         FormManagerUtil.generateFieldCsv(this);
-        formValidationManager.setFrameManager(this);
+        formValidationManager.setFormManager(this);
       }
 
     public FormBindingManager getFormBindingManager() {
