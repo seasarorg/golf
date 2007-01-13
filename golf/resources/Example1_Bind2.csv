@@ -1,6 +1,6 @@
 name,model
 jLabelS,jTextField1
-jLabelI,integerField1
+jLabelI,longField1
 jLabelCombo,jComboBox1
 jLabelDS,jTextField3
 jLabelDL,jTextField4

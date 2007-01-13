@@ -1,5 +1,5 @@
 Class,Name,Validator, DisplayName  ,Required,BindName
 javax.swing.JTextField,jTextField1,,Item No,,
 javax.swing.JTextField,jTextField2,,Stock No,,
-javax.swing.JTextField,jTextField3,,Qty,,
+org.seasar.golf.component.LongField,longField1,,Qty,,
 javax.swing.JTextField,jTextField4,longDateValidator,Date,,
