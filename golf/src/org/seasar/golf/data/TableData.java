@@ -55,7 +55,11 @@ public class TableData {
     }
     public Object getValueAt(int rowIndex, int columnIndex) {
         ArrayList rowArray = (ArrayList)dataArray.get(rowIndex);
-        return rowArray.get(columnIndex);
+        if (columnIndex >= rowArray.size()) {
+            return null;
+        } else {
+            return rowArray.get(columnIndex);
+        }
     }
     public Object getValueAt(int rowIndex, String columnName) {
         ArrayList rowArray = (ArrayList)dataArray.get(rowIndex);

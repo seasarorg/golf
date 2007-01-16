@@ -27,6 +27,7 @@ public class GolfSetting {
 		
 	}
 	public static String getSetting(String key) {
+                checkProp();
 		return prop.getProperty(key);
 	}
 	

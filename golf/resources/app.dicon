@@ -12,7 +12,7 @@
     </initMethod>
 
     <initMethod name="addClassPattern">
-        <arg>"org.seasar.golf.example"</arg>
+        <arg>"org.seasar.golf"</arg>
         <arg>".*Impl,.*Frame"</arg>
     </initMethod>
 </component>
