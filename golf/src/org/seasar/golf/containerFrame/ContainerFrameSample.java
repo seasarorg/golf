@@ -1,5 +1,5 @@
 /*
- * ContainerFrame.java
+ * ContainerFrameSample.java
  *
  * Created on 2007/01/07, 9:11
  */
@@ -10,10 +10,12 @@ package org.seasar.golf.containerFrame;
  *
  * @author  shimura
  */
-public class ContainerFrame extends javax.swing.JFrame {
+public class ContainerFrameSample extends javax.swing.JFrame {
     
-    /** Creates new form ContainerFrame */
-    public ContainerFrame() {
+    /**
+     * Creates new form ContainerFrameSample
+     */
+    public ContainerFrameSample() {
         initComponents();
     }
     
@@ -34,6 +36,7 @@ public class ContainerFrame extends javax.swing.JFrame {
         jMenuItem1 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setLocationByPlatform(true);
         jPanel1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         jLabel1.setFont(new java.awt.Font("‚l‚r ‚o–¾’©", 1, 24));
         jLabel1.setText("Golf Example System");
@@ -134,7 +137,7 @@ public class ContainerFrame extends javax.swing.JFrame {
     public static void main(String args[]) {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new ContainerFrame().setVisible(true);
+                new ContainerFrameSample().setVisible(true);
             }
         });
     }

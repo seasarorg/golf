@@ -78,9 +78,7 @@ public class MenuFrame extends javax.swing.JFrame  implements GolfFormInterface 
             .add(0, 580, Short.MAX_VALUE)
         );
 
-        jTextField1.setText("jTextField1");
-
-        jButton1.setText("jButton1");
+        jButton1.setText("Start");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);

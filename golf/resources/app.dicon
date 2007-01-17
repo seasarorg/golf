@@ -5,6 +5,7 @@
 <components>
 	<include path="aop.dicon"/>
 	<include path="golfValidator.dicon"/>
+	<include path="org/seasar/golf/uexample/application.dicon"/>
     <component class="org.seasar.framework.container.autoregister.ComponentAutoRegister">
     <property name="instanceDef">@org.seasar.framework.container.deployer.InstanceDefFactory@PROTOTYPE</property>
     <initMethod name="addReferenceClass">
