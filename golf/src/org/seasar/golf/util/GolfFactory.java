@@ -12,6 +12,7 @@ package org.seasar.golf.util;
 import javax.swing.JFrame;
 import org.seasar.framework.container.factory.SingletonS2ContainerFactory;
 
+
 /**
  *
  * @author shimura

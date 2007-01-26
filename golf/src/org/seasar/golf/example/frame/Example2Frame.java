@@ -7,6 +7,7 @@
 package org.seasar.golf.example.frame;
 
 import java.awt.event.KeyEvent;
+import java.util.Hashtable;
 import javax.swing.JFrame;
 import javax.swing.JMenuBar;
 import javax.swing.JPanel;
@@ -34,7 +35,7 @@ public class Example2Frame extends javax.swing.JFrame  implements GolfFormInterf
     public Example2Frame() {
         initComponents();
     }
-    public void initBinding() {
+    public void initBinding(Hashtable params) {
         formManager = new FormManager(this);
         formManager.init();
         formManager.createReportList(jScrollPane1);

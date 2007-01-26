@@ -94,10 +94,10 @@ public class LoginFrame extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         LoginInterface login = UexampleFactory.getLogin();
-        Hashtable loginInfo = login.login(userId.getText(), passWord.getPassword().toString());
+        Hashtable loginInfo = login.login(userId.getText().trim(), passWord.getPassword().toString());
         if (loginInfo != null) {
-            char[] p =passWord.getPassword();
-            p= new char[]{};
+//            char[] p =passWord.getPassword();
+//            p= new char[]{};
             connection.setLoginInfo(loginInfo);
             connection.addSession();
             this.setVisible(false);

@@ -10,6 +10,7 @@ import com.jgoodies.binding.adapter.BasicComponentFactory;
 import com.jgoodies.binding.formatter.EmptyDateFormatter;
 import com.jgoodies.binding.list.SelectionInList;
 import java.text.DateFormat;
+import java.util.Hashtable;
 import javax.swing.JFormattedTextField;
 import javax.swing.JFrame;
 import javax.swing.JMenuBar;
@@ -30,7 +31,7 @@ public class Example1Frame extends javax.swing.JFrame  implements GolfFormInterf
     public Example1Frame() {
         initComponents();
     }
-    public void initBinding() {
+    public void initBinding(Hashtable params) {
         formManager = new FormManager(this);
         formManager.init();
         formManager.createReportList(jScrollPane1);

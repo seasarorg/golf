@@ -38,7 +38,7 @@ public class MenuFrame extends javax.swing.JFrame  implements GolfFormInterface 
     public MenuFrame() {
         initComponents();
         TreeUtil.setImageIcon(jTree1);
-        MenuFactory.setMenu(jTree1, "std");
+
     }
     
     /** This method is called from within the constructor to
@@ -55,6 +55,8 @@ public class MenuFrame extends javax.swing.JFrame  implements GolfFormInterface 
         jTextField1 = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
+        jMenuBar1 = new javax.swing.JMenuBar();
+        jMenu1 = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         ContentPane.setBorder(javax.swing.BorderFactory.createEtchedBorder());
@@ -75,7 +77,7 @@ public class MenuFrame extends javax.swing.JFrame  implements GolfFormInterface 
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(0, 580, Short.MAX_VALUE)
+            .add(0, 560, Short.MAX_VALUE)
         );
 
         jButton1.setText("Start");
@@ -123,9 +125,14 @@ public class MenuFrame extends javax.swing.JFrame  implements GolfFormInterface 
                             .add(jTextField1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                             .add(jButton1))
                         .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                        .add(jScrollPane1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 555, Short.MAX_VALUE))
+                        .add(jScrollPane1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 535, Short.MAX_VALUE))
                     .add(jPanel1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
         );
+
+        jMenu1.setText("Menu");
+        jMenuBar1.add(jMenu1);
+
+        setJMenuBar(jMenuBar1);
 
         org.jdesktop.layout.GroupLayout layout = new org.jdesktop.layout.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -155,28 +162,7 @@ Object yy = xx;
     }//GEN-LAST:event_jTree1ValueChanged
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-		MutableTreeNode leaf1[] = {
-			new DefaultMutableTreeNode("ëÂãÛéõ Ç†Ç‰") ,
-			new DefaultMutableTreeNode("ã ñÏ Ç‹Ç‰")
-		};
-		MutableTreeNode leaf2[] = {
-			new DefaultMutableTreeNode("ç ïÙ åd") ,
-			new DefaultMutableTreeNode("çÂ êÁíﬂ")
-		};
-		DefaultMutableTreeNode node1 =
-			new DefaultMutableTreeNode("The forever that you wish");
-		DefaultMutableTreeNode node2 =
-			new DefaultMutableTreeNode("MUV-LUV");
-		for(int i = 0 ; i < leaf1.length ;i++) node1.add(leaf1[i]);
-		for(int i = 0 ; i < leaf2.length ;i++) node2.add(leaf2[i]);
 
-		DefaultMutableTreeNode root = 
-			new DefaultMutableTreeNode("Age");
-		root.add(node1);
-		root.add(node2);
-                DefaultTreeModel dtm = new DefaultTreeModel(root);
-
-                jTree1.setModel(dtm);
 
                
                 
@@ -198,14 +184,17 @@ Object yy = xx;
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel ContentPane;
     private javax.swing.JButton jButton1;
+    private javax.swing.JMenu jMenu1;
+    private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTree jTree1;
     // End of variables declaration//GEN-END:variables
-    public void initBinding() {
+    public void initBinding(Hashtable params) {
         formManager = new FormManager(this);
+        MenuFactory.setMenu(jTree1, (String) params.get("role"));
     }
     
     public FormManager getFormManager() {
@@ -213,11 +202,11 @@ Object yy = xx;
     }
 
     public JMenuBar getMenu() {
-        return null;
+        return jMenuBar1;
     }
 
     public JPanel getContentPanel() {
-        return null;
+        return ContentPane;
     }
 
     public JFrame getContainerFrame() {

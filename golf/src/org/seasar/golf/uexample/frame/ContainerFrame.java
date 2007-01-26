@@ -6,6 +6,7 @@
 
 package org.seasar.golf.uexample.frame;
 
+import java.util.Hashtable;
 import javax.swing.JFrame;
 import javax.swing.JMenuBar;
 import javax.swing.JPanel;
@@ -167,7 +168,7 @@ public class ContainerFrame extends javax.swing.JFrame implements GolfFormInterf
     public void setContainerFrame(JFrame container) {
     }
 
-    public void initBinding() {
+    public void initBinding(Hashtable params) {
     }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables

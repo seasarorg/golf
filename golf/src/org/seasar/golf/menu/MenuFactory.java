@@ -25,7 +25,7 @@ public class MenuFactory {
     }
     public static boolean setMenu(JTree jt, String role) {
         if (menu == null) {
-            menu = (MenuInterface) SingletonS2ContainerFactory.getContainer().getComponent(MenuInterface.class);
+            menu = (MenuInterface) SingletonS2ContainerFactory.getContainer().getComponent("menu");
         }
         return menu.createMenu(jt, role);
     }

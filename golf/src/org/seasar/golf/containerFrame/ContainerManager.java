@@ -9,6 +9,7 @@
 
 package org.seasar.golf.containerFrame;
 
+import java.util.Hashtable;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import org.jdesktop.layout.GroupLayout;
@@ -33,6 +34,14 @@ public class ContainerManager {
         GolfFormInterface newFrame = null;
         newFrame = (GolfFormInterface) SingletonS2ContainerFactory.getContainer()
             .getComponent(newForm);
+        return setForm(newFrame);
+    }
+    
+    public JFrame setForm(GolfFormInterface newFrame) {
+        return setForm(newFrame, null);
+      
+    }
+    public JFrame setForm(GolfFormInterface newFrame, Hashtable param) {
         container.getRootPane().setJMenuBar(newFrame.getMenu());
         String title = ((JFrame)newFrame).getTitle();
         if (title != null && title.length() > 0) {
@@ -47,8 +56,8 @@ public class ContainerManager {
         layout.replace(currentPanel, newFrame.getContentPanel());
         currentPanel = newFrame.getContentPanel();
         newFrame.setContainerFrame(container);
-        newFrame.initBinding();
-        return (JFrame)newFrame;
+        newFrame.initBinding(param);
+        return (JFrame)newFrame;        
     }
     
 }

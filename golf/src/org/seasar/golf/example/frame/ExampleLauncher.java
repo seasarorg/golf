@@ -123,7 +123,7 @@ public class ExampleLauncher extends javax.swing.JFrame {
 
     private void launchFrame(String frameName) {
         GolfFormInterface jFrameT = FormManagerUtil.getFrame(frameName);
-        jFrameT.initBinding();
+        jFrameT.initBinding(null);
         ((JFrame)jFrameT).validate();
         ((JFrame)jFrameT).pack();
         ((JFrame)jFrameT).setVisible(true);

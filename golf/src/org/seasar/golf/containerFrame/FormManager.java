@@ -20,6 +20,7 @@ import javax.swing.JTable;
 
 import org.seasar.golf.ColumnDef;
 import org.seasar.golf.GolfTableModel;
+import org.seasar.golf.Session;
 import org.seasar.golf.binding.FormBindingManager;
 import org.seasar.golf.data.TableData;
 import org.seasar.golf.util.GolfSetting;
@@ -41,6 +42,7 @@ public class FormManager {
     private FormValidationManager formValidationManager = new FormValidationManager();
     private JFrame frame;
     private Hashtable componentNameIndex = new Hashtable();
+    private Session session = null;
     /** Creates a new instance of FrameManager */
     public FormManager(JFrame frame) {
         this.setFrame(frame);
@@ -251,4 +253,12 @@ public class FormManager {
 	public void createReportList(JScrollPane js){
 		GolfValidationResultViewFactory.createReportList(js, formValidationManager);
 	}
+
+    public Session getSession() {
+        return session;
+    }
+
+    public void setSession(Session session) {
+        this.session = session;
+    }
 }

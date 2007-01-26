@@ -22,14 +22,15 @@ public class LoginImpl implements LoginInterface {
     }
 
     public Hashtable login(String userId, String password) {
-        if (userId .equals("m")) {
+//        if (userId .equals("m")) {
             Hashtable h = new Hashtable();
             h.put("name","Mike Shimura");
             h.put("section","JPZ/E");
+            h.put("role","std");
             return h;
-        } else {
-            return null;
-        }
+//        } else {
+//            return null;
+//        }
     }
     
 }

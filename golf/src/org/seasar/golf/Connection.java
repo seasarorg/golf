@@ -19,6 +19,7 @@ import java.util.Hashtable;
 public class Connection {
     private Hashtable loginInfo = null;
     private ArrayList <Session> sessions = new ArrayList <Session>();
+    private int maxSession = 6;
     
     /** Creates a new instance of Connection */
     public Connection() {
@@ -32,9 +33,35 @@ public class Connection {
     public void setLoginInfo(Hashtable loginInfo) {
         this.loginInfo = loginInfo;
     }
-    public void addSession() {
-        Session s = new Session();
-        sessions.add(s);        
+    public Session  addSession() {
+        if (sessions.size() < maxSession) {
+            Session s = Factory.createSession(this);
+            sessions.add(s);
+            return s;
+        } else {
+            return null;
+        }
+    }
+    
+    public void removeSession(Session s) {
+        for (int i =0; i < sessions.size(); i ++) {
+            if (sessions.get(i) == s) {
+                s.closeFrame();
+                sessions.remove( i ) ;
+                if (sessions.size() == 0) {
+                    Runtime.getRuntime().exit(0);
+                }
+                return ;
+            }
+        }
+    }
+
+    public int getMaxSession() {
+        return maxSession;
+    }
+
+    public void setMaxSession(int maxSession) {
+        this.maxSession = maxSession;
     }
     
 }
