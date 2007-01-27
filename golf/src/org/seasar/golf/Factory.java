@@ -26,11 +26,15 @@ public class Factory {
      */
     private Factory() {
     }
-    public static JFrame getForm(String menuAction) {
+
+    public static JFrame createForm(String form) {
+        return (JFrame) SingletonS2ContainerFactory.getContainer().getComponent(form);
+    }
+    public static JFrame createFormFromAction(String menuAction) {
         MenuActionItem actionItem = MenuAction.getMenuAction(menuAction);
         JFrame frame = null;
         if (actionItem != null) {
-            frame = (JFrame) SingletonS2ContainerFactory.getContainer().getComponent(actionItem+"Frame");
+            frame = createForm(actionItem.getForm()+"Frame");
         }
         return frame;
     }

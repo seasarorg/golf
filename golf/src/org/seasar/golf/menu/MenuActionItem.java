@@ -20,6 +20,8 @@ public class MenuActionItem {
     public MenuActionItem() {
     }
     public MenuActionItem(String form, String parameter) {
+        this.form = form;
+        this.parameter = parameter;
     }
 
     public String getForm() {

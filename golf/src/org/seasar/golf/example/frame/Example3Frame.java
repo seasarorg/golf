@@ -12,8 +12,6 @@ import javax.swing.JMenuBar;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.ListSelectionModel;
-import org.seasar.framework.container.annotation.tiger.Component;
-import org.seasar.framework.container.annotation.tiger.InstanceType;
 import org.seasar.golf.GolfFormInterface;
 import org.seasar.golf.GolfTableModel;
 import org.seasar.golf.binding.GolfBindingUtil;
@@ -274,12 +272,6 @@ public class Example3Frame extends javax.swing.JFrame  implements GolfFormInterf
         }
     }
 
-    public JFrame getContainerFrame() {
-        return null;
-    }
-
-    public void setContainerFrame(JFrame container) {
-    }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;

@@ -6,17 +6,11 @@
 
 package org.seasar.golf.example.frame;
 
-import com.jgoodies.binding.adapter.BasicComponentFactory;
-import com.jgoodies.binding.formatter.EmptyDateFormatter;
 import com.jgoodies.binding.list.SelectionInList;
-import java.text.DateFormat;
 import java.util.Hashtable;
-import javax.swing.JFormattedTextField;
 import javax.swing.JFrame;
 import javax.swing.JMenuBar;
 import javax.swing.JPanel;
-import javax.swing.text.DateFormatter;
-import javax.swing.text.DefaultFormatterFactory;
 import org.seasar.golf.GolfFormInterface;
 import org.seasar.golf.containerFrame.FormManager;
 
@@ -227,12 +221,6 @@ public class Example1Frame extends javax.swing.JFrame  implements GolfFormInterf
         return null;
     }
 
-    public JFrame getContainerFrame() {
-        return null;
-    }
-
-    public void setContainerFrame(JFrame container) {
-    }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;

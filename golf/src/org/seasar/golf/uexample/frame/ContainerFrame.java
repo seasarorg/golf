@@ -1,5 +1,5 @@
 /*
- * ContainerFrame.java
+ * ContainerNew.java
  *
  * Created on 2007/01/07, 9:11
  */
@@ -7,7 +7,6 @@
 package org.seasar.golf.uexample.frame;
 
 import java.util.Hashtable;
-import javax.swing.JFrame;
 import javax.swing.JMenuBar;
 import javax.swing.JPanel;
 import org.seasar.golf.GolfFormInterface;
@@ -20,7 +19,7 @@ import org.seasar.golf.containerFrame.FormManager;
 public class ContainerFrame extends javax.swing.JFrame implements GolfFormInterface {
     
     /**
-     * Creates new form ContainerFrame
+     * Creates new form ContainerNew
      */
     public ContainerFrame() {
         initComponents();
@@ -161,12 +160,6 @@ public class ContainerFrame extends javax.swing.JFrame implements GolfFormInterf
         return jPanel1;
     }
 
-    public JFrame getContainerFrame() {
-        return null;
-    }
-
-    public void setContainerFrame(JFrame container) {
-    }
 
     public void initBinding(Hashtable params) {
     }

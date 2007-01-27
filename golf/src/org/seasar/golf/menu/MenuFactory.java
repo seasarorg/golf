@@ -24,13 +24,17 @@ public class MenuFactory {
     private MenuFactory() {
     }
     public static boolean setMenu(JTree jt, String role) {
-        if (menu == null) {
-            menu = (MenuInterface) SingletonS2ContainerFactory.getContainer().getComponent("menu");
-        }
+        check();
         return menu.createMenu(jt, role);
     }
     public static void setAction(Hashtable action) {
+        check();
         menu.setAction(action);
+    }
+    public static void check() {
+         if (menu == null) {
+            menu = (MenuInterface) SingletonS2ContainerFactory.getContainer().getComponent("menu");
+        }       
     }
     
 }

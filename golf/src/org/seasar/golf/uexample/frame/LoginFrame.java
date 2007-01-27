@@ -18,7 +18,9 @@ import org.seasar.golf.uexample.util.factory.UexampleFactory;
  */
 public class LoginFrame extends javax.swing.JFrame {
     private Connection connection = new Connection();
-    /** Creates new form LoginFrame */
+    /**
+     * Creates new form LoginFrame
+     */
     public LoginFrame() {
         initComponents();
     }

@@ -6,20 +6,14 @@
 
 package org.seasar.golf.example.frame;
 
-import java.awt.event.KeyEvent;
 import java.util.Hashtable;
-import javax.swing.JFrame;
 import javax.swing.JMenuBar;
 import javax.swing.JPanel;
-import javax.swing.JTable;
 import javax.swing.ListSelectionModel;
-import org.seasar.framework.container.annotation.tiger.Component;
-import org.seasar.framework.container.annotation.tiger.InstanceType;
 import org.seasar.golf.GolfFormInterface;
 import org.seasar.golf.GolfTableModel;
 import org.seasar.golf.containerFrame.FormManager;
 import org.seasar.golf.util.TableUtil;
-import org.seasar.framework.container.S2Container;
 
 /**
  *
@@ -174,6 +168,7 @@ public class Example2Frame extends javax.swing.JFrame  implements GolfFormInterf
                 return null;
     }
 
+
     private void addNewRow() {
                 //TableUtil.addNewRow(golfTableModel);
                 TableUtil.addNewRowWithItemNo (golfTableModel,1,10,5);
@@ -186,12 +181,6 @@ public class Example2Frame extends javax.swing.JFrame  implements GolfFormInterf
         }
     }
 
-    public JFrame getContainerFrame() {
-        return null;        
-    }
-
-    public void setContainerFrame(JFrame container) {
-    }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;

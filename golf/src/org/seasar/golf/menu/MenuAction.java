@@ -33,6 +33,7 @@ public class MenuAction {
     }
     public static MenuActionItem getMenuAction(String actionKey) {
         check();
-        return (MenuActionItem) action.get(actionKey);
+        MenuActionItem ma = (MenuActionItem) action.get(actionKey);
+        return ma;
     }
 }

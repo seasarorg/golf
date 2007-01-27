@@ -179,11 +179,11 @@ public class Example4ContainerFrame extends javax.swing.JFrame implements GolfFo
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        JFrame n = containerMgr.setForm("example4_2Frame");
+        JFrame n = containerMgr.createFormAndSetForm("example4_2Frame");
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        JFrame n = containerMgr.setForm("example4_1Frame");
+        JFrame n = containerMgr.createFormAndSetForm("example4_1Frame");
     }//GEN-LAST:event_jButton1ActionPerformed
     
     /**
@@ -226,12 +226,4 @@ public class Example4ContainerFrame extends javax.swing.JFrame implements GolfFo
     public void initBinding(Hashtable params) {
            containerMgr = new ContainerManager(this);        
     }
-
-    public JFrame getContainerFrame() {
-        return this;
-    }
-
-    public void setContainerFrame(JFrame container) {
-    }
-    
 }

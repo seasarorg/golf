@@ -6,21 +6,12 @@
 
 package org.seasar.golf.uexample.frame;
 
-import java.util.Enumeration;
 import java.util.Hashtable;
-import javax.swing.ImageIcon;
-import javax.swing.JFrame;
 import javax.swing.JMenuBar;
 import javax.swing.JPanel;
-import javax.swing.table.DefaultTableModel;
 import javax.swing.tree.DefaultMutableTreeNode;
-import javax.swing.tree.DefaultTreeCellRenderer;
-import javax.swing.tree.DefaultTreeModel;
-import javax.swing.tree.MutableTreeNode;
-import javax.swing.tree.TreeNode;
 import javax.swing.tree.TreePath;
 import org.seasar.framework.container.factory.SingletonS2ContainerFactory;
-import org.seasar.framework.util.ResourceUtil;
 import org.seasar.golf.GolfFormInterface;
 import org.seasar.golf.containerFrame.FormManager;
 import org.seasar.golf.menu.MenuAction;
@@ -34,7 +25,9 @@ import org.seasar.golf.util.TreeUtil;
 public class MenuFrame extends javax.swing.JFrame  implements GolfFormInterface {
     private FormManager formManager = null;
     
-    /** Creates new form MenuFrame */
+    /**
+     * Creates new form MenuFrame
+     */
     public MenuFrame() {
         initComponents();
         TreeUtil.setImageIcon(jTree1);
@@ -209,13 +202,4 @@ Object yy = xx;
         return ContentPane;
     }
 
-    public JFrame getContainerFrame() {
-                return null;
-    }
-
-    public void setContainerFrame(JFrame container) {
-    }
-
-
-    
 }

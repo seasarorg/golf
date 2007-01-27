@@ -104,151 +104,73 @@ public class FormManager {
 	public void setValidationFromCsvResource(String path) {
 		TableData td = new TableData();
 		TableUtil.ReadCsvFromResource(td, path);
-		setValidationSub(td);
+		FormManagerUtil.setValidationSub(td, formBindingManager);
 	}
 	
 	public void setValidationFromCsvResource(String path, String charsetName) {
 		TableData td = new TableData();
 		TableUtil.ReadCsvFromResource(td, path, charsetName);
-		setValidationSub(td);
+		FormManagerUtil.setValidationSub(td, formBindingManager);
 	}
 	public void setValidationFromCsv(String path) {
 		TableData td = new TableData();
 		TableUtil.ReadFromCsv(td, path);
-		setValidationSub(td);
+		FormManagerUtil.setValidationSub(td, formBindingManager);
 	}
 	public void setValidationFromCsv(String path, String charsetName) {
 		TableData td = new TableData();
 		TableUtil.ReadFromCsv(td, path, charsetName);	
-		setValidationSub(td);
+		FormManagerUtil.setValidationSub(td, formBindingManager);
 	}
-	private void setValidationSub(TableData td) {
-		for(int i = 0; i < td.getDataArray().size(); i++ ) {
-                        String name = (String) td.getTextAt(i,"name");
-                        if (name == null) {
-                            return;
-                        }                 
-			String s =((String) td.getTextAt(i,"validator"));
-			GolfValidator v = (s != null && s.length() > 0) ? ValidationUtil.getValidator(s):null;
-			boolean required = getBooleanValueFromTable(td, i,"required" );
-			formBindingManager.bind(name, v, (String)td.getTextAt(i,"displayname"), required);
-		}
-		
-	}
+
 	public void setBindFromCsvResource(String path) {
 		TableData td = new TableData();
 		TableUtil.ReadCsvFromResource(td, path);
-		setBindSub(td);
+		FormManagerUtil.setBindSub(td, this);
 	}
 	
 	public void setBindFromCsvResource(String path, String charsetName) {
 		TableData td = new TableData();
 		TableUtil.ReadCsvFromResource(td, path, charsetName);
-		setBindSub(td);
+		FormManagerUtil.setBindSub(td, this);
 	}
 	public void setBindFromCsv(String path) {
 		TableData td = new TableData();
 		TableUtil.ReadFromCsv(td, path);
-		setBindSub(td);
+		FormManagerUtil.setBindSub(td, this);
 	}
 	public void setBindFromCsv(String path, String charsetName) {
 		TableData td = new TableData();
 		TableUtil.ReadFromCsv(td, path, charsetName);	
-		setBindSub(td);
+		FormManagerUtil.setBindSub(td, this);
 	}
-	private void setBindSub(TableData td) {
-		for(int i = 0; i < td.getDataArray().size(); i++ ) {
-                        String name = (String) td.getTextAt(i,"name");
-                        if (name == null) {
-                            return;
-                        }
-			Object jc = getComponentFromName(name);
-                        if (jc == null) {
-                            throw new IllegalArgumentException("name " +name+ " not found");
-                        }
-                        
-			String smodel = ((String) td.getTextAt(i,"model"));
-			formBindingManager.Bind((JComponent)jc, formBindingManager.getValueModel(smodel));
-		}
-		
-	}
+
 	public void SetTableColumnFromCsvResource(
 			JTable jt, String tableDisplayName, GolfTableModel gtm, String path) {
 		TableData td = new TableData();
 		TableUtil.ReadCsvFromResource(td, path);
-		SetTableColumnSub(jt, tableDisplayName, gtm, td);
+		FormManagerUtil.SetTableColumnSub(jt, tableDisplayName, gtm, td, formValidationManager);
 	}
 	
 	public void SetTableColumnFromCsvResource(JTable jt, String tableDisplayName,
 			GolfTableModel gtm, String path, String charsetName) {
 		TableData td = new TableData();
 		TableUtil.ReadCsvFromResource(td, path, charsetName);
-		SetTableColumnSub(jt, tableDisplayName, gtm, td);
+		FormManagerUtil.SetTableColumnSub(jt, tableDisplayName, gtm, td, formValidationManager);
 	}
 	public void SetTableColumnFromCsv(JTable jt, String tableDisplayName,
 			GolfTableModel gtm, String path) {
 		TableData td = new TableData();
 		TableUtil.ReadFromCsv(td, path);
-		SetTableColumnSub(jt, tableDisplayName, gtm, td);
+		FormManagerUtil.SetTableColumnSub(jt, tableDisplayName, gtm, td, formValidationManager);
 	}
 	public void SetTableColumnFromCsv(JTable jt,  String tableDisplayName,
 			GolfTableModel gtm,String path, String charsetName) {
 		TableData td = new TableData();
 		TableUtil.ReadFromCsv(td, path, charsetName);	
-		SetTableColumnSub(jt, tableDisplayName, gtm, td);
+		FormManagerUtil.SetTableColumnSub(jt, tableDisplayName, gtm, td, formValidationManager);
 	}
-	private void SetTableColumnSub(JTable jt, String tableDisplayName, 
-			GolfTableModel gtm, TableData td) {
-		ColumnDef[] columnDefs = new ColumnDef[td.getRowCount()];
-		for(int i = 0; i < td.getDataArray().size(); i++ ) {
-                    
-                        String field = (String) td.getTextAt(i,"field");
-                        if (field == null) {
-                            return;
-                        }
-			boolean canEdit = getBooleanValueFromTable(td, i,"canedit" );
-			String clazz = (String) td.getTextAt(i,"class");
-			String clazzNew = GolfSetting.getSetting(clazz);
-			clazz = (clazzNew != null) ? clazzNew: clazz;
-			try {
-				columnDefs[i]= new ColumnDef(field, Class.forName(clazz), canEdit);
-			} catch (ClassNotFoundException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-		}
-		gtm.setColumnDefs(columnDefs);
-		gtm.setJtable(jt, tableDisplayName);
-		gtm.setFormValidationManager(formValidationManager);
-		for(int i = 0; i < td.getDataArray().size(); i++ ) {
-			boolean insCheck = getBooleanValueFromTable(td, i,"inscheck" );
-			if (insCheck){
-				gtm.getColumnDef(i).setInsertCheckColumn(true);
-			}
-			String v = (String) td.getTextAt(i,"validator");
-			GolfValidator validator = (v != null && v.length() > 0) ?
-					ValidationUtil.getValidator(v): null;	
-			String displayName = (String) td.getTextAt(i,"displayName");
-			if (displayName != null && displayName.length() == 0) {
-				displayName = null;
-			}
-			boolean required = getBooleanValueFromTable(td, i,"required" );
-			if (validator != null || required) {
-				gtm.getColumnDef(i).setValidatorDef(
-					new ValidatorDef(validator,	displayName, required));
-			}
-			
-		}
-		
-	}
-	private boolean getBooleanValueFromTable(TableData td, int i, String fld) {
-		String b = ((String) td.getTextAt(i, fld));
-		boolean brtn = false;
-		if (b != null && b.toLowerCase().equals("t")) {
-			brtn = true;
-		}
-		return brtn;
-	}
+
 	
 	public void createReportList(JScrollPane js){
 		GolfValidationResultViewFactory.createReportList(js, formValidationManager);
