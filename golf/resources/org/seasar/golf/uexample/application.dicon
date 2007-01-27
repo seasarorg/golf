@@ -3,10 +3,7 @@
   "http://www.seasar.org/dtd/components24.dtd">
 
 <components>
-    <component name="containerForm" class="org.seasar.golf.uexample.frame.ContainerFrame" instance="prototype">
-    </component>
-    <component name="menuForm" class="org.seasar.golf.uexample.frame.MenuFrame" instance="prototype">
-    </component>
+
     <component name="menu" class="org.seasar.golf.menu.MenuImpl">
     </component>
       

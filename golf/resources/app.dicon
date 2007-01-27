@@ -7,16 +7,20 @@
 	<include path="golfValidator.dicon"/>
 	<include path="org/seasar/golf/uexample/application.dicon"/>
     <component class="org.seasar.framework.container.autoregister.ComponentAutoRegister">
-    <property name="instanceDef">@org.seasar.framework.container.deployer.InstanceDefFactory@PROTOTYPE</property>
-    <initMethod name="addReferenceClass">
-        <arg>@org.seasar.golf.Dummy@class</arg>
-    </initMethod>
+        <property name="instanceDef">@org.seasar.framework.container.deployer.InstanceDefFactory@PROTOTYPE</property>
+        <initMethod name="addReferenceClass">
+            <arg>@org.seasar.golf.Dummy@class</arg>
+        </initMethod>
 
-    <initMethod name="addClassPattern">
-        <arg>"org.seasar.golf"</arg>
-        <arg>".*Impl,.*Frame"</arg>
-    </initMethod>
-</component>
+        <initMethod name="addClassPattern">
+            <arg>"org.seasar.golf.uexample"</arg>
+            <arg>".*Impl,.*Frame"</arg>
+        </initMethod>
+        <initMethod name="addClassPattern">
+            <arg>"org.seasar.golf.example"</arg>
+            <arg>".*Impl,.*Frame"</arg>
+        </initMethod>
+    </component>
 
        
 </components>
