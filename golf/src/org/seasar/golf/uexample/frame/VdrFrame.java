@@ -6,6 +6,7 @@
 
 package org.seasar.golf.uexample.frame;
 
+import java.awt.event.KeyEvent;
 import java.util.Hashtable;
 import javax.swing.JMenuBar;
 import javax.swing.JPanel;
@@ -32,6 +33,9 @@ public class VdrFrame extends javax.swing.JFrame implements GolfFormInterface{
     private void initComponents() {
 
         contentPane = new javax.swing.JPanel();
+        jPanel1 = new javax.swing.JPanel();
+        jTextAction = new javax.swing.JTextField();
+        jButton1 = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
 
@@ -39,15 +43,50 @@ public class VdrFrame extends javax.swing.JFrame implements GolfFormInterface{
 
         contentPane.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
+        jPanel1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+
+        jTextAction.setPreferredSize(new java.awt.Dimension(6, 22));
+        jTextAction.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                jTextActionKeyReleased(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextActionKeyTyped(evt);
+            }
+        });
+
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/OPENFOLD.png")));
+
+        org.jdesktop.layout.GroupLayout jPanel1Layout = new org.jdesktop.layout.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+            .add(jPanel1Layout.createSequentialGroup()
+                .add(jTextAction, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 55, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                .add(jButton1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 25, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(636, Short.MAX_VALUE))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+            .add(jPanel1Layout.createSequentialGroup()
+                .add(jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                    .add(jTextAction, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                    .add(jButton1))
+                .addContainerGap())
+        );
+
         org.jdesktop.layout.GroupLayout contentPaneLayout = new org.jdesktop.layout.GroupLayout(contentPane);
         contentPane.setLayout(contentPaneLayout);
         contentPaneLayout.setHorizontalGroup(
             contentPaneLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(0, 727, Short.MAX_VALUE)
+            .add(org.jdesktop.layout.GroupLayout.TRAILING, jPanel1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         contentPaneLayout.setVerticalGroup(
             contentPaneLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(0, 592, Short.MAX_VALUE)
+            .add(contentPaneLayout.createSequentialGroup()
+                .add(jPanel1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 29, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(563, Short.MAX_VALUE))
         );
 
         jMenu1.setText("Menu");
@@ -74,6 +113,14 @@ public class VdrFrame extends javax.swing.JFrame implements GolfFormInterface{
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+private void jTextActionKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextActionKeyReleased
+    formManager.getSession().processActionTextField(evt,jTextAction);
+}//GEN-LAST:event_jTextActionKeyReleased
+
+private void jTextActionKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextActionKeyTyped
+
+}//GEN-LAST:event_jTextActionKeyTyped
     
     /**
      * @param args the command line arguments
@@ -87,7 +134,7 @@ public class VdrFrame extends javax.swing.JFrame implements GolfFormInterface{
     }
     
     public FormManager getFormManager() {
-        throw new UnsupportedOperationException("Not supported yet.");
+        return formManager;
     }
 
     public JMenuBar getMenu() {
@@ -99,13 +146,16 @@ public class VdrFrame extends javax.swing.JFrame implements GolfFormInterface{
     }
 
     public void initBinding(Hashtable params) {
-        throw new UnsupportedOperationException("Not supported yet.");
+        formManager = new FormManager(this);        
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel contentPane;
+    private javax.swing.JButton jButton1;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JTextField jTextAction;
     // End of variables declaration//GEN-END:variables
     
 }

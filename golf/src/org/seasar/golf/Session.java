@@ -9,8 +9,10 @@
 
 package org.seasar.golf;
 
+import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 import javax.swing.JFrame;
+import javax.swing.JTextField;
 import org.seasar.framework.container.factory.SingletonS2ContainerFactory;
 import org.seasar.golf.containerFrame.ContainerManager;
 import org.seasar.golf.uexample.frame.FormAction;
@@ -43,15 +45,38 @@ public class Session {
     }
     public void init(){
         // ((GolfFormInterface)menu).getFormManager().setSession(this);
-        FormAction menuaction = new FormAction();
-        menuaction.setAction("MENU");
-        menuaction.setFormStack(FormAction.FormStack.MENU);
-        processAction(menuaction);
+//        FormAction menuaction = new FormAction();
+//        menuaction.setAction("MENU");
+//        menuaction.setFormStack(FormAction.FormStack.MENU);
+//        processAction(menuaction);
+        processMenuAction("MENU");
         
     }
-    
+     public void processActionTextField(KeyEvent evt, JTextField textField) {
+         if (evt.getKeyCode() == KeyEvent.VK_ENTER ){
+           String action = textField.getText();
+             if (processMenuAction(action)) {
+                textField.setText("");             
+             }       
+         }
+     }
     public void processAction(FormAction formAction) {
         SessionUtil.processAction(formAction, this);
+    }
+    
+    public boolean processMenuAction(String action) {
+        action = action.toUpperCase();
+        FormAction menuaction = new FormAction();
+        if (menuaction.setAction(action) == false) {
+            return false;
+        }
+        if (action.equals("MENU")) {
+            menuaction.setFormStack(FormAction.FormStack.MENU);            
+        } else {
+            menuaction.setFormStack(FormAction.FormStack.FIRST);
+        }
+        processAction(menuaction);   
+        return true;
     }
     public void closeFrame() {
         containerFrame.setVisible(false);

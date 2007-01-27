@@ -28,6 +28,9 @@ public class SessionUtil {
             case MENU :
                     setForm(0, formAction, session, session.getConnection().getLoginInfo());
                 break;
+            case FIRST :
+                    setForm(1, formAction, session, null);
+                break;                
             default:
                 break;
         }

@@ -17,7 +17,7 @@ import org.seasar.golf.menu.MenuActionItem;
  * @author shimura
  */
 public class FormAction {
-    public enum FormStack {MENU, SAME, NEXT, BACK, DIALOG, NEWMENU, NEWNEXT}  
+    public enum FormStack {MENU, FIRST, SAME, NEXT, BACK, DIALOG, NEWMENU, NEWFIRST}  
     private FormStack formStack = null;
     private MenuActionItem actionItem = null;
     /** Creates a new instance of FormAction */
