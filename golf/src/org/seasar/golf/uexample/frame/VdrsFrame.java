@@ -1,7 +1,7 @@
 /*
- * VdrFrame.java
+ * VdrsFrame.java
  *
- * Created on 2007/01/27, 16:22
+ * Created on 2007/01/28, 9:25
  */
 
 package org.seasar.golf.uexample.frame;
@@ -16,10 +16,10 @@ import org.seasar.golf.containerFrame.FormManager;
  *
  * @author  shimura
  */
-public class VdrFrame extends javax.swing.JFrame implements GolfFormInterface{
+public class VdrsFrame extends javax.swing.JFrame implements GolfFormInterface{
     private FormManager formManager = null;
-    /** Creates new form VdrFrame */
-    public VdrFrame() {
+    /** Creates new form VdrsFrame */
+    public VdrsFrame() {
         initComponents();
     }
     
@@ -95,15 +95,20 @@ public class VdrFrame extends javax.swing.JFrame implements GolfFormInterface{
         });
         toolBar.add(jB_NewWindow);
 
-        org.jdesktop.layout.GroupLayout contentPaneLayout = new org.jdesktop.layout.GroupLayout(contentPane);
+        javax.swing.GroupLayout contentPaneLayout = new javax.swing.GroupLayout(contentPane);
         contentPane.setLayout(contentPaneLayout);
         contentPaneLayout.setHorizontalGroup(
-            contentPaneLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(toolBar, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 898, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+            contentPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, contentPaneLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(toolBar, javax.swing.GroupLayout.DEFAULT_SIZE, 898, Short.MAX_VALUE)
+                .addContainerGap())
         );
         contentPaneLayout.setVerticalGroup(
-            contentPaneLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(toolBar, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+            contentPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(contentPaneLayout.createSequentialGroup()
+                .addComponent(toolBar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(740, Short.MAX_VALUE))
         );
 
         jMenu1.setText("Menu");
@@ -111,20 +116,20 @@ public class VdrFrame extends javax.swing.JFrame implements GolfFormInterface{
 
         setJMenuBar(jMenuBar1);
 
-        org.jdesktop.layout.GroupLayout layout = new org.jdesktop.layout.GroupLayout(getContentPane());
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
-            layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(layout.createSequentialGroup()
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .add(contentPane, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+                .addComponent(contentPane, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(260, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
-            layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(layout.createSequentialGroup()
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
-                .add(contentPane, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 596, Short.MAX_VALUE)
+                .addComponent(contentPane, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -132,7 +137,7 @@ public class VdrFrame extends javax.swing.JFrame implements GolfFormInterface{
     }// </editor-fold>//GEN-END:initComponents
 
 private void jB_NewWindowActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jB_NewWindowActionPerformed
-    formManager.getSession().processMenuAction("@MENU");
+    formManager.getSession().processMenuAction("@MENU");  
 }//GEN-LAST:event_jB_NewWindowActionPerformed
 
 private void jB_MenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jB_MenuActionPerformed
@@ -149,7 +154,7 @@ private void jTextActionKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:ev
     public static void main(String args[]) {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new VdrFrame().setVisible(true);
+                new VdrsFrame().setVisible(true);
             }
         });
     }
@@ -167,7 +172,7 @@ private void jTextActionKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:ev
     }
 
     public void initBinding(Hashtable params) {
-        formManager = new FormManager(this);        
+        formManager = new FormManager(this);
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

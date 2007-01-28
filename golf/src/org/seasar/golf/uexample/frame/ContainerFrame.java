@@ -17,7 +17,7 @@ import org.seasar.golf.containerFrame.FormManager;
  * @author  shimura
  */
 public class ContainerFrame extends javax.swing.JFrame implements GolfFormInterface {
-    
+private FormManager formManager = null;   
     /**
      * Creates new form ContainerNew
      */
@@ -42,8 +42,13 @@ public class ContainerFrame extends javax.swing.JFrame implements GolfFormInterf
         jMenu1 = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setLocationByPlatform(true);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosed(java.awt.event.WindowEvent evt) {
+                formWindowClosed(evt);
+            }
+        });
 
         jPanel1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
@@ -136,6 +141,10 @@ public class ContainerFrame extends javax.swing.JFrame implements GolfFormInterf
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
+    formManager.getSession().getConnection().removeSession(formManager.getSession());
+}//GEN-LAST:event_formWindowClosed
+
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
 // TODO add your handling code here:
         System.exit(1);
@@ -154,7 +163,7 @@ public class ContainerFrame extends javax.swing.JFrame implements GolfFormInterf
     }
 
     public FormManager getFormManager() {
-        return null;
+        return formManager;
     }
 
     public JMenuBar getMenu() {
@@ -167,6 +176,7 @@ public class ContainerFrame extends javax.swing.JFrame implements GolfFormInterf
 
 
     public void initBinding(Hashtable params) {
+        formManager = new FormManager(this);
     }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables

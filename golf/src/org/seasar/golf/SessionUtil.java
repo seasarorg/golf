@@ -30,7 +30,18 @@ public class SessionUtil {
                 break;
             case FIRST :
                     setForm(1, formAction, session, null);
-                break;                
+                break;    
+            case NEWMENU :
+                    session.getConnection().addSession();
+                break;         
+            case NEWFIRST :
+                    Session s = session.getConnection().addSession();
+                    if (s == null ) {
+                        break;
+                    }
+                    formAction.setFormStack(FormAction.FormStack.FIRST);
+                    s.processAction(formAction);
+                break;                 
             default:
                 break;
         }

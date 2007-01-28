@@ -38,17 +38,10 @@ public class Session {
         containerFrame.pack();
         containerFrame.validate();
         containerFrame.setVisible(true);
-//        menu=Factory.createFormFromAction("MENU");
-//        //menu =Factory.createForm("menuFrame");
-//        ((GolfFormInterface)menu).initBinding(connection.getLoginInfo());
-//        containerManager.setForm((GolfFormInterface)menu);
     }
     public void init(){
-        // ((GolfFormInterface)menu).getFormManager().setSession(this);
-//        FormAction menuaction = new FormAction();
-//        menuaction.setAction("MENU");
-//        menuaction.setFormStack(FormAction.FormStack.MENU);
-//        processAction(menuaction);
+        ((GolfFormInterface)containerFrame).initBinding(null);
+        ((GolfFormInterface)containerFrame).getFormManager().setSession(this);
         processMenuAction("MENU");
         
     }
@@ -65,15 +58,28 @@ public class Session {
     }
     
     public boolean processMenuAction(String action) {
+        boolean newWindow = false;
         action = action.toUpperCase();
+        if (action.charAt(0)=='@'){
+            newWindow = true;
+            action = action.substring(1);
+        }
         FormAction menuaction = new FormAction();
         if (menuaction.setAction(action) == false) {
             return false;
         }
         if (action.equals("MENU")) {
-            menuaction.setFormStack(FormAction.FormStack.MENU);            
+            if (newWindow) {
+                menuaction.setFormStack(FormAction.FormStack.NEWMENU);                 
+            } else {
+                menuaction.setFormStack(FormAction.FormStack.MENU); 
+            }
         } else {
-            menuaction.setFormStack(FormAction.FormStack.FIRST);
+            if (newWindow) {
+                menuaction.setFormStack(FormAction.FormStack.NEWFIRST);                
+            } else {
+                menuaction.setFormStack(FormAction.FormStack.FIRST);
+            }
         }
         processAction(menuaction);   
         return true;

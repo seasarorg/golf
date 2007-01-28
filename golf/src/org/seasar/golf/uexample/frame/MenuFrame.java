@@ -6,7 +6,6 @@
 
 package org.seasar.golf.uexample.frame;
 
-import java.awt.event.KeyEvent;
 import java.util.Hashtable;
 import javax.swing.JMenuBar;
 import javax.swing.JPanel;
