@@ -39,6 +39,8 @@ public class VdrsFrame extends javax.swing.JFrame implements GolfFormInterface{
         jB_Back = new javax.swing.JButton();
         jB_Menu = new javax.swing.JButton();
         jB_NewWindow = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+        jTextField1 = new javax.swing.JTextField();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
 
@@ -59,8 +61,12 @@ public class VdrsFrame extends javax.swing.JFrame implements GolfFormInterface{
 
         jB_Enter.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/FormRunHS.png")));
         jB_Enter.setToolTipText("Enter");
-        jB_Enter.setEnabled(false);
         jB_Enter.setPreferredSize(new java.awt.Dimension(25, 25));
+        jB_Enter.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jB_EnterActionPerformed(evt);
+            }
+        });
         toolBar.add(jB_Enter);
 
         jB_Save.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/saveHS.png")));
@@ -95,20 +101,31 @@ public class VdrsFrame extends javax.swing.JFrame implements GolfFormInterface{
         });
         toolBar.add(jB_NewWindow);
 
+        jLabel1.setText("VCODE");
+
         javax.swing.GroupLayout contentPaneLayout = new javax.swing.GroupLayout(contentPane);
         contentPane.setLayout(contentPaneLayout);
         contentPaneLayout.setHorizontalGroup(
             contentPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, contentPaneLayout.createSequentialGroup()
+            .addGroup(contentPaneLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(toolBar, javax.swing.GroupLayout.DEFAULT_SIZE, 898, Short.MAX_VALUE)
+                .addGroup(contentPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(toolBar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 898, Short.MAX_VALUE)
+                    .addGroup(contentPaneLayout.createSequentialGroup()
+                        .addComponent(jLabel1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
         contentPaneLayout.setVerticalGroup(
             contentPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(contentPaneLayout.createSequentialGroup()
                 .addComponent(toolBar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(740, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(contentPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1)
+                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(715, Short.MAX_VALUE))
         );
 
         jMenu1.setText("Menu");
@@ -135,6 +152,10 @@ public class VdrsFrame extends javax.swing.JFrame implements GolfFormInterface{
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+private void jB_EnterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jB_EnterActionPerformed
+    // TODO add your handling code here:
+}//GEN-LAST:event_jB_EnterActionPerformed
 
 private void jB_NewWindowActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jB_NewWindowActionPerformed
     formManager.getSession().processMenuAction("@MENU");  
@@ -173,6 +194,7 @@ private void jTextActionKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:ev
 
     public void initBinding(Hashtable params) {
         formManager = new FormManager(this);
+        formManager.init();
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -182,9 +204,11 @@ private void jTextActionKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:ev
     private javax.swing.JButton jB_Menu;
     private javax.swing.JButton jB_NewWindow;
     private javax.swing.JButton jB_Save;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JTextField jTextAction;
+    private javax.swing.JTextField jTextField1;
     private javax.swing.JPanel toolBar;
     // End of variables declaration//GEN-END:variables
     

@@ -3,15 +3,11 @@ package org.seasar.golf.containerFrame;
 import java.util.Enumeration;
 import java.util.Hashtable;
 import javax.swing.JComponent;
-
-import javax.swing.JFrame;
 import javax.swing.JTable;
 import org.seasar.framework.container.factory.SingletonS2ContainerFactory;
 import org.seasar.golf.ColumnDef;
 import org.seasar.golf.GolfFormInterface;
 import org.seasar.golf.GolfTableModel;
-import org.seasar.golf.binding.FormBindingManager;
-
 import org.seasar.golf.data.TableData;
 import org.seasar.golf.util.GolfSetting;
 import org.seasar.golf.util.TableUtil;
@@ -66,8 +62,9 @@ public class FormManagerUtil {
 			String clazz = (String) td.getTextAt(i,"class");
 			String clazzNew = GolfSetting.getSetting(clazz);
 			clazz = (clazzNew != null) ? clazzNew: clazz;
+                        String hostName = (String) td.getTextAt(i,"hostName");
 			try {
-				columnDefs[i]= new ColumnDef(field, Class.forName(clazz), canEdit);
+				columnDefs[i]= new ColumnDef(field, Class.forName(clazz), canEdit,  hostName);
 			} catch (ClassNotFoundException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -114,7 +111,7 @@ public class FormManagerUtil {
 		}
 		
 	}     
-	public static  void setValidationSub(TableData td, FormBindingManager formBindingManager) {
+	public static  void setValidationSub(TableData td, FormManager formManager) {
 		for(int i = 0; i < td.getDataArray().size(); i++ ) {
                         String name = (String) td.getTextAt(i,"name");
                         if (name == null) {
@@ -123,7 +120,13 @@ public class FormManagerUtil {
 			String s =((String) td.getTextAt(i,"validator"));
 			GolfValidator v = (s != null && s.length() > 0) ? ValidationUtil.getValidator(s):null;
 			boolean required = getBooleanValueFromTable(td, i,"required" );
-			formBindingManager.bind(name, v, (String)td.getTextAt(i,"displayname"), required);
+			formManager.getFormBindingManager().
+                                bind(name, v, (String)td.getTextAt(i,"displayname"), required);
+                        String bind =((String) td.getTextAt(i,"hostname"));
+                        if (bind != null) {
+                            formManager.getFormTrxManager().initField(name, bind);
+                        }
+                        
 		}
 		
 	}        

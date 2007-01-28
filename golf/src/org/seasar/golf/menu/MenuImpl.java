@@ -9,7 +9,6 @@
 
 package org.seasar.golf.menu;
 
-import com.sun.org.apache.bcel.internal.generic.TABLESWITCH;
 import java.util.Hashtable;
 import javax.swing.JTree;
 import javax.swing.tree.DefaultMutableTreeNode;

@@ -10,28 +10,20 @@
 package org.seasar.golf.containerFrame;
 
 import java.lang.reflect.Field;
-import java.util.ArrayList;
 import java.util.Hashtable;
-
 import javax.swing.JComponent;
 import javax.swing.JFrame;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
-
-import org.seasar.golf.ColumnDef;
 import org.seasar.golf.GolfTableModel;
 import org.seasar.golf.Session;
 import org.seasar.golf.binding.FormBindingManager;
+import org.seasar.golf.transaction.FormTrxManager;
 import org.seasar.golf.data.TableData;
-import org.seasar.golf.util.GolfSetting;
 import org.seasar.golf.util.TableUtil;
-import org.seasar.golf.util.ValidationUtil;
 import org.seasar.golf.validator.FormValidationManager;
 import org.seasar.golf.validator.GolfValidationResultViewFactory;
-import org.seasar.golf.validator.GolfValidator;
-import org.seasar.golf.validator.ValidatorDef;
 
-import com.jgoodies.binding.adapter.Bindings;
 
 /**
  *
@@ -43,6 +35,7 @@ public class FormManager {
     private JFrame frame;
     private Hashtable componentNameIndex = new Hashtable();
     private Session session = null;
+    private FormTrxManager formTrxManager = null;
     /** Creates a new instance of FrameManager */
     public FormManager(JFrame frame) {
         this.setFrame(frame);
@@ -53,6 +46,7 @@ public class FormManager {
         addAllJcomponent();
         FormManagerUtil.generateFieldCsv(this);
         formValidationManager.setFormManager(this);
+        formTrxManager = new FormTrxManager(this);
       }
 
     public FormBindingManager getFormBindingManager() {
@@ -104,23 +98,23 @@ public class FormManager {
 	public void setValidationFromCsvResource(String path) {
 		TableData td = new TableData();
 		TableUtil.ReadCsvFromResource(td, path);
-		FormManagerUtil.setValidationSub(td, formBindingManager);
+		FormManagerUtil.setValidationSub(td, this);
 	}
 	
 	public void setValidationFromCsvResource(String path, String charsetName) {
 		TableData td = new TableData();
 		TableUtil.ReadCsvFromResource(td, path, charsetName);
-		FormManagerUtil.setValidationSub(td, formBindingManager);
+		FormManagerUtil.setValidationSub(td, this);
 	}
 	public void setValidationFromCsv(String path) {
 		TableData td = new TableData();
 		TableUtil.ReadFromCsv(td, path);
-		FormManagerUtil.setValidationSub(td, formBindingManager);
+		FormManagerUtil.setValidationSub(td, this);
 	}
 	public void setValidationFromCsv(String path, String charsetName) {
 		TableData td = new TableData();
 		TableUtil.ReadFromCsv(td, path, charsetName);	
-		FormManagerUtil.setValidationSub(td, formBindingManager);
+		FormManagerUtil.setValidationSub(td,  this);
 	}
 
 	public void setBindFromCsvResource(String path) {
@@ -182,5 +176,9 @@ public class FormManager {
 
     public void setSession(Session session) {
         this.session = session;
+    }
+
+    public FormTrxManager getFormTrxManager() {
+        return formTrxManager;
     }
 }

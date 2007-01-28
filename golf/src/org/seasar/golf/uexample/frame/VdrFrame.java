@@ -167,7 +167,8 @@ private void jTextActionKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:ev
     }
 
     public void initBinding(Hashtable params) {
-        formManager = new FormManager(this);        
+        formManager = new FormManager(this); 
+        formManager.init();
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

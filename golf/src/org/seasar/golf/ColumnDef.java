@@ -21,6 +21,7 @@ public class ColumnDef {
     private boolean canEdit = false;
     private Class type = Object.class;
     private boolean insertCheckColumn = false;
+    private String hostName = null;
     
     /** Creates a new instance of ColumnDef */
     public ColumnDef() {
@@ -30,18 +31,21 @@ public class ColumnDef {
         this.name = name;
         
     }
-    public ColumnDef(String name, Class type, boolean canEdit) {
+    public ColumnDef(String name, Class type, boolean canEdit, String hostName ) {
+
         this.name = name;
         this.type = type;
         this.canEdit = canEdit;
-        
+        this.hostName = hostName;
     }
-     public ColumnDef(String name, Class type, boolean canEdit,boolean  insertCheckColumn, ValidatorDef validatorDef ) {
+     public ColumnDef(String name, Class type, boolean canEdit,boolean  insertCheckColumn, 
+             ValidatorDef validatorDef, String hostName ) {
         this.name = name;
         this.type = type;
         this.canEdit = canEdit;
         this.validatorDef = validatorDef;
         this.insertCheckColumn = insertCheckColumn;
+        this.hostName = hostName;
         
     }
 
@@ -83,6 +87,14 @@ public class ColumnDef {
 
     public void setInsertCheckColumn(boolean insertCheckColumn) {
         this.insertCheckColumn = insertCheckColumn;
+    }
+
+    public String getHostName() {
+        return hostName;
+    }
+
+    public void setHostName(String hostName) {
+        this.hostName = hostName;
     }
     
 }
