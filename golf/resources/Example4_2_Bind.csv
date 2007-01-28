@@ -1,2 +1,2 @@
-Class,Name,Validator, DisplayName  ,Required,BindName
+Class,Name,Validator, DisplayName  ,Required,HostName
 javax.swing.JTextField,jTextField1,min3max6string,Text,T,
