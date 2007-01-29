@@ -9,21 +9,21 @@
     <!-- S2Dao component. -->
     <component class="org.seasar.dao.impl.FieldAnnotationReaderFactory"/>
     <component class="org.seasar.dao.impl.ValueTypeFactoryImpl"/>
-    <component class="org.seasar.golf.uexample.ldb.allcommon.s2dao.S2DaoMetaDataFactoryImpl"/>
-    <component name="interceptor" class="org.seasar.golf.uexample.ldb.allcommon.s2dao.S2DaoInterceptor"/>
+    <component class="org.seasar.golf.uexample.dao.allcommon.s2dao.S2DaoMetaDataFactoryImpl"/>
+    <component name="interceptor" class="org.seasar.golf.uexample.dao.allcommon.s2dao.S2DaoInterceptor"/>
 
-    <component class="org.seasar.golf.uexample.ldb.allcommon.s2dao.S2BeanMetaDataFactoryImpl"/>
+    <component class="org.seasar.golf.uexample.dao.allcommon.s2dao.S2BeanMetaDataFactoryImpl"/>
     <component class="org.seasar.dao.impl.DaoNamingConventionImpl"/>
     <component class="org.seasar.dao.impl.BeanEnhancerImpl"/>
 
     <!-- Common column setup interceptor. -->
-    <component name="commonColumnSetupBeforeInsertInterceptor" class="org.seasar.golf.uexample.ldb.allcommon.interceptor.CommonColumnSetupBeforeInsertInterceptor"/>
-    <component name="commonColumnSetupBeforeUpdateInterceptor" class="org.seasar.golf.uexample.ldb.allcommon.interceptor.CommonColumnSetupBeforeUpdateInterceptor"/>
-    <component name="commonColumnSetupBeforeDeleteInterceptor" class="org.seasar.golf.uexample.ldb.allcommon.interceptor.CommonColumnSetupBeforeDeleteInterceptor"/>
+    <component name="commonColumnSetupBeforeInsertInterceptor" class="org.seasar.golf.uexample.dao.allcommon.interceptor.CommonColumnSetupBeforeInsertInterceptor"/>
+    <component name="commonColumnSetupBeforeUpdateInterceptor" class="org.seasar.golf.uexample.dao.allcommon.interceptor.CommonColumnSetupBeforeUpdateInterceptor"/>
+    <component name="commonColumnSetupBeforeDeleteInterceptor" class="org.seasar.golf.uexample.dao.allcommon.interceptor.CommonColumnSetupBeforeDeleteInterceptor"/>
 
 
     <!-- Dao selector. -->
-    <component name="daoSelector" class="org.seasar.golf.uexample.ldb.allcommon.CacheDaoSelector">
+    <component name="daoSelector" class="org.seasar.golf.uexample.dao.allcommon.CacheDaoSelector">
   
           <property name="vendorBhv">vendorBhv</property>
       
@@ -38,11 +38,11 @@
 
     <!-- vendor -->
   
-    <component name="vendorDao" class="org.seasar.golf.uexample.ldb.exdao.VendorDao">
+    <component name="vendorDao" class="org.seasar.golf.uexample.dao.exdao.VendorDao">
         <aspect>dbflute.interceptor</aspect>
     </component>
         
-    <component name="vendorBhv" class="org.seasar.golf.uexample.ldb.exbhv.VendorBhv">
+    <component name="vendorBhv" class="org.seasar.golf.uexample.dao.exbhv.VendorBhv">
         <aspect pointcut=".*NewTx">requiresNewTx</aspect>
         <aspect pointcut=".*Tx">requiredTx</aspect>
     

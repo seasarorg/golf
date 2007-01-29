@@ -59,7 +59,7 @@ public class Session {
     
     public boolean processMenuAction(String action) {
         boolean newWindow = false;
-        action = action.toUpperCase();
+        action = action.trim().toUpperCase();
         if (action.charAt(0)=='@'){
             newWindow = true;
             action = action.substring(1);
