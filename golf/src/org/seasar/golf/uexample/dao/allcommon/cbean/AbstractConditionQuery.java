@@ -214,15 +214,15 @@ public abstract class AbstractConditionQuery implements ConditionQuery {
     //                                                                              SubQuery
     //                                                                              ========
     protected void registerInScopeSubQuery(ConditionQuery subQuery
-                                 , String columnName, String reffererColumnName, String propertyName) {
+                                 , String columnName, String relatedColumnName, String propertyName) {
         final String realColumnName = getRealColumnName(columnName);
-        final String subQueryClause = getInScopeSubQuerySql(subQuery, reffererColumnName, propertyName);
+        final String subQueryClause = getInScopeSubQuerySql(subQuery, relatedColumnName, propertyName);
         getSqlClause().registerWhereClause(realColumnName + " in (" + subQueryClause + ")");
     }
 
     protected void registerInlineInScopeSubQuery(ConditionQuery subQuery
-                                 , String columnName, String reffererColumnName, String propertyName) {
-        final String subQueryClause = getInScopeSubQuerySql(subQuery, reffererColumnName, propertyName);
+                                 , String columnName, String relatedColumnName, String propertyName) {
+        final String subQueryClause = getInScopeSubQuerySql(subQuery, relatedColumnName, propertyName);
         final String finalClause = columnName + " in (" + subQueryClause + ")";
         if (isBaseQuery(this)) {
             getSqlClause().registerBaseTableInlineWhereClause(finalClause);
@@ -232,8 +232,8 @@ public abstract class AbstractConditionQuery implements ConditionQuery {
     }
 
     protected String getInScopeSubQuerySql(ConditionQuery subQuery
-                                 , String reffererColumnName, String propertyName) {
-        final String selectClause = "select " + subQuery.getAliasName() + "." + reffererColumnName;
+                                 , String relatedColumnName, String propertyName) {
+        final String selectClause = "select " + subQuery.getAliasName() + "." + relatedColumnName;
         final String fromClause = subQuery.getSqlClause().getFromClause();
         final String oldStr = ".conditionQuery.";
         final String newStr = "." + getLocationBase(propertyName) + ".";
@@ -242,21 +242,21 @@ public abstract class AbstractConditionQuery implements ConditionQuery {
     }
 
     protected void registerExistsSubQuery(ConditionQuery subQuery
-                                 , String columnName, String reffererColumnName, String propertyName) {
+                                 , String columnName, String relatedColumnName, String propertyName) {
         final String realColumnName = getRealColumnName(columnName);
-        final String subQueryClause = getExistsSubQuerySql(subQuery, realColumnName, reffererColumnName, propertyName);
+        final String subQueryClause = getExistsSubQuerySql(subQuery, realColumnName, relatedColumnName, propertyName);
         getSqlClause().registerWhereClause("exists (" + subQueryClause + ")");
     }
 
 // *Unsupport ExistsSubQuery as inline because it's so dangerous.
 
     protected String getExistsSubQuerySql(ConditionQuery subQuery
-                                 , String realColumnName, String reffererColumnName, String propertyName) {
-        final String selectClause = "select " + subQuery.getAliasName() + "." + reffererColumnName;
+                                 , String realColumnName, String relatedColumnName, String propertyName) {
+        final String selectClause = "select " + subQuery.getAliasName() + "." + relatedColumnName;
         final String fromClause = subQuery.getSqlClause().getFromClause();
         final String oldStr = ".conditionQuery.";
         final String newStr = "." + getLocationBase(propertyName) + ".";
-        final String parentCondition = " and " + reffererColumnName + " = " + realColumnName;
+        final String parentCondition = " and " + relatedColumnName + " = " + realColumnName;
         final String whereClause = replaceString(subQuery.getSqlClause().getWhereClause() + parentCondition, oldStr, newStr);
         return selectClause + " " + fromClause + " " + whereClause;
     }

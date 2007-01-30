@@ -416,7 +416,6 @@ public abstract class BsVendorBhv extends org.seasar.golf.uexample.dao.allcommon
      * Insert.
      * 
      * @param entity Entity. (NotNull)
-     * @return Inserted count.
      */
     public void insert(Vendor entity) {
         assertEntityNotNull(entity);
@@ -431,7 +430,6 @@ public abstract class BsVendorBhv extends org.seasar.golf.uexample.dao.allcommon
      * Update.
      * 
      * @param entity Entity. (NotNull)
-     * @return Updated count.
      */
     public void update(Vendor entity) {
         assertEntityNotNull(entity);
@@ -449,7 +447,6 @@ public abstract class BsVendorBhv extends org.seasar.golf.uexample.dao.allcommon
      * Update after select.
      * 
      * @param entity Entity. This must contain primary-key value at least. (NotNull)
-     * @return Updated count.
      * @exception org.seasar.golf.uexample.dao.allcommon.exception.RecordHasAlreadyBeenDeletedException
      */
     public void updateAfterSelect(Vendor entity) {
@@ -470,7 +467,6 @@ public abstract class BsVendorBhv extends org.seasar.golf.uexample.dao.allcommon
      * {update: modified only}
      * 
      * @param entity Entity. This must contain primary-key value at least(Except use identity). (NotNull)
-     * @return Updated count.
      */
     public void insertOrUpdateAfterSelect(Vendor entity) {
         assertEntityNotNull(entity);
@@ -540,15 +536,35 @@ public abstract class BsVendorBhv extends org.seasar.golf.uexample.dao.allcommon
      * Delete.
      * 
      * @param entity Entity. (NotNull)
-     * @return Deleted count.
      */
-    public int delete(Vendor entity) {
+    public void delete(Vendor entity) {
         assertEntityNotNull(entity);
-        return delegateDelete(entity);
+        final int deletedCount = delegateDelete(entity);
+        if (deletedCount != 1) {
+            throw new org.seasar.dao.NotSingleRowUpdatedRuntimeException(entity, deletedCount);
+        }
     }
 
     protected void doRemove(Entity entity) {
         delete((Vendor)entity);
+    }
+
+    /**
+     * Delete after select.
+     * 
+     * @param entity Entity. This must contain primary-key value at least. (NotNull)
+     * @exception org.seasar.golf.uexample.dao.allcommon.exception.RecordHasAlreadyBeenDeletedException
+     */
+    public void deleteAfterSelect(Vendor entity) {
+        assertEntityNotNullAndHasPrimaryKeyValue(entity);
+        final VendorCB cb = newMyConditionBean();
+        cb.acceptPrimaryKeyMapString(entity.extractPrimaryKeyMapString());
+        selectEntityWithDeletedCheck(cb);
+        delete(entity);
+    }
+
+    protected void doRemoveAfterSelect(Entity entity) {
+        deleteAfterSelect((Vendor)entity);
     }
 
     // =====================================================================================

@@ -213,22 +213,7 @@ public abstract class AbstractBehaviorWritable extends AbstractBehaviorReadable 
      */
     public void createOrModifyAfterSelect(org.seasar.golf.uexample.dao.allcommon.Entity entity) {
         assertEntityNotNull(entity);
-        if (!entity.hasPrimaryKeyValue()) {
-            create(entity);
-            return;
-        }
-        org.seasar.golf.uexample.dao.allcommon.Entity currentEntity = null;
-        try {
-            final ConditionBean cb = newConditionBean();
-            cb.acceptPrimaryKeyMapString(entity.extractPrimaryKeyMapString());
-            currentEntity = readEntityWithDeletedCheck(cb);
-        } catch (org.seasar.golf.uexample.dao.allcommon.exception.RecordHasAlreadyBeenDeletedException e) {
-            create(entity);
-            return;
-        }
-        assertEntityNotNullAndHasPrimaryKeyValue(entity);
-        mergeEntity(entity, currentEntity);
-        modify(entity);
+        doCreateOrModifyAfterSelect(entity);
     }
 
     abstract protected void doCreateOrModifyAfterSelect(Entity entity);
@@ -254,6 +239,19 @@ public abstract class AbstractBehaviorWritable extends AbstractBehaviorReadable 
     }
 
     abstract protected void doRemove(Entity entity);
+
+    /**
+     * Remove after select.
+     * 
+     * @param entity Entity. This must contain primary-key value at least. (NotNull)
+     * @exception org.seasar.golf.uexample.dao.allcommon.exception.RecordHasAlreadyBeenDeletedException
+     */
+    public void removeAfterSelect(Entity entity) {
+        assertEntityNotNullAndHasPrimaryKeyValue(entity);
+        doRemoveAfterSelect(entity);
+    }
+
+    abstract protected void doRemoveAfterSelect(Entity entity);
 
     // =====================================================================================
     //                                                                    Basic Batch Update

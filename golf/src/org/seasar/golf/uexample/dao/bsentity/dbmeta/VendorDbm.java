@@ -373,6 +373,16 @@ public class VendorDbm extends AbstractDBMeta {
         return "org.seasar.golf.uexample.dao.exdao.VendorDao";
     }
 
+    /**
+     * This method implements the method that is declared at super.
+     * 
+     * @return The type-name of behavior. (NotNull)
+     */ 
+    public String getBehaviorTypeName() {
+        return "org.seasar.golf.uexample.dao.exbhv.VendorBhv";
+    }
+
+
     // =====================================================================================
     //                                                                           Type Getter
     //                                                                           ===========

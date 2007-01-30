@@ -210,6 +210,13 @@ public interface DBMeta {
      */ 
     public String getDaoTypeName();
 
+    /**
+     * Get the type-name of behavior.
+     * 
+     * @return The type-name of behavior. (Nullable: If the behavior does not exist)
+     */ 
+    public String getBehaviorTypeName();
+
     // =====================================================================================
     //                                                                           Type Getter
     //                                                                           ===========

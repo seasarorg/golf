@@ -134,7 +134,7 @@ public abstract class AbstractBsVendorCQ extends AbstractConditionQuery {
     public void setId_NotInScope(java.util.List<java.math.BigDecimal> valueList) {
         registerId(ConditionKey.CK_NOT_IN_SCOPE, valueList);
     }
-                                    
+                                          
     /**
      * Register condition of id.
      * 
@@ -255,7 +255,7 @@ public abstract class AbstractBsVendorCQ extends AbstractConditionQuery {
     public void setVcode_NotInScope(java.util.List<String> valueList) {
         registerVcode(ConditionKey.CK_NOT_IN_SCOPE, filterRemoveEmptyStringFromList(valueList));
     }
-                                        
+                                              
     /**
      * Register condition of vcode.
      * 
@@ -376,7 +376,7 @@ public abstract class AbstractBsVendorCQ extends AbstractConditionQuery {
     public void setShortname_NotInScope(java.util.List<String> valueList) {
         registerShortname(ConditionKey.CK_NOT_IN_SCOPE, filterRemoveEmptyStringFromList(valueList));
     }
-                                        
+                                              
     /**
      * Register condition of shortname.
      * 
@@ -497,7 +497,7 @@ public abstract class AbstractBsVendorCQ extends AbstractConditionQuery {
     public void setName_NotInScope(java.util.List<String> valueList) {
         registerName(ConditionKey.CK_NOT_IN_SCOPE, filterRemoveEmptyStringFromList(valueList));
     }
-                                        
+                                              
     /**
      * Register condition of name.
      * 
@@ -618,7 +618,7 @@ public abstract class AbstractBsVendorCQ extends AbstractConditionQuery {
     public void setTelephone_NotInScope(java.util.List<String> valueList) {
         registerTelephone(ConditionKey.CK_NOT_IN_SCOPE, filterRemoveEmptyStringFromList(valueList));
     }
-                                    
+                                          
     /**
      * Set the value of telephone using isNull. { is null }
      */
@@ -737,7 +737,7 @@ public abstract class AbstractBsVendorCQ extends AbstractConditionQuery {
     public void setVersionno_NotInScope(java.util.List<java.math.BigDecimal> valueList) {
         registerVersionno(ConditionKey.CK_NOT_IN_SCOPE, valueList);
     }
-                                    
+                                          
     /**
      * Register condition of versionno.
      * 

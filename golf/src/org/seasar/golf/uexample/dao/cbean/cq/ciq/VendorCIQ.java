@@ -52,30 +52,30 @@ public class VendorCIQ extends AbstractBsVendorCQ {
         return _myCQ.getId();
     }
 
-                                                  
+                                                        
     protected ConditionValue getCValueVcode() {
         return _myCQ.getVcode();
     }
 
-                                                  
+                                                        
     protected ConditionValue getCValueShortname() {
         return _myCQ.getShortname();
     }
 
-                                                  
+                                                        
     protected ConditionValue getCValueName() {
         return _myCQ.getName();
     }
 
-                                                  
+                                                        
     protected ConditionValue getCValueTelephone() {
         return _myCQ.getTelephone();
     }
 
-                                                      
+                                                            
     protected ConditionValue getCValueVersionno() {
         return _myCQ.getVersionno();
     }
 
-                                                  
+                                                        
 }

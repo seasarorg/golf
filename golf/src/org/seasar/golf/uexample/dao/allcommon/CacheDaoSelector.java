@@ -6,13 +6,24 @@ import org.seasar.golf.uexample.dao.allcommon.bhv.BehaviorWritable;
 import org.seasar.golf.uexample.dao.allcommon.dbmeta.DBMetaInstanceHandler;
 import org.seasar.golf.uexample.dao.allcommon.dbmeta.DBMeta;
 
+import org.seasar.framework.container.S2Container;
 
 /**
  * The implementation of dao-selector.
- * 
+ * <pre>
+ * Long long ago this object have cache of dao and bhv.
+ * But the cache cause wrong performance when this is initialized.
+ * So now this object don't have cache.
+ * </pre>
  * @author DBFlute(AutoGenerator)
  */
 public class CacheDaoSelector implements DaoSelector {
+
+    protected S2Container _container;
+
+    public void setContainer(S2Container container) {
+        this._container = container;
+    }
 
     /**
      * Get dao-readable by dao type.
@@ -22,13 +33,7 @@ public class CacheDaoSelector implements DaoSelector {
      */
     public DaoReadable getRDao(Class daoType) {
         assertObjectNotNull("daoType", daoType);
-        setupDaoCacheMap();
-        final DaoReadable dao = (DaoReadable)_daoCacheMap.get(daoType);
-        if (dao == null) {
-            String msg = "The daoCacheMap does not have the dao-type: daoType=" + daoType + " daoCacheMap=" + _daoCacheMap;
-            throw new IllegalStateException(msg);
-        }
-        return dao;
+        return (DaoReadable)_container.getComponent(daoType);
     }
 
     /**
@@ -95,13 +100,7 @@ public class CacheDaoSelector implements DaoSelector {
      */
     public BehaviorReadable getRBhv(Class bhvType) {
         assertObjectNotNull("bhvType", bhvType);
-        setupBhvCacheMap();
-        final BehaviorReadable bhv = (BehaviorReadable)_bhvCacheMap.get(bhvType);
-        if (bhv == null) {
-            String msg = "The bhvCacheMap does not have the bhv-type: bhvType=" + bhvType + " bhvCacheMap=" + _bhvCacheMap;
-            throw new IllegalStateException(msg);
-        }
-        return bhv;
+        return (BehaviorReadable)_container.getComponent(bhvType);
     }
 
     /**
@@ -167,13 +166,18 @@ public class CacheDaoSelector implements DaoSelector {
      * @return Bhv-type. (NotNull)
      */
     protected Class getBhvType(DBMeta dbmeta) {
-        assertObjectNotNull("dbmeta", dbmeta);
-        setupDaoBhvMap();
-        if (_daoBhvMap == null) {
-            String msg = "The daoBhvMap has not been initialized yet!";
+        final String bhvTypeName = dbmeta.getBehaviorTypeName();
+        if (bhvTypeName == null) {
+            String msg = "The dbmeta.getBehaviorTypeName() should not return null: dbmeta=" + dbmeta;
             throw new IllegalStateException(msg);
         }
-        return (Class)_daoBhvMap.get(getDaoType(dbmeta));
+        final Class bhvType;
+        try {
+            bhvType = Class.forName(bhvTypeName);
+        } catch (ClassNotFoundException e) {
+            throw new RuntimeException("The class does not exist: " + bhvTypeName, e);
+        }
+        return bhvType;
     }
 
     protected Class getDaoType(DBMeta dbmeta) {
@@ -191,52 +195,13 @@ public class CacheDaoSelector implements DaoSelector {
         return daoType;
     }
 
-    protected java.util.Map<Class, DaoReadable> _daoCacheMap;
-    protected void setupDaoCacheMap() {
-        if (_daoCacheMap == null) {
-            _daoCacheMap = new java.util.HashMap<Class, DaoReadable>();
-
-            _daoCacheMap.put(org.seasar.golf.uexample.dao.exdao.VendorDao.class, getVendorDao());
-
-        }
+    // =====================================================================================
+    //                                                                               Destroy
+    //                                                                               =======
+    public void destroy() {
+        _container = null;
     }
 
-    protected org.seasar.golf.uexample.dao.exdao.VendorDao _vendorDao;
-    public void setVendorDao(org.seasar.golf.uexample.dao.exdao.VendorDao dao) {
-        _vendorDao = dao;
-    }
-    public org.seasar.golf.uexample.dao.exdao.VendorDao getVendorDao() {
-        return _vendorDao;
-    }
-
-    protected java.util.Map<Class, BehaviorReadable> _bhvCacheMap;
-    protected void setupBhvCacheMap() {
-        if (_bhvCacheMap == null) {
-            _bhvCacheMap = new java.util.HashMap<Class, BehaviorReadable>();
-  
-            _bhvCacheMap.put(org.seasar.golf.uexample.dao.exbhv.VendorBhv.class, getVendorBhv());
-  
-        }
-    }
-  
-    protected java.util.Map<Class, Class> _daoBhvMap;
-    protected void setupDaoBhvMap() {
-        if (_daoBhvMap == null) {
-            _daoBhvMap = new java.util.HashMap<Class, Class>();
-  
-            _daoBhvMap.put(org.seasar.golf.uexample.dao.exdao.VendorDao.class, org.seasar.golf.uexample.dao.exbhv.VendorBhv.class);
-  
-        }
-    }
-  
-    protected org.seasar.golf.uexample.dao.exbhv.VendorBhv _vendorBhv;
-    public void setVendorBhv(org.seasar.golf.uexample.dao.exbhv.VendorBhv bhv) {
-        _vendorBhv = bhv;
-    }
-    public org.seasar.golf.uexample.dao.exbhv.VendorBhv getVendorBhv() {
-        return _vendorBhv;
-    }
-  
     // ----------------------------------------------------------------
     //                                                    Assert Object
     //                                                    -------------

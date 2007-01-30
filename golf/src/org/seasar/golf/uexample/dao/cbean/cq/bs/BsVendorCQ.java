@@ -191,7 +191,7 @@ public class BsVendorCQ extends AbstractBsVendorCQ {
         return getId();
     }
 
-                                                  
+                                                        
     /**
      * Add order-by of id as ASC.
      * 
@@ -229,7 +229,7 @@ public class BsVendorCQ extends AbstractBsVendorCQ {
         return getVcode();
     }
 
-                                                  
+                                                        
     /**
      * Add order-by of vcode as ASC.
      * 
@@ -267,7 +267,7 @@ public class BsVendorCQ extends AbstractBsVendorCQ {
         return getShortname();
     }
 
-                                                  
+                                                        
     /**
      * Add order-by of shortname as ASC.
      * 
@@ -305,7 +305,7 @@ public class BsVendorCQ extends AbstractBsVendorCQ {
         return getName();
     }
 
-                                                  
+                                                        
     /**
      * Add order-by of name as ASC.
      * 
@@ -343,7 +343,7 @@ public class BsVendorCQ extends AbstractBsVendorCQ {
         return getTelephone();
     }
 
-                                                      
+                                                            
     /**
      * Add order-by of telephone as ASC.
      * 
@@ -381,7 +381,7 @@ public class BsVendorCQ extends AbstractBsVendorCQ {
         return getVersionno();
     }
 
-                                                  
+                                                        
     /**
      * Add order-by of versionno as ASC.
      * 
