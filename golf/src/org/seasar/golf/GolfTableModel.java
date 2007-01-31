@@ -32,6 +32,7 @@ public class GolfTableModel extends AbstractTableModel implements ComponentValid
     private String rowDisplay = "çs";
     private boolean rowDisplayPre = false;
     private FormValidationManager formValidationManager= null;
+    private String hostName = null;
     
     /** Creates a new instance of GolfTableModel */
     public GolfTableModel() {
@@ -275,6 +276,14 @@ public class GolfTableModel extends AbstractTableModel implements ComponentValid
                     jtable.getCellEditor(jtable.getEditingRow(), jtable.getEditingColumn()).stopCellEditing();          
                 }
        }       
+    }
+
+    public String getHostName() {
+        return hostName;
+    }
+
+    public void setHostName(String hostName) {
+        this.hostName = hostName;
     }
     
 }

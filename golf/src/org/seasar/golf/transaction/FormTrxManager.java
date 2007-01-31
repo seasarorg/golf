@@ -10,6 +10,7 @@
 package org.seasar.golf.transaction;
 
 import java.util.Hashtable;
+import org.seasar.golf.GolfTableModel;
 import org.seasar.golf.containerFrame.FormManager;
 
 /**
@@ -21,6 +22,7 @@ public class FormTrxManager {
     /** Creates a new instance of FormTrxManager */
     private Hashtable fieldToHost = new Hashtable();
     private Hashtable hostToField = new Hashtable();    
+    private Hashtable hostToTableModel = new Hashtable();  
     private FormManager formManager = null;
     public FormTrxManager(FormManager formManager) {
         this.formManager = formManager;
@@ -29,7 +31,9 @@ public class FormTrxManager {
         fieldToHost.put(field, host);
         fieldToHost.put(host, field);        
     }
-
+    public void initTable(String hostName, GolfTableModel gtm){
+        hostToTableModel.put( hostName, gtm);
+    }
     public FormManager getFormManager() {
         return formManager;
     }

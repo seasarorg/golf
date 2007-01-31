@@ -141,28 +141,35 @@ public class FormManager {
 
 	public void SetTableColumnFromCsvResource(
 			JTable jt, String tableDisplayName, GolfTableModel gtm, String path) {
+                SetTableColumnFromCsvResource(jt, tableDisplayName, gtm, null, path);
+	}
+        public void SetTableColumnFromCsvResource(
+			JTable jt, String tableDisplayName,String hostName, GolfTableModel gtm, String path) {
 		TableData td = new TableData();
 		TableUtil.ReadCsvFromResource(td, path);
-		FormManagerUtil.SetTableColumnSub(jt, tableDisplayName, gtm, td, formValidationManager);
+		FormManagerUtil.SetTableColumnSub(jt, tableDisplayName, gtm, td, formValidationManager, hostName);
 	}
-	
 	public void SetTableColumnFromCsvResource(JTable jt, String tableDisplayName,
-			GolfTableModel gtm, String path, String charsetName) {
+                    GolfTableModel gtm, String path, String charsetName) {
+                SetTableColumnFromCsvResource(jt, tableDisplayName, gtm, null, path, charsetName);
+	}
+	public void SetTableColumnFromCsvResource(JTable jt, String tableDisplayName,
+			GolfTableModel gtm, String hostName, String path, String charsetName) {
 		TableData td = new TableData();
 		TableUtil.ReadCsvFromResource(td, path, charsetName);
-		FormManagerUtil.SetTableColumnSub(jt, tableDisplayName, gtm, td, formValidationManager);
-	}
+		FormManagerUtil.SetTableColumnSub(jt, tableDisplayName, gtm, td, formValidationManager, hostName);
+	}        
 	public void SetTableColumnFromCsv(JTable jt, String tableDisplayName,
 			GolfTableModel gtm, String path) {
 		TableData td = new TableData();
 		TableUtil.ReadFromCsv(td, path);
-		FormManagerUtil.SetTableColumnSub(jt, tableDisplayName, gtm, td, formValidationManager);
+		FormManagerUtil.SetTableColumnSub(jt, tableDisplayName, gtm, td, formValidationManager, null);
 	}
 	public void SetTableColumnFromCsv(JTable jt,  String tableDisplayName,
 			GolfTableModel gtm,String path, String charsetName) {
 		TableData td = new TableData();
 		TableUtil.ReadFromCsv(td, path, charsetName);	
-		FormManagerUtil.SetTableColumnSub(jt, tableDisplayName, gtm, td, formValidationManager);
+		FormManagerUtil.SetTableColumnSub(jt, tableDisplayName, gtm, td, formValidationManager, null);
 	}
 
 	

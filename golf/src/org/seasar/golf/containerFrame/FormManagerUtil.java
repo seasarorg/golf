@@ -50,8 +50,10 @@ public class FormManagerUtil {
             return (GolfFormInterface) SingletonS2ContainerFactory.getContainer().getComponent(frameName);
         }
 	public static  void SetTableColumnSub(JTable jt, String tableDisplayName, 
-			GolfTableModel gtm, TableData td, FormValidationManager formValidationManager) {
+			GolfTableModel gtm, TableData td, FormValidationManager formValidationManager, String tableHostName) {
 		ColumnDef[] columnDefs = new ColumnDef[td.getRowCount()];
+                gtm.setHostName(tableHostName);
+                formValidationManager.getFormManager().getFormTrxManager().initTable(tableHostName, gtm);
 		for(int i = 0; i < td.getDataArray().size(); i++ ) {
                     
                         String field = (String) td.getTextAt(i,"field");
