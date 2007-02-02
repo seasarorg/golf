@@ -54,9 +54,6 @@ public class FormBindingManager implements PropertyChangeListener, ComponentVali
         bind (name, null, null, false, null);
 
     }
-    public void bind(String name, GolfValidator validator, String displayName, boolean required) {
-         bind(name, validator, displayName, required, null ); 
-     }
     public void bind(String name, GolfValidator validator, String displayName, boolean required, Object choice) {
         String valueModelClass = "ValueHolder";
         JComponent jc = formManager.getComponentFromName(name);
@@ -70,9 +67,6 @@ public class FormBindingManager implements PropertyChangeListener, ComponentVali
         vh.addValueChangeListener(this);
         Bind(jc, vh, choice); 
 
-    }
-    public void Bind(JComponent jc, ValueModel vm) {
-    	Bind(jc, vm, null);
     }
     public void Bind(JComponent jc, ValueModel vm, Object choice) {
 //       if (jc instanceof LongLabel) {

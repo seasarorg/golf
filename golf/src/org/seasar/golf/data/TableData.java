@@ -42,7 +42,7 @@ public class TableData {
     public int getColumnNo(String columnName) {
     	Integer i = (Integer) columnNameToNo.get(columnName.toLowerCase());
     	if (i == null) {
-    		throw new IllegalArgumentException("ColumnName =" + columnName);
+    		return -1;
     	}
     	return ((Integer) columnNameToNo.get(columnName.toLowerCase())).intValue();
     }
@@ -64,11 +64,15 @@ public class TableData {
     public Object getValueAt(int rowIndex, String columnName) {
         ArrayList rowArray = (ArrayList)dataArray.get(rowIndex);
         int columnNo = getColumnNo(columnName.trim());
-        return (columnNo >= rowArray.size() ) ? null:
+        return (columnNo == -1 || columnNo >= rowArray.size() ) ? null:
         	rowArray.get(getColumnNo(columnName.trim()));
     }
     public String getTextAt(int rowIndex, String columnName){
-    	String s = (String)getValueAt(rowIndex, columnName);
+        String s = null;
+        Object O = getValueAt(rowIndex, columnName);
+        if (O != null) {
+            s = getValueAt(rowIndex, columnName).toString();
+        }
     	return (s == null) ? null:s.trim();
     }
     

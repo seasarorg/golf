@@ -32,7 +32,9 @@ public class FormTrxManager {
         fieldToHost.put(host, field);        
     }
     public void initTable(String hostName, GolfTableModel gtm){
-        hostToTableModel.put( hostName, gtm);
+        if (hostName != null) {
+            hostToTableModel.put( hostName, gtm);
+        }
     }
     public FormManager getFormManager() {
         return formManager;

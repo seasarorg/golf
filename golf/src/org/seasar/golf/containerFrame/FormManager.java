@@ -141,7 +141,7 @@ public class FormManager {
 
 	public void SetTableColumnFromCsvResource(
 			JTable jt, String tableDisplayName, GolfTableModel gtm, String path) {
-                SetTableColumnFromCsvResource(jt, tableDisplayName, gtm, null, path);
+                SetTableColumnFromCsvResource(jt, tableDisplayName, null, gtm,  path);
 	}
         public void SetTableColumnFromCsvResource(
 			JTable jt, String tableDisplayName,String hostName, GolfTableModel gtm, String path) {

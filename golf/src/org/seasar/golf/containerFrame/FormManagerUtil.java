@@ -108,8 +108,9 @@ public class FormManagerUtil {
                         }
                         
 			String smodel = ((String) td.getTextAt(i,"model"));
+                        String choice = ((String) td.getTextAt(i,"choice"));
 			formManager.getFormBindingManager().Bind((JComponent)jc, 
-                                formManager.getFormBindingManager().getValueModel(smodel));
+                                formManager.getFormBindingManager().getValueModel(smodel), choice);
 		}
 		
 	}     
@@ -122,8 +123,9 @@ public class FormManagerUtil {
 			String s =((String) td.getTextAt(i,"validator"));
 			GolfValidator v = (s != null && s.length() > 0) ? ValidationUtil.getValidator(s):null;
 			boolean required = getBooleanValueFromTable(td, i,"required" );
+                        String choice =((String) td.getTextAt(i,"choice"));
 			formManager.getFormBindingManager().
-                                bind(name, v, (String)td.getTextAt(i,"displayname"), required);
+                                bind(name, v, (String)td.getTextAt(i,"displayname"), required, choice);
                         String bind =((String) td.getTextAt(i,"hostname"));
                         if (bind != null) {
                             formManager.getFormTrxManager().initField(name, bind);
