@@ -1,8 +1,8 @@
 Class,Name,Validator, DisplayName  ,Required,HostName,Choice
-javax.swing.JTextField,jTextField1,min3max6string,Text,T,,
-org.seasar.golf.component.LongField,longField1,min1max10long,整数,T,,
-javax.swing.JTextField,jTextField3,shortDateValidatorMin0,YY/MM/DD日付,,,
-javax.swing.JTextField,jTextField4,longDateValidator,YYYY/MM/DD日付,T,,
-javax.swing.JComboBox,jComboBox1,,Combo,T,,
-javax.swing.JCheckBox,jCheckBox1,,Check,,,
-javax.swing.JRadioButton,jRadioButton1,,Radio1,T,,test1
+javax.swing.JTextField,jTextField1,min3max6string,Text,T,Text1,
+org.seasar.golf.component.LongField,longField1,min1max10long,整数,T,Long1,
+javax.swing.JTextField,jTextField3,shortDateValidatorMin0,YY/MM/DD日付,,Text3,
+javax.swing.JTextField,jTextField4,longDateValidator,YYYY/MM/DD日付,T,Text4,
+javax.swing.JComboBox,jComboBox1,,Combo,T,Combo1,
+javax.swing.JCheckBox,jCheckBox1,,Check,,Check1,
+javax.swing.JRadioButton,jRadioButton1,,Radio1,T,Radio1,test1
