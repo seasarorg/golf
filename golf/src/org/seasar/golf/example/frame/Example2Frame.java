@@ -181,6 +181,9 @@ public class Example2Frame extends javax.swing.JFrame  implements GolfFormInterf
         }
     }
 
+    public void processAction(Hashtable params) {
+    }
+
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;

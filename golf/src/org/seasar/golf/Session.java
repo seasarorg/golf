@@ -11,6 +11,7 @@ package org.seasar.golf;
 
 import java.awt.event.KeyEvent;
 import java.util.ArrayList;
+import java.util.Hashtable;
 import javax.swing.JFrame;
 import javax.swing.JTextField;
 import org.seasar.framework.container.factory.SingletonS2ContainerFactory;
@@ -27,7 +28,7 @@ public class Session {
     private Connection connection = null;
     private JFrame menu = null;
     private ArrayList formManagers = new ArrayList();
-
+    private Hashtable sessionData = new Hashtable();
     
     /** Creates a new instance of Session */
     public Session(Connection con) {
@@ -108,6 +109,10 @@ public class Session {
 
     public ContainerManager getContainerManager() {
         return containerManager;
+    }
+
+    public Hashtable getSessionData() {
+        return sessionData;
     }
     
 }

@@ -150,4 +150,7 @@ public class Example4_2Frame extends javax.swing.JFrame implements GolfFormInter
         formManager.setValidationFromCsvResource("Example4_2_bind.csv");
         formManager.setBindFromCsvResource("Example4_2_bind2.csv"); 
     }
+
+    public void processAction(Hashtable params) {
+    }
 }

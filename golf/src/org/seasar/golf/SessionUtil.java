@@ -26,10 +26,15 @@ public class SessionUtil {
         public static void processAction(FormAction formAction, Session session) {
             switch (formAction.getFormStack()) {
                 case MENU :
-                        setForm(0, formAction, session, session.getConnection().getLoginInfo());
+                        if (session.getFormManagers().size()==0) {
+                            createForm(0, formAction, session, session.getConnection().getLoginInfo());
+                        }
+                        setForm(0, session, null);
                     break;
                 case FIRST :
-                        setForm(1, formAction, session, null);
+                        //removeUpperForm(0, session);
+                        createForm(1, formAction, session,null);
+                        setForm(1, session, null);
                     break;    
                 case NEWMENU :
                         session.getConnection().addSession();
@@ -47,10 +52,9 @@ public class SessionUtil {
             }
 
         }   
-
-        public static void setForm(int index, FormAction formAction, Session session, Hashtable params ){
-                    if (session.getFormManagers().size() == index) {
-                        JFrame form = Factory.createForm(formAction.getActionItem().getForm()+"Frame");
+        
+        public static void createForm(int index, FormAction formAction, Session session, Hashtable params) {
+                         JFrame form = Factory.createForm(formAction.getActionItem().getForm()+"Frame");
                         String parameter = formAction.getActionItem().getParameter();
                         Hashtable actionParam = getActionParameter(parameter);
                         if (params != null) {
@@ -60,12 +64,14 @@ public class SessionUtil {
                         }
                         FormManager formManager = ((GolfFormInterface)form).getFormManager();
                         formManager.setSession(session);
-                        session.getFormManagers().add(formManager);
-                    }
-                    removeUpperForm(index, session);
-                    session.getContainerManager().setForm(
-                            (GolfFormInterface)((FormManager) session.getFormManagers().get(index
-                            )).getFrame());        
+                        removeUpperForm(index - 1 , session);
+                        session.getFormManagers().add(formManager);           
+        }
+        public static void setForm(int index, Session session, Hashtable params ){
+                    removeUpperForm(index , session);
+                    GolfFormInterface golfForm =   (GolfFormInterface)((FormManager) session.getFormManagers().get(index
+                            )).getFrame();
+                    session.getContainerManager().setForm( golfForm);        
         }
 
         public static void removeUpperForm(int index, Session session) {

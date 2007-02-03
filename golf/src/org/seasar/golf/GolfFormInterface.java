@@ -24,5 +24,5 @@ public interface GolfFormInterface {
     JMenuBar getMenu();
     JPanel getContentPanel();
     void initBinding(Hashtable params);
-   
+    void processAction(Hashtable params);    
 }

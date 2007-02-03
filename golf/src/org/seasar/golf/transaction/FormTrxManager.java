@@ -28,16 +28,28 @@ public class FormTrxManager {
         this.formManager = formManager;
     }
     public void initField(String field, String host) {
-        fieldToHost.put(field, host);
-        fieldToHost.put(host, field);        
+        getFieldToHost().put(field, host);
+        getFieldToHost().put(host, field);        
     }
     public void initTable(String hostName, GolfTableModel gtm){
         if (hostName != null) {
-            hostToTableModel.put( hostName, gtm);
+            getHostToTableModel().put( hostName, gtm);
         }
     }
     public FormManager getFormManager() {
         return formManager;
+    }
+
+    public Hashtable getFieldToHost() {
+        return fieldToHost;
+    }
+
+    public Hashtable getHostToField() {
+        return hostToField;
+    }
+
+    public Hashtable getHostToTableModel() {
+        return hostToTableModel;
     }
     
 }

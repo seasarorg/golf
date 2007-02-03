@@ -8,7 +8,6 @@ package org.seasar.golf.example.frame;
 
 import com.jgoodies.binding.list.SelectionInList;
 import java.util.Hashtable;
-import javax.swing.JFrame;
 import javax.swing.JMenuBar;
 import javax.swing.JPanel;
 import org.seasar.golf.GolfFormInterface;
@@ -273,6 +272,9 @@ public class Example1Frame extends javax.swing.JFrame  implements GolfFormInterf
 
     public JPanel getContentPanel() {
         return null;
+    }
+
+    public void processAction(Hashtable params) {
     }
 
     

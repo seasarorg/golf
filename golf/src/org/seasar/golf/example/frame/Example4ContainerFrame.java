@@ -226,4 +226,7 @@ public class Example4ContainerFrame extends javax.swing.JFrame implements GolfFo
     public void initBinding(Hashtable params) {
            containerMgr = new ContainerManager(this);        
     }
+
+    public void processAction(Hashtable params) {
+    }
 }

@@ -10,7 +10,6 @@
 package org.seasar.golf.menu;
 
 import java.util.Hashtable;
-import org.seasar.golf.data.TableData;
 
 /**
  *
