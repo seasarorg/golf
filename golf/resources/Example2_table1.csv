@@ -1,7 +1,7 @@
 Field,Class,CanEdit,InsCheck,Validator,DisplayName,Required,HostName
-id,Integer,,,,,,
-ItemNo,String,T,,,,T,
-StockNo,String,T,T,min3max6string,,T,
-Name,String,,,,,,
-Qty,Integer,T,T,,,T,
-Date,String,T,T,longDateValidator,,T,
+id,Integer,,,,,,id
+ItemNo,String,T,,,,T,itemno
+StockNo,String,T,T,min3max6string,,T,stockno
+Name,String,,,,,,name
+Qty,Integer,T,T,,,T,qty
+Date,String,T,T,longDateValidator,,T,date
