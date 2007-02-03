@@ -9,7 +9,6 @@
 
 package org.seasar.golf.transaction;
 
-import java.util.Enumeration;
 import org.seasar.golf.containerFrame.FormManager;
 
 /**

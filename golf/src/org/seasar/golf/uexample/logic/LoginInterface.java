@@ -9,7 +9,7 @@
 
 package org.seasar.golf.uexample.logic;
 
-import java.util.Hashtable;
+import java.util.HashMap;
 
 /**
  *
@@ -18,7 +18,7 @@ import java.util.Hashtable;
 public interface LoginInterface {
     
     /** Creates a new instance of LoginInterface */
-    public Hashtable login(String userId, String password);
+    public HashMap login(String userId, String password);
         
    
 }

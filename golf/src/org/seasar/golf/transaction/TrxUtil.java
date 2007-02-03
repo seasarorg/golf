@@ -11,6 +11,7 @@ package org.seasar.golf.transaction;
 
 import java.util.ArrayList;
 import java.util.Enumeration;
+import java.util.HashMap;
 import org.seasar.golf.ColumnDef;
 import org.seasar.golf.GolfTableModel;
 import org.seasar.golf.containerFrame.FormManager;
@@ -26,11 +27,14 @@ public class TrxUtil {
     private TrxUtil() {
     }
     public static void setFieldDataToRequest(TrxRequest trxRequest, FormManager formManager) {
-        for (Enumeration e = formManager.getFormTrxManager().getHostToField().keys();
-            e.hasMoreElements(); )   {
-            String host = (String) e.nextElement();
-            trxRequest.getRequestData().getFields().put(host, 
-                    formManager.getValue((String) formManager.getFormTrxManager().getHostToField().get(host)));
+        HashMap ht = formManager.getFormTrxManager().getHostToField();
+        Object[] hosts = formManager.getFormTrxManager().getHostToField().keySet().toArray();
+        for (Object host:hosts) {
+//        for (Enumeration e = formManager.getFormTrxManager().getHostToField().keys();
+//            e.hasMoreElements(); )   {
+//            String host = (String) e.nextElement();
+            Object field = formManager.getValue((String) formManager.getFormTrxManager().getHostToField().get(host));
+            trxRequest.getRequestData().getFields().put(host, field);
         }
     }  
     public static void setTableDataToRequest(
@@ -59,10 +63,12 @@ public class TrxUtil {
         trxRequest.getRequestData().getTables().put(tableHostName, td);
     }
     public static void setAllTableDataToRequest(TrxRequest trxRequest, FormManager formManager) {
-        for (Enumeration e = formManager.getFormTrxManager().getHostToTableModel().keys();
-            e.hasMoreElements(); )   {   
-            String tableHostName = (String) e.nextElement();
-            setTableDataToRequest(tableHostName, trxRequest, formManager);
+        Object[] tableHostNames = formManager.getFormTrxManager().getHostToTableModel().keySet().toArray();
+        for(Object tableHostName : tableHostNames) {
+//        for (Enumeration e = formManager.getFormTrxManager().getHostToTableModel().keys();
+//            e.hasMoreElements(); )   {   
+//            String tableHostName = (String) e.nextElement();
+            setTableDataToRequest((String)tableHostName, trxRequest, formManager);
         }    
     } 
 }

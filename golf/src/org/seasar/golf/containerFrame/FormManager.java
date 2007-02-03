@@ -10,7 +10,7 @@
 package org.seasar.golf.containerFrame;
 
 import java.lang.reflect.Field;
-import java.util.Hashtable;
+import java.util.HashMap;
 import javax.swing.JComponent;
 import javax.swing.JFrame;
 import javax.swing.JScrollPane;
@@ -33,7 +33,7 @@ public class FormManager {
     private FormBindingManager formBindingManager = new FormBindingManager();
     private FormValidationManager formValidationManager = new FormValidationManager();
     private JFrame frame;
-    private Hashtable componentNameIndex = new Hashtable();
+    private HashMap componentNameIndex = new HashMap();
     private Session session = null;
     private FormTrxManager formTrxManager = null;
     /** Creates a new instance of FrameManager */
@@ -89,7 +89,7 @@ public class FormManager {
 			}
     	}
     }
-	public Hashtable getComponentNameIndex() {
+	public HashMap getComponentNameIndex() {
 		return componentNameIndex;
 	}
 	public Object getValue(String name) {

@@ -10,7 +10,7 @@
 package org.seasar.golf.menu;
 
 import javax.swing.JTree;
-import java.util.Hashtable;
+import java.util.HashMap;
 
 /**
  *
@@ -19,5 +19,5 @@ import java.util.Hashtable;
 public interface MenuInterface {
 
 public boolean createMenu(JTree jt, String role);
-public void setAction(Hashtable action);
+public void setAction(HashMap action);
 }

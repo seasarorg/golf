@@ -9,7 +9,7 @@
 
 package org.seasar.golf.containerFrame;
 
-import java.util.Hashtable;
+import java.util.HashMap;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import org.jdesktop.layout.GroupLayout;

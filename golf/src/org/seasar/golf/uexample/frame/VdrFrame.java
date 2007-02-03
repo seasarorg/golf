@@ -7,14 +7,16 @@
 package org.seasar.golf.uexample.frame;
 
 import com.jgoodies.binding.list.SelectionInList;
-import java.util.Hashtable;
+import java.util.HashMap;
 import javax.swing.JMenuBar;
 import javax.swing.JPanel;
 import javax.swing.ListSelectionModel;
 import org.seasar.golf.GolfFormInterface;
 import org.seasar.golf.GolfTableModel;
 import org.seasar.golf.containerFrame.FormManager;
+import org.seasar.golf.transaction.TrxRequest;
 import org.seasar.golf.util.TableUtil;
+import org.seasar.golf.transaction.TrxRequestFactory;
 
 /**
  *
@@ -82,6 +84,11 @@ public class VdrFrame extends javax.swing.JFrame implements GolfFormInterface{
         jB_Enter.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/FormRunHS.png")));
         jB_Enter.setToolTipText("Enter");
         jB_Enter.setPreferredSize(new java.awt.Dimension(25, 25));
+        jB_Enter.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jB_EnterActionPerformed(evt);
+            }
+        });
         toolBar.add(jB_Enter);
 
         jB_Save.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/saveHS.png")));
@@ -274,6 +281,10 @@ public class VdrFrame extends javax.swing.JFrame implements GolfFormInterface{
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+private void jB_EnterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jB_EnterActionPerformed
+    TrxRequest trxRequest = TrxRequestFactory.createTrxRequest(formManager);
+}//GEN-LAST:event_jB_EnterActionPerformed
+
 private void jTable1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTable1KeyPressed
     if (TableUtil.checkRowDownEvent(evt)) {
         addNewRowWhenCursorLastRow();
@@ -329,7 +340,7 @@ private void jTextActionKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:ev
         return contentPane;
     }
 
-    public void initBinding(Hashtable params) {
+    public void initBinding(HashMap params) {
         formManager = new FormManager(this); 
         formManager.init();
         formManager.createReportList(jScrollPane1);
@@ -345,7 +356,7 @@ private void jTextActionKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:ev
             new javax.swing.DefaultComboBoxModel(new String[] {"", "Item 11", "Item 22", "Item 33", "Item 44" }));        
     }
 
-    public void processAction(Hashtable params) {
+    public void processAction(HashMap params) {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

@@ -6,7 +6,7 @@
 
 package org.seasar.golf.uexample.frame;
 
-import java.util.Hashtable;
+import java.util.HashMap;
 import javax.swing.JMenuBar;
 import javax.swing.JPanel;
 import org.seasar.golf.GolfFormInterface;
@@ -177,11 +177,11 @@ private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event
     }
 
 
-    public void initBinding(Hashtable params) {
+    public void initBinding(HashMap params) {
         formManager = new FormManager(this);
     }
 
-    public void processAction(Hashtable params) {
+    public void processAction(HashMap params) {
     }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables

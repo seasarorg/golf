@@ -12,7 +12,7 @@ package org.seasar.golf.binding;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 import java.util.ArrayList;
-import java.util.Hashtable;
+import java.util.HashMap;
 import javax.swing.JCheckBox;
 import javax.swing.JCheckBoxMenuItem;
 import javax.swing.JColorChooser;
@@ -42,10 +42,10 @@ import com.jgoodies.validation.ValidationResult;
  * @author shimura
  */
 public class FormBindingManager implements PropertyChangeListener, ComponentValidator  {
-    private Hashtable valueModels = new Hashtable();
+    private HashMap valueModels = new HashMap();
     private ArrayList valueModelsSequence = new ArrayList();
     private FormManager formManager= null;
-    private Hashtable tableBindHandlers = new Hashtable();
+    private HashMap tableBindHandlers = new HashMap();
 
     public FormBindingManager() {
     }
@@ -192,7 +192,7 @@ public class FormBindingManager implements PropertyChangeListener, ComponentVali
     
 
 
-    public Hashtable getTableBindHandlers() {
+    public HashMap getTableBindHandlers() {
         return tableBindHandlers;
     }
 }

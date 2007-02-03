@@ -6,7 +6,7 @@
 
 package org.seasar.golf.uexample.frame;
 
-import java.util.Hashtable;
+import java.util.HashMap;
 import org.seasar.framework.container.factory.SingletonS2ContainerFactory;
 import org.seasar.golf.Connection;
 import org.seasar.golf.uexample.logic.LoginInterface;
@@ -96,7 +96,7 @@ public class LoginFrame extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         LoginInterface login = UexampleFactory.getLogin();
-        Hashtable loginInfo = login.login(userId.getText().trim(), passWord.getPassword().toString());
+        HashMap loginInfo = login.login(userId.getText().trim(), passWord.getPassword().toString());
         if (loginInfo != null) {
 //            char[] p =passWord.getPassword();
 //            p= new char[]{};

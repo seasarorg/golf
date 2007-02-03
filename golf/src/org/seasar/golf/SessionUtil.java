@@ -9,7 +9,7 @@
 
 package org.seasar.golf;
 
-import java.util.Hashtable;
+import java.util.HashMap;
 import javax.swing.JFrame;
 import org.seasar.golf.containerFrame.FormManager;
 import org.seasar.golf.uexample.frame.FormAction;
@@ -53,10 +53,10 @@ public class SessionUtil {
 
         }   
         
-        public static void createForm(int index, FormAction formAction, Session session, Hashtable params) {
+        public static void createForm(int index, FormAction formAction, Session session, HashMap params) {
                          JFrame form = Factory.createForm(formAction.getActionItem().getForm()+"Frame");
                         String parameter = formAction.getActionItem().getParameter();
-                        Hashtable actionParam = getActionParameter(parameter);
+                        HashMap actionParam = getActionParameter(parameter);
                         if (params != null) {
                             ((GolfFormInterface)form).initBinding(params);
                         } else {
@@ -67,7 +67,7 @@ public class SessionUtil {
                         removeUpperForm(index - 1 , session);
                         session.getFormManagers().add(formManager);           
         }
-        public static void setForm(int index, Session session, Hashtable params ){
+        public static void setForm(int index, Session session, HashMap params ){
                     removeUpperForm(index , session);
                     GolfFormInterface golfForm =   (GolfFormInterface)((FormManager) session.getFormManagers().get(index
                             )).getFrame();
@@ -79,8 +79,8 @@ public class SessionUtil {
                 session.getFormManagers().remove(session.getFormManagers().size() - 1);
             }
         }
-        public static Hashtable getActionParameter(String parameter){
-            Hashtable param = new Hashtable();
+        public static HashMap getActionParameter(String parameter){
+            HashMap param = new HashMap();
             if (parameter != null) {
                 String[] params = parameter.split(",");
                 for (int i=0; i < params.length; i++) {

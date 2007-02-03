@@ -9,7 +9,7 @@
 
 package org.seasar.golf.uexample.logic;
 
-import java.util.Hashtable;
+import java.util.HashMap;
 
 /**
  *
@@ -23,9 +23,9 @@ public class LoginImpl implements LoginInterface {
     public LoginImpl() {
     }
 
-    public Hashtable login(String userId, String password) {
+    public HashMap login(String userId, String password) {
 //        if (userId .equals("m")) {
-            Hashtable h = new Hashtable();
+            HashMap h = new HashMap();
             h.put("name","Mike Shimura");
             h.put("section","JPZ/E");
             h.put("role","std");

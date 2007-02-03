@@ -9,33 +9,35 @@
 
 package org.seasar.golf.data;
 
-import java.util.Hashtable;
+import java.util.HashMap;
+import java.util.HashMap;
+
 
 /**
  *
  * @author shimura
  */
 public class RequestData {
-    private Hashtable fields = new Hashtable();
-    private Hashtable tables = new Hashtable();
-    private Hashtable  loginInfo = null;
+    private HashMap fields = new HashMap();
+    private HashMap tables = new HashMap();
+    private HashMap  loginInfo = null;
     /** Creates a new instance of RequestData */
     public RequestData() {
     }
 
-    public Hashtable getFields() {
+    public HashMap getFields() {
         return fields;
     }
 
-    public Hashtable getTables() {
+    public HashMap getTables() {
         return tables;
     }
 
-    public Hashtable getLoginInfo() {
+    public HashMap getLoginInfo() {
         return loginInfo;
     }
 
-    public void setLoginInfo(Hashtable loginInfo) {
+    public void setLoginInfo(HashMap loginInfo) {
         this.loginInfo = loginInfo;
     }
     

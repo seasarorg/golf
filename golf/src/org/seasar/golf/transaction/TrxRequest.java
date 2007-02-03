@@ -9,7 +9,7 @@
 
 package org.seasar.golf.transaction;
 
-import java.util.Hashtable;
+import java.util.HashMap;
 import org.seasar.golf.data.RequestData;
 
 /**
@@ -18,7 +18,7 @@ import org.seasar.golf.data.RequestData;
  */
 public class TrxRequest {
     private String transactionCode;
-    private Hashtable param = new Hashtable();
+    private HashMap param = new HashMap();
     private RequestData requestData = new RequestData();
     
     /** Creates a new instance of TrxRequest */
@@ -33,11 +33,11 @@ public class TrxRequest {
         this.transactionCode = transactionCode;
     }
 
-    public Hashtable getParam() {
+    public HashMap getParam() {
         return param;
     }
 
-    public void setParam(Hashtable param) {
+    public void setParam(HashMap param) {
         this.param = param;
     }
 

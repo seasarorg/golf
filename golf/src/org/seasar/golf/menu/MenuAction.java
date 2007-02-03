@@ -9,20 +9,20 @@
 
 package org.seasar.golf.menu;
 
-import java.util.Hashtable;
+import java.util.HashMap;
 
 /**
  *
  * @author shimura
  */
 public class MenuAction {
-    private static Hashtable action = null;
+    private static HashMap action = null;
     /** Creates a new instance of MenuAction */
     private MenuAction() {
     }
     private static void check() {
         if (action == null) {
-            action  = new Hashtable();
+            action  = new HashMap();
             MenuFactory.setAction(action);
         }
     }

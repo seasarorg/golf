@@ -1,7 +1,7 @@
 package org.seasar.golf.containerFrame;
 
 import java.util.Enumeration;
-import java.util.Hashtable;
+import java.util.HashMap;
 import javax.swing.JComponent;
 import javax.swing.JTable;
 import org.seasar.framework.container.factory.SingletonS2ContainerFactory;
@@ -20,18 +20,20 @@ public class FormManagerUtil {
 
 	private FormManagerUtil() {
 	}
-	private static Hashtable formHistory = new Hashtable();
+	private static HashMap formHistory = new HashMap();
 	public static void generateFieldCsv(FormManager fm) {
 		if (GolfSetting.isDebug()) {
 			if (!formHistory.containsKey(fm.getFrame().getClass())){
 				TableData td = new TableData();
 				td.setColumnIdentifires(new String[]{"class","name"});
-				Enumeration e = fm.getComponentNameIndex().keys();
-				while (e.hasMoreElements()){
-					String key = (String) e.nextElement();
-					td.addRow(new String[]{
-							fm.getComponentNameIndex().get(key).getClass().toString()
-							.substring(6), key });
+                                Object[] keys =  fm.getComponentNameIndex().keySet().toArray();
+                                for( Object key:keys) {
+//				Enumeration e = fm.getComponentNameIndex().keys();
+//				while (e.hasMoreElements()){
+//					String key = (String) e.nextElement();
+                                    td.addRow(new String[]{
+                                                    fm.getComponentNameIndex().get(key).getClass().toString()
+                                                    .substring(6), (String)key });
 				
 				}
 				TableUtil.WriteToCsv(td,

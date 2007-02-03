@@ -6,7 +6,7 @@
 
 package org.seasar.golf.uexample.frame;
 
-import java.util.Hashtable;
+import java.util.HashMap;
 import javax.swing.JMenuBar;
 import javax.swing.JPanel;
 import javax.swing.JTree;
@@ -196,7 +196,7 @@ Object yy = xx;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTree jTree1;
     // End of variables declaration//GEN-END:variables
-    public void initBinding(Hashtable params) {
+    public void initBinding(HashMap params) {
         formManager = new FormManager(this);
         MenuFactory.setMenu(jTree1, (String) params.get("role"));
     }
@@ -213,7 +213,7 @@ Object yy = xx;
         return ContentPane;
     }
 
-    public void processAction(Hashtable params) {
+    public void processAction(HashMap params) {
     }
 
 }

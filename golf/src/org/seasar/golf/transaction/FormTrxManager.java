@@ -9,7 +9,7 @@
 
 package org.seasar.golf.transaction;
 
-import java.util.Hashtable;
+import java.util.HashMap;
 import org.seasar.golf.GolfTableModel;
 import org.seasar.golf.containerFrame.FormManager;
 
@@ -20,16 +20,16 @@ import org.seasar.golf.containerFrame.FormManager;
 public class FormTrxManager {
     
     /** Creates a new instance of FormTrxManager */
-    private Hashtable fieldToHost = new Hashtable();
-    private Hashtable hostToField = new Hashtable();    
-    private Hashtable hostToTableModel = new Hashtable();  
+    private HashMap fieldToHost = new HashMap();
+    private HashMap hostToField = new HashMap();    
+    private HashMap hostToTableModel = new HashMap();  
     private FormManager formManager = null;
     public FormTrxManager(FormManager formManager) {
         this.formManager = formManager;
     }
     public void initField(String field, String host) {
-        getFieldToHost().put(field, host);
-        getFieldToHost().put(host, field);        
+        fieldToHost.put(field, host);
+        hostToField.put(host, field);        
     }
     public void initTable(String hostName, GolfTableModel gtm){
         if (hostName != null) {
@@ -40,15 +40,15 @@ public class FormTrxManager {
         return formManager;
     }
 
-    public Hashtable getFieldToHost() {
+    public HashMap getFieldToHost() {
         return fieldToHost;
     }
 
-    public Hashtable getHostToField() {
+    public HashMap getHostToField() {
         return hostToField;
     }
 
-    public Hashtable getHostToTableModel() {
+    public HashMap getHostToTableModel() {
         return hostToTableModel;
     }
     

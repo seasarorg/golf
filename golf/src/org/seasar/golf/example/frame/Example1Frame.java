@@ -7,7 +7,7 @@
 package org.seasar.golf.example.frame;
 
 import com.jgoodies.binding.list.SelectionInList;
-import java.util.Hashtable;
+import java.util.HashMap;
 import javax.swing.JMenuBar;
 import javax.swing.JPanel;
 import org.seasar.golf.GolfFormInterface;
@@ -24,7 +24,7 @@ public class Example1Frame extends javax.swing.JFrame  implements GolfFormInterf
     public Example1Frame() {
         initComponents();
     }
-    public void initBinding(Hashtable params) {
+    public void initBinding(HashMap params) {
         formManager = new FormManager(this);
         formManager.init();
         formManager.createReportList(jScrollPane1);
@@ -274,7 +274,7 @@ public class Example1Frame extends javax.swing.JFrame  implements GolfFormInterf
         return null;
     }
 
-    public void processAction(Hashtable params) {
+    public void processAction(HashMap params) {
     }
 
     

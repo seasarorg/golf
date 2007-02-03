@@ -10,14 +10,14 @@
 package org.seasar.golf;
 
 import java.util.ArrayList;
-import java.util.Hashtable;
+import java.util.HashMap;
 
 /**
  *
  * @author shimura
  */
 public class Connection {
-    private Hashtable loginInfo = null;
+    private HashMap loginInfo = null;
     private ArrayList <Session> sessions = new ArrayList <Session>();
     private int maxSession = 6;
     
@@ -26,11 +26,11 @@ public class Connection {
 
     }
 
-    public Hashtable getLoginInfo() {
+    public HashMap getLoginInfo() {
         return loginInfo;
     }
 
-    public void setLoginInfo(Hashtable loginInfo) {
+    public void setLoginInfo(HashMap loginInfo) {
         this.loginInfo = loginInfo;
     }
     public Session  addSession() {

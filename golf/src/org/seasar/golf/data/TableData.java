@@ -10,7 +10,7 @@
 package org.seasar.golf.data;
 
 import java.util.ArrayList;
-import java.util.Hashtable;
+import java.util.HashMap;
 
 /**
  *
@@ -24,7 +24,7 @@ public class TableData {
     
     protected ArrayList    dataArray = new ArrayList();
     protected ArrayList    columnIdentifiers = new ArrayList();
-    protected Hashtable columnNameToNo = new Hashtable();
+    protected HashMap columnNameToNo = new HashMap();
     public void setDataArray(ArrayList dataArray, ArrayList columnIdentifires) {
         this.dataArray = nonNullArray(dataArray);
         this.columnIdentifiers = nonNullArray(columnIdentifires);

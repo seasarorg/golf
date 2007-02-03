@@ -9,7 +9,7 @@
 
 package org.seasar.golf.menu;
 
-import java.util.Hashtable;
+import java.util.HashMap;
 import javax.swing.JTree;
 import org.seasar.framework.container.factory.SingletonS2ContainerFactory;
 
@@ -27,7 +27,7 @@ public class MenuFactory {
         check();
         return menu.createMenu(jt, role);
     }
-    public static void setAction(Hashtable action) {
+    public static void setAction(HashMap action) {
         check();
         menu.setAction(action);
     }

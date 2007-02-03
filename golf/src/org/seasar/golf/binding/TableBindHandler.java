@@ -15,7 +15,7 @@ import java.awt.event.MouseEvent;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 import java.util.Enumeration;
-import java.util.Hashtable;
+import java.util.HashMap;
 import javax.swing.JTable;
 import javax.swing.event.TableModelEvent;
 import javax.swing.event.TableModelListener;
@@ -27,9 +27,9 @@ import org.seasar.golf.GolfTableModel;
  * @author shimura
  */
 public class TableBindHandler implements PropertyChangeListener, TableModelListener {
-    private Hashtable srcColumnTable = new Hashtable();
-    //private Hashtable srcClassTable = new Hashtable();
-    private Hashtable columnSrcTable = new Hashtable();
+    private HashMap srcColumnTable = new HashMap();
+    //private HashMap srcClassTable = new HashMap();
+    private HashMap columnSrcTable = new HashMap();
     private GolfTableModel golfTableModel = null;
     private int currentRow = 999999;
     /** Creates a new instance of DetailPropertyChangeListener */
@@ -87,17 +87,16 @@ public class TableBindHandler implements PropertyChangeListener, TableModelListe
     }
     public void selectedRowChanged(int row) {
             if (row != -1) {
-                Enumeration e = columnSrcTable.keys();
-			while (e.hasMoreElements()){
-				Integer column = (Integer) e.nextElement();
-                                Object o = golfTableModel.getValueAt(row, column);
-                                if (o  != null) {
-                                    ((ValueHolder)columnSrcTable.get(column)).setValue(
-                                        golfTableModel.getValueAt(row, column).toString());
-                                } else {
-                                     ((ValueHolder)columnSrcTable.get(column)).setValue(null);
-                                }
+                Object[] columns = columnSrcTable.keySet().toArray();
+                for(Object column: columns) {
+                        Object o = golfTableModel.getValueAt(row, (Integer)column);
+                        if (o  != null) {
+                            ((ValueHolder)columnSrcTable.get(column)).setValue(
+                                golfTableModel.getValueAt(row, (Integer)column).toString());
+                        } else {
+                             ((ValueHolder)columnSrcTable.get((Integer)column)).setValue(null);
                         }
+                }
                 currentRow = row;
             }    
     }

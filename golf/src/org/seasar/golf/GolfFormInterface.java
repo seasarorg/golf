@@ -9,7 +9,7 @@
 
 package org.seasar.golf;
 
-import java.util.Hashtable;
+import java.util.HashMap;
 import javax.swing.JMenuBar;
 import javax.swing.JPanel;
 import org.seasar.golf.containerFrame.FormManager;
@@ -23,6 +23,6 @@ public interface GolfFormInterface {
     FormManager getFormManager();
     JMenuBar getMenu();
     JPanel getContentPanel();
-    void initBinding(Hashtable params);
-    void processAction(Hashtable params);    
+    void initBinding(HashMap params);
+    void processAction(HashMap params);    
 }

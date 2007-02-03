@@ -9,7 +9,7 @@
 
 package org.seasar.golf.menu;
 
-import java.util.Hashtable;
+import java.util.HashMap;
 import javax.swing.JTree;
 import javax.swing.tree.DefaultMutableTreeNode;
 import javax.swing.tree.DefaultTreeModel;
@@ -52,7 +52,7 @@ public class MenuImpl  implements MenuInterface{
         return true;
     }
 
-    public void setAction(Hashtable action) {
+    public void setAction(HashMap action) {
         TableData td = new TableData();
         TableUtil.ReadCsvFromResource(td, "menuAction.csv");       
         for (int i = 0; i < td.getRowCount(); i++) {

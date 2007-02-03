@@ -6,7 +6,7 @@
 
 package org.seasar.golf.example.frame;
 
-import java.util.Hashtable;
+import java.util.HashMap;
 import javax.swing.JFrame;
 import javax.swing.JMenuBar;
 import javax.swing.JPanel;
@@ -223,10 +223,10 @@ public class Example4ContainerFrame extends javax.swing.JFrame implements GolfFo
         return ContensPanel;
     }
 
-    public void initBinding(Hashtable params) {
+    public void initBinding(HashMap params) {
            containerMgr = new ContainerManager(this);        
     }
 
-    public void processAction(Hashtable params) {
+    public void processAction(HashMap params) {
     }
 }
