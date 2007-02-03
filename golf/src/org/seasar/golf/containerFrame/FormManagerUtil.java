@@ -66,7 +66,7 @@ public class FormManagerUtil {
 			String clazz = (String) td.getTextAt(i,"class");
 			String clazzNew = GolfSetting.getSetting(clazz);
 			clazz = (clazzNew != null) ? clazzNew: clazz;
-                        String hostName = (String) td.getTextAt(i,"hostName");
+                        String hostName = (String) td.getTextAt(i,"hostname");
 			try {
 				columnDefs[i]= new ColumnDef(field, Class.forName(clazz), canEdit,  hostName);
 			} catch (ClassNotFoundException e) {

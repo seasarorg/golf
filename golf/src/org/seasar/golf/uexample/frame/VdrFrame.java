@@ -17,6 +17,7 @@ import org.seasar.golf.containerFrame.FormManager;
 import org.seasar.golf.transaction.TrxRequest;
 import org.seasar.golf.util.TableUtil;
 import org.seasar.golf.transaction.TrxRequestFactory;
+import org.seasar.golf.transaction.TrxUtil;
 
 /**
  *
@@ -283,6 +284,7 @@ public class VdrFrame extends javax.swing.JFrame implements GolfFormInterface{
 
 private void jB_EnterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jB_EnterActionPerformed
     TrxRequest trxRequest = TrxRequestFactory.createTrxRequest(formManager);
+    TrxUtil.setAllTableDataToRequest(trxRequest, formManager);
 }//GEN-LAST:event_jB_EnterActionPerformed
 
 private void jTable1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTable1KeyPressed

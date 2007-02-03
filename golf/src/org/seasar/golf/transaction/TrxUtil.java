@@ -52,13 +52,15 @@ public class TrxUtil {
         if (cols.size() == 0) {
             return;
         }
-        ArrayList row = new ArrayList();
+
         for (int j = 0; j < tableModel.getRowCount(); j ++) {
-            for (int i = 0; i < cols.size(); i ++) {
-                row.add(tableModel.getValueAt(j, i));
+            if (tableModel.effectiveRow(j)) {
+                ArrayList row = new ArrayList();
+                for (int i = 0; i < cols.size(); i ++) {
+                    row.add(tableModel.getValueAt(j, ((Integer)cols.get(i)).intValue()));
+                }
+                td.addRow(row);
             }
-            tableModel.addRow(row);
-            row.clear();
         }
         trxRequest.getRequestData().getTables().put(tableHostName, td);
     }

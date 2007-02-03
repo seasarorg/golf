@@ -56,7 +56,11 @@ public class GolfTableModel extends AbstractTableModel implements ComponentValid
 
     public Object getValueAt(int rowIndex, int columnIndex) {
         ArrayList rowArray = (ArrayList)dataArray.get(rowIndex);
-        return rowArray.get(columnIndex);
+        if (columnIndex >= rowArray.size()) {
+            return null;
+        } else {
+            return rowArray.get(columnIndex);
+        }
     }
       public void setValueAt(Object aValue, int rowIndex, int columnIndex) {
           setValueAt(aValue, rowIndex, columnIndex, false);
@@ -196,7 +200,7 @@ public class GolfTableModel extends AbstractTableModel implements ComponentValid
         return vr;
     }
 
-    private boolean effectiveRow(int row) {
+    public boolean effectiveRow(int row) {
         boolean effective = false;
         for (int column = 0; column < getColumnCount(); column ++) {
             if (getColumnDef(column).getInsertCheckColumn() == true
