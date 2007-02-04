@@ -18,6 +18,8 @@ import java.util.HashMap;
  * @author shimura
  */
 public class RequestData {
+    private String transactionCode;
+    private HashMap param = new HashMap();
     private HashMap fields = new HashMap();
     private HashMap tables = new HashMap();
     private HashMap loginInfo = null;
@@ -39,6 +41,18 @@ public class RequestData {
 
     public void setLoginInfo(HashMap loginInfo) {
         this.loginInfo = loginInfo;
+    }
+
+    public String getTransactionCode() {
+        return transactionCode;
+    }
+
+    public void setTransactionCode(String transactionCode) {
+        this.transactionCode = transactionCode;
+    }
+
+    public HashMap getParam() {
+        return param;
     }
     
 }

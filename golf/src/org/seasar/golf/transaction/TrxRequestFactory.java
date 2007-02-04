@@ -9,6 +9,7 @@
 
 package org.seasar.golf.transaction;
 
+import org.seasar.golf.data.RequestData;
 import org.seasar.golf.form.FormManager;
 
 /**
@@ -20,8 +21,8 @@ public class TrxRequestFactory {
     /** Creates a new instance of TrxRequestFactory */
     private TrxRequestFactory() {
     }
-    public static TrxRequest createTrxRequest(FormManager formManager){
-        TrxRequest trxRequest = new TrxRequest();
+    public static RequestData createTrxRequest(FormManager formManager){
+        RequestData trxRequest = new RequestData();
         TrxUtil.setFieldDataToRequest(trxRequest, formManager);
         return trxRequest;
     } 
