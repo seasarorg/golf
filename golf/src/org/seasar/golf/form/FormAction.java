@@ -7,7 +7,7 @@
  * and open the template in the editor.
  */
 
-package org.seasar.golf.uexample.frame;
+package org.seasar.golf.form;
 
 import org.seasar.golf.menu.MenuAction;
 import org.seasar.golf.menu.MenuActionItem;

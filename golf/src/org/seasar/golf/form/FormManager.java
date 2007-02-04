@@ -7,7 +7,7 @@
  * and open the template in the editor.
  */
 
-package org.seasar.golf.containerFrame;
+package org.seasar.golf.form;
 
 import java.lang.reflect.Field;
 import java.util.HashMap;
@@ -18,6 +18,7 @@ import javax.swing.JTable;
 import org.seasar.golf.GolfTableModel;
 import org.seasar.golf.Session;
 import org.seasar.golf.binding.FormBindingManager;
+import org.seasar.golf.containerFrame.*;
 import org.seasar.golf.transaction.FormTrxManager;
 import org.seasar.golf.data.TableData;
 import org.seasar.golf.util.TableUtil;

@@ -16,7 +16,7 @@ import com.jgoodies.validation.message.SimpleValidationMessage;
 import java.math.BigDecimal;
 import java.text.DecimalFormat;
 import java.text.ParseException;
-import org.seasar.golf.containerFrame.FormManager;
+import org.seasar.golf.form.FormManager;
 import org.seasar.golf.util.ValidationUtil;
 
 /**

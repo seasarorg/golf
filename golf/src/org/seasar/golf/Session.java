@@ -15,8 +15,8 @@ import java.util.HashMap;
 import javax.swing.JFrame;
 import javax.swing.JTextField;
 import org.seasar.framework.container.factory.SingletonS2ContainerFactory;
-import org.seasar.golf.containerFrame.ContainerManager;
-import org.seasar.golf.uexample.frame.FormAction;
+import org.seasar.golf.form.ContainerManager;
+import org.seasar.golf.form.FormAction;
 
 /**
  *

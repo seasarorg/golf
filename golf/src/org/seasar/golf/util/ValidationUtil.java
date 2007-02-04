@@ -19,7 +19,7 @@ import javax.swing.table.TableModel;
 import org.seasar.framework.container.S2Container;
 import org.seasar.framework.container.factory.SingletonS2ContainerFactory;
 import org.seasar.golf.GolfTableModel;
-import org.seasar.golf.containerFrame.FormManager;
+import org.seasar.golf.form.FormManager;
 import org.seasar.golf.validator.JTableFieldInfo;
 import org.seasar.golf.validator.RequiredValidator;
 import org.seasar.golf.validator.GolfValidator;

@@ -12,7 +12,7 @@ import javax.swing.JPanel;
 import javax.swing.ListSelectionModel;
 import org.seasar.golf.GolfFormInterface;
 import org.seasar.golf.GolfTableModel;
-import org.seasar.golf.containerFrame.FormManager;
+import org.seasar.golf.form.FormManager;
 import org.seasar.golf.util.TableUtil;
 
 /**

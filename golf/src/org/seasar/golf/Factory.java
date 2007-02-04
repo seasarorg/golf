@@ -11,7 +11,7 @@ package org.seasar.golf;
 
 import javax.swing.JFrame;
 import org.seasar.framework.container.factory.SingletonS2ContainerFactory;
-import org.seasar.golf.containerFrame.FormManager;
+import org.seasar.golf.form.FormManager;
 import org.seasar.golf.menu.MenuAction;
 import org.seasar.golf.menu.MenuActionItem;
 

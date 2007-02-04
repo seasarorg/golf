@@ -9,7 +9,7 @@
 
 package org.seasar.golf.transaction;
 
-import org.seasar.golf.containerFrame.FormManager;
+import org.seasar.golf.form.FormManager;
 
 /**
  *

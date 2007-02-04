@@ -1,4 +1,4 @@
-package org.seasar.golf.containerFrame;
+package org.seasar.golf.form;
 
 import java.util.Enumeration;
 import java.util.HashMap;

@@ -7,7 +7,7 @@
  * and open the template in the editor.
  */
 
-package org.seasar.golf.containerFrame;
+package org.seasar.golf.form;
 
 import java.util.HashMap;
 import javax.swing.JFrame;

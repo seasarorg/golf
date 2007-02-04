@@ -11,8 +11,8 @@ package org.seasar.golf;
 
 import java.util.HashMap;
 import javax.swing.JFrame;
-import org.seasar.golf.containerFrame.FormManager;
-import org.seasar.golf.uexample.frame.FormAction;
+import org.seasar.golf.form.FormManager;
+import org.seasar.golf.form.FormAction;
 
 /**
  *

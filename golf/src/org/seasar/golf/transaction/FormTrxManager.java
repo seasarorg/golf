@@ -11,7 +11,7 @@ package org.seasar.golf.transaction;
 
 import java.util.HashMap;
 import org.seasar.golf.GolfTableModel;
-import org.seasar.golf.containerFrame.FormManager;
+import org.seasar.golf.form.FormManager;
 
 /**
  *

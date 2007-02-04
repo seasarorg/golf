@@ -14,7 +14,7 @@ import java.util.Enumeration;
 import java.util.HashMap;
 import org.seasar.golf.ColumnDef;
 import org.seasar.golf.GolfTableModel;
-import org.seasar.golf.containerFrame.FormManager;
+import org.seasar.golf.form.FormManager;
 import org.seasar.golf.data.TableData;
 
 /**

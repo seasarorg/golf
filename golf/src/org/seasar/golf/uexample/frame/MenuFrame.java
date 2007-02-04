@@ -14,7 +14,7 @@ import javax.swing.tree.DefaultMutableTreeNode;
 import javax.swing.tree.TreePath;
 import org.seasar.framework.container.factory.SingletonS2ContainerFactory;
 import org.seasar.golf.GolfFormInterface;
-import org.seasar.golf.containerFrame.FormManager;
+import org.seasar.golf.form.FormManager;
 import org.seasar.golf.menu.MenuAction;
 import org.seasar.golf.menu.MenuDisplayItem;
 import org.seasar.golf.menu.MenuFactory;

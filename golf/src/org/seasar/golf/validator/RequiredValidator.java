@@ -13,7 +13,7 @@ import com.jgoodies.binding.value.ValueModel;
 import com.jgoodies.validation.Severity;
 import com.jgoodies.validation.ValidationMessage;
 import com.jgoodies.validation.message.SimpleValidationMessage;
-import org.seasar.golf.containerFrame.FormManager;
+import org.seasar.golf.form.FormManager;
 
 /**
  *

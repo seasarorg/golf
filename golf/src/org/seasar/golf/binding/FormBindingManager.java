@@ -27,7 +27,7 @@ import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import org.seasar.golf.component.DoubleField;
 import org.seasar.golf.component.LongField;
-import org.seasar.golf.containerFrame.FormManager;
+import org.seasar.golf.form.FormManager;
 import org.seasar.golf.util.ValidationUtil;
 import org.seasar.golf.validator.ComponentValidator;
 import org.seasar.golf.validator.GolfValidator;

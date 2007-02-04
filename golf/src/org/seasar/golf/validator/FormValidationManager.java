@@ -15,7 +15,7 @@ import org.seasar.golf.GolfTableModel;
 import com.jgoodies.validation.ValidationMessage;
 import com.jgoodies.validation.ValidationResult;
 import com.jgoodies.validation.util.AbstractValidationResultModel;
-import org.seasar.golf.containerFrame.FormManager;
+import org.seasar.golf.form.FormManager;
 
 /**
  *

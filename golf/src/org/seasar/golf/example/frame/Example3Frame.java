@@ -16,7 +16,7 @@ import org.seasar.golf.GolfFormInterface;
 import org.seasar.golf.GolfTableModel;
 import org.seasar.golf.binding.GolfBindingUtil;
 import org.seasar.golf.binding.TableBindHandler;
-import org.seasar.golf.containerFrame.FormManager;
+import org.seasar.golf.form.FormManager;
 import org.seasar.golf.util.TableUtil;
 
 /**

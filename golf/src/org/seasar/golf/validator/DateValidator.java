@@ -15,7 +15,7 @@ import java.util.Date;
 import javax.swing.JTable;
 import javax.swing.table.TableModel;
 import org.seasar.golf.GolfTableModel;
-import org.seasar.golf.containerFrame.FormManager;
+import org.seasar.golf.form.FormManager;
 import com.jgoodies.binding.value.ValueModel;
 import com.jgoodies.validation.Severity;
 import com.jgoodies.validation.ValidationMessage;
