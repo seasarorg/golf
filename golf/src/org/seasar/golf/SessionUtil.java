@@ -23,7 +23,7 @@ public class SessionUtil {
     /** Creates a new instance of SessionUtil */
         private SessionUtil() {
         }
-        public static void processAction(FormAction formAction, Session session) {
+        public static void processAction(FormAction formAction, Session session, HashMap params) {
             switch (formAction.getFormStack()) {
                 case MENU :
                         if (session.getFormManagers().size()==0) {
@@ -33,7 +33,7 @@ public class SessionUtil {
                     break;
                 case FIRST :
                         //removeUpperForm(0, session);
-                        createForm(1, formAction, session,null);
+                        createForm(1, formAction, session, params);
                         setForm(1, session, null);
                     break;    
                 case NEWMENU :
@@ -45,7 +45,7 @@ public class SessionUtil {
                             break;
                         }
                         formAction.setFormStack(FormAction.FormStack.FIRST);
-                        s.processAction(formAction);
+                        s.processAction(formAction, params);
                     break;                 
                 default:
                     break;

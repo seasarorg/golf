@@ -15,8 +15,11 @@ import java.util.HashMap;
 import javax.swing.JFrame;
 import javax.swing.JTextField;
 import org.seasar.framework.container.factory.SingletonS2ContainerFactory;
+import org.seasar.golf.data.RequestData;
+import org.seasar.golf.data.ResultData;
 import org.seasar.golf.form.ContainerManager;
 import org.seasar.golf.form.FormAction;
+import org.seasar.golf.transaction.TrxDispatcherInterface;
 
 /**
  *
@@ -29,6 +32,7 @@ public class Session {
     private JFrame menu = null;
     private ArrayList formManagers = new ArrayList();
     private HashMap sessionData = new HashMap();
+    private TrxDispatcherInterface trxDispatcher = null;
     
     /** Creates a new instance of Session */
     public Session(Connection con) {
@@ -54,8 +58,8 @@ public class Session {
              }       
          }
      }
-    public void processAction(FormAction formAction) {
-        SessionUtil.processAction(formAction, this);
+    public void processAction(FormAction formAction, HashMap params) {
+        SessionUtil.processAction(formAction, this, params);
     }
     
     public boolean processMenuAction(String action) {
@@ -82,8 +86,15 @@ public class Session {
                 menuaction.setFormStack(FormAction.FormStack.FIRST);
             }
         }
-        processAction(menuaction);   
+        processAction(menuaction, null);   
         return true;
+    }
+    public ResultData trxExecute(RequestData requestData) {
+        ResultData resultData = trxDispatcher.execute(requestData);
+        if (resultData.getFormAction().getFormStack() != FormAction.FormStack.RESULT){
+            SessionUtil.processAction(resultData.getFormAction(), this, resultData.getParam());
+        }
+        return resultData;
     }
     public void closeFrame() {
         containerFrame.setVisible(false);
@@ -113,6 +124,14 @@ public class Session {
 
     public HashMap getSessionData() {
         return sessionData;
+    }
+
+    public TrxDispatcherInterface getTrxDispatcher() {
+        return trxDispatcher;
+    }
+
+    public void setTrxDispatcher(TrxDispatcherInterface trxDispatcher) {
+        this.trxDispatcher = trxDispatcher;
     }
     
 }
