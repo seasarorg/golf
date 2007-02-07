@@ -14,13 +14,16 @@
 
         <initMethod name="addClassPattern">
             <arg>"org.seasar.golf.uexample"</arg>
-            <arg>".*Impl,.*Frame"</arg>
+            <arg>".*Impl,.*Frame,.*Transaction"</arg>
         </initMethod>
         <initMethod name="addClassPattern">
             <arg>"org.seasar.golf.example"</arg>
-            <arg>".*Impl,.*Frame,.*Transaction"</arg>
+            <arg>".*Impl,.*Frame"</arg>
         </initMethod>
     </component>
-
+     <component class="org.seasar.golf.transaction.TrxDispatcherLocalImpl">
+     </component>
+     <component class="org.seasar.golf.transaction.HostTrxHandlerImpl">
+     </component>
        
 </components>
