@@ -18,13 +18,16 @@ import org.seasar.golf.data.ResultData;
  */
 public class TrxDispatcherLocalImpl implements TrxDispatcherInterface {
     
-    private HostTrxHandlerInterface hostTrxHandle = new HostTrxHandlerImpl();
+    private HostTrxHandlerInterface hostTrxHandler = null;
     /** Creates a new instance of TrxDispatcherLocalImpl */
     public TrxDispatcherLocalImpl() {
     }
     
     public ResultData execute(RequestData requestData) {
-        return hostTrxHandle.execute(requestData);
+        if (hostTrxHandler == null) {
+            hostTrxHandler = HostTrxHandlerFactory.getHostTrxHandler();
+        }
+        return hostTrxHandler.execute(requestData);
     }
 
 }

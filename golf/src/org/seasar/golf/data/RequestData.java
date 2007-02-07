@@ -55,4 +55,8 @@ public class RequestData {
         return param;
     }
     
+    public void setParam(HashMap params) {
+        this.param = params;
+    }
+    
 }

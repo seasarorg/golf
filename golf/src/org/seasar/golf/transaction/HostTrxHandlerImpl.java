@@ -9,6 +9,8 @@
 
 package org.seasar.golf.transaction;
 
+import org.seasar.framework.container.S2Container;
+import org.seasar.framework.container.factory.SingletonS2ContainerFactory;
 import org.seasar.golf.data.RequestData;
 import org.seasar.golf.data.ResultData;
 
@@ -23,7 +25,12 @@ public class HostTrxHandlerImpl implements HostTrxHandlerInterface{
     }
     
     public ResultData execute(RequestData requestData) {
-        throw new UnsupportedOperationException("Not supported yet.");
+        S2Container cont = SingletonS2ContainerFactory.getContainer();
+       TransactionInterface transaction = 
+               (TransactionInterface) SingletonS2ContainerFactory.getContainer().
+               getComponent(requestData.getTransactionCode() + "Transaction");
+       ResultData res = transaction.execute(requestData);
+       return res;
     }
 
 }

@@ -13,10 +13,10 @@ import javax.swing.JPanel;
 import javax.swing.ListSelectionModel;
 import org.seasar.golf.GolfFormInterface;
 import org.seasar.golf.GolfTableModel;
+import org.seasar.golf.data.RequestData;
 import org.seasar.golf.form.FormManager;
-import org.seasar.golf.transaction.TrxRequest;
 import org.seasar.golf.util.TableUtil;
-import org.seasar.golf.transaction.TrxRequestFactory;
+import org.seasar.golf.transaction.RequestDataFactory;
 import org.seasar.golf.transaction.TrxUtil;
 
 /**
@@ -283,8 +283,9 @@ public class VdrFrame extends javax.swing.JFrame implements GolfFormInterface{
     }// </editor-fold>//GEN-END:initComponents
 
 private void jB_EnterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jB_EnterActionPerformed
-    TrxRequest trxRequest = TrxRequestFactory.createTrxRequest(formManager);
-    TrxUtil.setAllTableDataToRequest(trxRequest, formManager);
+    RequestData requestData = RequestDataFactory.createRequestData("vdr","mode=test",formManager);
+    TrxUtil.setAllTableDataToRequest(requestData, formManager);
+    formManager.getSession().trxExecute(requestData);
 }//GEN-LAST:event_jB_EnterActionPerformed
 
 private void jTable1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTable1KeyPressed

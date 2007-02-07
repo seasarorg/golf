@@ -43,6 +43,8 @@ public class Session {
         containerFrame.pack();
         containerFrame.validate();
         containerFrame.setVisible(true);
+        trxDispatcher = (TrxDispatcherInterface) SingletonS2ContainerFactory.
+                getContainer().getComponent(TrxDispatcherInterface.class);
     }
     public void init(){
         ((GolfFormInterface)containerFrame).initBinding(null);
