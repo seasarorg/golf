@@ -30,6 +30,7 @@ public class HostTrxHandlerImpl implements HostTrxHandlerInterface{
                (TransactionInterface) SingletonS2ContainerFactory.getContainer().
                getComponent(requestData.getTransactionCode() + "Transaction");
        ResultData res = transaction.execute(requestData);
+       
        return res;
     }
 
