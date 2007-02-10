@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE components PUBLIC "-//SEASAR//DTD S2Container 2.4//EN"
+	"http://www.seasar.org/dtd/components24.dtd">
+<components xmlns:xi="http://www.w3.org/2001/XInclude">
+	<include path="s2rmi-customizer.dicon"/>
+
+	<component name="connectorCustomizer" class="org.seasar.remoting.rmi.customizer.RMIConnectorCustomizer">
+		<property name="baseURLAsString">"rmi://localhost:1108/"</property>
+	</component>
+<!--
+	<component name="logicCustomizer" class="org.seasar.framework.container.customizer.AspectCustomizer">
+		<property name="interceptorName">"aop.traceInterceptor"</property>
+	</component>
+-->
+	<component name="frameCustomizer" class="org.seasar.framework.container.customizer.CustomizerChain">
+	</component>
+</components>

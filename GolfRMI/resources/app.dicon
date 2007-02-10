@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="Shift_JIS"?>
+<!DOCTYPE components PUBLIC "-//SEASAR//DTD S2Container 2.4//EN"
+  "http://www.seasar.org/dtd/components24.dtd">
+
+<components>
+	<include path="aop.dicon"/>
+	<include path="golfValidator.dicon"/>
+	<include path="org/seasar/golf/uexample/application.dicon"/>
+     <component class="org.seasar.golf.transaction.impl.TrxDispatcherRmilImpl">
+     </component>
+     <component class="org.seasar.golf.transaction.impl.HostTrxHandlerImpl">
+     </component>
+<!--
+     <component class="org.seasar.golf.transaction.impl.TrxDispatcherLocalImpl">
+     </component>
+    <component class="org.seasar.framework.container.autoregister.ComponentAutoRegister">
+        <property name="instanceDef">@org.seasar.framework.container.deployer.InstanceDefFactory@PROTOTYPE</property>
+        <initMethod name="addReferenceClass">
+            <arg>@org.seasar.golf.Dummy@class</arg>
+        </initMethod>
+
+        <initMethod name="addClassPattern">
+            <arg>"org.seasar.golf.uexample"</arg>
+            <arg>".*Impl,.*Transaction"</arg>
+        </initMethod>
+        <initMethod name="addClassPattern">
+            <arg>"org.seasar.golf.example"</arg>
+            <arg>".*Impl,.*Frame"</arg>
+        </initMethod>
+    </component>
+
+
+    <component class="org.seasar.remoting.common.interceptor.RemotingInterceptor"
+            name="remotingInterceptor" >
+    </component>
+    <component class="org.seasar.remoting.rmi.connector.impl.RMIConnectorImpl"
+            name="RMIConnector" >
+        <property name="baseURLAsString">"rmi://localhost:1108/"</property>
+    </component>       
+-->
+</components>
