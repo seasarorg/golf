@@ -9,7 +9,7 @@ package org.seasar.golf.uexample.frame;
 import java.util.HashMap;
 import org.seasar.framework.container.factory.SingletonS2ContainerFactory;
 import org.seasar.golf.Connection;
-import org.seasar.golf.uexample.logic.LoginInterface;
+import org.seasar.golf.uexample.logic.LoginLogic;
 import org.seasar.golf.uexample.util.factory.UexampleFactory;
 
 /**
@@ -95,7 +95,7 @@ public class LoginFrame extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        LoginInterface login = UexampleFactory.getLogin();
+        LoginLogic login = UexampleFactory.getLogin();
         HashMap loginInfo = login.login(userId.getText().trim(), passWord.getPassword().toString());
         if (loginInfo != null) {
 //            char[] p =passWord.getPassword();

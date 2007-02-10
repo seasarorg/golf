@@ -9,10 +9,8 @@
 
 package org.seasar.golf.uexample.util.factory;
 
-import javax.swing.JFrame;
 import org.seasar.framework.container.factory.SingletonS2ContainerFactory;
-import org.seasar.golf.uexample.frame.ContainerFrame;
-import org.seasar.golf.uexample.logic.LoginInterface;
+import org.seasar.golf.uexample.logic.LoginLogic;
 
 /**
  *
@@ -23,8 +21,8 @@ public class UexampleFactory {
     /** Creates a new instance of UexampleFactory */
     private UexampleFactory() {
     }
-    public static LoginInterface getLogin() {
-        return (LoginInterface) SingletonS2ContainerFactory.getContainer().getComponent(LoginInterface.class);
+    public static LoginLogic getLogin() {
+        return (LoginLogic) SingletonS2ContainerFactory.getContainer().getComponent(LoginLogic.class);
     }
 
     

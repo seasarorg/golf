@@ -9,6 +9,7 @@
 
 package org.seasar.golf.data;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -16,7 +17,7 @@ import java.util.HashMap;
  *
  * @author shimura
  */
-public class TableData {
+public class TableData implements Serializable {
     
     /** Creates a new instance of SimpleTableData */
     public TableData() {

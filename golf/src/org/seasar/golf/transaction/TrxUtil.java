@@ -9,11 +9,13 @@
 
 package org.seasar.golf.transaction;
 
+import com.jgoodies.validation.ValidationResult;
 import java.util.ArrayList;
 import java.util.Enumeration;
 import java.util.HashMap;
 import org.seasar.golf.ColumnDef;
 import org.seasar.golf.GolfTableModel;
+import org.seasar.golf.Session;
 import org.seasar.golf.data.RequestData;
 import org.seasar.golf.form.FormManager;
 import org.seasar.golf.data.TableData;
@@ -74,4 +76,10 @@ public class TrxUtil {
             setTableDataToRequest((String)tableHostName, requestData, formManager);
         }    
     } 
+    public static ValidationResult updateValidationResult(Session session, ValidationResult validationResult){
+        
+        ValidationResult newResult = new ValidationResult();
+        
+        return newResult;
+    }
 }

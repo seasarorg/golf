@@ -9,6 +9,7 @@
 
 package org.seasar.golf.data;
 
+import java.io.Serializable;
 import java.util.HashMap;
 import java.util.HashMap;
 
@@ -17,7 +18,7 @@ import java.util.HashMap;
  *
  * @author shimura
  */
-public class RequestData {
+public class RequestData implements Serializable {
     private String transactionCode;
     private HashMap param = new HashMap();
     private HashMap fields = new HashMap();

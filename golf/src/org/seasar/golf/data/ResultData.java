@@ -10,6 +10,7 @@
 package org.seasar.golf.data;
 
 import com.jgoodies.validation.ValidationResult;
+import java.io.Serializable;
 import java.util.HashMap;
 import org.seasar.golf.form.FormAction;
 
@@ -17,7 +18,7 @@ import org.seasar.golf.form.FormAction;
  *
  * @author shimura
  */
-public class ResultData {
+public class ResultData implements Serializable  {
     private HashMap param = new HashMap();
     private HashMap fields = new HashMap();
     private HashMap tables = new HashMap(); 
@@ -41,6 +42,10 @@ public class ResultData {
 
     public ValidationResult getValidationResult() {
         return validationResult;
+    }
+    
+    public void setValidationResult(ValidationResult validationResult) {
+        this.validationResult = validationResult;
     }
 
     public HashMap getParam() {

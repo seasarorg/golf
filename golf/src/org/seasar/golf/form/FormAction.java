@@ -9,6 +9,7 @@
 
 package org.seasar.golf.form;
 
+import java.io.Serializable;
 import org.seasar.golf.menu.MenuAction;
 import org.seasar.golf.menu.MenuActionItem;
 
@@ -16,7 +17,7 @@ import org.seasar.golf.menu.MenuActionItem;
  *
  * @author shimura
  */
-public class FormAction {
+public class FormAction implements Serializable {
     public enum FormStack {
         MENU, FIRST, SAME, NEXT, BACK, DIALOG, NEWMENU, NEWFIRST, RESULT}  
     private FormStack formStack = null;
