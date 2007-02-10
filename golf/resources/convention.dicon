@@ -4,7 +4,18 @@
 <components>
 	<component class="org.seasar.framework.convention.impl.NamingConventionImpl">
 		<initMethod name="addRootPackageName">
-			<arg>"org.seasar.golf.example"</arg>
+			<arg>"org.seasar.golf"</arg>
 		</initMethod>
+		<initMethod name="addRootPackageName">
+			<arg>"examples.rmi"</arg>
+		</initMethod>
+
+		<initMethod name="addRootPackageName">
+			<arg>"org.seasar.remoting.common"</arg>
+		</initMethod>
+
+		<initMethod name="addRootPackageName">
+			<arg>"org.seasar.remoting.rmi"</arg>
+		</initMethod>		
 	</component>
 </components>
