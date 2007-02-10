@@ -6,14 +6,13 @@
 		<initMethod name="addRootPackageName">
 			<arg>"org.seasar.golf"</arg>
 		</initMethod>
-		<initMethod name="addRootPackageName">
-			<arg>"examples.rmi"</arg>
-		</initMethod>
 
 		<initMethod name="addRootPackageName">
 			<arg>"org.seasar.remoting.common"</arg>
 		</initMethod>
-
+		<initMethod name="addRootPackageName">
+			<arg>"org.seasar.extension.component"</arg>
+		</initMethod>
 		<initMethod name="addRootPackageName">
 			<arg>"org.seasar.remoting.rmi"</arg>
 		</initMethod>		

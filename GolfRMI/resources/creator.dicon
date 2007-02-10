@@ -8,7 +8,6 @@
 	<component class="org.seasar.framework.container.creator.HelperCreator"/>
 	<component class="org.seasar.framework.container.creator.InterceptorCreator"/>
 	<component class="org.seasar.framework.container.creator.ServiceCreator"/>
-	<component class="org.seasar.remoting.common.creator.ConnectorCreator"/>
+	<component class="org.seasar.extension.component.impl.ComponentInvokerCreator"/>
 	<component class="org.seasar.framework.container.creator.LogicCreator"/>
-	<component class="org.seasar.golf.creator.FrameCreator"/>
 </components>
