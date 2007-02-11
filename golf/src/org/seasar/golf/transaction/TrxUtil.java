@@ -9,16 +9,18 @@
 
 package org.seasar.golf.transaction;
 
+import com.jgoodies.validation.ValidationMessage;
 import com.jgoodies.validation.ValidationResult;
+import com.jgoodies.validation.message.SimpleValidationMessage;
 import java.util.ArrayList;
-import java.util.Enumeration;
 import java.util.HashMap;
 import org.seasar.golf.ColumnDef;
 import org.seasar.golf.GolfTableModel;
-import org.seasar.golf.Session;
 import org.seasar.golf.data.RequestData;
 import org.seasar.golf.form.FormManager;
 import org.seasar.golf.data.TableData;
+import org.seasar.golf.validator.HostTableFieldInfo;
+import org.seasar.golf.validator.JTableFieldInfo;
 
 /**
  *
@@ -76,10 +78,51 @@ public class TrxUtil {
             setTableDataToRequest((String)tableHostName, requestData, formManager);
         }    
     } 
-    public static ValidationResult updateValidationResult(Session session, ValidationResult validationResult){
+    public static ValidationResult updateValidationResult(FormManager formManager, ValidationResult validationResult){
         
         ValidationResult newResult = new ValidationResult();
+        HashMap hostNameToColumnNo = null;
+         for(  Object o: validationResult.getMessages()) {
+             ValidationMessage msg = (ValidationMessage) o;
+             Object MessageKey = null;
+             String text = null;
+             
+             if (msg.key() != null ) {
+                 text = msg.formattedText();
+                 if (msg.key() instanceof String ) {
+
+                     MessageKey = formManager.getFormTrxManager().getHostToField().get(msg.key());
+                     
+                 } else if (msg.key() instanceof HostTableFieldInfo ) {
+                     GolfTableModel gtm = (GolfTableModel) formManager.getFormTrxManager().
+                             getHostToTableModel().get((HostTableFieldInfo) msg.key());
+                     if (hostNameToColumnNo == null) {
+                         hostNameToColumnNo = createHostNameToColumnNo(gtm);
+                     }
+                     Integer column = (Integer) hostNameToColumnNo.get(((HostTableFieldInfo) msg.key()).getColumn());
+
+                     MessageKey = new JTableFieldInfo(gtm.getJtable(), ((HostTableFieldInfo) msg.key()).getRow(),
+                           column.intValue());
+                     
+                     text = gtm.getDisplayName(((HostTableFieldInfo) msg.key()).getRow() , column) +
+                            ": " + text;
+                 }
+             }
+             ValidationMessage newMsg = new SimpleValidationMessage(text, msg.severity(), MessageKey);
+             newResult.add(newMsg);
+         }
         
         return newResult;
+    }
+    
+    private static HashMap createHostNameToColumnNo(GolfTableModel gtm) {
+        HashMap map = new HashMap();
+        for(int i=0; i <gtm.getColumnDefs().size(); i++) {
+            ColumnDef def = (ColumnDef)gtm.getColumnDefs().get(i);
+            if (def.getHostName() != null) {
+                map.put(def.getHostName(), i);
+            }
+        }
+        return map;
     }
 }

@@ -19,7 +19,9 @@ import org.seasar.golf.data.RequestData;
 import org.seasar.golf.data.ResultData;
 import org.seasar.golf.form.ContainerManager;
 import org.seasar.golf.form.FormAction;
+import org.seasar.golf.form.FormManager;
 import org.seasar.golf.transaction.TrxDispatcherInterface;
+import org.seasar.golf.transaction.TrxUtil;
 
 /**
  *
@@ -91,10 +93,15 @@ public class Session {
         processAction(menuaction, null);   
         return true;
     }
-    public ResultData trxExecute(RequestData requestData) {
+    public ResultData trxExecute(RequestData requestData, FormManager formManager) {
         ResultData resultData = trxDispatcher.execute(requestData);
         if (resultData.getFormAction().getFormStack() != FormAction.FormStack.RESULT){
             SessionUtil.processAction(resultData.getFormAction(), this, resultData.getParam());
+        }
+        if (resultData.getValidationResult().hasMessages()) {
+            resultData.setValidationResult(
+                    TrxUtil.updateValidationResult( formManager, resultData.getValidationResult()));
+            formManager.getFormValidationManager().setResult(resultData.getValidationResult());
         }
         return resultData;
     }

@@ -16,14 +16,14 @@ package org.seasar.golf.validator;
 public class HostTableFieldInfo {
     private String hostTtable;
     private int row;
-    private int column;
+    private String column;
 
     public  HostTableFieldInfo() {
     }
     public HostTableFieldInfo (
     String hostTtable,
     int row,
-    int column)
+    String column)
     {
         this.hostTtable = hostTtable;
         this.row = row;
@@ -46,11 +46,11 @@ public class HostTableFieldInfo {
         this.row = row;
     }
 
-    public int getColumn() {
+    public String getColumn() {
         return column;
     }
 
-    public void setColumn(int column) {
+    public void setColumn(String column) {
         this.column = column;
     }
    

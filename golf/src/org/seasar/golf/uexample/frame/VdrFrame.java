@@ -285,7 +285,7 @@ public class VdrFrame extends javax.swing.JFrame implements GolfFormInterface{
 private void jB_EnterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jB_EnterActionPerformed
     RequestData requestData = RequestDataFactory.createRequestData("vdr","mode=test",formManager);
     TrxUtil.setAllTableDataToRequest(requestData, formManager);
-    formManager.getSession().trxExecute(requestData);
+    formManager.getSession().trxExecute(requestData, formManager);
 }//GEN-LAST:event_jB_EnterActionPerformed
 
 private void jTable1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTable1KeyPressed

@@ -229,7 +229,7 @@ public class GolfTableModel extends AbstractTableModel implements ComponentValid
         jtable.setModel(this);
     }
 
-    private String getDisplayName(int row, int column) {
+    public String getDisplayName(int row, int column) {
         String col = getColumnDef(column).getValidatorDef().getDisplayName() == null ?
             getColumnDef(column).getName() : getColumnDef(column).getValidatorDef().getDisplayName() ;
         
