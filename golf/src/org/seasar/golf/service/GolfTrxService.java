@@ -7,7 +7,7 @@
  * and open the template in the editor.
  */
 
-package org.seasar.golf.transaction;
+package org.seasar.golf.service;
 
 import org.seasar.golf.data.RequestData;
 import org.seasar.golf.data.ResultData;

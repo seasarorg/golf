@@ -94,8 +94,9 @@ public class TrxUtil {
                      MessageKey = formManager.getFormTrxManager().getHostToField().get(msg.key());
                      
                  } else if (msg.key() instanceof HostTableFieldInfo ) {
+                    FormTrxManager ftm = formManager.getFormTrxManager(); 
                      GolfTableModel gtm = (GolfTableModel) formManager.getFormTrxManager().
-                             getHostToTableModel().get((HostTableFieldInfo) msg.key());
+                             getHostToTableModel().get(((HostTableFieldInfo) msg.key()).getHostTtable());
                      if (hostNameToColumnNo == null) {
                          hostNameToColumnNo = createHostNameToColumnNo(gtm);
                      }

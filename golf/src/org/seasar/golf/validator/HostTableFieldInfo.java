@@ -9,11 +9,13 @@
 
 package org.seasar.golf.validator;
 
+import java.io.Serializable;
+
 /**
  *
  * @author shimura
  */
-public class HostTableFieldInfo {
+public class HostTableFieldInfo implements Serializable{
     private String hostTtable;
     private int row;
     private String column;

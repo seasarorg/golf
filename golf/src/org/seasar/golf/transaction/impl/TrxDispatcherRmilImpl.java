@@ -12,6 +12,7 @@ package org.seasar.golf.transaction.impl;
 import org.seasar.framework.container.factory.SingletonS2ContainerFactory;
 import org.seasar.golf.data.RequestData;
 import org.seasar.golf.data.ResultData;
+import org.seasar.golf.service.GolfTrxService;
 import org.seasar.golf.transaction.*;
 
 /**
