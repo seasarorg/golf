@@ -1,2 +1,4 @@
-Class,Name,Validator, DisplayName  ,Required,HostName
-javax.swing.JTextField,jTextField1,,,,Vcode
+Class,Name,Validator, DisplayName  ,Required,HostName,Choice
+javax.swing.JTextField,jTextCode,,,,vcode,
+javax.swing.JTextField,jTextShort,,,,shortname,
+javax.swing.JTextField,jTextName,,,,name,

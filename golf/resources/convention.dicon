@@ -7,6 +7,9 @@
 			<arg>"org.seasar.golf"</arg>
 		</initMethod>
 		<initMethod name="addRootPackageName">
+			<arg>"org.seasar.golf.uexample"</arg>
+		</initMethod>
+		<initMethod name="addRootPackageName">
 			<arg>"examples.rmi"</arg>
 		</initMethod>
 
