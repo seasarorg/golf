@@ -37,6 +37,7 @@ public class FormManager {
     private HashMap componentNameIndex = new HashMap();
     private Session session = null;
     private FormTrxManager formTrxManager = null;
+    private String form;
     /** Creates a new instance of FrameManager */
     public FormManager(JFrame frame) {
         this.setFrame(frame);
@@ -188,5 +189,13 @@ public class FormManager {
 
     public FormTrxManager getFormTrxManager() {
         return formTrxManager;
+    }
+
+    public String getForm() {
+        return form;
+    }
+
+    public void setForm(String form) {
+        this.form = form;
     }
 }

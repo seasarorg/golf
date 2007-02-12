@@ -54,9 +54,8 @@ public class SessionUtil {
         }   
         
         public static void createForm(int index, FormAction formAction, Session session, HashMap params) {
-                         JFrame form = Factory.createForm(formAction.getActionItem().getForm()+"Frame");
-                        String parameter = formAction.getActionItem().getParameter();
-                        HashMap actionParam = getActionParameter(parameter);
+                        JFrame form = Factory.createForm(formAction.getForm()+"Frame");
+                        HashMap actionParam = formAction.getParam();
                         if (params != null) {
                             ((GolfFormInterface)form).initBinding(params);
                         } else {
@@ -64,6 +63,7 @@ public class SessionUtil {
                         }
                         FormManager formManager = ((GolfFormInterface)form).getFormManager();
                         formManager.setSession(session);
+                        formManager.setForm(formAction.getForm());
                         removeUpperForm(index - 1 , session);
                         session.getFormManagers().add(formManager);           
         }

@@ -10,8 +10,7 @@
 package org.seasar.golf.form;
 
 import java.io.Serializable;
-import org.seasar.golf.menu.MenuAction;
-import org.seasar.golf.menu.MenuActionItem;
+import java.util.HashMap;
 
 /**
  *
@@ -21,32 +20,35 @@ public class FormAction implements Serializable {
     public enum FormStack {
         MENU, FIRST, SAME, NEXT, BACK, DIALOG, NEWMENU, NEWFIRST, RESULT}  
     private FormStack formStack = null;
-    private MenuActionItem actionItem = null;
+    private String form = null;
+    private HashMap param = null;
     /** Creates a new instance of FormAction */
     public FormAction() {
     }
     
-    public MenuActionItem getActionItem() {
-        return actionItem;
-    }
 
-    public void setActionItem(MenuActionItem actionItem) {
-        this.actionItem = actionItem;
-    }
-    public boolean setAction(String  menuAction) {
-        actionItem = MenuAction.getMenuAction(menuAction);
-        if (actionItem == null) {
-            return false;
-        } else {
-            return true;
-        }
-    }
     public FormStack getFormStack() {
         return formStack;
     }
 
     public void setFormStack(FormStack formStack) {
         this.formStack = formStack;
+    }
+
+    public String getForm() {
+        return form;
+    }
+
+    public void setForm(String form) {
+        this.form = form;
+    }
+
+    public HashMap getParam() {
+        return param;
+    }
+
+    public void setParam(HashMap param) {
+        this.param = param;
     }
     
 }

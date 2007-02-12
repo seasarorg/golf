@@ -20,6 +20,8 @@ import org.seasar.golf.data.ResultData;
 import org.seasar.golf.form.ContainerManager;
 import org.seasar.golf.form.FormAction;
 import org.seasar.golf.form.FormManager;
+import org.seasar.golf.menu.MenuAction;
+import org.seasar.golf.menu.MenuActionItem;
 import org.seasar.golf.transaction.TrxDispatcherInterface;
 import org.seasar.golf.transaction.TrxUtil;
 
@@ -73,24 +75,30 @@ public class Session {
             newWindow = true;
             action = action.substring(1);
         }
-        FormAction menuaction = new FormAction();
-        if (menuaction.setAction(action) == false) {
+
+        MenuActionItem actionItem = MenuAction.getMenuAction(action);
+        if (actionItem ==null) {
             return false;
         }
+        String form = actionItem.getForm();
+        HashMap actionParam = SessionUtil.getActionParameter(actionItem.getParameter());
+        FormAction formAction = new FormAction();
+        formAction.setForm(form);
+        formAction.setParam(actionParam);
         if (action.equals("MENU")) {
             if (newWindow) {
-                menuaction.setFormStack(FormAction.FormStack.NEWMENU);                 
+                formAction.setFormStack(FormAction.FormStack.NEWMENU);                 
             } else {
-                menuaction.setFormStack(FormAction.FormStack.MENU); 
+                formAction.setFormStack(FormAction.FormStack.MENU); 
             }
         } else {
             if (newWindow) {
-                menuaction.setFormStack(FormAction.FormStack.NEWFIRST);                
+                formAction.setFormStack(FormAction.FormStack.NEWFIRST);                
             } else {
-                menuaction.setFormStack(FormAction.FormStack.FIRST);
+                formAction.setFormStack(FormAction.FormStack.FIRST);
             }
         }
-        processAction(menuaction, null);   
+        processAction(formAction, null);   
         return true;
     }
     public ResultData trxExecute(RequestData requestData, FormManager formManager) {

@@ -85,10 +85,9 @@ public class TrxUtil {
          for(  Object o: validationResult.getMessages()) {
              ValidationMessage msg = (ValidationMessage) o;
              Object MessageKey = null;
-             String text = null;
+             String text = msg.formattedText();
              
              if (msg.key() != null ) {
-                 text = msg.formattedText();
                  if (msg.key() instanceof String ) {
 
                      MessageKey = formManager.getFormTrxManager().getHostToField().get(msg.key());
