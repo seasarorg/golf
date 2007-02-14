@@ -1,120 +1,92 @@
-2007-01-30 21:01:26,251 [main] INFO  (TorqueJDBCTransformTask#doExecute():205) - ------------------------------------------------------- [Torque - JDBCToXMLSchema] Start!
-2007-01-30 21:01:26,267 [main] INFO  (TorqueJDBCTransformTask#doExecute():206) - Your DB settings are:
-2007-01-30 21:01:26,267 [main] INFO  (TorqueJDBCTransformTask#doExecute():207) -   driver : org.postgresql.Driver
-2007-01-30 21:01:26,267 [main] INFO  (TorqueJDBCTransformTask#doExecute():208) -   URL    : jdbc:postgresql://localhost:5432/golf
-2007-01-30 21:01:26,267 [main] INFO  (TorqueJDBCTransformTask#doExecute():209) -   user   : postgres
-2007-01-30 21:01:26,267 [main] INFO  (TorqueJDBCTransformTask#doExecute():210) -   schema : 
-2007-01-30 21:01:26,298 [main] INFO  (TorqueJDBCTransformTask#generateXML():248) - ...Instantiate DB-driver
-2007-01-30 21:01:26,314 [main] INFO  (TorqueJDBCTransformTask#generateXML():251) - ...Getting DB-connection
-2007-01-30 21:01:26,939 [main] INFO  (TorqueJDBCTransformTask#generateXML():254) - ...Getting DB-meta-data
-2007-01-30 21:01:26,954 [main] INFO  (TorqueJDBCTransformTask#generateXML():257) - $ /**************************************************************************
-2007-01-30 21:01:26,954 [main] INFO  (TorqueJDBCTransformTask#generateXML():258) - $ 
-2007-01-30 21:01:26,954 [main] INFO  (TorqueJDBCTransformTask#generateXML():259) - $ dbMetaData.toString(): org.postgresql.jdbc3.Jdbc3DatabaseMetaData@ec4a87
-2007-01-30 21:01:26,954 [main] INFO  (TorqueJDBCTransformTask#generateXML():260) - $ dbMetaData.getMaxRowSize(): 1073741824
-2007-01-30 21:01:26,954 [main] INFO  (TorqueJDBCTransformTask#generateXML():261) - $ 
-2007-01-30 21:01:26,954 [main] INFO  (TorqueJDBCTransformTask#generateXML():262) - $ /------------------------------------ ...Getting table list
-2007-01-30 21:01:27,907 [main] INFO  (TorqueJDBCTransformTask#generateXML():266) - $ 
-2007-01-30 21:01:27,907 [main] INFO  (TorqueJDBCTransformTask#generateXML():267) - $ TableCount: 1
-2007-01-30 21:01:27,907 [main] INFO  (TorqueJDBCTransformTask#generateXML():268) - $ ---------------------- /
-2007-01-30 21:01:27,907 [main] INFO  (TorqueJDBCTransformTask#generateXML():269) - $ 
-2007-01-30 21:01:27,907 [main] INFO  (TorqueJDBCTransformTask#generateXML():270) - $ *************************************/
-2007-01-30 21:01:28,032 [main] INFO  (TorqueJDBCTransformTask#generateXML():281) - ...Processing table: vendor
-2007-01-30 21:01:28,704 [main] INFO  (TorqueJDBCTransformTask#doExecute():219) - $ 
-2007-01-30 21:01:28,720 [main] INFO  (TorqueJDBCTransformTask#doExecute():220) - $ 
-2007-01-30 21:01:28,720 [main] INFO  (TorqueJDBCTransformTask#doExecute():221) - $ /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
-2007-01-30 21:01:28,720 [main] INFO  (TorqueJDBCTransformTask#doExecute():222) - $ ...Serializing XML: ./schema/project-schema-golf.xml
-2007-01-30 21:01:28,798 [main] INFO  (TorqueJDBCTransformTask#doExecute():232) - $ * * * * * * * * */
-2007-01-30 21:01:28,814 [main] INFO  (TorqueJDBCTransformTask#doExecute():233) - $ 
-2007-01-30 21:01:28,814 [main] INFO  (TorqueJDBCTransformTask#doExecute():239) - ------------------------------------------------------- [Torque - JDBCToXMLSchema] Finish!
-2007-01-30 21:01:45,407 [main] INFO  (XmlToAppData#parseFile():171) - Parsing file: 'project-schema-golf.xml'
-2007-01-30 21:01:45,470 [main] INFO  (DTDResolver#resolveEntity():117) - Resolver: used database.dtd from 'org.apache.torque.engine.database.transform' package
-2007-01-30 21:01:45,501 [main] DEBUG (XmlToAppData#endElement():282) - endElement(, , column) called
-2007-01-30 21:01:45,517 [main] DEBUG (XmlToAppData#endElement():282) - endElement(, , column) called
-2007-01-30 21:01:45,517 [main] DEBUG (XmlToAppData#endElement():282) - endElement(, , column) called
-2007-01-30 21:01:45,517 [main] DEBUG (XmlToAppData#endElement():282) - endElement(, , column) called
-2007-01-30 21:01:45,532 [main] DEBUG (XmlToAppData#endElement():282) - endElement(, , column) called
-2007-01-30 21:01:45,532 [main] DEBUG (XmlToAppData#endElement():282) - endElement(, , column) called
-2007-01-30 21:01:45,532 [main] DEBUG (XmlToAppData#endElement():282) - endElement(, , table) called
-2007-01-30 21:01:45,548 [main] DEBUG (XmlToAppData#endElement():282) - endElement(, , database) called
-2007-01-30 21:01:46,095 [main] DEBUG (Database#initializeCustomizeDao():538) - /=============================
-2007-01-30 21:01:46,095 [main] DEBUG (Database#initializeCustomizeDao():539) - ...Initializing customize dao.
-2007-01-30 21:01:46,111 [main] DEBUG (Database#initializeCustomizeDao():569) - ========/
-2007-01-30 21:01:46,439 [main] DEBUG (Database#debug():1388) - [behavior-interface & abstract]
-2007-01-30 21:01:46,439 [main] DEBUG (Database#debug():1388) -     ...Parsing BehaviorReadable
-2007-01-30 21:01:46,470 [main] DEBUG (Database#debug():1388) -     ...Parsing BehaviorWritable
-2007-01-30 21:01:46,486 [main] DEBUG (Database#debug():1388) -     ...Parsing AbstractBehaviorReadable
-2007-01-30 21:01:46,517 [main] DEBUG (Database#debug():1388) -     ...Parsing AbstractBehaviorWritable
-2007-01-30 21:01:46,532 [main] DEBUG (Database#debug():1388) - ...Parsing dao-interface
-2007-01-30 21:01:46,532 [main] DEBUG (Database#debug():1388) - public void parseEntityInterface() {
-2007-01-30 21:01:46,532 [main] DEBUG (Database#debug():1388) -     parseEntity();
-2007-01-30 21:01:46,548 [main] DEBUG (Database#debug():1388) -     parseEntityDefinedCommonColumn();
-2007-01-30 21:01:46,564 [main] DEBUG (Database#debug():1388) - }
-2007-01-30 21:01:46,564 [main] DEBUG (Database#debug():1388) - public void parseConditionBeanFramework() {
-2007-01-30 21:01:46,564 [main] DEBUG (Database#debug():1388) -     ...Parsing FetchNarrowingBeanContext
-2007-01-30 21:01:46,564 [main] DEBUG (Database#debug():1388) -     ...Parsing FetchNarrowingBean
-2007-01-30 21:01:46,564 [main] DEBUG (Database#debug():1388) -     ...Parsing SimpleOrderByBean
-2007-01-30 21:01:47,204 [main] DEBUG (Database#debug():1388) -     ...Parsing SimplePagingBean
-2007-01-30 21:01:47,204 [main] DEBUG (Database#debug():1388) -     ...Parsing PagingResultBean
-2007-01-30 21:01:47,220 [main] DEBUG (Database#debug():1388) -     ...Parsing ListResultBean
-2007-01-30 21:01:47,220 [main] DEBUG (Database#debug():1388) -     ...Parsing ConditionBeanContext
-2007-01-30 21:01:47,236 [main] DEBUG (Database#debug():1388) -     ...Parsing ConditionBean
-2007-01-30 21:01:47,236 [main] DEBUG (Database#debug():1388) -     ...Parsing ConditionQuery
-2007-01-30 21:01:47,251 [main] DEBUG (Database#debug():1388) -     ...Parsing PagingBean
-2007-01-30 21:01:47,251 [main] DEBUG (Database#debug():1388) -     ...Parsing OrderByBean
-2007-01-30 21:01:47,251 [main] DEBUG (Database#debug():1388) -     ...Parsing SelectResource
-2007-01-30 21:01:47,267 [main] DEBUG (Database#debug():1388) -     ...Parsing AbstractConditionBean
-2007-01-30 21:01:47,267 [main] DEBUG (Database#debug():1388) -     ...Parsing AbstractConditionQuery
-2007-01-30 21:01:47,282 [main] DEBUG (Database#debug():1388) -     ...Parsing ConditionKey
-2007-01-30 21:01:47,282 [main] DEBUG (Database#debug():1388) -     ...Parsing ConditionKey_equal
-2007-01-30 21:01:47,298 [main] DEBUG (Database#debug():1388) -     ...Parsing ConditionKey_notEqual
-2007-01-30 21:01:47,298 [main] DEBUG (Database#debug():1388) -     ...Parsing ConditionKey_greaterThan
-2007-01-30 21:01:47,298 [main] DEBUG (Database#debug():1388) -     ...Parsing ConditionKey_lessThan
-2007-01-30 21:01:47,314 [main] DEBUG (Database#debug():1388) -     ...Parsing ConditionKey_greaterEqual
-2007-01-30 21:01:47,314 [main] DEBUG (Database#debug():1388) -     ...Parsing ConditionKey_lessEqual
-2007-01-30 21:01:47,314 [main] DEBUG (Database#debug():1388) -     ...Parsing ConditionKey_prefixSearch
-2007-01-30 21:01:47,329 [main] DEBUG (Database#debug():1388) -     ...Parsing ConditionKey_inScope
-2007-01-30 21:01:47,329 [main] DEBUG (Database#debug():1388) -     ...Parsing ConditionKey_notInScope
-2007-01-30 21:01:47,329 [main] DEBUG (Database#debug():1388) -     ...Parsing ConditionKey_isNull
-2007-01-30 21:01:47,345 [main] DEBUG (Database#debug():1388) -     ...Parsing ConditionKey_isNotNull
-2007-01-30 21:01:47,345 [main] DEBUG (Database#debug():1388) -     ...Parsing ConditionValue
-2007-01-30 21:01:47,361 [main] DEBUG (Database#debug():1388) -     ...Parsing SqlClause
-2007-01-30 21:01:47,361 [main] DEBUG (Database#debug():1388) -     ...Parsing AbstractSqlClause
-2007-01-30 21:01:47,376 [main] DEBUG (Database#debug():1388) -     ...Parsing SqlClause_postgresql
-2007-01-30 21:01:47,392 [main] DEBUG (Database#debug():1388) -     ...Parsing OrderByClause
-2007-01-30 21:01:47,392 [main] DEBUG (Database#debug():1388) -     ...Parsing OrderByElement
-2007-01-30 21:01:47,392 [main] DEBUG (Database#debug():1388) - }
-2007-01-30 21:01:47,392 [main] DEBUG (Database#debug():1388) - public void parseDBMetaClass() {
-2007-01-30 21:01:47,407 [main] DEBUG (Database#debug():1388) -     parseDBMeta();
-2007-01-30 21:01:47,407 [main] DEBUG (Database#debug():1388) -     parseAbstractDBMeta();
-2007-01-30 21:01:47,423 [main] DEBUG (Database#debug():1388) -     parseDBMetaInstanceHandler();
-2007-01-30 21:01:47,439 [main] DEBUG (Database#debug():1388) - public void parseExceptionClass() {
-2007-01-30 21:01:47,439 [main] DEBUG (Database#debug():1388) -     parseRecordHasAlreadyBeenDeletedException();
-2007-01-30 21:01:47,439 [main] DEBUG (Database#debug():1388) -     parseRecordHasOverlappedException();
-2007-01-30 21:01:47,439 [main] DEBUG (Database#debug():1388) -     parseSelectedCountExceedMaxCountException();
-2007-01-30 21:01:47,454 [main] DEBUG (Database#debug():1388) - }
-2007-01-30 21:01:47,454 [main] DEBUG (Database#debug():1388) - public void parseHelperClass() {
-2007-01-30 21:01:47,454 [main] DEBUG (Database#debug():1388) -     parseMapListString();
-2007-01-30 21:01:47,454 [main] DEBUG (Database#debug():1388) -     parseMapListStringImpl();
-2007-01-30 21:01:47,486 [main] DEBUG (Database#debug():1388) -     parseMapStringBuilder();
-2007-01-30 21:01:47,486 [main] DEBUG (Database#debug():1388) -     parseMapStringBuilderImpl();
-2007-01-30 21:01:47,486 [main] DEBUG (Database#debug():1388) - }
-2007-01-30 21:01:47,486 [main] DEBUG (Database#debug():1388) - parseDaoDicon() {
-2007-01-30 21:01:47,486 [main] DEBUG (Database#debug():1388) -     /dbflute.dicon
-2007-01-30 21:01:47,501 [main] DEBUG (Database#debug():1388) - }
-2007-01-30 21:01:47,501 [main] DEBUG (Database#debug():1388) - public void parseDaoSelector() {
-2007-01-30 21:01:47,501 [main] DEBUG (Database#debug():1388) -     parseDaoSelector();
-2007-01-30 21:01:47,517 [main] DEBUG (Database#debug():1388) -     parseCacheDaoSelector();
-2007-01-30 21:01:47,517 [main] DEBUG (Database#debug():1388) - }
-2007-01-30 21:01:47,517 [main] DEBUG (Database#debug():1388) - parseGenMetaData();
-2007-01-30 21:01:47,532 [main] DEBUG (Database#debug():1388) - public void parseInterceptorClass() {
-2007-01-30 21:01:47,532 [main] DEBUG (Database#debug():1388) -     parseCommonColumnSetupAbstractInterceptor();
-2007-01-30 21:01:47,548 [main] DEBUG (Database#debug():1388) -     parseCommonColumnSetupBeforeInsertInterceptor();
-2007-01-30 21:01:47,548 [main] DEBUG (Database#debug():1388) -     parseCommonColumnSetupBeforeUpdateInterceptor();
-2007-01-30 21:01:47,564 [main] DEBUG (Database#debug():1388) -     parseCommonColumnSetupBeforeDeleteInterceptor();
-2007-01-30 21:01:47,564 [main] DEBUG (Database#debug():1388) - }
-2007-01-30 21:01:47,626 [main] DEBUG (Database#debug():1388) - public void parseTableList() {
-2007-01-30 21:01:47,626 [main] DEBUG (Database#debug():1388) -     final List<Table> tableList = getTableList();
-2007-01-30 21:01:47,626 [main] DEBUG (Database#debug():1388) -     for (Table tbl : tableList) {
-2007-01-30 21:01:47,626 [main] DEBUG (Database#debug():1388) -         parseTable(tbl); // vendor : Vendor
-2007-01-30 21:01:48,017 [main] DEBUG (Database#debug():1388) -     }
-2007-01-30 21:01:48,017 [main] DEBUG (Database#debug():1388) - }
+2007-02-15 05:34:16,121 [main] INFO  (XmlToAppData#parseFile():171) - Parsing file: 'project-schema-golf.xml'
+2007-02-15 05:34:16,183 [main] INFO  (DTDResolver#resolveEntity():117) - Resolver: used database.dtd from 'org.apache.torque.engine.database.transform' package
+2007-02-15 05:34:16,215 [main] DEBUG (XmlToAppData#endElement():282) - endElement(, , column) called
+2007-02-15 05:34:16,230 [main] DEBUG (XmlToAppData#endElement():282) - endElement(, , column) called
+2007-02-15 05:34:16,230 [main] DEBUG (XmlToAppData#endElement():282) - endElement(, , column) called
+2007-02-15 05:34:16,230 [main] DEBUG (XmlToAppData#endElement():282) - endElement(, , column) called
+2007-02-15 05:34:16,230 [main] DEBUG (XmlToAppData#endElement():282) - endElement(, , column) called
+2007-02-15 05:34:16,246 [main] DEBUG (XmlToAppData#endElement():282) - endElement(, , column) called
+2007-02-15 05:34:16,246 [main] DEBUG (XmlToAppData#endElement():282) - endElement(, , table) called
+2007-02-15 05:34:16,262 [main] DEBUG (XmlToAppData#endElement():282) - endElement(, , database) called
+2007-02-15 05:34:16,777 [main] DEBUG (Database#initializeCustomizeDao():538) - /=============================
+2007-02-15 05:34:16,777 [main] DEBUG (Database#initializeCustomizeDao():539) - ...Initializing customize dao.
+2007-02-15 05:34:16,824 [main] DEBUG (Database#initializeCustomizeDao():569) - ========/
+2007-02-15 05:34:17,262 [main] DEBUG (Database#debug():1388) - [behavior-interface & abstract]
+2007-02-15 05:34:17,262 [main] DEBUG (Database#debug():1388) -     ...Parsing BehaviorReadable
+2007-02-15 05:34:17,293 [main] DEBUG (Database#debug():1388) -     ...Parsing BehaviorWritable
+2007-02-15 05:34:17,324 [main] DEBUG (Database#debug():1388) -     ...Parsing AbstractBehaviorReadable
+2007-02-15 05:34:17,355 [main] DEBUG (Database#debug():1388) -     ...Parsing AbstractBehaviorWritable
+2007-02-15 05:34:17,371 [main] DEBUG (Database#debug():1388) - ...Parsing dao-interface
+2007-02-15 05:34:17,387 [main] DEBUG (Database#debug():1388) - public void parseEntityInterface() {
+2007-02-15 05:34:17,387 [main] DEBUG (Database#debug():1388) -     parseEntity();
+2007-02-15 05:34:17,402 [main] DEBUG (Database#debug():1388) -     parseEntityDefinedCommonColumn();
+2007-02-15 05:34:17,418 [main] DEBUG (Database#debug():1388) - }
+2007-02-15 05:34:17,418 [main] DEBUG (Database#debug():1388) - public void parseConditionBeanFramework() {
+2007-02-15 05:34:17,418 [main] DEBUG (Database#debug():1388) -     ...Parsing FetchNarrowingBeanContext
+2007-02-15 05:34:17,418 [main] DEBUG (Database#debug():1388) -     ...Parsing FetchNarrowingBean
+2007-02-15 05:34:17,433 [main] DEBUG (Database#debug():1388) -     ...Parsing SimpleOrderByBean
+2007-02-15 05:34:17,933 [main] DEBUG (Database#debug():1388) -     ...Parsing SimplePagingBean
+2007-02-15 05:34:17,949 [main] DEBUG (Database#debug():1388) -     ...Parsing PagingResultBean
+2007-02-15 05:34:17,965 [main] DEBUG (Database#debug():1388) -     ...Parsing ListResultBean
+2007-02-15 05:34:17,980 [main] DEBUG (Database#debug():1388) -     ...Parsing ConditionBeanContext
+2007-02-15 05:34:17,980 [main] DEBUG (Database#debug():1388) -     ...Parsing ConditionBean
+2007-02-15 05:34:17,996 [main] DEBUG (Database#debug():1388) -     ...Parsing ConditionQuery
+2007-02-15 05:34:18,012 [main] DEBUG (Database#debug():1388) -     ...Parsing PagingBean
+2007-02-15 05:34:18,012 [main] DEBUG (Database#debug():1388) -     ...Parsing OrderByBean
+2007-02-15 05:34:18,012 [main] DEBUG (Database#debug():1388) -     ...Parsing SelectResource
+2007-02-15 05:34:18,027 [main] DEBUG (Database#debug():1388) -     ...Parsing AbstractConditionBean
+2007-02-15 05:34:18,043 [main] DEBUG (Database#debug():1388) -     ...Parsing AbstractConditionQuery
+2007-02-15 05:34:18,058 [main] DEBUG (Database#debug():1388) -     ...Parsing ConditionKey
+2007-02-15 05:34:18,058 [main] DEBUG (Database#debug():1388) -     ...Parsing ConditionKey_equal
+2007-02-15 05:34:18,074 [main] DEBUG (Database#debug():1388) -     ...Parsing ConditionKey_notEqual
+2007-02-15 05:34:18,074 [main] DEBUG (Database#debug():1388) -     ...Parsing ConditionKey_greaterThan
+2007-02-15 05:34:18,090 [main] DEBUG (Database#debug():1388) -     ...Parsing ConditionKey_lessThan
+2007-02-15 05:34:18,090 [main] DEBUG (Database#debug():1388) -     ...Parsing ConditionKey_greaterEqual
+2007-02-15 05:34:18,090 [main] DEBUG (Database#debug():1388) -     ...Parsing ConditionKey_lessEqual
+2007-02-15 05:34:18,105 [main] DEBUG (Database#debug():1388) -     ...Parsing ConditionKey_prefixSearch
+2007-02-15 05:34:18,105 [main] DEBUG (Database#debug():1388) -     ...Parsing ConditionKey_inScope
+2007-02-15 05:34:18,121 [main] DEBUG (Database#debug():1388) -     ...Parsing ConditionKey_notInScope
+2007-02-15 05:34:18,121 [main] DEBUG (Database#debug():1388) -     ...Parsing ConditionKey_isNull
+2007-02-15 05:34:18,121 [main] DEBUG (Database#debug():1388) -     ...Parsing ConditionKey_isNotNull
+2007-02-15 05:34:18,137 [main] DEBUG (Database#debug():1388) -     ...Parsing ConditionValue
+2007-02-15 05:34:18,137 [main] DEBUG (Database#debug():1388) -     ...Parsing SqlClause
+2007-02-15 05:34:18,152 [main] DEBUG (Database#debug():1388) -     ...Parsing AbstractSqlClause
+2007-02-15 05:34:18,168 [main] DEBUG (Database#debug():1388) -     ...Parsing SqlClause_postgresql
+2007-02-15 05:34:18,168 [main] DEBUG (Database#debug():1388) -     ...Parsing OrderByClause
+2007-02-15 05:34:18,183 [main] DEBUG (Database#debug():1388) -     ...Parsing OrderByElement
+2007-02-15 05:34:18,183 [main] DEBUG (Database#debug():1388) - }
+2007-02-15 05:34:18,183 [main] DEBUG (Database#debug():1388) - public void parseDBMetaClass() {
+2007-02-15 05:34:18,199 [main] DEBUG (Database#debug():1388) -     parseDBMeta();
+2007-02-15 05:34:18,215 [main] DEBUG (Database#debug():1388) -     parseAbstractDBMeta();
+2007-02-15 05:34:18,215 [main] DEBUG (Database#debug():1388) -     parseDBMetaInstanceHandler();
+2007-02-15 05:34:18,387 [main] DEBUG (Database#debug():1388) - public void parseExceptionClass() {
+2007-02-15 05:34:18,387 [main] DEBUG (Database#debug():1388) -     parseRecordHasAlreadyBeenDeletedException();
+2007-02-15 05:34:18,387 [main] DEBUG (Database#debug():1388) -     parseRecordHasOverlappedException();
+2007-02-15 05:34:18,387 [main] DEBUG (Database#debug():1388) -     parseSelectedCountExceedMaxCountException();
+2007-02-15 05:34:18,402 [main] DEBUG (Database#debug():1388) - }
+2007-02-15 05:34:18,402 [main] DEBUG (Database#debug():1388) - public void parseHelperClass() {
+2007-02-15 05:34:18,402 [main] DEBUG (Database#debug():1388) -     parseMapListString();
+2007-02-15 05:34:18,402 [main] DEBUG (Database#debug():1388) -     parseMapListStringImpl();
+2007-02-15 05:34:18,433 [main] DEBUG (Database#debug():1388) -     parseMapStringBuilder();
+2007-02-15 05:34:18,433 [main] DEBUG (Database#debug():1388) -     parseMapStringBuilderImpl();
+2007-02-15 05:34:18,433 [main] DEBUG (Database#debug():1388) - }
+2007-02-15 05:34:18,433 [main] DEBUG (Database#debug():1388) - parseDaoDicon() {
+2007-02-15 05:34:18,433 [main] DEBUG (Database#debug():1388) -     /dbflute.dicon
+2007-02-15 05:34:18,449 [main] DEBUG (Database#debug():1388) - }
+2007-02-15 05:34:18,449 [main] DEBUG (Database#debug():1388) - public void parseDaoSelector() {
+2007-02-15 05:34:18,465 [main] DEBUG (Database#debug():1388) -     parseDaoSelector();
+2007-02-15 05:34:18,465 [main] DEBUG (Database#debug():1388) -     parseCacheDaoSelector();
+2007-02-15 05:34:18,465 [main] DEBUG (Database#debug():1388) - }
+2007-02-15 05:34:18,480 [main] DEBUG (Database#debug():1388) - parseGenMetaData();
+2007-02-15 05:34:18,496 [main] DEBUG (Database#debug():1388) - public void parseInterceptorClass() {
+2007-02-15 05:34:18,496 [main] DEBUG (Database#debug():1388) -     parseCommonColumnSetupAbstractInterceptor();
+2007-02-15 05:34:18,496 [main] DEBUG (Database#debug():1388) -     parseCommonColumnSetupBeforeInsertInterceptor();
+2007-02-15 05:34:18,496 [main] DEBUG (Database#debug():1388) -     parseCommonColumnSetupBeforeUpdateInterceptor();
+2007-02-15 05:34:18,512 [main] DEBUG (Database#debug():1388) -     parseCommonColumnSetupBeforeDeleteInterceptor();
+2007-02-15 05:34:18,512 [main] DEBUG (Database#debug():1388) - }
+2007-02-15 05:34:18,574 [main] DEBUG (Database#debug():1388) - public void parseTableList() {
+2007-02-15 05:34:18,574 [main] DEBUG (Database#debug():1388) -     final List<Table> tableList = getTableList();
+2007-02-15 05:34:18,574 [main] DEBUG (Database#debug():1388) -     for (Table tbl : tableList) {
+2007-02-15 05:34:18,574 [main] DEBUG (Database#debug():1388) -         parseTable(tbl); // vendor : Vendor
+2007-02-15 05:34:18,871 [main] DEBUG (Database#debug():1388) -     }
+2007-02-15 05:34:18,871 [main] DEBUG (Database#debug():1388) - }
