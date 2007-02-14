@@ -3,7 +3,7 @@
 	"http://www.seasar.org/dtd/components21.dtd">
 
 <components namespace="dbflute">
-    <include path="jdbc.dicon"/>
+    <include path="j2ee.dicon"/>
 
 
     <!-- S2Dao component. -->
