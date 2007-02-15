@@ -11,6 +11,7 @@ package org.seasar.golf;
 
 import java.util.HashMap;
 import javax.swing.JFrame;
+import org.seasar.golf.data.ResultData;
 import org.seasar.golf.form.FormManager;
 import org.seasar.golf.form.FormAction;
 

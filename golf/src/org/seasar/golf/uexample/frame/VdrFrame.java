@@ -353,7 +353,7 @@ private void jTextActionKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:ev
         for (int i=0; i < 5; i++) {
             addNewRow();
         }
-        TableUtil.SetPreferedColumnWIdth(jTable1, new int[]{15,40,60,150,40,80 });  
+        TableUtil.SetPreferedColumnWIdth(jTable1, new int[]{15,40,60,150,40, 80});  
         formManager.setValidationFromCsvResource("Example1_bind.csv");
         ((SelectionInList )formManager.getFormBindingManager().getValueModel("jComboBox1")).setListModel(
             new javax.swing.DefaultComboBoxModel(new String[] {"", "Item 11", "Item 22", "Item 33", "Item 44" }));        

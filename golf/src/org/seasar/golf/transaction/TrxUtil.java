@@ -17,6 +17,7 @@ import java.util.HashMap;
 import org.seasar.golf.ColumnDef;
 import org.seasar.golf.GolfTableModel;
 import org.seasar.golf.data.RequestData;
+import org.seasar.golf.data.ResultData;
 import org.seasar.golf.form.FormManager;
 import org.seasar.golf.data.TableData;
 import org.seasar.golf.validator.HostTableFieldInfo;
@@ -48,7 +49,7 @@ public class TrxUtil {
                 getHostToTableModel().get(tableHostName);
         ArrayList cols = new ArrayList();
         TableData td = new TableData();
-        for(int i = 0; i < tableModel.getColumnCount(); i++) {
+        for(int i = 0; i < tableModel.getTotalColumnCount(); i++) {
             if (((ColumnDef)tableModel.getColumnDefs().get(i)).getHostName() != null) {
                 cols.add(i);
                 td.addColumn(((ColumnDef)tableModel.getColumnDefs().get(i)).getHostName());
@@ -78,6 +79,34 @@ public class TrxUtil {
             setTableDataToRequest((String)tableHostName, requestData, formManager);
         }    
     } 
+    public static void setTableDataFromResult(
+            String tableHostName, ResultData resultData, FormManager formManager) {  
+        GolfTableModel tableModel = (GolfTableModel)formManager.getFormTrxManager().
+                getHostToTableModel().get(tableHostName);
+        tableModel.clearRow();
+        HashMap hostNameToColumnNo = new HashMap();
+        TableData td = (TableData) resultData.getTables().get(tableHostName);
+        for(int i = 0; i < tableModel.getTotalColumnCount(); i++) {
+            String hostColumnName = ((ColumnDef)tableModel.getColumnDefs().get(i)).getHostName();
+            if (hostColumnName!= null) { 
+                for (int j=0; j < td.getColumnCount(); j++){
+                    if (td.getColumnName(j).equals(hostColumnName)){
+                        hostNameToColumnNo.put(j, i);
+                        break;
+                    }
+                }
+            }  
+        }
+        for(int rowNo = 0; rowNo < td.getRowCount(); rowNo++){
+            tableModel.addNullrow();
+            for(int col=0; col < td.getColumnCount(); col++) {
+                if (hostNameToColumnNo.containsKey(col)){
+                   tableModel.setValueAt(td.getValueAt(rowNo, (Integer)hostNameToColumnNo.get(col)),
+                           rowNo, col); 
+                }
+            }
+        }
+     }
     public static ValidationResult updateValidationResult(FormManager formManager, ValidationResult validationResult){
         
         ValidationResult newResult = new ValidationResult();

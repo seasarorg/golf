@@ -13,6 +13,7 @@ import javax.swing.ListSelectionModel;
 import org.seasar.golf.GolfFormInterface;
 import org.seasar.golf.GolfTableModel;
 import org.seasar.golf.data.RequestData;
+import org.seasar.golf.data.ResultData;
 import org.seasar.golf.form.FormManager;
 import org.seasar.golf.util.TableUtil;
 import org.seasar.golf.transaction.RequestDataFactory;
@@ -235,7 +236,9 @@ private void jTextActionKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:ev
         jTable1.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
         formManager.SetTableColumnFromCsvResource(
     			jTable1, "VendorTable", "VendorTable", golfTableModel, "Vdrsd_table.csv");
-        TableUtil.SetPreferedColumnWIdth(jTable1, new int[]{15,40,60,150,80,0 });  
+        TableUtil.SetPreferedColumnWIdth(jTable1, new int[]{15,40,60,150,80 });  
+        
+        TrxUtil.setTableDataFromResult( "VendorTable", (ResultData)params.get("resultData"), formManager);
 
     }
 

@@ -62,7 +62,11 @@ public class FormManagerUtil {
                         if (field == null) {
                             return;
                         }
-			boolean canEdit = getBooleanValueFromTable(td, i,"canedit" );
+                        boolean hide = getBooleanValueFromTable(td, i,"canedit","h" );
+                        if (hide) {
+                            gtm.setColumnCount(Integer.valueOf(i));
+                        }
+			boolean canEdit = getBooleanValueFromTable(td, i,"canedit","t" );
 			String clazz = (String) td.getTextAt(i,"class");
 			String clazzNew = GolfSetting.getSetting(clazz);
 			clazz = (clazzNew != null) ? clazzNew: clazz;
@@ -78,7 +82,7 @@ public class FormManagerUtil {
 		gtm.setJtable(jt, tableDisplayName);
 		gtm.setFormValidationManager(formValidationManager);
 		for(int i = 0; i < td.getDataArray().size(); i++ ) {
-			boolean insCheck = getBooleanValueFromTable(td, i,"inscheck" );
+			boolean insCheck = getBooleanValueFromTable(td, i,"inscheck","t" );
 			if (insCheck){
 				gtm.getColumnDef(i).setInsertCheckColumn(true);
 			}
@@ -89,7 +93,7 @@ public class FormManagerUtil {
 			if (displayName != null && displayName.length() == 0) {
 				displayName = null;
 			}
-			boolean required = getBooleanValueFromTable(td, i,"required" );
+			boolean required = getBooleanValueFromTable(td, i,"required","t" );
 			if (validator != null || required) {
 				gtm.getColumnDef(i).setValidatorDef(
 					new ValidatorDef(validator,	displayName, required));
@@ -124,7 +128,7 @@ public class FormManagerUtil {
                         }                 
 			String s =((String) td.getTextAt(i,"validator"));
 			GolfValidator v = (s != null && s.length() > 0) ? ValidationUtil.getValidator(s):null;
-			boolean required = getBooleanValueFromTable(td, i,"required" );
+			boolean required = getBooleanValueFromTable(td, i,"required","t" );
                         String choice =((String) td.getTextAt(i,"choice"));
 			formManager.getFormBindingManager().
                                 bind(name, v, (String)td.getTextAt(i,"displayname"), required, choice);
@@ -136,12 +140,13 @@ public class FormManagerUtil {
 		}
 		
 	}        
-	private static  boolean getBooleanValueFromTable(TableData td, int i, String fld) {
+	private static  boolean getBooleanValueFromTable(TableData td, int i, String fld, String value) {
 		String b = ((String) td.getTextAt(i, fld));
 		boolean brtn = false;
-		if (b != null && b.toLowerCase().equals("t")) {
+		if (b != null && b.toLowerCase().equals(value)) {
 			brtn = true;
 		}
 		return brtn;
 	}         
+      
 }

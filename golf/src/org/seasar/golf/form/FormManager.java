@@ -19,6 +19,7 @@ import org.seasar.golf.GolfTableModel;
 import org.seasar.golf.Session;
 import org.seasar.golf.binding.FormBindingManager;
 import org.seasar.golf.containerFrame.*;
+import org.seasar.golf.data.ResultData;
 import org.seasar.golf.transaction.FormTrxManager;
 import org.seasar.golf.data.TableData;
 import org.seasar.golf.util.TableUtil;
@@ -38,6 +39,7 @@ public class FormManager {
     private Session session = null;
     private FormTrxManager formTrxManager = null;
     private String form;
+    private ResultData resultData = null;
     /** Creates a new instance of FrameManager */
     public FormManager(JFrame frame) {
         this.setFrame(frame);
@@ -197,5 +199,13 @@ public class FormManager {
 
     public void setForm(String form) {
         this.form = form;
+    }
+
+    public ResultData getResultData() {
+        return resultData;
+    }
+
+    public void setResultData(ResultData resultData) {
+        this.resultData = resultData;
     }
 }

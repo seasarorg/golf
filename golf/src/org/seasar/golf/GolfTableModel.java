@@ -29,10 +29,11 @@ public class GolfTableModel extends AbstractTableModel implements ComponentValid
     protected  ArrayList <ColumnDef>   columnDefs = new ArrayList <ColumnDef> ();
     private JTable jtable;
     private String tableDisplayName = "";
-    private String rowDisplay = "çs";
+    private String rowDisplay = "\u884C";
     private boolean rowDisplayPre = false;
     private FormValidationManager formValidationManager= null;
     private String hostName = null;
+    private Integer columnNo;
     
     /** Creates a new instance of GolfTableModel */
     public GolfTableModel() {
@@ -50,7 +51,7 @@ public class GolfTableModel extends AbstractTableModel implements ComponentValid
         return dataArray.size();
     }
 
-    public int getColumnCount() {
+    public int getTotalColumnCount() {
         return columnDefs.size();
     }
 
@@ -90,6 +91,13 @@ public class GolfTableModel extends AbstractTableModel implements ComponentValid
     public void addRow (Object[] rowData) {
         addRow(convertToArray(rowData));
     }
+    public void addNullrow(){
+        ArrayList row = new ArrayList();
+        for (int i=0; i < getTotalColumnCount(); i++) {
+            row.add(null);
+        }
+        addRow(row);
+    }
     public void insertRow(int row, ArrayList rowData) {
         dataArray.add(row, rowData);
         fireTableRowsInserted(row, row);
@@ -103,7 +111,9 @@ public class GolfTableModel extends AbstractTableModel implements ComponentValid
         dataArray.remove(row);
         fireTableRowsDeleted(row, row);
     }
-    
+    public void clearRow(){
+        dataArray.clear();
+    }
     public void setColumnDefs ( ArrayList <ColumnDef> columnDefs) {
         setDataArray(dataArray, columnDefs);
     }
@@ -111,11 +121,11 @@ public class GolfTableModel extends AbstractTableModel implements ComponentValid
         setColumnDefs(convertToArray(newColumnDefs));
     }
     
-    public void setColumnCount(int columnCount) {
-        for (int i = getColumnCount()-1; i >=columnCount; i--) {
+    public void setTotalColumnCount(int columnCount) {
+        for (int i = getTotalColumnCount()-1; i >=columnCount; i--) {
             columnDefs.remove(i);
         }
-        for (int i = getColumnCount(); i < columnCount; i++) {
+        for (int i = getTotalColumnCount(); i < columnCount; i++) {
             columnDefs.add(i, new ColumnDef());
         }
         justifyRows(0, getRowCount());
@@ -156,13 +166,13 @@ public class GolfTableModel extends AbstractTableModel implements ComponentValid
                 dataArray.add(i, new ArrayList());
             }
             ArrayList row = (ArrayList) dataArray.get(i);
-            if (row.size() > getColumnCount()) {
-                for (int j = row.size() -1; j >= getColumnCount(); j--) {
+            if (row.size() > getTotalColumnCount()) {
+                for (int j = row.size() -1; j >= getTotalColumnCount(); j--) {
                     row.remove(j);
                 }
             }
             else {
-                for (int j =row.size(); j < getColumnCount(); j++) {
+                for (int j =row.size(); j < getTotalColumnCount(); j++) {
                     if (row.get(j) == null ) {
                         row.add(j, null);
                     }
@@ -186,7 +196,7 @@ public class GolfTableModel extends AbstractTableModel implements ComponentValid
         ValidationResult vr = (validationResult == null) ? new ValidationResult() : validationResult;
         for (int row = 0; row < getRowCount(); row ++) {
             if (effectiveRow(row)) {
-                for (int column = 0; column < getColumnCount(); column ++) {
+                for (int column = 0; column < getTotalColumnCount(); column ++) {
                     ValidatorDef vd = getColumnDef(column).getValidatorDef();
                     if (vd.getValidator() != null || (vd.getRequired() && requiredCheck)) {
                         vr = ValidationUtil.validate(vr, vd.getValidator(),  getValueAt(row, column), 
@@ -202,7 +212,7 @@ public class GolfTableModel extends AbstractTableModel implements ComponentValid
 
     public boolean effectiveRow(int row) {
         boolean effective = false;
-        for (int column = 0; column < getColumnCount(); column ++) {
+        for (int column = 0; column < getTotalColumnCount(); column ++) {
             if (getColumnDef(column).getInsertCheckColumn() == true
                     && getValueAt(row, column) != null 
                     && getValueAt(row, column).toString().length() > 0) {
@@ -288,6 +298,17 @@ public class GolfTableModel extends AbstractTableModel implements ComponentValid
 
     public void setHostName(String hostName) {
         this.hostName = hostName;
+    }
+
+    public int getColumnCount() {
+        if (columnNo == null) {
+            return getTotalColumnCount();
+        } else {
+            return columnNo;
+        }
+    }
+    public void setColumnCount(Integer count) {
+        columnNo = count;
     }
     
 }
