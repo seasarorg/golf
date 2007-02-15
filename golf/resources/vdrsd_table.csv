@@ -4,4 +4,4 @@ VCODE,String,T,T,,,T,vcode
 ŠÈ—ª–¼,String,T,T,,,T,shortname
 –¼Ì,String,T,T,,,T,name
 “d˜b,String,T,T,,,T,telephone
-versionno,Integer,,,,,,versionno
+versionno,Integer,H,,,,,versionno
