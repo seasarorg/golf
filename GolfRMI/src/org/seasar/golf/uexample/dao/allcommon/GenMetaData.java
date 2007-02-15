@@ -248,7 +248,7 @@ public class GenMetaData {
      * @return The property-value.
      */
     public String getJdbcDiconResourceName() {
-        return "jdbc.dicon";
+        return "j2ee.dicon";
     }
 
     /**

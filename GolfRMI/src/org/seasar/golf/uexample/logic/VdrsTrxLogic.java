@@ -9,10 +9,12 @@
 
 package org.seasar.golf.uexample.logic;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.seasar.golf.data.RequestData;
 import org.seasar.golf.data.ResultData;
+import org.seasar.golf.data.TableData;
 import org.seasar.golf.form.FormAction;
 import org.seasar.golf.transaction.TransactionInterface;
 import org.seasar.golf.uexample.dao.cbean.VendorCB;
@@ -52,6 +54,20 @@ public class VdrsTrxLogic implements TransactionInterface{
         } else {
         	 resultData.getFormAction().setFormStack(FormAction.FormStack.FIRST);
         	 resultData.getFormAction().setForm("vdrsd");
+        	 TableData td = new TableData();
+        	 td.setColumnIdentifires(new Object[]{"id","vcode","shortname","name","telephone","versionno" });
+        	 for(Vendor vdr:vdrl) {
+        		 ArrayList row = new ArrayList();
+        		 row.add(vdr.getId().intValue());
+        		 row.add(vdr.getVcode());
+        		 row.add(vdr.getShortname());
+        		 row.add(vdr.getName());
+        		 row.add(vdr.getTelephone());
+        		 row.add(vdr.getVersionno().intValue());        			 
+        		 td.addRow(row);
+        	 }
+        	 resultData.getTables().put("VendorTable",td);
+        	 resultData.getParam().put("resultData", resultData);
         }
     }
 
