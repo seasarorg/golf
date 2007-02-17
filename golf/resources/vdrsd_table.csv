@@ -1,7 +1,7 @@
 Field,Class,CanEdit,InsCheck,Validator,DisplayName,Required,HostName
-id,Integer,,,,,,id
-VCODE,String,T,T,,,T,vcode
+CCODE,String,T,T,,,T,ccode
 ä»ó™ñº,String,T,T,,,T,shortname
 ñºèÃ,String,T,T,,,T,name
 ìdòb,String,T,T,,,T,telephone
+cat,String,T,T,,,T,cat
 versionno,Integer,H,,,,,versionno

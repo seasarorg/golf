@@ -1,6 +1,6 @@
 Action,Form,Parameter
-VDRS,vdrs,
-VDRR,vdr,mode=R
+VDRS,vdrs,cat=V
+VDRR,vdr,"mode=R,cat=V"
 VDRC,vdr,mode=C
 VDRU,vdr,mode=U
 ITEMS,items,

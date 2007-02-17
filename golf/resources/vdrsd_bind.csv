@@ -1,0 +1,4 @@
+Class,Name,Validator, DisplayName  ,Required,HostName,Choice
+javax.swing.JTextField,jTextCat,,,,cat,
+javax.swing.JTextField,jTextCcode,,,,ccode,
+
