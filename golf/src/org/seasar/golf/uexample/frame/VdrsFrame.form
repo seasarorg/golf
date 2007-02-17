@@ -77,6 +77,8 @@
                               <Component id="jTextShort" alignment="0" max="32767" attributes="1"/>
                               <Component id="jTextCode" alignment="0" max="32767" attributes="1"/>
                           </Group>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="jTextCat" min="-2" pref="10" max="-2" attributes="0"/>
                       </Group>
                       <Component id="jLabel4" alignment="0" min="-2" max="-2" attributes="0"/>
                   </Group>
@@ -97,6 +99,7 @@
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="jLabel1" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="jTextCode" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jTextCat" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
@@ -127,9 +130,9 @@
           </Properties>
 
           <Layout class="org.netbeans.modules.form.compat2.layouts.DesignFlowLayout">
-            <Property name="alignment" type="int" value="0"/>
-            <Property name="horizontalGap" type="int" value="0"/>
             <Property name="verticalGap" type="int" value="0"/>
+            <Property name="horizontalGap" type="int" value="0"/>
+            <Property name="alignment" type="int" value="0"/>
           </Layout>
           <SubComponents>
             <Component class="javax.swing.JTextField" name="jTextAction">
@@ -240,6 +243,17 @@
 
           <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
         </Container>
+        <Component class="javax.swing.JTextField" name="jTextCat">
+          <Properties>
+            <Property name="editable" type="boolean" value="false"/>
+            <Property name="text" type="java.lang.String" value="T"/>
+            <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+              <Border info="null"/>
+            </Property>
+            <Property name="focusable" type="boolean" value="false"/>
+            <Property name="requestFocusEnabled" type="boolean" value="false"/>
+          </Properties>
+        </Component>
       </SubComponents>
     </Container>
   </SubComponents>

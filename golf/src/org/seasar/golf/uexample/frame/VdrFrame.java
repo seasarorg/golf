@@ -344,10 +344,9 @@ private void jTextActionKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:ev
     }
 
     public void initBinding(HashMap params) {
-        formManager = new FormManager(this); 
-        formManager.init();
         formManager.createReportList(jScrollPane1);
         jTable1.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+        FrameUtil.setHeaderText("Vendor", formManager);
         formManager.SetTableColumnFromCsvResource(
     			jTable1, "Test Table", "TestTable", golfTableModel, "Example2_table1.csv");
         for (int i=0; i < 5; i++) {
@@ -361,7 +360,9 @@ private void jTextActionKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:ev
 
     public void processAction(HashMap params) {
     }
-
+    public void setFormManger(FormManager formManager) {
+        this.formManager = formManager;
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel contentPane;
     private javax.swing.JButton jB_Back;

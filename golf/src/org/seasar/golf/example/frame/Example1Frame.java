@@ -277,6 +277,10 @@ public class Example1Frame extends javax.swing.JFrame  implements GolfFormInterf
     public void processAction(HashMap params) {
     }
 
+    public void setFormManger(FormManager formManager) {
+        this.formManager = formManager;
+    }
+
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.ButtonGroup buttonGroup1;

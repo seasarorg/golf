@@ -19,9 +19,9 @@ import org.seasar.golf.form.FormAction;
  * @author shimura
  */
 public class ResultData implements Serializable  {
-    private HashMap param = new HashMap();
+    private HashMap params = new HashMap();
     private HashMap fields = new HashMap();
-    private HashMap tables = new HashMap(); 
+    private HashMap <String, TableData> tables = new HashMap(); 
     private FormAction formAction = new FormAction();
     private ValidationResult validationResult = new ValidationResult();
     /** Creates a new instance of ResultData */
@@ -31,7 +31,9 @@ public class ResultData implements Serializable  {
     public HashMap getFields() {
         return fields;
     }
-
+    public Object getField(String fld) {
+        return getFields().get(fld);
+    }
     public HashMap getTables() {
         return tables;
     }
@@ -48,8 +50,10 @@ public class ResultData implements Serializable  {
         this.validationResult = validationResult;
     }
 
-    public HashMap getParam() {
-        return param;
+    public HashMap getParams() {
+        return params;
     }
-    
+    public Object getParam(String fld) {
+        return getParams().get(fld);
+    }        
 }

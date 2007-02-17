@@ -20,9 +20,9 @@ import java.util.HashMap;
  */
 public class RequestData implements Serializable {
     private String transactionCode;
-    private HashMap param = new HashMap();
+    private HashMap params = new HashMap();
     private HashMap fields = new HashMap();
-    private HashMap tables = new HashMap();
+    private HashMap  <String, TableData> tables = new HashMap();
     private HashMap loginInfo = null;
     /** Creates a new instance of RequestData */
     public RequestData() {
@@ -31,7 +31,9 @@ public class RequestData implements Serializable {
     public HashMap getFields() {
         return fields;
     }
-
+    public Object getField(String fld) {
+        return getFields().get(fld);
+    }
     public HashMap getTables() {
         return tables;
     }
@@ -52,12 +54,14 @@ public class RequestData implements Serializable {
         this.transactionCode = transactionCode;
     }
 
-    public HashMap getParam() {
-        return param;
+    public HashMap getParams() {
+        return params;
     }
-    
-    public void setParam(HashMap params) {
-        this.param = params;
+    public Object getParam(String fld) {
+        return getParams().get(fld);
+    }    
+    public void setParams(HashMap params) {
+        this.params = params;
     }
     
 }

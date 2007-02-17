@@ -185,14 +185,14 @@ private void jTextActionKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:ev
     }
 
     public void initBinding(HashMap params) {
-        formManager = new FormManager(this); 
-        formManager.init();
-   
+        FrameUtil.setHeaderText("", formManager); 
     }
 
     public void processAction(HashMap params) {
     }
-
+    public void setFormManger(FormManager formManager) {
+        this.formManager = formManager;
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel contentPane;
     private javax.swing.JButton jB_Back;

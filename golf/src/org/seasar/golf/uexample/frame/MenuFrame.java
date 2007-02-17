@@ -25,7 +25,7 @@ import org.seasar.golf.util.TreeUtil;
  * @author  shimura
  */
 public class MenuFrame extends javax.swing.JFrame  implements GolfFormInterface {
-    private FormManager formManager = null;
+    public FormManager formManager = null;
     
     /**
      * Creates new form MenuFrame
@@ -54,6 +54,7 @@ public class MenuFrame extends javax.swing.JFrame  implements GolfFormInterface 
         jMenu1 = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Golf Example - Menu");
 
         jTree1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -197,8 +198,8 @@ Object yy = xx;
     private javax.swing.JTree jTree1;
     // End of variables declaration//GEN-END:variables
     public void initBinding(HashMap params) {
-        formManager = new FormManager(this);
         MenuFactory.setMenu(jTree1, (String) params.get("role"));
+        FrameUtil.setHeaderText("Menu", formManager);
     }
     
     public FormManager getFormManager() {
@@ -215,5 +216,7 @@ Object yy = xx;
 
     public void processAction(HashMap params) {
     }
-
+    public void setFormManger(FormManager formManager) {
+        this.formManager = formManager;
+    }
 }

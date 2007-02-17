@@ -51,6 +51,7 @@ public class VdrsFrame extends javax.swing.JFrame implements GolfFormInterface{
         jTextShort = new javax.swing.JTextField();
         jTextName = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
+        jTextCat = new javax.swing.JTextField();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
 
@@ -119,6 +120,12 @@ public class VdrsFrame extends javax.swing.JFrame implements GolfFormInterface{
 
         jLabel4.setText("\u4e0b\u8a18\u9805\u76ee\u3067\u9078\u629e\u3067\u304d\u307e\u3059\uff08\u524d\u65b9\u4e00\u81f4\uff09");
 
+        jTextCat.setEditable(false);
+        jTextCat.setText("T");
+        jTextCat.setBorder(null);
+        jTextCat.setFocusable(false);
+        jTextCat.setRequestFocusEnabled(false);
+
         org.jdesktop.layout.GroupLayout contentPaneLayout = new org.jdesktop.layout.GroupLayout(contentPane);
         contentPane.setLayout(contentPaneLayout);
         contentPaneLayout.setHorizontalGroup(
@@ -136,7 +143,9 @@ public class VdrsFrame extends javax.swing.JFrame implements GolfFormInterface{
                         .add(contentPaneLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING, false)
                             .add(jTextName, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 94, Short.MAX_VALUE)
                             .add(jTextShort)
-                            .add(jTextCode)))
+                            .add(jTextCode))
+                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                        .add(jTextCat, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 10, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
                     .add(jLabel4))
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 254, Short.MAX_VALUE)
                 .add(jScrollPane1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 425, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
@@ -152,7 +161,8 @@ public class VdrsFrame extends javax.swing.JFrame implements GolfFormInterface{
                         .add(16, 16, 16)
                         .add(contentPaneLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
                             .add(jLabel1)
-                            .add(jTextCode, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                            .add(jTextCode, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                            .add(jTextCat, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                         .add(contentPaneLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
                             .add(jLabel2)
@@ -231,15 +241,23 @@ private void jTextActionKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:ev
     }
 
     public void initBinding(HashMap params) {
-        formManager = new FormManager(this); 
-        formManager.init();
         formManager.createReportList(jScrollPane1);
         formManager.setValidationFromCsvResource("vdrs_bind.csv");
+        jTextCat.setText((String)params.get("cat"));
+        if(jTextCat.getText().equals("V")) {
+            //this.setTitle("Golf Example - Vendor Selection");
+            FrameUtil.setHeaderText("Vendor Selection", formManager);
+        } else if(jTextCat.getText().equals("C")) {
+            //this.setTitle("Golf Example - Customer Selection");
+        FrameUtil.setHeaderText("Customer Selection", formManager);
+        }        
     }
 
     public void processAction(HashMap params) {
     }
-
+    public void setFormManger(FormManager formManager) {
+        this.formManager = formManager;
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel contentPane;
     private javax.swing.JButton jB_Back;
@@ -255,6 +273,7 @@ private void jTextActionKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:ev
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField jTextAction;
+    private javax.swing.JTextField jTextCat;
     private javax.swing.JTextField jTextCode;
     private javax.swing.JTextField jTextName;
     private javax.swing.JTextField jTextShort;

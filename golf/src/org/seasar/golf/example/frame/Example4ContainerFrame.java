@@ -229,4 +229,7 @@ public class Example4ContainerFrame extends javax.swing.JFrame implements GolfFo
 
     public void processAction(HashMap params) {
     }
+    public void setFormManger(FormManager formManager) {
+        ;
+    }    
 }

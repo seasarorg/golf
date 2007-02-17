@@ -41,8 +41,7 @@ public class Session {
     /** Creates a new instance of Session */
     public Session(Connection con) {
         this.connection = con;
-        containerFrame = (JFrame) SingletonS2ContainerFactory.getContainer().
-                getComponent("containerFrame");
+        containerFrame = SessionUtil.createForm("container", this);
         containerManager = new ContainerManager(containerFrame);
         containerFrame.pack();
         containerFrame.validate();
@@ -52,7 +51,6 @@ public class Session {
     }
     public void init(){
         ((GolfFormInterface)containerFrame).initBinding(null);
-        ((GolfFormInterface)containerFrame).getFormManager().setSession(this);
         processMenuAction("MENU");
         
     }
@@ -104,7 +102,7 @@ public class Session {
     public ResultData trxExecute(RequestData requestData, FormManager formManager) {
         ResultData resultData = trxDispatcher.execute(requestData);
         if (resultData.getFormAction().getFormStack() != FormAction.FormStack.RESULT){
-            SessionUtil.processAction(resultData.getFormAction(), this, resultData.getParam());
+            SessionUtil.processAction(resultData.getFormAction(), this, resultData.getParams());
         }
         if (resultData.getValidationResult().hasMessages()) {
             resultData.setValidationResult(

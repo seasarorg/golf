@@ -34,7 +34,7 @@ public class RequestDataFactory {
         TrxUtil.setFieldDataToRequest(requestData, formManager);
         requestData.setTransactionCode(transactionCode);
         if (params != null){
-            requestData.setParam(SessionUtil.getActionParameter(params));
+            requestData.setParams(SessionUtil.getActionParameter(params));
         }
         
         return requestData;

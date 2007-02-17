@@ -153,4 +153,7 @@ public class Example4_2Frame extends javax.swing.JFrame implements GolfFormInter
 
     public void processAction(HashMap params) {
     }
+    public void setFormManger(FormManager formManager) {
+        this.formManager = formManager;
+    }    
 }

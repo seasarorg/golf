@@ -230,21 +230,22 @@ private void jTextActionKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:ev
     }
 
     public void initBinding(HashMap params) {
-        formManager = new FormManager(this); 
-        formManager.init();
         formManager.createReportList(jScrollPane1);
+        FrameUtil.setHeaderText("", formManager);
         jTable1.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
         formManager.SetTableColumnFromCsvResource(
-    			jTable1, "VendorTable", "VendorTable", golfTableModel, "Vdrsd_table.csv");
+    			jTable1, "CompanyTable", "CompanyTable", golfTableModel, "Vdrsd_table.csv");
         TableUtil.SetPreferedColumnWIdth(jTable1, new int[]{15,40,60,150,80 });  
         
-        TrxUtil.setTableDataFromResult( "VendorTable", (ResultData)params.get("resultData"), formManager);
+        TrxUtil.setTableDataFromResult( "CompanyTable", (ResultData)params.get("resultData"), formManager);
 
     }
 
     public void processAction(HashMap params) {
     }
-
+    public void setFormManger(FormManager formManager) {
+        this.formManager = formManager;
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel contentPane;
     private javax.swing.JButton jB_Back;

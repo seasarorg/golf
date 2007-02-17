@@ -9,6 +9,7 @@
 
 package org.seasar.golf;
 
+import java.lang.reflect.Field;
 import java.util.HashMap;
 import javax.swing.JFrame;
 import org.seasar.golf.data.ResultData;
@@ -53,21 +54,28 @@ public class SessionUtil {
             }
 
         }   
+        public static JFrame createForm(String formName, Session session){
+                  javax.swing.JFrame form = org.seasar.golf.Factory.
+                        createForm(formName +"Frame");
+                FormManager formManager = new FormManager(form);
+                formManager.init();
+                formManager.setSession(session);
+                formManager.setForm(formName); 
+                ((org.seasar.golf.GolfFormInterface) form).setFormManger(formManager);
+                return form;
+        }
         
         public static void createForm(int index, FormAction formAction, Session session, HashMap params) {
-                        JFrame form = Factory.createForm(formAction.getForm()+"Frame");
-                        HashMap actionParam = formAction.getParam();
-                        if (params != null) {
-                            ((GolfFormInterface)form).initBinding(params);
-                        } else {
-                            ((GolfFormInterface)form).initBinding(actionParam);   
-                        }
-                        FormManager formManager = ((GolfFormInterface)form).getFormManager();
-                        formManager.setSession(session);
-                        formManager.setForm(formAction.getForm());
-                        removeUpperForm(index - 1 , session);
-                        session.getFormManagers().add(formManager);           
-        }
+                javax.swing.JFrame form =  createForm(formAction.getForm(), session);
+                java.util.HashMap actionParam = formAction.getParam();
+                if (params != null) {
+                    ((org.seasar.golf.GolfFormInterface) form).initBinding(params);
+                } else {
+                    ((org.seasar.golf.GolfFormInterface) form).initBinding(actionParam);
+                }
+                removeUpperForm(index - 1, session);
+                session.getFormManagers().add(((org.seasar.golf.GolfFormInterface) form).getFormManager());
+}
         public static void setForm(int index, Session session, HashMap params ){
                     removeUpperForm(index , session);
                     GolfFormInterface golfForm =   (GolfFormInterface)((FormManager) session.getFormManagers().get(index

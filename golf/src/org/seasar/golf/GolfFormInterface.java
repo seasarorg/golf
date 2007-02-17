@@ -21,6 +21,7 @@ import org.seasar.golf.form.FormManager;
 public interface GolfFormInterface {
 
     FormManager getFormManager();
+    void setFormManger(FormManager formManager);
     JMenuBar getMenu();
     JPanel getContentPanel();
     void initBinding(HashMap params);
