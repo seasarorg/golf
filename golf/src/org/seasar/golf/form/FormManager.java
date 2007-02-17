@@ -99,6 +99,9 @@ public class FormManager {
 	public Object getValue(String name) {
 		return formBindingManager.getValueModel(name).getValue();
 	}
+        public void setValue(String name, Object value) {
+                formBindingManager.getValueModel(name).setValue(value);
+        }
 	public void setValidationFromCsvResource(String path) {
 		TableData td = new TableData();
 		TableUtil.ReadCsvFromResource(td, path);

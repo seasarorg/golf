@@ -82,7 +82,7 @@ public class Session {
         HashMap actionParam = SessionUtil.getActionParameter(actionItem.getParameter());
         FormAction formAction = new FormAction();
         formAction.setForm(form);
-        formAction.setParam(actionParam);
+        formAction.setParams(actionParam);
         if (action.equals("MENU")) {
             if (newWindow) {
                 formAction.setFormStack(FormAction.FormStack.NEWMENU);                 

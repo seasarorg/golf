@@ -67,7 +67,7 @@ public class SessionUtil {
         
         public static void createForm(int index, FormAction formAction, Session session, HashMap params) {
                 javax.swing.JFrame form =  createForm(formAction.getForm(), session);
-                java.util.HashMap actionParam = formAction.getParam();
+                java.util.HashMap actionParam = formAction.getParams();
                 if (params != null) {
                     ((org.seasar.golf.GolfFormInterface) form).initBinding(params);
                 } else {
