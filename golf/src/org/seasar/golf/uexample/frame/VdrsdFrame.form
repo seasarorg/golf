@@ -62,10 +62,10 @@
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="jTextField1" min="-2" pref="122" max="-2" attributes="0"/>
                       <Component id="jTextCat" min="-2" pref="93" max="-2" attributes="0"/>
+                      <Component id="jTextCcode" min="-2" pref="192" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace min="-2" pref="112" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="42" max="-2" attributes="0"/>
                   <Component id="jScrollPane1" min="-2" pref="424" max="-2" attributes="0"/>
               </Group>
               <Component id="toolBar" alignment="0" pref="727" max="32767" attributes="0"/>
@@ -86,8 +86,8 @@
                           <Component id="jScrollPane1" min="-2" pref="100" max="-2" attributes="0"/>
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace min="-2" pref="16" max="-2" attributes="0"/>
-                          <Component id="jTextField1" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="6" max="-2" attributes="0"/>
+                          <Component id="jTextCcode" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="jTextCat" min="-2" max="-2" attributes="0"/>
                       </Group>
@@ -110,9 +110,9 @@
           </Properties>
 
           <Layout class="org.netbeans.modules.form.compat2.layouts.DesignFlowLayout">
-            <Property name="verticalGap" type="int" value="0"/>
-            <Property name="horizontalGap" type="int" value="0"/>
             <Property name="alignment" type="int" value="0"/>
+            <Property name="horizontalGap" type="int" value="0"/>
+            <Property name="verticalGap" type="int" value="0"/>
           </Layout>
           <SubComponents>
             <Component class="javax.swing.JTextField" name="jTextAction">
@@ -211,10 +211,6 @@
                   </Table>
                 </Property>
               </Properties>
-              <Events>
-                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jTable1MouseClicked"/>
-                <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="jTable1KeyPressed"/>
-              </Events>
             </Component>
           </SubComponents>
         </Container>
@@ -222,9 +218,9 @@
 
           <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
         </Container>
-        <Component class="javax.swing.JTextField" name="jTextField1">
-        </Component>
         <Component class="javax.swing.JTextField" name="jTextCat">
+        </Component>
+        <Component class="javax.swing.JTextField" name="jTextCcode">
         </Component>
       </SubComponents>
     </Container>

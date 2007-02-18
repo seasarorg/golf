@@ -33,17 +33,7 @@ public class FormValidationManager extends AbstractValidationResultModel {
         validators.add(validator);
     }
     
-    public void ValidateWithForceTableEditEnd(GolfTableModel golfTableModel, boolean requiredCehck) {
-        golfTableModel.forceTableEditEnd();
-        Validate( requiredCehck);
-    }
-    public void ValidateWithForceTableEditEnd(GolfTableModel[] golfTableModels, boolean requiredCehck) {
-        for (int i = 0; i < golfTableModels.length; i++) {
-            golfTableModels[i].forceTableEditEnd();
-        }
-        Validate( requiredCehck);
-    }
-    
+ 
     public void Validate(boolean requiredCehck) {
         ValidationResult oldResult = validationResult;
         validationResult = new ValidationResult();

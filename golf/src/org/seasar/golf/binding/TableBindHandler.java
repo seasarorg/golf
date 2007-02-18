@@ -17,6 +17,8 @@ import java.beans.PropertyChangeListener;
 import java.util.Enumeration;
 import java.util.HashMap;
 import javax.swing.JTable;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
 import javax.swing.event.TableModelEvent;
 import javax.swing.event.TableModelListener;
 import org.seasar.golf.ColumnDef;
@@ -26,7 +28,8 @@ import org.seasar.golf.GolfTableModel;
  *
  * @author shimura
  */
-public class TableBindHandler implements PropertyChangeListener, TableModelListener {
+public class TableBindHandler 
+        implements PropertyChangeListener, TableModelListener, ListSelectionListener {
     private HashMap srcColumnTable = new HashMap();
     //private HashMap srcClassTable = new HashMap();
     private HashMap columnSrcTable = new HashMap();
@@ -35,6 +38,7 @@ public class TableBindHandler implements PropertyChangeListener, TableModelListe
     /** Creates a new instance of DetailPropertyChangeListener */
     public TableBindHandler(GolfTableModel golfTableModel) {
         this.golfTableModel = golfTableModel;
+        golfTableModel.getJtable().getSelectionModel().addListSelectionListener(this);
     }
     public void addSrcAndColumn(Object src, String column) {
         srcColumnTable.put(src, column);
@@ -128,5 +132,9 @@ public class TableBindHandler implements PropertyChangeListener, TableModelListe
             selectedRowChanged(row);
         }
         return;
+    }
+
+    public void valueChanged(ListSelectionEvent e) {
+        selectedRowChanged(golfTableModel.getJtable().getSelectedRow());
     }
 }

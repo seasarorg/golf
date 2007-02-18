@@ -142,7 +142,7 @@ public class Example2Frame extends javax.swing.JFrame  implements GolfFormInterf
     }//GEN-LAST:event_jTable1KeyPressed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        formManager.getFormValidationManager().ValidateWithForceTableEditEnd(golfTableModel, true);
+        formManager.getFormValidationManager().Validate(true);
     }//GEN-LAST:event_jButton1ActionPerformed
     
     /**

@@ -237,6 +237,7 @@ public class GolfTableModel extends AbstractTableModel implements ComponentValid
         this.jtable = jtable;
         this.tableDisplayName = tableDisplayName;
         jtable.setModel(this);
+        jtable.putClientProperty("terminateEditOnFocusLost", Boolean.TRUE);
     }
 
     public String getDisplayName(int row, int column) {
@@ -284,14 +285,6 @@ public class GolfTableModel extends AbstractTableModel implements ComponentValid
         formValidationManager.addValidator(this);
     }
     
-    public void forceTableEditEnd() {
-         if (jtable != null ) {
-                if (jtable.getEditingRow() != -1) {
-                    jtable.getCellEditor(jtable.getEditingRow(), jtable.getEditingColumn()).stopCellEditing();          
-                }
-       }       
-    }
-
     public String getHostName() {
         return hostName;
     }
