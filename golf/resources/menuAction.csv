@@ -6,8 +6,8 @@ VDRU,vdr,mode=U
 ITEMS,items,
 ITEM,item,
 INVQ,invq,
-CUSS,cuss,
-CUSR,cus,mode=R
+CUSS,vdrs,cat=C
+CUSR,vdr,"mode=R,cat=C"
 CUSC,cus,mode=C
 CUSU,cus,mode=U
 TRXS,trxs,

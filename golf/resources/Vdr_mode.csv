@@ -1,0 +1,5 @@
+"class","name","C","U","R"
+"javax.swing.JTextField","jTextName",,,"R"
+"javax.swing.JTextField","jTextCcode","R","R","R"
+"javax.swing.JTextField","jTextShort",,,"R"
+"javax.swing.JTextField","jTextTel",,,"R"

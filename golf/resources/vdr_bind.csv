@@ -1,0 +1,5 @@
+"Class","Name","Validator"," DisplayName  ","Required","HostName","Choice"
+"javax.swing.JTextField","jTextCcode",,,,"ccode",
+"javax.swing.JTextField","jTextShort",,,,"shortname",
+"javax.swing.JTextField","jTextName",,,,"name",
+"javax.swing.JTextField","jTextTel",,,,"telephone",
