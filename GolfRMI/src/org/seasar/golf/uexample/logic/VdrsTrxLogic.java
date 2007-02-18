@@ -74,8 +74,8 @@ public class VdrsTrxLogic implements TransactionInterface{
         } else {
         	 resultData.getFormAction().setFormStack(FormAction.FormStack.FIRST);
         	 resultData.getFormAction().setForm("vdrsd");
-        	 resultData.getFormAction().setParams(new HashMap());
-        	 resultData.getFormAction().getParams().put("cat", requestData.getField("cat"));
+ //       	 resultData.getFormAction().setParams(new HashMap());
+        	 resultData.getParams().put("cat", requestData.getField("cat"));
         	 TableData td = new TableData();
         	 td.setColumnIdentifires(new Object[]{"ccode","shortname","name","telephone","cat","versionno" });
         	 for(Company comp:compl) {
