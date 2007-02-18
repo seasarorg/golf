@@ -9,10 +9,8 @@
 
 package org.seasar.golf;
 
-import java.lang.reflect.Field;
 import java.util.HashMap;
 import javax.swing.JFrame;
-import org.seasar.golf.data.ResultData;
 import org.seasar.golf.form.FormManager;
 import org.seasar.golf.form.FormAction;
 
@@ -90,7 +88,7 @@ public class SessionUtil {
         }
         public static HashMap getActionParameter(String parameter){
             HashMap param = new HashMap();
-            if (parameter != null) {
+            if (parameter != null && parameter.length()>0) {
                 String[] params = parameter.split(",");
                 for (int i=0; i < params.length; i++) {
                     String[] items = params[i].split("=");

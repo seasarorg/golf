@@ -10,13 +10,11 @@
 package org.seasar.golf.util;
 
 import java.awt.event.KeyEvent;
-import java.awt.event.MouseEvent;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
-import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
@@ -26,7 +24,6 @@ import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 
 import javax.swing.JTable;
-import javax.swing.table.TableColumn;
 import javax.swing.table.TableModel;
 import org.seasar.framework.util.ResourceUtil;
 import org.seasar.golf.GolfTableModel;
@@ -155,10 +152,10 @@ public class TableUtil {
          String line = null;
         try {
             line = br.readLine();
-            String[] hdr = line.split(",");
+            String[] hdr = SplitCSVString(line);
             td.setColumnIdentifires(hdr);
             while ((line=br.readLine())!=null) {
-                String[] row = line.split(",");
+                String[] row = SplitCSVString(line);
                 td.addRow(row);
             }
             br.close();
@@ -198,6 +195,57 @@ public class TableUtil {
         }  
     }
 
-            
+static String[] SplitCSVString( String str )
+{
+    if ( str == null ) {
+        return new String[0];
+    } 
+
+
+    int  pos;   
+    int  len;    
+    int  last;        
+    char ch;          
+    boolean quot;       
+    ArrayList splitted; 
+
+    pos = 0;
+    len = str.length();
+    last = 0;
+    ch = 0;
+    quot = false;
+    splitted = new ArrayList();
+
+    while ( pos < len )
+    {
+        ch = str.charAt(pos);
+
+        if ( !quot && ch == ',' ) 
+        {
+            addStringToArrayList(last, pos, splitted, str);   
+            last = pos + 1;
+        }
+        else if ( ch == '"' ) 
+        {
+            quot = !quot;
+        }
+        pos += 1;
+    }
+    if ( ch == ',' ) {
+        splitted.add( "" );
+    } else {
+            addStringToArrayList(last, pos, splitted, str);       
+    }
+    return (String[]) splitted.toArray(new String[0]);
+}            
+
+    private static void addStringToArrayList(final int last, final int pos, final ArrayList splitted, final String str) {
+        String val = str.substring( last, pos);
+        if ((val.length()>0) && (val.charAt(0)=='\"') && (val.charAt(val.length()-1)=='\"'))
+        {
+            val = val.substring( 1, val.length() - 1 );
+        }
+        splitted.add( val );       
+    }
 
 }

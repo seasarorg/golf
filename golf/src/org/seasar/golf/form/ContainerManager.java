@@ -9,14 +9,11 @@
 
 package org.seasar.golf.form;
 
-import java.util.HashMap;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import org.jdesktop.layout.GroupLayout;
-import org.seasar.framework.container.factory.SingletonS2ContainerFactory;
 import org.seasar.golf.Factory;
 import org.seasar.golf.GolfFormInterface;
-import org.seasar.golf.example.frame.Example4ContainerFrame;
 
 /**
  *

@@ -38,7 +38,7 @@ public class Example3Frame extends javax.swing.JFrame  implements GolfFormInterf
         formManager.setValidationFromCsvResource("Example3_bind.csv");
         formManager.setBindFromCsvResource("Example3_bind2.csv");
         jTable1.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-        formManager.SetTableColumnFromCsvResource(
+        formManager.setTableColumnFromCsvResource(
     			jTable1, "Test Table", golfTableModel, "Example3_table1.csv");
         for (int i=0; i < 5; i++) {
             addNewRow();

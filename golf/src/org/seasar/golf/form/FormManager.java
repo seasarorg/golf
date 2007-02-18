@@ -9,6 +9,7 @@
 
 package org.seasar.golf.form;
 
+import java.awt.Color;
 import java.lang.reflect.Field;
 import java.util.HashMap;
 import javax.swing.JComponent;
@@ -40,6 +41,9 @@ public class FormManager {
     private FormTrxManager formTrxManager = null;
     private String form;
     private ResultData resultData = null;
+    private TableData modeControl;
+    private Color ineditableBgColor;
+    private Color normalBgColor;    
     /** Creates a new instance of FrameManager */
     public FormManager(JFrame frame) {
         this.setFrame(frame);
@@ -51,6 +55,8 @@ public class FormManager {
         FormManagerUtil.generateFieldCsv(this);
         formValidationManager.setFormManager(this);
         formTrxManager = new FormTrxManager(this);
+        ineditableBgColor = FormManagerUtil.getDefaultBgColor("I");
+        normalBgColor = FormManagerUtil.getDefaultBgColor("N");        
       }
 
     public FormBindingManager getFormBindingManager() {
@@ -93,96 +99,104 @@ public class FormManager {
 			}
     	}
     }
-	public HashMap getComponentNameIndex() {
-		return componentNameIndex;
-	}
-	public Object getValue(String name) {
-		return formBindingManager.getValueModel(name).getValue();
-	}
-        public void setValue(String name, Object value) {
-                formBindingManager.getValueModel(name).setValue(value);
-        }
-	public void setValidationFromCsvResource(String path) {
-		TableData td = new TableData();
-		TableUtil.ReadCsvFromResource(td, path);
-		FormManagerUtil.setValidationSub(td, this);
-	}
-	
-	public void setValidationFromCsvResource(String path, String charsetName) {
-		TableData td = new TableData();
-		TableUtil.ReadCsvFromResource(td, path, charsetName);
-		FormManagerUtil.setValidationSub(td, this);
-	}
-	public void setValidationFromCsv(String path) {
-		TableData td = new TableData();
-		TableUtil.ReadFromCsv(td, path);
-		FormManagerUtil.setValidationSub(td, this);
-	}
-	public void setValidationFromCsv(String path, String charsetName) {
-		TableData td = new TableData();
-		TableUtil.ReadFromCsv(td, path, charsetName);	
-		FormManagerUtil.setValidationSub(td,  this);
-	}
+    public HashMap getComponentNameIndex() {
+            return componentNameIndex;
+    }
+    public Object getValue(String name) {
+            return formBindingManager.getValueModel(name).getValue();
+    }
+    public void setValue(String name, Object value) {
+            formBindingManager.getValueModel(name).setValue(value);
+    }
+    public void setValidationFromCsvResource(String path) {
+            TableData td = new TableData();
+            TableUtil.ReadCsvFromResource(td, path);
+            FormManagerUtil.setValidationSub(td, this);
+    }
 
-	public void setBindFromCsvResource(String path) {
-		TableData td = new TableData();
-		TableUtil.ReadCsvFromResource(td, path);
-		FormManagerUtil.setBindSub(td, this);
-	}
-	
-	public void setBindFromCsvResource(String path, String charsetName) {
-		TableData td = new TableData();
-		TableUtil.ReadCsvFromResource(td, path, charsetName);
-		FormManagerUtil.setBindSub(td, this);
-	}
-	public void setBindFromCsv(String path) {
-		TableData td = new TableData();
-		TableUtil.ReadFromCsv(td, path);
-		FormManagerUtil.setBindSub(td, this);
-	}
-	public void setBindFromCsv(String path, String charsetName) {
-		TableData td = new TableData();
-		TableUtil.ReadFromCsv(td, path, charsetName);	
-		FormManagerUtil.setBindSub(td, this);
-	}
+    public void setValidationFromCsvResource(String path, String charsetName) {
+            TableData td = new TableData();
+            TableUtil.ReadCsvFromResource(td, path, charsetName);
+            FormManagerUtil.setValidationSub(td, this);
+    }
+    public void setValidationFromCsv(String path) {
+            TableData td = new TableData();
+            TableUtil.ReadFromCsv(td, path);
+            FormManagerUtil.setValidationSub(td, this);
+    }
+    public void setValidationFromCsv(String path, String charsetName) {
+            TableData td = new TableData();
+            TableUtil.ReadFromCsv(td, path, charsetName);	
+            FormManagerUtil.setValidationSub(td,  this);
+    }
 
-	public void SetTableColumnFromCsvResource(
-			JTable jt, String tableDisplayName, GolfTableModel gtm, String path) {
-                SetTableColumnFromCsvResource(jt, tableDisplayName, null, gtm,  path);
-	}
-        public void SetTableColumnFromCsvResource(
-			JTable jt, String tableDisplayName,String hostName, GolfTableModel gtm, String path) {
-		TableData td = new TableData();
-		TableUtil.ReadCsvFromResource(td, path);
-		FormManagerUtil.SetTableColumnSub(jt, tableDisplayName, gtm, td, formValidationManager, hostName);
-	}
-	public void SetTableColumnFromCsvResource(JTable jt, String tableDisplayName,
-                    GolfTableModel gtm, String path, String charsetName) {
-                SetTableColumnFromCsvResource(jt, tableDisplayName, gtm, null, path, charsetName);
-	}
-	public void SetTableColumnFromCsvResource(JTable jt, String tableDisplayName,
-			GolfTableModel gtm, String hostName, String path, String charsetName) {
-		TableData td = new TableData();
-		TableUtil.ReadCsvFromResource(td, path, charsetName);
-		FormManagerUtil.SetTableColumnSub(jt, tableDisplayName, gtm, td, formValidationManager, hostName);
-	}        
-	public void SetTableColumnFromCsv(JTable jt, String tableDisplayName,
-			GolfTableModel gtm, String path) {
-		TableData td = new TableData();
-		TableUtil.ReadFromCsv(td, path);
-		FormManagerUtil.SetTableColumnSub(jt, tableDisplayName, gtm, td, formValidationManager, null);
-	}
-	public void SetTableColumnFromCsv(JTable jt,  String tableDisplayName,
-			GolfTableModel gtm,String path, String charsetName) {
-		TableData td = new TableData();
-		TableUtil.ReadFromCsv(td, path, charsetName);	
-		FormManagerUtil.SetTableColumnSub(jt, tableDisplayName, gtm, td, formValidationManager, null);
-	}
+    public void setBindFromCsvResource(String path) {
+            TableData td = new TableData();
+            TableUtil.ReadCsvFromResource(td, path);
+            FormManagerUtil.setBindSub(td, this);
+    }
 
-	
-	public void createReportList(JScrollPane js){
-		GolfValidationResultViewFactory.createReportList(js, formValidationManager);
-	}
+    public void setBindFromCsvResource(String path, String charsetName) {
+            TableData td = new TableData();
+            TableUtil.ReadCsvFromResource(td, path, charsetName);
+            FormManagerUtil.setBindSub(td, this);
+    }
+    public void setBindFromCsv(String path) {
+            TableData td = new TableData();
+            TableUtil.ReadFromCsv(td, path);
+            FormManagerUtil.setBindSub(td, this);
+    }
+    public void setBindFromCsv(String path, String charsetName) {
+            TableData td = new TableData();
+            TableUtil.ReadFromCsv(td, path, charsetName);	
+            FormManagerUtil.setBindSub(td, this);
+    }
+
+    public void setTableColumnFromCsvResource(
+                    JTable jt, String tableDisplayName, GolfTableModel gtm, String path) {
+            setTableColumnFromCsvResource(jt, tableDisplayName, null, gtm,  path);
+    }
+    public void setTableColumnFromCsvResource(
+                    JTable jt, String tableDisplayName,String hostName, GolfTableModel gtm, String path) {
+            TableData td = new TableData();
+            TableUtil.ReadCsvFromResource(td, path);
+            FormManagerUtil.setTableColumnSub(jt, tableDisplayName, gtm, td, formValidationManager, hostName);
+    }
+    public void setTableColumnFromCsvResource(JTable jt, String tableDisplayName,
+                GolfTableModel gtm, String path, String charsetName) {
+            setTableColumnFromCsvResource(jt, tableDisplayName, gtm, null, path, charsetName);
+    }
+    public void setTableColumnFromCsvResource(JTable jt, String tableDisplayName,
+                    GolfTableModel gtm, String hostName, String path, String charsetName) {
+            TableData td = new TableData();
+            TableUtil.ReadCsvFromResource(td, path, charsetName);
+            FormManagerUtil.setTableColumnSub(jt, tableDisplayName, gtm, td, formValidationManager, hostName);
+    }        
+    public void setTableColumnFromCsv(JTable jt, String tableDisplayName,
+                    GolfTableModel gtm, String path) {
+            TableData td = new TableData();
+            TableUtil.ReadFromCsv(td, path);
+            FormManagerUtil.setTableColumnSub(jt, tableDisplayName, gtm, td, formValidationManager, null);
+    }
+    public void setTableColumnFromCsv(JTable jt,  String tableDisplayName,
+                    GolfTableModel gtm,String path, String charsetName) {
+            TableData td = new TableData();
+            TableUtil.ReadFromCsv(td, path, charsetName);	
+            FormManagerUtil.setTableColumnSub(jt, tableDisplayName, gtm, td, formValidationManager, null);
+    }
+
+    public void setModeControlFromCsvResource(String path) {
+            modeControl = new TableData();
+            TableUtil.ReadCsvFromResource(modeControl, path);  
+
+    } 
+    
+    public void setMode(String mode) {
+            FormManagerUtil.setMode(mode, modeControl, this);          
+    }
+    public void createReportList(JScrollPane js){
+            GolfValidationResultViewFactory.createReportList(js, formValidationManager);
+    }
 
     public Session getSession() {
         return session;
@@ -210,5 +224,21 @@ public class FormManager {
 
     public void setResultData(ResultData resultData) {
         this.resultData = resultData;
+    }
+
+    public Color getIneditableBgColor() {
+        return ineditableBgColor;
+    }
+
+    public void setIneditableBgColor(Color ineditableBgColor) {
+        this.ineditableBgColor = ineditableBgColor;
+    }
+
+    public Color getNormalBgColor() {
+        return normalBgColor;
+    }
+
+    public void setNormalBgColor(Color normalBgColor) {
+        this.normalBgColor = normalBgColor;
     }
 }

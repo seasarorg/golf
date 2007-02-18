@@ -13,8 +13,6 @@ import javax.swing.JPanel;
 import javax.swing.ListSelectionModel;
 import org.seasar.golf.GolfFormInterface;
 import org.seasar.golf.GolfTableModel;
-import org.seasar.golf.binding.GolfBindingUtil;
-import org.seasar.golf.binding.TableBindHandler;
 import org.seasar.golf.data.ResultData;
 import org.seasar.golf.form.FormManager;
 import org.seasar.golf.util.TableUtil;
@@ -27,8 +25,7 @@ import org.seasar.golf.transaction.TrxUtil;
 public class VdrsdFrame extends javax.swing.JFrame implements GolfFormInterface{
     private FormManager formManager = null;
     private GolfTableModel golfTableModel= new GolfTableModel();    
-    private TableBindHandler table1BindHandler = null;
-
+    private String cat;
     /** Creates new form VdrFrame */
     public VdrsdFrame() {
         initComponents();
@@ -54,7 +51,6 @@ public class VdrsdFrame extends javax.swing.JFrame implements GolfFormInterface{
         jTable1 = new javax.swing.JTable();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTextCat = new javax.swing.JTextField();
-        jTextCcode = new javax.swing.JTextField();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
 
@@ -134,10 +130,8 @@ public class VdrsdFrame extends javax.swing.JFrame implements GolfFormInterface{
             contentPaneLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(contentPaneLayout.createSequentialGroup()
                 .addContainerGap()
-                .add(contentPaneLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                    .add(jTextCat, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 93, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                    .add(jTextCcode, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 192, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
-                .add(42, 42, 42)
+                .add(jTextCat, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 93, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                .add(141, 141, 141)
                 .add(jScrollPane1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 424, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
             .add(toolBar, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 727, Short.MAX_VALUE)
             .add(contentPaneLayout.createSequentialGroup()
@@ -149,15 +143,10 @@ public class VdrsdFrame extends javax.swing.JFrame implements GolfFormInterface{
             contentPaneLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(contentPaneLayout.createSequentialGroup()
                 .add(toolBar, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(contentPaneLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                    .add(contentPaneLayout.createSequentialGroup()
-                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                        .add(jScrollPane1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 100, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
-                    .add(contentPaneLayout.createSequentialGroup()
-                        .add(6, 6, 6)
-                        .add(jTextCcode, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                        .add(jTextCat, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)))
+                    .add(jScrollPane1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 100, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                    .add(jTextCat, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(jScrollPane2, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 317, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                 .add(20, 20, 20))
@@ -228,16 +217,16 @@ private void jTextActionKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:ev
     }
 
     public void initBinding(HashMap params) {
+        cat = (String)params.get("cat");
+        String hdr = (cat).equals("V") 
+                ?"Vendor Selection List":"Customer Selection List";
+        FrameUtil.setHeaderText(hdr, formManager);        
         formManager.createReportList(jScrollPane1);
-        FrameUtil.setHeaderText("", formManager);
         formManager.setValidationFromCsvResource("vdrsd_bind.csv");
         jTable1.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-        formManager.SetTableColumnFromCsvResource(
+        formManager.setTableColumnFromCsvResource(
     			jTable1, "CompanyTable", "CompanyTable", golfTableModel, "Vdrsd_table.csv");
         TableUtil.SetPreferedColumnWIdth(jTable1, new int[]{15,40,60,150,80 });  
-        table1BindHandler = GolfBindingUtil.createTableBindHandler (golfTableModel);
-        GolfBindingUtil.bindTableRowColumn(table1BindHandler, 
-			golfTableModel,"jTextCcode","CCODE");
         TrxUtil.setTableDataFromResult( "CompanyTable", (ResultData)params.get("resultData"), formManager);
 
     }
@@ -261,7 +250,6 @@ private void jTextActionKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:ev
     private javax.swing.JTable jTable1;
     private javax.swing.JTextField jTextAction;
     private javax.swing.JTextField jTextCat;
-    private javax.swing.JTextField jTextCcode;
     private javax.swing.JPanel toolBar;
     // End of variables declaration//GEN-END:variables
     

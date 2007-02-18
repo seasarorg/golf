@@ -1,9 +1,11 @@
 package org.seasar.golf.form;
 
+import java.awt.Color;
 import java.util.Enumeration;
 import java.util.HashMap;
 import javax.swing.JComponent;
 import javax.swing.JTable;
+import javax.swing.text.JTextComponent;
 import org.seasar.framework.container.factory.SingletonS2ContainerFactory;
 import org.seasar.golf.ColumnDef;
 import org.seasar.golf.GolfFormInterface;
@@ -28,9 +30,6 @@ public class FormManagerUtil {
 				td.setColumnIdentifires(new String[]{"class","name"});
                                 Object[] keys =  fm.getComponentNameIndex().keySet().toArray();
                                 for( Object key:keys) {
-//				Enumeration e = fm.getComponentNameIndex().keys();
-//				while (e.hasMoreElements()){
-//					String key = (String) e.nextElement();
                                     td.addRow(new String[]{
                                                     fm.getComponentNameIndex().get(key).getClass().toString()
                                                     .substring(6), (String)key });
@@ -51,7 +50,7 @@ public class FormManagerUtil {
          public  static  GolfFormInterface getFrame(String frameName) {
             return (GolfFormInterface) SingletonS2ContainerFactory.getContainer().getComponent(frameName);
         }
-	public static  void SetTableColumnSub(JTable jt, String tableDisplayName, 
+	public static  void setTableColumnSub(JTable jt, String tableDisplayName, 
 			GolfTableModel gtm, TableData td, FormValidationManager formValidationManager, String tableHostName) {
 		ColumnDef[] columnDefs = new ColumnDef[td.getRowCount()];
                 gtm.setHostName(tableHostName);
@@ -148,5 +147,56 @@ public class FormManagerUtil {
 		}
 		return brtn;
 	}         
+        public static void setMode(String mode, TableData modeControl, FormManager formManager){
+            int modeCol = -1;
+            for (modeCol=2; modeCol < modeControl.getColumnCount(); modeCol++){
+                if (((String)modeControl.getColumnName(modeCol)).equals(mode.toUpperCase())) {
+                    break;
+                }
+            }
+            if (modeCol == modeControl.getColumnCount()) {
+                throw new RuntimeException("MODE " + mode+ " not defined in modeControl");
+            }
+            for (int row=0; row < modeControl.getRowCount(); row++) {
+                setFieldAttr((String)modeControl.getValueAt(row, modeCol), 
+                        (String)modeControl.getValueAt(row, 1), formManager);                
+            }          
+        } 
+        public static void setFieldAttr(String attr, String field, FormManager formManager ) {
+            JComponent jc = formManager.getComponentFromName(field);
+            if (jc==null) {
+                throw new RuntimeException("Component " + field+ " not defined");
+            }
+            jc.setVisible(true);
+            jc.setEnabled(true);
+
+            if (jc instanceof JTextComponent) {
+                ((JTextComponent)jc).setEditable(true);
+                jc.setBackground(formManager.getNormalBgColor());
+            }
+        
+            if (attr.toUpperCase().indexOf("I") != -1){
+                jc.setVisible(false);
+            }
+            if (attr.toUpperCase().indexOf("D") != -1){
+                jc.setEnabled(false);
+            }
+            if (attr.toUpperCase().indexOf("R") != -1){
+                if (jc instanceof JTextComponent) {
+                    ((JTextComponent)jc).setEditable(false);
+                    jc.setBackground(formManager.getIneditableBgColor());
+                }
+            }            
+        }
+
+    static Color getDefaultBgColor(String mode) {
+        String setting = (mode.equals("N") )? GolfSetting.getSetting("normal.bgcolor")
+         :   GolfSetting.getSetting("ineditable.bgcolor");
+        String [] color = setting.split(",");
+        Integer i1 = Integer.parseInt(color[0]);
+        Integer i2 = Integer.parseInt(color[1]);
+        Integer i3 = Integer.parseInt(color[2]);       
+        return new Color(i1.intValue(),i2.intValue(),i3.intValue());
+    }
       
 }

@@ -34,7 +34,7 @@ public class Example2Frame extends javax.swing.JFrame  implements GolfFormInterf
         formManager.init();
         formManager.createReportList(jScrollPane1);
         jTable1.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-        formManager.SetTableColumnFromCsvResource(
+        formManager.setTableColumnFromCsvResource(
     			jTable1, "Test Table", golfTableModel, "Example2_table1.csv");
         for (int i=0; i < 5; i++) {
             addNewRow();
