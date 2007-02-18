@@ -17,6 +17,8 @@ public class DBMetaInstanceHandler {
         Map<String, DBMeta> tmpMap = new LinkedHashMap<String, DBMeta>();
 
 
+        tmpMap.put("company", getDBMeta("org.seasar.golf.uexample.dao.bsentity.dbmeta.CompanyDbm"));
+
         tmpMap.put("vendor", getDBMeta("org.seasar.golf.uexample.dao.bsentity.dbmeta.VendorDbm"));
 
         _tableDbNameInstanceMap = java.util.Collections.unmodifiableMap(tmpMap);
@@ -28,6 +30,8 @@ public class DBMetaInstanceHandler {
         Map<String, DBMeta> tmpMap = new LinkedHashMap<String, DBMeta>();
 
 
+        tmpMap.put("Company", getDBMeta("org.seasar.golf.uexample.dao.bsentity.dbmeta.CompanyDbm"));
+
         tmpMap.put("Vendor", getDBMeta("org.seasar.golf.uexample.dao.bsentity.dbmeta.VendorDbm"));
 
         _tableCapPropNameInstanceMap = java.util.Collections.unmodifiableMap(tmpMap);
@@ -38,6 +42,8 @@ public class DBMetaInstanceHandler {
     static {
         Map<String, DBMeta> tmpMap = new LinkedHashMap<String, DBMeta>();
 
+
+        tmpMap.put("company", getDBMeta("org.seasar.golf.uexample.dao.bsentity.dbmeta.CompanyDbm"));
 
         tmpMap.put("vendor", getDBMeta("org.seasar.golf.uexample.dao.bsentity.dbmeta.VendorDbm"));
 

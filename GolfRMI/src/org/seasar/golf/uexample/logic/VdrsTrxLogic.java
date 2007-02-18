@@ -9,7 +9,9 @@
 
 package org.seasar.golf.uexample.logic;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 import org.seasar.golf.data.RequestData;
@@ -17,8 +19,11 @@ import org.seasar.golf.data.ResultData;
 import org.seasar.golf.data.TableData;
 import org.seasar.golf.form.FormAction;
 import org.seasar.golf.transaction.TransactionInterface;
+import org.seasar.golf.uexample.dao.cbean.CompanyCB;
 import org.seasar.golf.uexample.dao.cbean.VendorCB;
+import org.seasar.golf.uexample.dao.exdao.CompanyDao;
 import org.seasar.golf.uexample.dao.exdao.VendorDao;
+import org.seasar.golf.uexample.dao.exentity.Company;
 import org.seasar.golf.uexample.dao.exentity.Vendor;
 import org.seasar.golf.validator.HostTableFieldInfo;
 
@@ -30,7 +35,7 @@ import com.jgoodies.validation.message.SimpleValidationMessage;
  * @author shimura
  */
 public class VdrsTrxLogic implements TransactionInterface{
-    private VendorDao dao;
+    private CompanyDao dao;
     /** Creates a new instance of VdrTransaction */
     public VdrsTrxLogic() {
     }
@@ -45,37 +50,54 @@ public class VdrsTrxLogic implements TransactionInterface{
     }
     private void selectProcess(RequestData requestData, ResultData resultData) {
         resultData.getFormAction().setFormStack(FormAction.FormStack.RESULT);
-        VendorCB cb = new VendorCB();
-        cb.query().setShortname_PrefixSearch((String) requestData.getFields().get("shortname"));
-        List <Vendor> vdrl = dao.selectList(cb);
-        if (vdrl.size() == 0) {
+        CompanyCB cb = new CompanyCB();
+       	cb.query().setCat_Equal((String)requestData.getField("cat"));
+        if (requestData.getField("ccode") != null) {
+        	String sCcode = (String) requestData.getField("ccode");
+        	long lmax = Long.parseLong((sCcode+"99999").substring(0, 5));
+        	long lmin = Long.parseLong((sCcode+"00000").substring(0, 5));
+        	BigDecimal bmax = BigDecimal.valueOf(lmax);
+        	BigDecimal bmin = BigDecimal.valueOf(lmin);
+        	cb.query().setCcode_GreaterEqual(bmin);
+        	cb.query().setCcode_LessEqual(bmax);
+        }
+        if (requestData.getField("shortname") != null) {
+        	cb.query().setShortname_PrefixSearch((String) requestData.getField("shortname"));
+        }     
+        if (requestData.getField("name") != null) {
+        	cb.query().setShortname_PrefixSearch((String) requestData.getField("name"));
+        }         
+        List <Company> compl = dao.selectList(cb);
+        if (compl.size() == 0) {
         	resultData.getValidationResult().add(new SimpleValidationMessage(
         		"ŠY“–Data‚ÍŒ©‚Â‚©‚è‚Ü‚¹‚ñ", Severity.WARNING, null));
         } else {
         	 resultData.getFormAction().setFormStack(FormAction.FormStack.FIRST);
         	 resultData.getFormAction().setForm("vdrsd");
+        	 resultData.getFormAction().setParams(new HashMap());
+        	 resultData.getFormAction().getParams().put("cat", requestData.getField("cat"));
         	 TableData td = new TableData();
-        	 td.setColumnIdentifires(new Object[]{"id","vcode","shortname","name","telephone","versionno" });
-        	 for(Vendor vdr:vdrl) {
+        	 td.setColumnIdentifires(new Object[]{"ccode","shortname","name","telephone","cat","versionno" });
+        	 for(Company comp:compl) {
         		 ArrayList row = new ArrayList();
-        		 row.add(vdr.getId().intValue());
-        		 row.add(vdr.getVcode());
-        		 row.add(vdr.getShortname());
-        		 row.add(vdr.getName());
-        		 row.add(vdr.getTelephone());
-        		 row.add(vdr.getVersionno().intValue());        			 
+        		 row.add(comp.getCcode());
+        		 row.add(comp.getShortname());
+        		 row.add(comp.getName());
+        		 row.add(comp.getTelephone());
+        		 row.add(comp.getCat());        		 
+        		 row.add(comp.getVersionno().intValue());        			 
         		 td.addRow(row);
         	 }
-        	 resultData.getTables().put("VendorTable",td);
-        	 resultData.getParam().put("resultData", resultData);
+        	 resultData.getTables().put("CompanyTable",td);
+        	 resultData.getParams().put("resultData", resultData);
         }
     }
 
-	public VendorDao getDao() {
+	public CompanyDao getDao() {
 		return dao;
 	}
 
-	public void setDao(VendorDao dao) {
+	public void setDao(CompanyDao dao) {
 		this.dao = dao;
 	}
 
