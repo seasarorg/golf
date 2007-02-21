@@ -50,7 +50,6 @@ public class VdrFrame extends javax.swing.JFrame implements GolfFormInterface{
         jLabel7 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jTextShort = new javax.swing.JTextField();
-        textField1 = new org.seasar.golf.component.TextField();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenu2 = new javax.swing.JMenu();
@@ -133,10 +132,6 @@ public class VdrFrame extends javax.swing.JFrame implements GolfFormInterface{
         jLabel5.setFont(new java.awt.Font("‚l‚r ‚oƒSƒVƒbƒN", 0, 12));
         jLabel5.setText("\u96fb\u8a71");
 
-        textField1.setBackground(javax.swing.UIManager.getDefaults().getColor("InternalFrame.borderHighlight"));
-        textField1.setEditable(true);
-        textField1.setText("textField1");
-
         org.jdesktop.layout.GroupLayout contentPaneLayout = new org.jdesktop.layout.GroupLayout(contentPane);
         contentPane.setLayout(contentPaneLayout);
         contentPaneLayout.setHorizontalGroup(
@@ -151,7 +146,6 @@ public class VdrFrame extends javax.swing.JFrame implements GolfFormInterface{
                     .add(jLabel5))
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(contentPaneLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING, false)
-                    .add(org.jdesktop.layout.GroupLayout.LEADING, textField1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .add(org.jdesktop.layout.GroupLayout.LEADING, jTextShort)
                     .add(org.jdesktop.layout.GroupLayout.LEADING, jTextTel)
                     .add(org.jdesktop.layout.GroupLayout.LEADING, jTextName)
@@ -183,9 +177,7 @@ public class VdrFrame extends javax.swing.JFrame implements GolfFormInterface{
                             .add(jLabel5)
                             .add(jTextTel, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)))
                     .add(jScrollPane1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 100, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(textField1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                .add(320, 320, 320))
+                .add(345, 345, 345))
         );
 
         jMenu1.setText("Menu");
@@ -240,7 +232,7 @@ public class VdrFrame extends javax.swing.JFrame implements GolfFormInterface{
         layout.setVerticalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(layout.createSequentialGroup()
-                .add(contentPane, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 484, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                .add(contentPane, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         pack();
@@ -339,7 +331,6 @@ private void jMenu1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:
     private javax.swing.JTextField jTextName;
     private javax.swing.JTextField jTextShort;
     private javax.swing.JTextField jTextTel;
-    private org.seasar.golf.component.TextField textField1;
     private javax.swing.JPanel toolBar;
     // End of variables declaration//GEN-END:variables
     
