@@ -21,7 +21,7 @@ public class FormAction implements Serializable {
         MENU, FIRST, SAME, NEXT, BACK, DIALOG, NEWMENU, NEWFIRST, RESULT}  
     private FormStack formStack = null;
     private String form = null;
-    private HashMap params = null;
+    private HashMap params = new HashMap();
     /** Creates a new instance of FormAction */
     public FormAction() {
     }
@@ -46,7 +46,7 @@ public class FormAction implements Serializable {
     public HashMap getParams() {
         return params;
     }
-
+    
     public void setParams(HashMap params) {
         this.params = params;
     }
