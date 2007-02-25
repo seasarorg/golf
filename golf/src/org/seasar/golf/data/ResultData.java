@@ -26,6 +26,7 @@ public class ResultData implements Serializable  {
     private ValidationResult validationResult = new ValidationResult();
     /** Creates a new instance of ResultData */
     public ResultData() {
+        params.put("_resultData", this);
     }
 
     public HashMap getFields() {
