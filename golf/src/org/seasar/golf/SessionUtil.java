@@ -66,11 +66,8 @@ public class SessionUtil {
         public static void createForm(int index, FormAction formAction, Session session, HashMap params) {
                 javax.swing.JFrame form =  createForm(formAction.getForm(), session);
                 java.util.HashMap actionParam = formAction.getParams();
-                if (params != null) {
-                    ((org.seasar.golf.GolfFormInterface) form).initBinding(params);
-                } else {
-                    ((org.seasar.golf.GolfFormInterface) form).initBinding(actionParam);
-                }
+                HashMap newParams =mergrParams(params, actionParam);
+                ((org.seasar.golf.GolfFormInterface) form).initBinding(newParams);
                 removeUpperForm(index - 1, session);
                 session.getFormManagers().add(((org.seasar.golf.GolfFormInterface) form).getFormManager());
 }
@@ -97,4 +94,20 @@ public class SessionUtil {
             }
             return param;
         }
+
+    private static HashMap mergrParams(HashMap params, HashMap actionParams) {
+        HashMap newParams = new HashMap();
+        if (actionParams!=null) {
+            newParams.putAll(actionParams);
+        }
+        if (params!=null) {
+            for(Object o:params.keySet()){
+                if (newParams.containsKey(o)) {
+                    newParams.remove(o);
+                }
+            }
+            newParams.putAll(params);
+        }
+        return newParams;
     }
+}

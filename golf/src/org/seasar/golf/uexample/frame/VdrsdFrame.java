@@ -179,6 +179,7 @@ private void jB_EnterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
     int row = jTable1.getSelectionModel().getMinSelectionIndex();
     BigDecimal ccode = (BigDecimal) golfTableModel.getValueAt(row,0);
     BigDecimal ccode2 = ccode;
+    BigDecimal ccode3 = ccode;    
 }//GEN-LAST:event_jB_EnterActionPerformed
 
 private void jB_NewWindowActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jB_NewWindowActionPerformed
