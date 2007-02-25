@@ -11,7 +11,6 @@ package org.seasar.golf.uexample.logic;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 
 import org.seasar.golf.data.RequestData;
@@ -20,12 +19,8 @@ import org.seasar.golf.data.TableData;
 import org.seasar.golf.form.FormAction;
 import org.seasar.golf.transaction.TransactionInterface;
 import org.seasar.golf.uexample.dao.cbean.CompanyCB;
-import org.seasar.golf.uexample.dao.cbean.VendorCB;
 import org.seasar.golf.uexample.dao.exdao.CompanyDao;
-import org.seasar.golf.uexample.dao.exdao.VendorDao;
 import org.seasar.golf.uexample.dao.exentity.Company;
-import org.seasar.golf.uexample.dao.exentity.Vendor;
-import org.seasar.golf.validator.HostTableFieldInfo;
 
 import com.jgoodies.validation.Severity;
 import com.jgoodies.validation.message.SimpleValidationMessage;
@@ -72,7 +67,7 @@ public class VdrsTrxLogic implements TransactionInterface{
         	resultData.getValidationResult().add(new SimpleValidationMessage(
         		"ŠY“–Data‚ÍŒ©‚Â‚©‚è‚Ü‚¹‚ñ", Severity.WARNING, null));
         } else {
-        	 resultData.getFormAction().setFormStack(FormAction.FormStack.FIRST);
+        	 resultData.getFormAction().setFormStack(FormAction.FormStack.NEXT);
         	 resultData.getFormAction().setForm("vdrsd");
  //       	 resultData.getFormAction().setParams(new HashMap());
         	 resultData.getParams().put("cat", requestData.getField("cat"));
@@ -89,7 +84,6 @@ public class VdrsTrxLogic implements TransactionInterface{
         		 td.addRow(row);
         	 }
         	 resultData.getTables().put("CompanyTable",td);
-        	 resultData.getParams().put("resultData", resultData);
         }
     }
 
