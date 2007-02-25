@@ -13,12 +13,7 @@ import com.jgoodies.binding.value.ValueModel;
 import com.jgoodies.validation.Severity;
 import com.jgoodies.validation.ValidationMessage;
 import com.jgoodies.validation.message.SimpleValidationMessage;
-import java.math.BigDecimal;
-import java.text.DecimalFormat;
-import java.text.ParseException;
 import org.seasar.golf.form.FormManager;
-import org.seasar.golf.util.ValidationUtil;
-
 /**
  *
  * @author shimura

@@ -10,7 +10,6 @@ import java.util.HashMap;
 import javax.swing.JMenuBar;
 import javax.swing.JPanel;
 import org.seasar.golf.GolfFormInterface;
-import org.seasar.golf.GolfTableModel;
 import org.seasar.golf.data.RequestData;
 import org.seasar.golf.form.FormManager;
 import org.seasar.golf.transaction.RequestDataFactory;
@@ -21,7 +20,7 @@ import org.seasar.golf.transaction.RequestDataFactory;
  */
 public class VdrsFrame extends javax.swing.JFrame implements GolfFormInterface{
     private FormManager formManager = null;
-    private GolfTableModel golfTableModel= new GolfTableModel();    
+    //private GolfTableModel golfTableModel= new GolfTableModel();    
     /** Creates new form VdrFrame */
     public VdrsFrame() {
         initComponents();

@@ -30,8 +30,6 @@
 
 package org.seasar.golf.binding;
 
-import com.jgoodies.binding.adapter.ToggleButtonAdapter;
-import java.awt.Color;
 import java.awt.Component;
 import java.awt.event.FocusAdapter;
 import java.awt.event.FocusEvent;
@@ -41,14 +39,10 @@ import java.beans.PropertyChangeListenerProxy;
 import java.beans.PropertyChangeSupport;
 import java.lang.ref.ReferenceQueue;
 import java.lang.ref.WeakReference;
-
 import javax.swing.*;
 import javax.swing.text.Document;
 import javax.swing.text.JTextComponent;
-import javax.swing.text.PlainDocument;
-
 import com.jgoodies.binding.beans.PropertyConnector;
-import com.jgoodies.binding.list.SelectionInList;
 import com.jgoodies.binding.value.BufferedValueModel;
 import com.jgoodies.binding.value.ComponentValueModel;
 import com.jgoodies.binding.value.*;

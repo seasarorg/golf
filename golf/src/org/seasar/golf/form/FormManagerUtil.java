@@ -1,7 +1,6 @@
 package org.seasar.golf.form;
 
 import java.awt.Color;
-import java.util.Enumeration;
 import java.util.HashMap;
 import javax.swing.JComponent;
 import javax.swing.JTable;

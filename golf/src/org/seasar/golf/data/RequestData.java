@@ -11,7 +11,6 @@ package org.seasar.golf.data;
 
 import java.io.Serializable;
 import java.util.HashMap;
-import java.util.HashMap;
 
 
 /**

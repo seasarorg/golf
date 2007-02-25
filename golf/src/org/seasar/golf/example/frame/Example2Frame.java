@@ -21,8 +21,6 @@ import org.seasar.golf.util.TableUtil;
  */
 public class Example2Frame extends javax.swing.JFrame  implements GolfFormInterface {
     private FormManager formManager = null;
-    private int currentRow = 999999;
-
     private GolfTableModel golfTableModel= new GolfTableModel();
     
     /** Creates new form Example1Frame */

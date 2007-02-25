@@ -25,7 +25,7 @@ public class ValidatorMessageUtil {
        private static final String BUNDLE_NAME = "org.seasar.golf.validator.Messages";
        private ValidationMessageLabel validationMessageLabel; 
 
-    private static Logger logger_ = Logger.getLogger(ValidatorMessageUtil.class);
+//    private static Logger logger_ = Logger.getLogger(ValidatorMessageUtil.class);
     private ValidatorMessageUtil() {
     }
     private static ResourceBundle bundle = null;

@@ -18,7 +18,6 @@ import org.seasar.golf.form.FormManager;
  * @author  shimura
  */
 public class Example4_2Frame extends javax.swing.JFrame implements GolfFormInterface{
-    private JFrame container = null;
     private FormManager formManager = null;    
     
     /** Creates new form Example4ContainerFrame */

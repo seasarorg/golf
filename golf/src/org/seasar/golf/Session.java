@@ -33,7 +33,6 @@ public class Session {
     private JFrame containerFrame = null;
     private ContainerManager containerManager = null;
     private Connection connection = null;
-    private JFrame menu = null;
     private ArrayList <FormManager> formManagers = new  ArrayList<FormManager>();
     private HashMap sessionData = new HashMap();
     private TrxDispatcherInterface trxDispatcher = null;

@@ -228,7 +228,7 @@ private void jTextActionKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:ev
         formManager.setTableColumnFromCsvResource(
     			jTable1, "CompanyTable", "CompanyTable", golfTableModel, "Vdrsd_table.csv");
         TableUtil.SetPreferedColumnWIdth(jTable1, new int[]{15,40,60,150,80 });  
-        TrxUtil.setTableDataFromResult( "CompanyTable", (ResultData)params.get("resultData"), formManager);
+        TrxUtil.setTableDataFromResult( "CompanyTable", (ResultData)params.get("_resultData"), formManager);
 
     }
 
