@@ -53,14 +53,14 @@ public class Session {
         processMenuAction("MENU");
         
     }
-     public void processActionTextField(KeyEvent evt, JTextField textField) {
-         if (evt.getKeyCode() == KeyEvent.VK_ENTER ){
-           String action = textField.getText();
-             if (processMenuAction(action)) {
-                textField.setText("");             
-             }       
-         }
-     }
+    public void processActionTextField(KeyEvent evt, JTextField textField) {
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER ){
+            String action = textField.getText();
+            if (processMenuAction(action)) {
+                textField.setText("");
+            }
+        }
+    }
     public void processAction(FormAction formAction, HashMap params) {
         SessionUtil.processAction(formAction, this, params);
     }
@@ -72,7 +72,7 @@ public class Session {
             newWindow = true;
             action = action.substring(1);
         }
-
+        
         MenuActionItem actionItem = MenuAction.getMenuAction(action);
         if (actionItem ==null) {
             return false;
@@ -84,18 +84,18 @@ public class Session {
         formAction.setParams(actionParam);
         if (action.equals("MENU")) {
             if (newWindow) {
-                formAction.setFormStack(FormAction.FormStack.NEWMENU);                 
+                formAction.setFormStack(FormAction.FormStack.NEWMENU);
             } else {
-                formAction.setFormStack(FormAction.FormStack.MENU); 
+                formAction.setFormStack(FormAction.FormStack.MENU);
             }
         } else {
             if (newWindow) {
-                formAction.setFormStack(FormAction.FormStack.NEWFIRST);                
+                formAction.setFormStack(FormAction.FormStack.NEWFIRST);
             } else {
                 formAction.setFormStack(FormAction.FormStack.FIRST);
             }
         }
-        processAction(formAction, null);   
+        processAction(formAction, null);
         return true;
     }
     public ResultData trxExecute(RequestData requestData, FormManager formManager) {
@@ -115,35 +115,35 @@ public class Session {
         containerFrame.dispose();
         
     }
-
+    
     public Connection getConnection() {
         return connection;
     }
-
+    
     public void setConnection(Connection connection) {
         this.connection = connection;
     }
-
+    
     public JFrame getContainerFrame() {
         return containerFrame;
     }
-
+    
     public ArrayList getFormManagers() {
         return formManagers;
     }
-
+    
     public ContainerManager getContainerManager() {
         return containerManager;
     }
-
+    
     public HashMap getSessionData() {
         return sessionData;
     }
-
+    
     public TrxDispatcherInterface getTrxDispatcher() {
         return trxDispatcher;
     }
-
+    
     public void setTrxDispatcher(TrxDispatcherInterface trxDispatcher) {
         this.trxDispatcher = trxDispatcher;
     }

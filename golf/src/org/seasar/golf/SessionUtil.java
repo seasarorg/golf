@@ -32,10 +32,20 @@ public class SessionUtil {
                         setForm(0, session, null);
                     break;
                 case FIRST :
-                        //removeUpperForm(0, session);
-                        createForm(1, formAction, session, params);
-                        setForm(1, session, null);
-                    break;    
+                        createAndSetForm(1,formAction, session, params);
+                    break;  
+                case NEXT:
+                        int no = session.getFormManagers().size();
+                        createAndSetForm(no,formAction, session, params);
+                    break;
+                case SAME:
+                        int sameNo = session.getFormManagers().size() - 1;
+                        createAndSetForm(sameNo,formAction, session, params);
+                    break;                    
+                case BACK:
+                        int newNo = session.getFormManagers().size() - 2;
+                        setForm(newNo, session, null);
+                        break;
                 case NEWMENU :
                         session.getConnection().addSession();
                     break;         
@@ -77,7 +87,10 @@ public class SessionUtil {
                             )).getFrame();
                     session.getContainerManager().setForm( golfForm);        
         }
-
+        private static void createAndSetForm(int index, FormAction formAction, Session session, HashMap params) {
+                createForm(index, formAction, session, params);
+                setForm(index, session, null);
+        } 
         public static void removeUpperForm(int index, Session session) {
             while(session.getFormManagers().size() > index + 1) {
                 session.getFormManagers().remove(session.getFormManagers().size() - 1);

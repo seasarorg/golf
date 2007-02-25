@@ -14,6 +14,8 @@ import javax.swing.ListSelectionModel;
 import org.seasar.golf.GolfFormInterface;
 import org.seasar.golf.GolfTableModel;
 import org.seasar.golf.data.ResultData;
+import org.seasar.golf.form.FormAction;
+import org.seasar.golf.form.FormAction.FormStack;
 import org.seasar.golf.form.FormManager;
 import org.seasar.golf.util.TableUtil;
 import org.seasar.golf.transaction.TrxUtil;
@@ -87,8 +89,12 @@ public class VdrsdFrame extends javax.swing.JFrame implements GolfFormInterface{
 
         jB_Back.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/NavBack.png")));
         jB_Back.setToolTipText("Back");
-        jB_Back.setEnabled(false);
         jB_Back.setPreferredSize(new java.awt.Dimension(25, 25));
+        jB_Back.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jB_BackActionPerformed(evt);
+            }
+        });
         toolBar.add(jB_Back);
 
         jB_Menu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/book_addressHS.png")));
@@ -174,6 +180,12 @@ public class VdrsdFrame extends javax.swing.JFrame implements GolfFormInterface{
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+private void jB_BackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jB_BackActionPerformed
+    FormAction formAction = new FormAction();
+    formAction.setFormStack(FormStack.BACK);
+    formManager.getSession().processAction(formAction, null);
+}//GEN-LAST:event_jB_BackActionPerformed
 
 private void jB_EnterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jB_EnterActionPerformed
     int row = jTable1.getSelectionModel().getMinSelectionIndex();
