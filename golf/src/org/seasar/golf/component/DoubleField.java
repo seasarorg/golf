@@ -62,7 +62,7 @@ public class DoubleField extends javax.swing.JTextField  {
             } else {
                newStr = str;
             }
-            Double i =null;
+            Double i ;
             try {
                 i = Double.parseDouble(newStr);
             }

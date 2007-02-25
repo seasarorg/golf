@@ -29,7 +29,7 @@ public class Example1Frame extends javax.swing.JFrame  implements GolfFormInterf
         KeyboardFocusManager.getCurrentKeyboardFocusManager().addKeyEventDispatcher(new KeyEventDispatcher(){ 
         public boolean dispatchKeyEvent(KeyEvent evt){ 
                  int keyCode = evt.getKeyCode();
-                if ( keyCode == evt.VK_F9) {
+                if ( keyCode == KeyEvent.VK_F9) {
                     KeyboardFocusManager.getCurrentKeyboardFocusManager().focusNextComponent();
                     formManager.getFormValidationManager().Validate(true);
                 }

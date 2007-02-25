@@ -469,7 +469,7 @@ public final class GolfValidationResultViewFactory {
          */
         public void propertyChange(PropertyChangeEvent evt) {
             if (evt.getPropertyName().equals(ValidationResultModel.PROPERTYNAME_MESSAGES)) {
-                boolean hasMessages = ((Boolean) evt.getNewValue()).booleanValue();
+                //boolean hasMessages = ((Boolean) evt.getNewValue()).booleanValue();
                 //component.setVisible(hasMessages);
             }
         }

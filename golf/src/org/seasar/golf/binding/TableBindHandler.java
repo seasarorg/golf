@@ -45,12 +45,10 @@ public class TableBindHandler
     }
     public void propertyChange(PropertyChangeEvent evt) {
         
-        PropertyChangeEvent evtnew = evt;
         Object src = evt.getSource();
         String column = (String) srcColumnTable.get(src);
         int row = golfTableModel.getJtable().getSelectedRow();
         Object newValue = evt.getNewValue();
-       // int colNo = ((Integer)srcColumnTable.get(src)).intValue();
         int columnNo =  golfTableModel.findColumn(column);
         Class srcClass= ((ColumnDef)golfTableModel.getColumnDef(columnNo
               )).getType();

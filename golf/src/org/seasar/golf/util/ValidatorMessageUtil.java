@@ -13,7 +13,6 @@ import java.util.Locale;
 import java.util.MissingResourceException;
 import java.util.ResourceBundle;
 import org.seasar.framework.container.factory.SingletonS2ContainerFactory;
-import org.seasar.framework.log.Logger;
 
 /**
  *

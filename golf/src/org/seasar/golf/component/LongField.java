@@ -70,7 +70,7 @@ public class LongField extends javax.swing.JTextField  {
             } else {
                newStr = str;
             }
-            Long i =null;
+            Long i;
             try {
                 i =  Long.parseLong(newStr);
                 super.insertString(offs, str, a);

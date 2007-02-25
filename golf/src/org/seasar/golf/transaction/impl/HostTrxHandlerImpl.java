@@ -9,7 +9,6 @@
 
 package org.seasar.golf.transaction.impl;
 
-import org.seasar.framework.container.S2Container;
 import org.seasar.framework.container.factory.SingletonS2ContainerFactory;
 import org.seasar.golf.data.RequestData;
 import org.seasar.golf.data.ResultData;
@@ -26,7 +25,6 @@ public class HostTrxHandlerImpl implements HostTrxHandlerInterface{
     }
     
     public ResultData execute(RequestData requestData) {
-        S2Container cont = SingletonS2ContainerFactory.getContainer();
        TransactionInterface transaction = 
                (TransactionInterface) SingletonS2ContainerFactory.getContainer().
                getComponent(requestData.getTransactionCode() + "TrxLogic");

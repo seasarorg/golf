@@ -187,8 +187,8 @@ public class TableUtil {
     }
     public static boolean checkRowDownEvent(KeyEvent evt){
         int keyCode = evt.getKeyCode();
-        if ( keyCode == evt.VK_DOWN  || keyCode == evt.VK_TAB || keyCode == evt.VK_ENTER ||
-                keyCode == evt.VK_KP_DOWN || keyCode == evt.VK_RIGHT) {   
+        if ( keyCode == KeyEvent.VK_DOWN  || keyCode == KeyEvent.VK_TAB || keyCode == KeyEvent.VK_ENTER ||
+                keyCode == KeyEvent.VK_KP_DOWN || keyCode == KeyEvent.VK_RIGHT) {   
             return true;
         }  else {
             return false;

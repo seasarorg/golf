@@ -7,7 +7,6 @@
 package org.seasar.golf.example.frame;
 
 import java.util.HashMap;
-import javax.swing.JFrame;
 import javax.swing.JMenuBar;
 import javax.swing.JPanel;
 import org.seasar.golf.GolfFormInterface;

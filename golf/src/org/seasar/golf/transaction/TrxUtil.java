@@ -33,7 +33,7 @@ public class TrxUtil {
     private TrxUtil() {
     }
     public static void setFieldDataToRequest(RequestData requestData, FormManager formManager) {
-        HashMap ht = formManager.getFormTrxManager().getHostToField();
+        //HashMap ht = formManager.getFormTrxManager().getHostToField();
         Object[] hosts = formManager.getFormTrxManager().getHostToField().keySet().toArray();
         for (Object host:hosts) {
 //        for (Enumeration e = formManager.getFormTrxManager().getHostToField().keys();
@@ -122,7 +122,6 @@ public class TrxUtil {
                      MessageKey = formManager.getFormTrxManager().getHostToField().get(msg.key());
                      
                  } else if (msg.key() instanceof HostTableFieldInfo ) {
-                    FormTrxManager ftm = formManager.getFormTrxManager(); 
                      GolfTableModel gtm = (GolfTableModel) formManager.getFormTrxManager().
                              getHostToTableModel().get(((HostTableFieldInfo) msg.key()).getHostTtable());
                      if (hostNameToColumnNo == null) {

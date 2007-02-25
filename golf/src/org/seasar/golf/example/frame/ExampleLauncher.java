@@ -9,7 +9,6 @@ package org.seasar.golf.example.frame;
 import javax.swing.JFrame;
 import org.seasar.framework.container.factory.SingletonS2ContainerFactory;
 import org.seasar.golf.GolfFormInterface;
-import org.seasar.golf.form.FormManager;
 import org.seasar.golf.form.FormManagerUtil;
 
 /**

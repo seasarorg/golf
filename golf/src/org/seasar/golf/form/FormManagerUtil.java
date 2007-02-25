@@ -41,7 +41,7 @@ public class FormManagerUtil {
 				String s = GolfSetting.getSetting("csvpath") + 
 				fm.getClass().toString().substring(6)+
 				".csv";
-				formHistory.put(fm.getFrame().getClass(),"");
+				formHistory.put(fm.getFrame().getClass(),s);
 			}
 			
 		}

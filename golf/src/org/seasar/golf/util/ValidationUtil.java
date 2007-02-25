@@ -16,7 +16,6 @@ import java.util.Calendar;
 import java.util.Date;
 import javax.swing.JTable;
 import javax.swing.table.TableModel;
-import org.seasar.framework.container.S2Container;
 import org.seasar.framework.container.factory.SingletonS2ContainerFactory;
 import org.seasar.golf.GolfTableModel;
 import org.seasar.golf.form.FormManager;

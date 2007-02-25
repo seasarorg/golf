@@ -19,7 +19,6 @@ import javax.swing.JTable;
 import org.seasar.golf.GolfTableModel;
 import org.seasar.golf.Session;
 import org.seasar.golf.binding.FormBindingManager;
-import org.seasar.golf.containerFrame.*;
 import org.seasar.golf.data.ResultData;
 import org.seasar.golf.transaction.FormTrxManager;
 import org.seasar.golf.data.TableData;

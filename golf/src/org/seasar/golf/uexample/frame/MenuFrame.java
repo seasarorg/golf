@@ -151,7 +151,7 @@ private void jTextField1KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:ev
 
 private void jTree1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTree1MouseClicked
     Object o = evt.getSource();
-    Object x = o;
+    //Object x = o;
     Object node = ((JTree)o).getLastSelectedPathComponent();
     if (node instanceof DefaultMutableTreeNode) {
         Object userObject =  ((DefaultMutableTreeNode) node).getUserObject();
@@ -167,11 +167,11 @@ private void jTree1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:even
 }//GEN-LAST:event_jTree1MouseClicked
 
     private void jTree1ValueChanged(javax.swing.event.TreeSelectionEvent evt) {//GEN-FIRST:event_jTree1ValueChanged
-TreePath p= evt.getPath();
-DefaultMutableTreeNode o = (DefaultMutableTreeNode) p.getLastPathComponent();
-Object xx = o.getUserObject();
-MenuAction.isMenuAction("test");
-Object yy = xx;
+//TreePath p= evt.getPath();
+//DefaultMutableTreeNode o = (DefaultMutableTreeNode) p.getLastPathComponent();
+//Object xx = o.getUserObject();
+//MenuAction.isMenuAction("test");
+//Object yy = xx;
     }//GEN-LAST:event_jTree1ValueChanged
   
     /**
