@@ -11,7 +11,6 @@ package org.seasar.golf.validator;
 
 import java.util.ArrayList;
 import javax.swing.JComponent;
-import org.seasar.golf.GolfTableModel;
 import com.jgoodies.validation.ValidationMessage;
 import com.jgoodies.validation.ValidationResult;
 import com.jgoodies.validation.util.AbstractValidationResultModel;
