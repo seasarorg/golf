@@ -4,4 +4,4 @@ CCODE,BigDecimal,T,T,,,T,ccode
 ñºèÃ,String,T,T,,,T,name
 ìdòb,String,T,T,,,T,telephone
 cat,String,T,T,,,T,cat
-versionno,Integer,H,,,,,versionno
+versionno,BigDecimal,H,,,,,versionno
