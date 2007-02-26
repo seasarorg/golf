@@ -13,10 +13,9 @@ import org.seasar.golf.data.RequestData;
 import org.seasar.golf.data.ResultData;
 import org.seasar.golf.form.FormAction;
 import org.seasar.golf.transaction.TransactionInterface;
+import org.seasar.golf.validation.Severity;
+import org.seasar.golf.validation.message.SimpleValidationMessage;
 import org.seasar.golf.validator.HostTableFieldInfo;
-
-import com.jgoodies.validation.Severity;
-import com.jgoodies.validation.message.SimpleValidationMessage;
 
 /**
  *

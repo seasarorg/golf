@@ -21,9 +21,8 @@ import org.seasar.golf.transaction.TransactionInterface;
 import org.seasar.golf.uexample.dao.cbean.CompanyCB;
 import org.seasar.golf.uexample.dao.exdao.CompanyDao;
 import org.seasar.golf.uexample.dao.exentity.Company;
-
-import com.jgoodies.validation.Severity;
-import com.jgoodies.validation.message.SimpleValidationMessage;
+import org.seasar.golf.validation.Severity;
+import org.seasar.golf.validation.message.SimpleValidationMessage;
 
 /**
  *
