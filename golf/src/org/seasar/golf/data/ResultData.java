@@ -9,7 +9,7 @@
 
 package org.seasar.golf.data;
 
-import com.jgoodies.validation.ValidationResult;
+import org.seasar.golf.validation.ValidationResult;
 import java.io.Serializable;
 import java.util.HashMap;
 import org.seasar.golf.form.FormAction;

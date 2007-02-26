@@ -11,9 +11,9 @@ package org.seasar.golf.validator;
 
 import java.util.ArrayList;
 import javax.swing.JComponent;
-import com.jgoodies.validation.ValidationMessage;
-import com.jgoodies.validation.ValidationResult;
-import com.jgoodies.validation.util.AbstractValidationResultModel;
+import org.seasar.golf.validation.ValidationMessage;
+import org.seasar.golf.validation.ValidationResult;
+import org.seasar.golf.validation.util.AbstractValidationResultModel;
 import org.seasar.golf.form.FormManager;
 
 /**

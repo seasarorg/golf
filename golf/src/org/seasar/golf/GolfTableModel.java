@@ -10,7 +10,7 @@
 
 package org.seasar.golf;
 
-import com.jgoodies.validation.ValidationResult;
+import org.seasar.golf.validation.ValidationResult;
 import java.util.ArrayList;
 import javax.swing.JTable;
 import javax.swing.table.AbstractTableModel;

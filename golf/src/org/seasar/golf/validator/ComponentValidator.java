@@ -9,7 +9,7 @@
 
 package org.seasar.golf.validator;
 
-import com.jgoodies.validation.ValidationResult;
+import org.seasar.golf.validation.ValidationResult;
 
 /**
  *

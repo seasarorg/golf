@@ -28,7 +28,7 @@
  * EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE. 
  */
 
-package org.seasar.golf.validator;
+package org.seasar.golf.validation.view;
 
 import java.awt.Color;
 import java.awt.Component;
@@ -38,21 +38,12 @@ import java.awt.Insets;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 
-import javax.swing.DefaultListCellRenderer;
-import javax.swing.Icon;
-import javax.swing.ImageIcon;
-import javax.swing.JComponent;
-import javax.swing.JLabel;
-import javax.swing.JList;
-import javax.swing.JPanel;
-import javax.swing.JScrollPane;
-import javax.swing.JTextArea;
+import javax.swing.*;
 import javax.swing.text.JTextComponent;
 import org.seasar.golf.validation.Severity;
 import org.seasar.golf.validation.ValidationMessage;
 import org.seasar.golf.validation.ValidationResult;
 import org.seasar.golf.validation.ValidationResultModel;
-import org.seasar.golf.validation.view.ValidationResultListAdapter;
 
 /**
  * A factory class that vends views that present the state and contents
@@ -66,14 +57,13 @@ import org.seasar.golf.validation.view.ValidationResultListAdapter;
  * 
  * @see     ValidationResult
  * @see     ValidationMessage
- *
  */
-public final class GolfValidationResultViewFactory {
+public final class ValidationResultViewFactory {
 
     private static final Color DEFAULT_REPORT_BACKGROUND = 
         new Color(255, 255, 210);
 
-    private GolfValidationResultViewFactory() {
+    private ValidationResultViewFactory() {
         // Override default constructor; prevents instantiation.
     }
 
@@ -197,6 +187,7 @@ public final class GolfValidationResultViewFactory {
         
         return scrollPane;
     }
+    
         public static void createReportList(JScrollPane scrollPane, ValidationResultModel model) {
         JList list = new JList();
         list.setFocusable(false);
@@ -204,7 +195,7 @@ public final class GolfValidationResultViewFactory {
         list.setModel(new ValidationResultListAdapter(model));
         //JScrollPane scrollPane = new JScrollPane(list);
         scrollPane.setViewportView(list);
-       // scrollPane.setVisible(model.hasMessages());
+        scrollPane.setVisible(model.hasMessages());
         
         model.addPropertyChangeListener(
                 ValidationResultModel.PROPERTYNAME_MESSAGES, 
@@ -398,9 +389,7 @@ public final class GolfValidationResultViewFactory {
         else 
             return null;
     }
-
-
-   
+    
     
     // ValidationResultModel Listeners ****************************************
     
@@ -469,8 +458,8 @@ public final class GolfValidationResultViewFactory {
          */
         public void propertyChange(PropertyChangeEvent evt) {
             if (evt.getPropertyName().equals(ValidationResultModel.PROPERTYNAME_MESSAGES)) {
-                //boolean hasMessages = ((Boolean) evt.getNewValue()).booleanValue();
-                //component.setVisible(hasMessages);
+                boolean hasMessages = ((Boolean) evt.getNewValue()).booleanValue();
+                component.setVisible(hasMessages);
             }
         }
     
@@ -568,7 +557,7 @@ public final class GolfValidationResultViewFactory {
                 false,  // Ignore the selection state
                 false); // Ignore the cell focus state
             ValidationMessage message = (ValidationMessage) value;
-            this.setIcon(GolfValidationResultViewFactory.getIcon(message.severity()));
+            this.setIcon(ValidationResultViewFactory.getIcon(message.severity()));
             this.setText(message.formattedText());
             return this;
         }

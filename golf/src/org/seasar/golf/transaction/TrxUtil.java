@@ -9,9 +9,8 @@
 
 package org.seasar.golf.transaction;
 
-import com.jgoodies.validation.ValidationMessage;
-import com.jgoodies.validation.ValidationResult;
-import com.jgoodies.validation.message.SimpleValidationMessage;
+import org.seasar.golf.validation.ValidationMessage;
+import org.seasar.golf.validation.ValidationResult;
 import java.util.ArrayList;
 import java.util.HashMap;
 import org.seasar.golf.ColumnDef;
@@ -20,6 +19,7 @@ import org.seasar.golf.data.RequestData;
 import org.seasar.golf.data.ResultData;
 import org.seasar.golf.form.FormManager;
 import org.seasar.golf.data.TableData;
+import org.seasar.golf.validation.message.SimpleValidationMessage;
 import org.seasar.golf.validator.HostTableFieldInfo;
 import org.seasar.golf.validator.JTableFieldInfo;
 

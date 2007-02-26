@@ -16,11 +16,11 @@ import org.seasar.golf.form.FormManager;
  *
  * @author  shimura
  */
-public class Example4_1Frame extends javax.swing.JFrame implements GolfFormInterface{
+public class Example41Frame extends javax.swing.JFrame implements GolfFormInterface{
     private FormManager formManager = null;
     
     /** Creates new form Example4ContainerFrame */
-    public Example4_1Frame() {
+    public Example41Frame() {
         initComponents();
     }
     

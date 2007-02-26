@@ -10,8 +10,8 @@
 package org.seasar.golf.util;
 
 import com.jgoodies.binding.value.ValueModel;
-import com.jgoodies.validation.ValidationMessage;
-import com.jgoodies.validation.ValidationResult;
+import org.seasar.golf.validation.ValidationMessage;
+import org.seasar.golf.validation.ValidationResult;
 import java.util.Calendar;
 import java.util.Date;
 import javax.swing.JTable;

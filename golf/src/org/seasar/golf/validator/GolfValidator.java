@@ -10,8 +10,8 @@
 package org.seasar.golf.validator;
 
 import com.jgoodies.binding.value.ValueModel;
-import com.jgoodies.validation.ValidationMessage;
 import org.seasar.golf.form.FormManager;
+import org.seasar.golf.validation.ValidationMessage;
 
 /**
  *

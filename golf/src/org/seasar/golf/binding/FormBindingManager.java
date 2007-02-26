@@ -35,7 +35,7 @@ import com.jgoodies.binding.adapter.Bindings;
 import com.jgoodies.binding.list.SelectionInList;
 import com.jgoodies.binding.value.ValueHolder;
 import com.jgoodies.binding.value.ValueModel;
-import com.jgoodies.validation.ValidationResult;
+import org.seasar.golf.validation.ValidationResult;
 
 /**
  *
