@@ -458,6 +458,10 @@ public final class ValidationResult implements Serializable {
         return getMessagesWithSeverity(getMessages(), Severity.WARNING);
     }
     
+        public List getInfos() {
+        return getMessagesWithSeverity(getMessages(), Severity.INFO);
+    }
+    
     
     // Requesting State *******************************************************
     

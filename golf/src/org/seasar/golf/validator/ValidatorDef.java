@@ -9,29 +9,34 @@
 
 package org.seasar.golf.validator;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author shimura
  */
 public class ValidatorDef {
-    private GolfValidator validator = null;
+    private ArrayList <GolfValidator> validators = new ArrayList <GolfValidator>();
     private String displayName = null;
     private boolean required = false;
     /** Creates a new instance of ValidatorDef */
     public ValidatorDef() {
     }
-    public ValidatorDef(GolfValidator validator, String displayName,boolean required) {
-        this.validator = validator;
+    public ValidatorDef(ArrayList <GolfValidator> validators, String displayName,boolean required) {
+        this.validators = validators;
         this.displayName = displayName;
         this.required = required;
     }
 
-    public GolfValidator getValidator() {
-        return validator;
+    public ArrayList <GolfValidator> getValidators() {
+        return validators;
     }
+    public void setValidators(ArrayList <GolfValidator> validators) {
+        this.validators = validators;
+    }    
 
-    public void setValidator(GolfValidator validator) {
-        this.validator = validator;
+    public void addValidator(GolfValidator validator) {
+        validators.add(validator);
     }
 
     public String getDisplayName() {

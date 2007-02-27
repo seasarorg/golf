@@ -47,6 +47,7 @@ public class FormBindingManager implements PropertyChangeListener, ComponentVali
     private FormManager formManager= null;
     private HashMap tableBindHandlers = new HashMap();
 
+
     public FormBindingManager() {
     }
 
@@ -54,7 +55,7 @@ public class FormBindingManager implements PropertyChangeListener, ComponentVali
         bind (name, null, null, false, null);
 
     }
-    public void bind(String name, GolfValidator validator, String displayName, boolean required, Object choice) {
+    public void bind(String name, ArrayList <GolfValidator> validators, String displayName, boolean required, Object choice) {
         String valueModelClass = "ValueHolder";
         JComponent jc = formManager.getComponentFromName(name);
         if (jc ==null) {
@@ -63,7 +64,7 @@ public class FormBindingManager implements PropertyChangeListener, ComponentVali
         if   ((jc instanceof JComboBox)   ||(jc instanceof JList)   )      {
               valueModelClass = "SelectionInList";
         }      
-        ValueModel vh = createValueModel(name, validator, displayName, required, valueModelClass);
+        ValueModel vh = createValueModel(name, validators, displayName, required, valueModelClass);
         vh.addValueChangeListener(this);
         Bind(jc, vh, choice); 
 
@@ -128,7 +129,7 @@ public class FormBindingManager implements PropertyChangeListener, ComponentVali
           throw (new UnsupportedBindingClassException(jc.getClass().toString()));
       }   	
     }
-    public ValueModel createValueModel(String name, GolfValidator validator, String displayName, boolean required, String valueModelClass) {
+    public ValueModel createValueModel(String name, ArrayList <GolfValidator> validators, String displayName, boolean required, String valueModelClass) {
        ValueModel vh = null;
         if (valueModelClass.equals( "ValueHolder")) {
             vh = new ValueHolder();
@@ -140,7 +141,7 @@ public class FormBindingManager implements PropertyChangeListener, ComponentVali
             throw (new IllegalArgumentException (valueModelClass));
         }
         ValueModelAndValidatorConnector con = 
-                new ValueModelAndValidatorConnector(vh, validator, displayName, required);
+                new ValueModelAndValidatorConnector(vh, validators, displayName, required);
         valueModels.put(name, con);
         valueModelsSequence.add(name);
         return vh;
@@ -148,7 +149,9 @@ public class FormBindingManager implements PropertyChangeListener, ComponentVali
     }
 
     public void propertyChange(PropertyChangeEvent evt) {
-            formManager.getFormValidationManager().Validate(false);
+            if ( formManager.isFireValidate()) {
+                formManager.getFormValidationManager().Validate(false);
+            }
     }
 
 
@@ -160,11 +163,19 @@ public class FormBindingManager implements PropertyChangeListener, ComponentVali
             String name = (String)valueModelsSequence.get(i);
             ValueModelAndValidatorConnector con = (ValueModelAndValidatorConnector) valueModels.get(name);
             
-            if (con.getValidatorDef().getValidator() != null || (requiredCheck && con.getValidatorDef().getRequired())) {
-                
-                vr = ValidationUtil.validate( vr, con.getValidatorDef().getValidator(), con.getValueModel().getValue(),
+            if (con.getValidatorDef().getValidators().size() > 0 || (requiredCheck && con.getValidatorDef().getRequired())) {
+                if (con.getValidatorDef().getValidators().size() == 0 ) {
+                 vr = ValidationUtil.validate( vr,null , con.getValueModel().getValue(),
                     name, con.getValidatorDef().getDisplayName(), formManager.getComponentFromName(name), 
-                        requiredCheck && con.getValidatorDef().getRequired(), con.getValueModel(), formManager); 
+                        requiredCheck && con.getValidatorDef().getRequired(), con.getValueModel(), formManager);                   
+                } else {
+                    for(GolfValidator validator:con.getValidatorDef().getValidators()) {
+                
+                        vr = ValidationUtil.validate( vr, validator, con.getValueModel().getValue(),
+                            name, con.getValidatorDef().getDisplayName(), formManager.getComponentFromName(name), 
+                                requiredCheck && con.getValidatorDef().getRequired(), con.getValueModel(), formManager); 
+                    }
+                }
             }
          }
         return vr;
@@ -195,4 +206,5 @@ public class FormBindingManager implements PropertyChangeListener, ComponentVali
     public HashMap getTableBindHandlers() {
         return tableBindHandlers;
     }
+
 }

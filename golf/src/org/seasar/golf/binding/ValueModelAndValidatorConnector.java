@@ -10,6 +10,7 @@
 package org.seasar.golf.binding;
 
 import com.jgoodies.binding.value.ValueModel;
+import java.util.ArrayList;
 import org.seasar.golf.validator.GolfValidator;
 import org.seasar.golf.validator.ValidatorDef;
 
@@ -28,19 +29,19 @@ public class ValueModelAndValidatorConnector {
 
     }
         public ValueModelAndValidatorConnector(ValueModel valueModel, 
-                GolfValidator validator, String displayName, boolean required) {
+                ArrayList <GolfValidator> validators, String displayName, boolean required) {
         this.valueModel = valueModel;
-        validatorDef.setValidator(validator);
+        validatorDef.setValidators(validators);
         validatorDef.setDisplayName(displayName);
         validatorDef.setRequired (required);
 
     }
-    public void addValidator(GolfValidator validator, String displayName ) { 
-        validatorDef.setValidator(validator);
+    public void addValidator(ArrayList <GolfValidator> validators, String displayName ) { 
+        validatorDef.setValidators(validators);
         validatorDef.setDisplayName(displayName);
     }
-    public void addValidator(GolfValidator validator, String displayName, boolean required  ) {
-        validatorDef.setValidator(validator);
+    public void addValidator(ArrayList <GolfValidator> validators, String displayName, boolean required  ) {
+        validatorDef.setValidators(validators);
         validatorDef.setDisplayName(displayName);
         validatorDef.setRequired(required);
     }

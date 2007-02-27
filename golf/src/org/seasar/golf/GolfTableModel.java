@@ -10,6 +10,7 @@
 
 package org.seasar.golf;
 
+import org.seasar.golf.form.FormManager;
 import org.seasar.golf.validation.ValidationResult;
 import java.util.ArrayList;
 import javax.swing.JTable;
@@ -17,6 +18,7 @@ import javax.swing.table.AbstractTableModel;
 import org.seasar.golf.util.ValidationUtil;
 import org.seasar.golf.validator.ComponentValidator;
 import org.seasar.golf.validator.FormValidationManager;
+import org.seasar.golf.validator.GolfValidator;
 import org.seasar.golf.validator.JTableFieldInfo;
 import org.seasar.golf.validator.ValidatorDef;
 
@@ -71,7 +73,8 @@ public class GolfTableModel extends AbstractTableModel implements ComponentValid
         ArrayList rowArray = (ArrayList)dataArray.get(rowIndex);
         rowArray.set(columnIndex, aValue);
         fireTableCellUpdated(rowIndex, columnIndex);
-        if ( !batch && formValidationManager != null) {
+        if ( !batch && formValidationManager != null  && 
+                formValidationManager.getFormManager().isFireValidate()) {
             formValidationManager.Validate(false);
         }
     }
@@ -198,11 +201,20 @@ public class GolfTableModel extends AbstractTableModel implements ComponentValid
             if (effectiveRow(row)) {
                 for (int column = 0; column < getTotalColumnCount(); column ++) {
                     ValidatorDef vd = getColumnDef(column).getValidatorDef();
-                    if (vd.getValidator() != null || (vd.getRequired() && requiredCheck)) {
-                        vr = ValidationUtil.validate(vr, vd.getValidator(),  getValueAt(row, column), 
+                    if (vd.getValidators().size() > 0 || (vd.getRequired() && requiredCheck)) {
+                        if(vd.getValidators().size() == 0) {
+                          vr = ValidationUtil.validate(vr,null,  getValueAt(row, column), 
+                                "", getDisplayName(row, column),
+                                new JTableFieldInfo(getJtable(), row, column), vd.getRequired() && requiredCheck,
+                                null, formValidationManager.getFormManager());                          
+                        } else {
+                            for(GolfValidator validator:vd.getValidators()) {
+                                vr = ValidationUtil.validate(vr, validator,  getValueAt(row, column), 
                                 "", getDisplayName(row, column),
                                 new JTableFieldInfo(getJtable(), row, column), vd.getRequired() && requiredCheck,
                                 null, formValidationManager.getFormManager());
+                            }
+                        }
                     }
                 }
             }

@@ -36,10 +36,14 @@ public class FormValidationManager extends AbstractValidationResultModel {
     public void Validate(boolean requiredCehck) {
         ValidationResult oldResult = validationResult;
         validationResult = new ValidationResult();
+        ValidationResult validationResultTemp = new ValidationResult();        
         for (int i = 0; i < validators.size(); i++) {
             ComponentValidator  componentValidator = validators.get(i);
-            validationResult = componentValidator.validate(validationResult ,requiredCehck);
+            validationResultTemp = componentValidator.validate(validationResultTemp ,requiredCehck);
         }
+        validationResult.addAll(validationResultTemp.getErrors());    
+        validationResult.addAll(validationResultTemp.getWarnings());
+        validationResult.addAll(validationResultTemp.getInfos());         
         if (validationResult.hasMessages()) {
             Object errorKey = ((ValidationMessage)validationResult.getMessages().get(0)).key();
             if (errorKey instanceof TableKey) {

@@ -1,6 +1,7 @@
 package org.seasar.golf.form;
 
 import java.awt.Color;
+import java.util.ArrayList;
 import java.util.HashMap;
 import javax.swing.JComponent;
 import javax.swing.JTable;
@@ -85,21 +86,31 @@ public class FormManagerUtil {
 				gtm.getColumnDef(i).setInsertCheckColumn(true);
 			}
 			String v = (String) td.getTextAt(i,"validator");
-			GolfValidator validator = (v != null && v.length() > 0) ?
-					ValidationUtil.getValidator(v): null;	
+                        ArrayList <GolfValidator> validators = getValidators(v);
 			String displayName = (String) td.getTextAt(i,"displayName");
 			if (displayName != null && displayName.length() == 0) {
 				displayName = null;
 			}
 			boolean required = getBooleanValueFromTable(td, i,"required","t" );
-			if (validator != null || required) {
+			if (validators.size()>0 || required) {
 				gtm.getColumnDef(i).setValidatorDef(
-					new ValidatorDef(validator,	displayName, required));
+					new ValidatorDef(validators,	displayName, required));
 			}
-			
 		}
-		
 	}
+        
+        public static ArrayList <GolfValidator> getValidators (String v){
+                String[] vs = v.split(",");
+                ArrayList <GolfValidator> validators = new ArrayList <GolfValidator>();
+                for(int no=0; no < vs.length; no++) {
+                    GolfValidator validator = (vs[no] != null && vs[no].length() > 0) ?
+                                    ValidationUtil.getValidator(vs[no]): null;
+                    if (validator != null ) {
+                        validators.add(validator);
+                    }
+                }
+                return validators;
+        }
 	public static void setBindSub(TableData td, FormManager formManager) {
 		for(int i = 0; i < td.getDataArray().size(); i++ ) {
                         String name = (String) td.getTextAt(i,"name");
@@ -116,7 +127,6 @@ public class FormManagerUtil {
 			formManager.getFormBindingManager().Bind((JComponent)jc, 
                                 formManager.getFormBindingManager().getValueModel(smodel), choice);
 		}
-		
 	}     
 	public static  void setValidationSub(TableData td, FormManager formManager) {
 		for(int i = 0; i < td.getDataArray().size(); i++ ) {
@@ -125,18 +135,16 @@ public class FormManagerUtil {
                             return;
                         }                 
 			String s =((String) td.getTextAt(i,"validator"));
-			GolfValidator v = (s != null && s.length() > 0) ? ValidationUtil.getValidator(s):null;
+                        ArrayList <GolfValidator> validators = getValidators(s);                    
 			boolean required = getBooleanValueFromTable(td, i,"required","t" );
                         String choice =((String) td.getTextAt(i,"choice"));
 			formManager.getFormBindingManager().
-                                bind(name, v, (String)td.getTextAt(i,"displayname"), required, choice);
+                                bind(name, validators, (String)td.getTextAt(i,"displayname"), required, choice);
                         String bind =((String) td.getTextAt(i,"hostname"));
                         if (bind != null) {
                             formManager.getFormTrxManager().initField(name, bind);
                         }
-                        
 		}
-		
 	}        
 	private static  boolean getBooleanValueFromTable(TableData td, int i, String fld, String value) {
 		String b = ((String) td.getTextAt(i, fld));

@@ -28,7 +28,7 @@
  * EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE. 
  */
 
-package org.seasar.golf.validator;
+package org.seasar.golf.validation.view;
 
 import java.awt.Color;
 import java.awt.Component;
@@ -37,7 +37,6 @@ import java.awt.GridBagLayout;
 import java.awt.Insets;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
-
 import javax.swing.DefaultListCellRenderer;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
@@ -375,6 +374,8 @@ public final class GolfValidationResultViewFactory {
             return getErrorIcon();
         else if (severity == Severity.WARNING)
             return getWarningIcon();
+        else if (severity == Severity.INFO)
+            return getInfoIcon();        
         else 
             return null;
     }
@@ -493,6 +494,8 @@ public final class GolfValidationResultViewFactory {
                 aLabel.setIcon(getErrorIcon());
             else if (severity == Severity.WARNING)
                 aLabel.setIcon(getWarningIcon());
+            else if (severity == Severity.INFO)
+                aLabel.setIcon(getInfoIcon());            
         }
 
         /**

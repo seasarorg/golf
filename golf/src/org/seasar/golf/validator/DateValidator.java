@@ -53,7 +53,9 @@ public class DateValidator extends AbstractValidator{
            newDataS = displayFormat.format(dd);
 
            if (!dataS.equals(newDataS)) {
-                ValidationUtil.updateValueModel(valueModel, key, newDataS);
+               formManager.setFireValidate(false);
+               ValidationUtil.updateValueModel(valueModel, key, newDataS);
+               formManager.setFireValidate(true);
            }
 
         } catch (ParseException ex) {

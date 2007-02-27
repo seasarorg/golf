@@ -24,7 +24,7 @@ import org.seasar.golf.transaction.FormTrxManager;
 import org.seasar.golf.data.TableData;
 import org.seasar.golf.util.TableUtil;
 import org.seasar.golf.validator.FormValidationManager;
-import org.seasar.golf.validator.GolfValidationResultViewFactory;
+import org.seasar.golf.validation.view.GolfValidationResultViewFactory;
 
 
 /**
@@ -43,6 +43,7 @@ public class FormManager {
     private TableData modeControl;
     private Color ineditableBgColor;
     private Color normalBgColor;    
+    private boolean fireValidate = true;
     /** Creates a new instance of FrameManager */
     public FormManager(JFrame frame) {
         this.setFrame(frame);
@@ -239,5 +240,13 @@ public class FormManager {
 
     public void setNormalBgColor(Color normalBgColor) {
         this.normalBgColor = normalBgColor;
+    }
+
+    public void setFireValidate(boolean fireValidate) {
+        this.fireValidate = fireValidate;
+    }    
+
+    public boolean isFireValidate() {
+        return fireValidate;
     }
 }
