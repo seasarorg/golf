@@ -28,6 +28,7 @@ public class FormValidationManager extends AbstractValidationResultModel {
     private ArrayList <ComponentValidator> validators = new ArrayList<ComponentValidator>();
     private ValidationResult validationResult = new ValidationResult();
     private FormManager formManager = null;
+    private boolean fireValidate = true;    
     public void addValidator(ComponentValidator validator) {
         validators.add(validator);
     }
@@ -77,4 +78,11 @@ public class FormValidationManager extends AbstractValidationResultModel {
         this.formManager = formManager;
     }
 
+    public void setFireValidate(boolean fireValidate) {
+        this.fireValidate = fireValidate;
+    }    
+
+    public boolean isFireValidate() {
+        return fireValidate;
+    }
 }

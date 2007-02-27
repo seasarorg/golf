@@ -149,7 +149,7 @@ public class FormBindingManager implements PropertyChangeListener, ComponentVali
     }
 
     public void propertyChange(PropertyChangeEvent evt) {
-            if ( formManager.isFireValidate()) {
+            if ( formManager.getFormValidationManager().isFireValidate()) {
                 formManager.getFormValidationManager().Validate(false);
             }
     }

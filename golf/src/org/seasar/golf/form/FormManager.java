@@ -43,7 +43,7 @@ public class FormManager {
     private TableData modeControl;
     private Color ineditableBgColor;
     private Color normalBgColor;    
-    private boolean fireValidate = true;
+
     /** Creates a new instance of FrameManager */
     public FormManager(JFrame frame) {
         this.setFrame(frame);
@@ -242,11 +242,4 @@ public class FormManager {
         this.normalBgColor = normalBgColor;
     }
 
-    public void setFireValidate(boolean fireValidate) {
-        this.fireValidate = fireValidate;
-    }    
-
-    public boolean isFireValidate() {
-        return fireValidate;
-    }
 }

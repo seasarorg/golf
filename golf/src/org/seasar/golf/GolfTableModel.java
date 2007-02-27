@@ -74,7 +74,7 @@ public class GolfTableModel extends AbstractTableModel implements ComponentValid
         rowArray.set(columnIndex, aValue);
         fireTableCellUpdated(rowIndex, columnIndex);
         if ( !batch && formValidationManager != null  && 
-                formValidationManager.getFormManager().isFireValidate()) {
+                formValidationManager.isFireValidate()) {
             formValidationManager.Validate(false);
         }
     }
