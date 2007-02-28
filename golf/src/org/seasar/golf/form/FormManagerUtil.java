@@ -124,8 +124,9 @@ public class FormManagerUtil {
                         
 			String smodel = ((String) td.getTextAt(i,"model"));
                         String choice = ((String) td.getTextAt(i,"choice"));
+                        boolean immed = getBooleanValueFromTable(td, i,"immed","t" );
 			formManager.getFormBindingManager().Bind((JComponent)jc, 
-                                formManager.getFormBindingManager().getValueModel(smodel), choice);
+                                formManager.getFormBindingManager().getValueModel(smodel), choice, immed);
 		}
 	}     
 	public static  void setValidationSub(TableData td, FormManager formManager) {
@@ -138,8 +139,9 @@ public class FormManagerUtil {
                         ArrayList <GolfValidator> validators = getValidators(s);                    
 			boolean required = getBooleanValueFromTable(td, i,"required","t" );
                         String choice =((String) td.getTextAt(i,"choice"));
+                        boolean immed = getBooleanValueFromTable(td, i,"immed","t" );
 			formManager.getFormBindingManager().
-                                bind(name, validators, (String)td.getTextAt(i,"displayname"), required, choice);
+                                bind(name, validators, (String)td.getTextAt(i,"displayname"), required, choice, immed);
                         String bind =((String) td.getTextAt(i,"hostname"));
                         if (bind != null) {
                             formManager.getFormTrxManager().initField(name, bind);

@@ -52,10 +52,11 @@ public class FormBindingManager implements PropertyChangeListener, ComponentVali
     }
 
    public void bind(String name) {
-        bind (name, null, null, false, null);
+        bind (name, null, null, false, null, false);
 
     }
-    public void bind(String name, ArrayList <GolfValidator> validators, String displayName, boolean required, Object choice) {
+    public void bind(String name, ArrayList <GolfValidator> validators, String displayName, 
+                boolean required, Object choice, boolean immed) {
         String valueModelClass = "ValueHolder";
         JComponent jc = formManager.getComponentFromName(name);
         if (jc ==null) {
@@ -66,25 +67,22 @@ public class FormBindingManager implements PropertyChangeListener, ComponentVali
         }      
         ValueModel vh = createValueModel(name, validators, displayName, required, valueModelClass);
         vh.addValueChangeListener(this);
-        Bind(jc, vh, choice); 
+        Bind(jc, vh, choice, immed); 
 
     }
-    public void Bind(JComponent jc, ValueModel vm, Object choice) {
-//       if (jc instanceof LongLabel) {
-//            GolfBindings.bind((LongLabel)jc, vm);
-//      }  
-//       else 
+    public void Bind(JComponent jc, ValueModel vm, Object choice, boolean  immed) {
+
         
      if (jc instanceof DoubleField) {
-            GolfBindings.bind((DoubleField)jc, vm, ((DoubleField)jc).getDocument()  ,true);
+            GolfBindings.bind((DoubleField)jc, vm, ((DoubleField)jc).getDocument()  ,!immed);
       }         else 
       if (jc instanceof LongField) {
-            GolfBindings.bind((LongField)jc, vm, ((LongField)jc).getDocument()  ,true);
+            GolfBindings.bind((LongField)jc, vm, ((LongField)jc).getDocument()  ,!immed);
       }   
 
  
        else if (jc instanceof JTextField) {
-            Bindings.bind((JTextField)jc, vm, ((JTextField)jc).getDocument()  ,true);
+            Bindings.bind((JTextField)jc, vm, ((JTextField)jc).getDocument()  ,!immed);
       }
       else if (jc instanceof JCheckBox) {
             Bindings.bind((JCheckBox)jc, vm);
@@ -102,7 +100,7 @@ public class FormBindingManager implements PropertyChangeListener, ComponentVali
             Bindings.bind((JLabel)jc, vm);
       }
       else if (jc instanceof JTextArea) {
-            Bindings.bind((JTextArea)jc, vm, ((JTextArea)jc).getDocument(), true);
+            Bindings.bind((JTextArea)jc, vm, ((JTextArea)jc).getDocument(), !immed);
       }
        else if (jc instanceof JRadioButton) {
             if (choice == null) {
