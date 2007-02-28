@@ -89,7 +89,7 @@ public class ValidationUtil {
     public static int getRelativeToToday(Date date) {
 
         Date today = getToday().getTime();
-        return Long.valueOf ((date.getTime() - today.getTime())/ (3600L * 24L)).intValue();
+        return Long.valueOf ((date.getTime() - today.getTime())/ (3600L * 24L*1000)).intValue();
 
 
         

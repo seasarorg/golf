@@ -26,16 +26,6 @@ public class Example1Frame extends javax.swing.JFrame  implements GolfFormInterf
     /** Creates new form Example1Frame */
     public Example1Frame() {
         initComponents();
-        KeyboardFocusManager.getCurrentKeyboardFocusManager().addKeyEventDispatcher(new KeyEventDispatcher(){ 
-        public boolean dispatchKeyEvent(KeyEvent evt){ 
-                 int keyCode = evt.getKeyCode();
-                if ( keyCode == KeyEvent.VK_F9) {
-                    KeyboardFocusManager.getCurrentKeyboardFocusManager().focusNextComponent();
-                    formManager.getFormValidationManager().Validate(true);
-                }
-                return false;
-            } 
-        });
  }
     public void initBinding(HashMap params) {
         formManager = new FormManager(this);
