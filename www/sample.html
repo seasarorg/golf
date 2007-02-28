@@ -5,13 +5,25 @@
 <style type="text/css">
 <!--
 .style6 {color: #FF0000}
+pre { background-color: #e7ebff; color: #000000; }
+.synSpecial { color: #c000c0; }
+.synType { color: #008000; }
+.synComment { color: #0000c0; }
+.synPreProc { color: #c000c0; }
+.synIdentifier { color: #008080; }
+.synConstant { color: #c00000; }
+.synStatement { color: #804000; }
 .style7 {color: #0000FF}
+.style9 {color: #FF0000; font-size: 12; }
+
+
 -->
 </style>
 </head>
-<body style="direction: ltr;" onload="preload('ja')"><table align="left" border="0" cellpadding="0" cellspacing="0" width="100%"><tbody><tr><td align="left" valign="top" width="780"><table class="white" border="0" cellpadding="0" cellspacing="0" width="780">
-<tbody><tr><td colspan="7"><img src="images/top01_b.gif" alt="" height="5" width="780" /></td></tr><tr><td><img src="images/top02_b.gif" alt="Seasar" height="117" width="235" /></td><td colspan="3"><img src="images/top03.gif" alt="DI Container with AOP" height="117" width="289" /></td>
-<td colspan="3"><img src="images/spacer.gif" alt="" height="117" width="256" /></td></tr><tr><td rowspan="2"><img src="images/top04.gif" alt="" height="49" width="235" /></td><td><a href="http://www.seasar.org/index.html"><img src="images/menu01_b_ja.gif" alt="" id="menu01" onmouseover="swap(1)" onmouseout="restore(1)" name="menu01" border="0" height="30" width="78" /></a></td><td><a href="http://www.seasar.org/projects.html"><img src="images/menu02_b_ja.gif" alt="" id="menu02" onmouseover="swap(2)" onmouseout="restore(2)" name="menu02" border="0" height="30" width="101" /></a></td><td><a href="http://www.seasar.org/products.html"><img src="images/menu03_b_ja.gif" alt="" id="menu03" onmouseover="swap(3)" onmouseout="restore(3)" name="menu03" border="0" height="30" width="110" /></a></td><td><a href="http://www.seasar.org/resources.html"><img src="images/menu04_b_ja.gif" alt="" id="menu04" onmouseover="swap(4)" onmouseout="restore(4)" name="menu04" border="0" height="30" width="113" /></a></td><td><img src="images/menu05_b_ja.gif" alt="" id="menu05" onmouseover="swap(5)" onmouseout="restore(5)" name="menu05" border="0" height="30" width="109" /></td><td><img src="images/menu06.gif" alt="" height="30" width="34" /></td>
+<body style="direction: ltr;" onload="preload('ja')"><table align="left" border="0" cellpadding="0" cellspacing="0" width="100%"><tbody><tr><td align="left" valign="top" width="780"><table class="white" border="0" cellpadding="0" cellspacing="0" width="851">
+<tbody><tr><td colspan="7"><img src="images/top01_b.gif" alt="" height="5" width="780" /></td></tr><tr><td width="235"><img src="images/top02_b.gif" alt="Seasar" height="117" width="235" /></td><td colspan="3"><img src="images/top03.gif" alt="DI Container with AOP" height="117" width="289" /></td>
+<td colspan="3"><img src="images/spacer.gif" alt="" height="117" width="254" /></td>
+</tr><tr><td rowspan="2"><img src="images/top04.gif" alt="" height="49" width="235" /></td><td width="78"><a href="http://www.seasar.org/index.html"><img src="images/menu01_b_ja.gif" alt="" id="menu01" onmouseover="swap(1)" onmouseout="restore(1)" name="menu01" border="0" height="30" width="78" /></a></td><td width="101"><a href="http://www.seasar.org/projects.html"><img src="images/menu02_b_ja.gif" alt="" id="menu02" onmouseover="swap(2)" onmouseout="restore(2)" name="menu02" border="0" height="30" width="101" /></a></td><td width="110"><a href="http://www.seasar.org/products.html"><img src="images/menu03_b_ja.gif" alt="" id="menu03" onmouseover="swap(3)" onmouseout="restore(3)" name="menu03" border="0" height="30" width="110" /></a></td><td width="113"><a href="http://www.seasar.org/resources.html"><img src="images/menu04_b_ja.gif" alt="" id="menu04" onmouseover="swap(4)" onmouseout="restore(4)" name="menu04" border="0" height="30" width="113" /></a></td><td width="109"><img src="images/menu05_b_ja.gif" alt="" id="menu05" onmouseover="swap(5)" onmouseout="restore(5)" name="menu05" border="0" height="30" width="109" /></td><td width="105"><img src="images/menu06.gif" alt="" height="30" width="34" /></td>
 </tr><tr><td colspan="6"><img src="images/spacer.gif" alt="" height="19" width="545" /></td></tr></tbody></table>
 <table class="white" border="0" cellpadding="0" cellspacing="0" width="780"><tbody><tr align="left" valign="top"><td width="14"><img src="images/spacer.gif" alt="" height="14" width="14" /></td><td class="main" width="740"><!-- don't edit end --><!-- document start -->
 <dl>
@@ -33,25 +45,20 @@
 
 </dd>
 </dl>
-<!--code start-->
-<div class="excode">
-  <pre>
-<code>
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {
-        <span class="style6">launchFrame("example1Frame");</span>
+<pre>
+    <span class="synType">private</span> <span class="synType">void</span> jButton1ActionPerformed(java.awt.event.ActionEvent evt) {                                         
+        launchFrame(<span class="synConstant">&quot;example1Frame&quot;</span>);
     }                                        
 
-    private void launchFrame(String frameName) {
+    <span class="synType">private</span> <span class="synType">void</span> launchFrame(String frameName) {
         GolfFormInterface jFrameT = FormManagerUtil.getFrame(frameName);
-        jFrameT<span class="style6">.initBinding()</span>;
+        jFrameT.initBinding(<span class="synConstant">null</span>);
         ((JFrame)jFrameT).validate();
         ((JFrame)jFrameT).pack();
-        ((JFrame)jFrameT).setVisible(true);
+        ((JFrame)jFrameT).setVisible(<span class="synConstant">true</span>);
     }
-</code>
+
 </pre>
-</div>
-<!--code end-->
 <dl>
 <dd>上記は、ｊButton1の場合ですが、２から４もほとんど同じです。
 <br>FormManagerUtil.getFrame(frameName);で、S2Containerに自動登録されている、｢"example1Frame"」を<br>
@@ -65,7 +72,7 @@
 
 <dl>
 <dd>それでは、Example １を見ていきましょう。画面は下記の様に表示されます。
-<br><br></dd></dl><img src="images/example1-1.jpeg" />
+<br><br></dd></dl><img src="images/example1-1.jpeg" width="715" height="426" />
 
 <dl>
 <dd>それでは、一番上のText Fieldに「１２」と入力して、「TAB」か、他のFieldをクリックして
@@ -73,34 +80,35 @@
 （このFieldは ３桁から６桁の文字列を入力する、チェックが掛かっていいます。）<br>
 また、カーソル（Focus)も自動的に最初のエラー 項目に設定される様になっていますので、<br>
 直ぐ修正が出来ます。
-<br><br></dd></dl><img src="images/example1-2.jpeg" />
-<dl>
+<br><br></dd></dl>
+<img src="images/example1-2.jpeg" /><dl>
 <dd>それでは、この入力「１２３」として、エラーを解除し、つぎの整数項目に行きます。<br>
 試しに、ここで「A」とか「B」を入力してみて下さい。この項目は、JTextFieldを拡張した<br>
 「org.seasar.golf.component.IntegerField」ですので、整数しか受け付けません。<br>
 それでは、「１２」と入力して見ましょう。下記の様にエラーになります。
 <br><br></dd>
-</dl><img src="images/example1-3.jpeg" />
+</dl><img src="images/example1-3.jpeg" width="715" height="416" />
 
 <dl>
 <dd>それでは、これも「５」と正常入力して、つぎの Short Date項目に行きます。<br>
 ここは、「YY/MM/DD」項目です。ためしに、「平成１８年１月１０日」といれてみます。
 <br><br></dd></dl>
-<img src="images/example1-4.jpeg" /><br>
+<img src="images/example1-4.jpeg" width="718" height="423" /><br>
 <br>
 <dl><dd>それでは、「07/5/10」と修正して見ましょう。（本日より未来の日を入れて下さい）
 <br><br></dd>
-</dl><img src="images/example1-5.jpeg" />
+</dl><img src="images/example1-5.jpeg" width="717" height="416" />
 <br><br><dl>
 <dd>>即座に、表示が「07/05/10」に変わりました。自動的にFormatされます。<br>
 「2007/1/10」といれても、同じになります。<br>
 それでは「07/1/8」と入れてみましょう。
-<br>下記の様にERRORになります。このFieldは、本日以降のみ受け付けます。
-<br><br></dd></dl><img src="images/example1-6.jpeg" />
+<br>
+下記の様にERRORになります。このFieldは、前日以降のみ受け付けます。
+<br><br></dd></dl><img src="images/example1-6.jpeg" width="717" height="433" />
 <br><br><dl><dd>それでは、「07/5/10」など未来日を入力して、エラーを消して、次のLong Dateに行きます。
 <br>ここは、「YYYY/MM/DD」項目です。好きな年月日をいれて下さい。
 <br>入力後、下の「このボタンを押すと・・・・」を押してみて下さい。下記の画面になります。
-<br><br></dd></dl><img src="images/example1-7.jpeg" />
+<br><br></dd></dl><img src="images/example1-7.jpeg" width="716" height="422" />
 <br><dl><dd>
 エラーが表示されましたね。この画面では、「Short Date」以外が必須項目となっていますので、
 <br>未入力だとエラーになります。実際には、HOSTにSUBMITする、「ENTER」ボタンにこの必須チェック
@@ -110,49 +118,44 @@
 <br>それでは、この画面のProgramを見ましょう。（Matisseで自動作成分を除く）
 </dd>
 </dl>
-<!--code start-->
-<div class="excode" >
-  <pre>
-<code>
-   public class Example1Frame extends javax.swing.JFrame  
-   <span class="style6">implements GolfFormInterface</span> {
+<pre>
+<span class="synType">public</span> <span class="synType">class</span> Example1Frame <span class="synType">extends</span> javax.swing.JFrame  <span class="synType">implements</span> GolfFormInterface {
 <span class="style6">    private FormManager formManager = null;</span>
-<span class="style7">    public void initBinding() {</span>
+<span class="style7">　　　public</span> <span class="style7">void initBinding(HashMap params) {</span>
 <span class="style6">        formManager = new FormManager(this);
         formManager.init();
         formManager.createReportList(jScrollPane1);
-        formManager.setValidationFromCsvResource("Example1_bind.csv");
-        formManager.setBindFromCsvResource("Example1_bind2.csv");
+        formManager.setValidationFromCsvResource(&quot;Example1_bind.csv&quot;);
+        formManager.setBindFromCsvResource(&quot;Example1_bind2.csv&quot;);
         ((SelectionInList )formManager.getFormBindingManager()
-			.getValueModel("jComboBox1")).setListModel(
-            new javax.swing.DefaultComboBoxModel(new String[] 
-			{"", "Item 11", "Item 22", "Item 33", "Item 44" }));</span>
-
-<span class="style7">    }</span>
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {  
-<span class="style6">　　　　　　　　formManager.getFormValidationManager().Validate(true);</span>
-    }
-<span class="style7">   public FormManager getFormManager() {</span>
- <span class="style6">       return formManager;</span>
+					.getValueModel(&quot;jComboBox1&quot;)).setListModel(
+            new javax.swing.DefaultComboBoxModel(new String[]
+					{&quot;&quot;, &quot;Item 11&quot;, &quot;Item 22&quot;, &quot;Item 33&quot;, &quot;Item 44&quot; }));</span>
+<span class="style7">}</span>
+    <span class="synType">private</span> <span class="synType">void</span> jButton1ActionPerformed(java.awt.event.ActionEvent evt) {                                         
+<span class="style6">        formManager.getFormValidationManager().Validate(true);</span>
+    }                                        
+    
+ <span class="style7">   public FormManager getFormManager() {</span>
+        <span class="style6">return formManager;</span>
 <span class="style7">    }
 
     public JMenuBar getMenu() {</span>
-<span class="style6">        return null;</span>
+        <span class="style6">return</span> <span class="style6">null;</span>
 <span class="style7">    }
 
     public JPanel getContentPanel() {</span>
-<span class="style6">        return null;</span>
+        <span class="style6">return</span> <span class="style6">null;</span>
 <span class="style7">    }
 
-    public JFrame getContainerFrame() {</span>
-<span class="style6">        return null;</span>
-   <span class="style7"> }</span>
+    public</span> <span class="style7">void processAction(HashMap params) {
+    }
 
-    <span class="style7">public void setContainerFrame(JFrame container) {
-    }</span></code><span class="style7"><code>
-</code></span></pre>
-</div>
-<!--code end-->
+    public</span> <span class="style7">void setFormManger(FormManager formManager) {</span>
+        <span class="style6">this.formManager = formManager;</span>
+<span class="style7">    }</span>
+
+</pre>
 <dl>
 <dd>「赤」の部分のみが、手で入力しなければならない項目で、大変すくなくなっています。<br>
 また「青」の部分は、GolfInterfaceをImplementsすれば、Netbeansが自動的に作成します。
@@ -160,14 +163,15 @@
 <br>これは、Example ４を見て頂ければ、理由が分かると思います。
 <br>それでは、「Validator」の設定を行う、CSV Fileの内容を見てみましょう。
 <br>
-<code><span class="style6">formManager.setValidationFromCsvResource("Example1_bind.csv");</span></code>
+<code class="style9"><span class="style9">formManager.setValidationFromCsvResource("Example1_bind.csv");</span></code>
 <br>[Example1_bind.csv]
 <br></dd>
 </dl>
 <img src="images/example1-8.gif" width="730" height="139" /><br>
 <dl>
 <dd>
-<br>一番左の項目は、参考ですので、入力しなくても構いません。
+<span class="style7">Ver 0.1.1 対応　BindingはDefaultでは Focus Lost時に行われ、そのタイミングでValidationされますが、もしファンクション・キー<br />
+対応などで、即座にBindingしたい場合は、「Immed」という列を追加し、そこに「T」を入力すると、即座にBindingされます</span><br>一番左の項目は、参考ですので、入力しなくても構いません。
 <br>golfを「Debug」MODE（golf.propetiesで設定）動かすと、自動的に下記のような、JComponentの
 <br>Classと変数名のCSVが作成されますので、これから簡単にコピペ出来ます。
 <br><br>[org.seasar.golf.example.frame.Example1Frame.csv]<br><img src="images/example1-9.jpeg" />
@@ -178,14 +182,39 @@ S2Containerを使って簡単にValidatorのParameterをSet<br>出来るのが�
 [golfValidator.dicon]
 </dd>
 </dl>
-<!--code start-->
-<div class="excode"><pre>
-<code>
-&lt;?xml version=&quot;1.0&quot; encoding=&quot;Shift_JIS&quot;?&gt;<br />&lt;!DOCTYPE components PUBLIC &quot;-//SEASAR2.1//DTD S2Container//EN&quot;<br />	&quot;http://www.seasar.org/dtd/components21.dtd&quot;&gt;<br />&lt;components&gt;<br />	&lt;component name=&quot;min3max6string&quot; class=&quot;org.seasar.golf.validator.StringValidator&quot;&gt;<br />            &lt;property name=&quot;minLength&quot;&gt;new Integer(3)&lt;/property&gt;<br />            &lt;property name=&quot;maxLength&quot;&gt;new Integer(6)&lt;/property&gt;<br />	&lt;/component&gt;<br />	&lt;component name=&quot;min1max10long&quot; class=&quot;org.seasar.golf.validator.LongValidator&quot;&gt;<br />            &lt;property name=&quot;minValue&quot;&gt;new Integer(1)&lt;/property&gt;<br />            &lt;property name=&quot;maxValue&quot;&gt;new Integer(10)&lt;/property&gt;<br />	&lt;/component&gt;<br />	&lt;component name=&quot;requiredValidator&quot; class=&quot;org.seasar.golf.validator.RequiredValidator&quot;&gt;<br />	&lt;/component&gt;<br />	&lt;component name=&quot;shortDateValidator&quot; class=&quot;org.seasar.golf.validator.DateValidator&quot;&gt;<br />            &lt;property name=&quot;maxRelativeDate&quot;&gt;new Integer(0)&lt;/property&gt;<br />	&lt;/component&gt;<br />	&lt;component name=&quot;shortDateValidatorMax0&quot; class=&quot;org.seasar.golf.validator.DateValidator&quot;&gt;<br />            &lt;property name=&quot;maxRelativeDate&quot;&gt;new Integer(0)&lt;/property&gt;<br />	&lt;/component&gt;<br />	&lt;component name=&quot;shortDateValidatorMin0&quot; class=&quot;org.seasar.golf.validator.DateValidator&quot;&gt;<br />            &lt;property name=&quot;minRelativeDate&quot;&gt;new Integer(0)&lt;/property&gt;<br />	&lt;/component&gt;<br />	&lt;component name=&quot;longDateValidator&quot; class=&quot;org.seasar.golf.validator.DateValidator&quot;&gt;<br />            &lt;property name=&quot;displayFormat&quot;&gt;&quot;L&quot;&lt;/property&gt;<br />	&lt;/component&gt;<br />&lt;/components&gt;
-</code>
+<pre>
+<span class="synComment">&lt;?</span><span class="synType">xml version</span>=<span class="synConstant">&quot;1.0&quot;</span><span class="synType"> encoding</span>=<span class="synConstant">&quot;Shift_JIS&quot;</span><span class="synComment">?&gt;</span>
+<span class="synIdentifier">&lt;!</span><span class="synStatement">DOCTYPE</span> components <span class="synStatement">PUBLIC</span> <span class="synConstant">&quot;-//SEASAR2.1//DTD S2Container//EN&quot;</span>
+	<span class="synConstant">&quot;http://www.seasar.org/dtd/components21.dtd&quot;</span><span class="synIdentifier">&gt;</span>
+<span class="synIdentifier">&lt;components&gt;</span>
+	<span class="synIdentifier">&lt;component </span><span class="synType">name</span>=<span class="synConstant">&quot;min3max6string&quot;</span><span class="synIdentifier"> </span><span class="synType">class</span>=<span class="synConstant">&quot;org.seasar.golf.validator.StringValidator&quot;</span><span class="synIdentifier">&gt;</span>
+            <span class="synIdentifier">&lt;property </span><span class="synType">name</span>=<span class="synConstant">&quot;minLength&quot;</span><span class="synIdentifier">&gt;</span>new Integer(3)<span class="synIdentifier">&lt;/property&gt;</span>
+            <span class="synIdentifier">&lt;property </span><span class="synType">name</span>=<span class="synConstant">&quot;maxLength&quot;</span><span class="synIdentifier">&gt;</span>new Integer(6)<span class="synIdentifier">&lt;/property&gt;</span>
+	<span class="synIdentifier">&lt;/component&gt;</span>
+	<span class="synIdentifier">&lt;component </span><span class="synType">name</span>=<span class="synConstant">&quot;min1max10long&quot;</span><span class="synIdentifier"> </span><span class="synType">class</span>=<span class="synConstant">&quot;org.seasar.golf.validator.LongValidator&quot;</span><span class="synIdentifier">&gt;</span>
+            <span class="synIdentifier">&lt;property </span><span class="synType">name</span>=<span class="synConstant">&quot;minValue&quot;</span><span class="synIdentifier">&gt;</span>new Integer(1)<span class="synIdentifier">&lt;/property&gt;</span>
+            <span class="synIdentifier">&lt;property </span><span class="synType">name</span>=<span class="synConstant">&quot;maxValue&quot;</span><span class="synIdentifier">&gt;</span>new Integer(10)<span class="synIdentifier">&lt;/property&gt;</span>
+	<span class="synIdentifier">&lt;/component&gt;</span>
+	<span class="synIdentifier">&lt;component </span><span class="synType">name</span>=<span class="synConstant">&quot;long&quot;</span><span class="synIdentifier"> </span><span class="synType">class</span>=<span class="synConstant">&quot;org.seasar.golf.validator.LongValidator&quot;</span><span class="synIdentifier">&gt;</span>
+	<span class="synIdentifier">&lt;/component&gt;</span>
+	<span class="synIdentifier">&lt;component </span><span class="synType">name</span>=<span class="synConstant">&quot;requiredValidator&quot;</span><span class="synIdentifier"> </span><span class="synType">class</span>=<span class="synConstant">&quot;org.seasar.golf.validator.RequiredValidator&quot;</span><span class="synIdentifier">&gt;</span>
+	<span class="synIdentifier">&lt;/component&gt;</span>
+	<span class="synIdentifier">&lt;component </span><span class="synType">name</span>=<span class="synConstant">&quot;shortDateValidator&quot;</span><span class="synIdentifier"> </span><span class="synType">class</span>=<span class="synConstant">&quot;org.seasar.golf.validator.DateValidator&quot;</span><span class="synIdentifier">&gt;</span>
+  	<span class="synIdentifier">&lt;/component&gt;</span>
+	<span class="synIdentifier">&lt;component </span><span class="synType">name</span>=<span class="synConstant">&quot;shortDateValidatorMax1&quot;</span><span class="synIdentifier"> </span><span class="synType">class</span>=<span class="synConstant">&quot;org.seasar.golf.validator.DateValidator&quot;</span><span class="synIdentifier">&gt;</span>
+            <span class="synIdentifier">&lt;property </span><span class="synType">name</span>=<span class="synConstant">&quot;maxRelativeDate&quot;</span><span class="synIdentifier">&gt;</span>new Integer(1)<span class="synIdentifier">&lt;/property&gt;</span>
+	<span class="synIdentifier">&lt;/component&gt;</span>
+	<span class="synIdentifier">&lt;component </span><span class="synType">name</span>=<span class="synConstant">&quot;shortDateValidatorMin1&quot;</span><span class="synIdentifier"> </span><span class="synType">class</span>=<span class="synConstant">&quot;org.seasar.golf.validator.DateValidator&quot;</span><span class="synIdentifier">&gt;</span>
+            <span class="synIdentifier">&lt;property </span><span class="synType">name</span>=<span class="synConstant">&quot;minRelativeDate&quot;</span><span class="synIdentifier">&gt;</span>new Integer(-1)<span class="synIdentifier">&lt;/property&gt;</span>
+	<span class="synIdentifier">&lt;/component&gt;</span>
+	<span class="synIdentifier">&lt;component </span><span class="synType">name</span>=<span class="synConstant">&quot;longDateValidator&quot;</span><span class="synIdentifier"> </span><span class="synType">class</span>=<span class="synConstant">&quot;org.seasar.golf.validator.DateValidator&quot;</span><span class="synIdentifier">&gt;</span>
+            <span class="synIdentifier">&lt;property </span><span class="synType">name</span>=<span class="synConstant">&quot;displayFormat&quot;</span><span class="synIdentifier">&gt;</span>&quot;L&quot;<span class="synIdentifier">&lt;/property&gt;</span>
+	<span class="synIdentifier">&lt;/component&gt;</span>
+	<span class="synIdentifier">&lt;component </span><span class="synType">name</span>=<span class="synConstant">&quot;doubleValidator&quot;</span><span class="synIdentifier"> </span><span class="synType">class</span>=<span class="synConstant">&quot;org.seasar.golf.validator.DoubleValidator&quot;</span><span class="synIdentifier">&gt;</span>
+	<span class="synIdentifier">&lt;/component&gt;</span>
+<span class="synIdentifier">&lt;/components&gt;</span>
+
 </pre>
-</div>
-<!--code end-->
 <dl>
 <dd>ここで、入力フィールド、Vlaue Modelの関係を見てみましょう。
 <br>CSVの設定で、入力フィールドは、Vlaue Model（Value HolderとJGoodeisのBindingでは呼んでいます）とが
@@ -200,8 +229,9 @@ S2Containerを使って簡単にValidatorのParameterをSet<br>出来るのが�
 <dl>
 <dd>また今回はBindingの状況がすぐ画面で確認できるように、Value ModelとJLabelフィールドもBinding
 <br>しています。この設定も下記のCSVで簡単に出来ます。<br>
-<code><span class="style6">formManager.setBindFromCsvResource("Example1_bind2.csv");</span></code>
-<br>[Example1_bind.csv]
+<code class="style9"><span class="style9">formManager.setBindFromCsvResource("Example1_bind2.csv");</span></code>
+<br>
+[Example1_bind.csv]
 <br><img src="images/example1-11.jpeg" />
 <br><br><img src="images/example1-12.jpeg" />
 <br>それでは、次のExampleで、Tableの機能を見てみましょう。

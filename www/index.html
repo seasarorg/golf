@@ -9,6 +9,7 @@
 	font-weight: bold;
 }
 .style4 {color: #3366FF}
+.style5 {color: #0000FF}
 -->
 </style>
 </head>
@@ -37,10 +38,12 @@
   画面に入力した時点では、必須 チェックは行いませんが、 「ENTER」ボタン等を押した場合には、 必須チェックを行います。<br />
   この必須指定を Requiredで行います。 <br />
   <img src="images/bind1.jpeg" width="476" height="133" /><br >
-  <br >
+  <span class="style5"><br >
+  Ver 0.1.1 対応　BindingはDefaultでは Focus Lost時に行われ、そのタイミングでValidationされますが、もしファンクション・キー<br>
+  対応などで、即座にBindingしたい場合は、「Immed」という列を追加し、そこに「T」を入力すると、即座にBindingされます</span><br>
   ３．Validationした結果は、画面に定義した、Scroll Paneに即座に自動的に表示されます。 <br>
   </dd></dl>
-  <img src="images/error1.jpeg" width="694" height="345" /><br>
+  <img src="images/error1.jpeg" width="694" height="451" /><br>
   <dl><dd><br>
   ４．JTableを使用する場合は、そのColumn設定とValidationの設定を同様に「CSV File」で簡単に定義出来ます。 <br>
   <img src="images/table1.jpeg" width="563" height="148" /><br>
@@ -88,7 +91,7 @@
 ウンロード</a></h3>
 <h4>最新版</h4>
 <dl>
-
+<dd><a href="download/golf-v0.1.1.zip">Golf V0.1.1</a>　即座Binding対応、複数Validator対応等のVersionです。</dd>
 <dd><a href="download/golf-v0.1.zip">Golf V0.1</a>　Golf の最初のVersionで、Exampleも含まれています。 </dd>
 
 </dl>
