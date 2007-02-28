@@ -1,7 +1,23 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN">
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ja" lang="ja"><head><!-- don't edit start --><title>S2Click-Validate</title>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ja" lang="ja"><head><!-- don't edit start --><title>Golf-Validate</title>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><meta http-equiv="Content-Style-Type" content="text/css" /><link href="s2click.css" type="text/css" rel="stylesheet" media="screen" /><link href="seasar_b.css" type="text/css" rel="stylesheet" media="screen" /><link href="seasar_p.css" type="text/css" rel="stylesheet" media="print" /><script src="seasar_b.js" type="text/JavaScript" language="JavaScript">
-</script></head>
+</script>
+<style type="text/css">
+<!--
+pre { background-color: #e7ebff; color: #000000; }
+.synSpecial { color: #c000c0; }
+.synType { color: #008000; }
+.synComment { color: #0000c0; }
+.synPreProc { color: #c000c0; }
+.synIdentifier { color: #008080; }
+.synConstant { color: #c00000; }
+.synStatement { color: #804000; }
+.style1 {color: #FF0000}
+.style2 {color: #0000FF}
+-->
+</style>
+
+</head>
 <body style="direction: ltr;" onload="preload('ja')"><table align="left" border="0" cellpadding="0" cellspacing="0" width="100%"><tbody><tr><td align="left" valign="top" width="780"><table class="white" border="0" cellpadding="0" cellspacing="0" width="780">
 <tbody><tr><td colspan="7"><img src="images/top01_b.gif" alt="" height="5" width="780" /></td></tr><tr><td><img src="images/top02_b.gif" alt="Seasar" height="117" width="235" /></td><td colspan="3"><img src="images/top03.gif" alt="DI Container with AOP" height="117" width="289" /></td><td colspan="3"><img src="images/spacer.gif" alt="" height="117" width="256" /></td></tr><tr><td rowspan="2"><img src="images/top04.gif" alt="" height="49" width="235" /></td><td><a href="http://www.seasar.org/index.html"><img src="images/menu01_b_ja.gif" alt="" id="menu01" onmouseover="swap(1)" onmouseout="restore(1)" name="menu01" border="0" height="30" width="78" /></a></td><td><a href="http://www.seasar.org/projects.html"><img src="images/menu02_b_ja.gif" alt="" id="menu02" onmouseover="swap(2)" onmouseout="restore(2)" name="menu02" border="0" height="30" width="101" /></a></td><td><a href="http://www.seasar.org/products.html"><img src="images/menu03_b_ja.gif" alt="" id="menu03" onmouseover="swap(3)" onmouseout="restore(3)" name="menu03" border="0" height="30" width="110" /></a></td><td><a href="http://www.seasar.org/resources.html"><img src="images/menu04_b_ja.gif" alt="" id="menu04" onmouseover="swap(4)" onmouseout="restore(4)" name="menu04" border="0" height="30" width="113" /></a></td><td><img src="images/menu05_b_ja.gif" alt="" id="menu05" onmouseover="swap(5)" onmouseout="restore(5)" name="menu05" border="0" height="30" width="109" /></td><td><img src="images/menu06.gif" alt="" height="30" width="34" /></td>
 </tr><tr><td colspan="6"><img src="images/spacer.gif" alt="" height="19" width="545" /></td></tr></tbody></table><table class="white" border="0" cellpadding="0" cellspacing="0" width="780"><tbody><tr align="left" valign="top"><td width="14"><img src="images/spacer.gif" alt="" height="14" width="14" /></td><td class="main" width="740"><!-- don't edit end --><!-- document start -->
@@ -35,65 +51,62 @@
 
 </dd>
 </dl>
-<!--code start-->
-<div class="excode"><pre>
-<code>
-public class LongValidator extends AbstractValidator{
+<pre>
+<span class="synType">public</span> <span class="synType">class</span> LongValidator <span class="synType">extends</span> AbstractValidator{
     
-    private Long minValue = null;
-    private Long maxValue = null;
-    public LongValidator() {
-        messageKey = new String[] { "org.seasar.golf.validator.LongValidator.MINIMUM",
-        "org.seasar.golf.validator.LongValidator.MAXIMUM",
-        "org.seasar.golf.validator.LongValidator.INVALID"};        
+    <span class="synType">private</span> Long minValue = <span class="synConstant">null</span>;
+    <span class="synType">private</span> Long maxValue = <span class="synConstant">null</span>;
+    <span class="synType">public</span> LongValidator() {
+        messageKey = <span class="synStatement">new</span> String[] { <span class="synConstant">&quot;org.seasar.golf.validator.LongValidator.MINIMUM&quot;</span>,
+        <span class="synConstant">&quot;org.seasar.golf.validator.LongValidator.MAXIMUM&quot;</span>,
+        <span class="synConstant">&quot;org.seasar.golf.validator.LongValidator.INVALID&quot;</span>};        
     }
 
-    public ValidationMessage validate(Object data, String label, 
-	                    Object key, ValueModel valueModel, 
-            FormManager formManager, boolean requiredCheck) {
-        Long lValue  = null;
+    <span class="synType">public</span> ValidationMessage validate(Object data, String label, 
+					Object key, ValueModel valueModel, 
+            FormManager formManager, <span class="synType">boolean</span> requiredCheck) {
+        Long lValue  = <span class="synConstant">null</span>;
      
         String dataS = getDataString(data);
-        if (dataS.length() == 0) {
-            return null;
+        <span class="synStatement">if</span> (dataS.length() == <span class="synConstant">0</span>) {
+            <span class="synStatement">return</span> <span class="synConstant">null</span>;
         }
         String displayLabel = getDisplayLabel(label);
-        try {
+        <span class="synStatement">try</span> {
             lValue = Long.parseLong(dataS);
-        } catch (NumberFormatException ex) {
-              return new SimpleValidationMessage(displayLabel 
-			            + getMessage(2, dataS),
-                        Severity.ERROR, key );
+        } <span class="synStatement">catch</span> (NumberFormatException ex) {
+              <span class="synStatement">return</span> <span class="synStatement">new</span> SimpleValidationMessage(displayLabel 
+					+ getMessage(<span class="synConstant">2</span>, dataS), Severity.ERROR, key );
         }
-        if ((minValue != null) &&  (lValue < minValue)) {
-            return new SimpleValidationMessage(displayLabel 
-			            + getMessage(0, minValue, dataS),
-                        Severity.ERROR, key );
+        <span class="synStatement">if</span> ((minValue != <span class="synConstant">null</span>) &amp;&amp;  (lValue &lt; minValue)) {
+            <span class="synStatement">return</span> <span class="synStatement">new</span> SimpleValidationMessage(displayLabel 
+					+ getMessage(<span class="synConstant">0</span>, minValue, dataS), Severity.ERROR, key );
         }
-        if ((maxValue !=null ) && (lValue > maxValue))  {
-                        Severity.ERROR, key );          
+        <span class="synStatement">if</span> ((maxValue !=<span class="synConstant">null</span> ) &amp;&amp; (lValue &gt; maxValue))  {
+            <span class="synStatement">return</span> <span class="synStatement">new</span> SimpleValidationMessage(displayLabel 
+					+ getMessage(<span class="synConstant">1</span>, maxValue, dataS), Severity.ERROR, key );          
         }        
-        return null;
+        <span class="synStatement">return</span> <span class="synConstant">null</span>;
     }
 
-    public Long getMinValue() {
-        return minValue;
+    <span class="synType">public</span> Long getMinValue() {
+        <span class="synStatement">return</span> minValue;
     }
 
-    public void setMinValue(Long minValue) {
-        this.minValue = minValue;
+    <span class="synType">public</span> <span class="synType">void</span> setMinValue(Long minValue) {
+        <span class="synType">this</span>.minValue = minValue;
     }
 
-    public Long getMaxValue() {
-        return maxValue;
+    <span class="synType">public</span> Long getMaxValue() {
+        <span class="synStatement">return</span> maxValue;
     }
 
-    public void setMaxValue(Long maxValue) {
-        this.maxValue = maxValue;
+    <span class="synType">public</span> <span class="synType">void</span> setMaxValue(Long maxValue) {
+        <span class="synType">this</span>.maxValue = maxValue;
     }
-</code>
-</pre></div>
-<!--code end-->
+}
+
+</pre>
 <dl>
 <dd>見て分かる通り、非常に簡単に実装できます。Messageは、resouces\org\seasar\golf\validator\Messages.propetiesと
 <br>Messages_ja.propetiesにあります。 Netbeansでは、この編集も日本語と英語を一度に見ながら出来るので大変楽ですね。
@@ -103,144 +116,139 @@ public class LongValidator extends AbstractValidator{
 <dl>
 <dd>次に、Validator機能だけでなく、Formatterの機能も兼ね備えた、DateValidatorを見てみましょう。</dd>
 </dl>
-<!--code start-->
-<div class="excode"><pre>
-<code>
-public class DateValidator extends AbstractValidator{
+<pre>
+<span class="synType">public</span> <span class="synType">class</span> DateValidator <span class="synType">extends</span> AbstractValidator{
     
-    private Integer minRelativeDate = null;
-    private Integer maxRelativeDate = null;
-    private DateFormat formatShort = DateFormat.getDateInstance(DateFormat.SHORT);
-    private DateFormat formatLong  = DateFormat.getDateInstance(DateFormat.LONG);
-    public DateValidator() {
-        messageKey = new String[] { 
-            "org.seasar.golf.validator.DateValidator.INVALID",
-            "org.seasar.golf.validator.DateValidator.MINIMUM",
-            "org.seasar.golf.validator.DateValidator.MAXIMUM"};        
+    <span class="synType">private</span> Integer minRelativeDate = <span class="synConstant">null</span>;
+    <span class="synType">private</span> Integer maxRelativeDate = <span class="synConstant">null</span>;
+    <span class="synType">private</span> DateFormat formatShort = DateFormat.getDateInstance(DateFormat.SHORT);
+    <span class="synType">private</span> DateFormat formatLong  = DateFormat.getDateInstance(DateFormat.LONG);
+    <span class="synType">public</span> DateValidator() {
+        messageKey = <span class="synStatement">new</span> String[] { 
+            <span class="synConstant">&quot;org.seasar.golf.validator.DateValidator.INVALID&quot;</span>,
+            <span class="synConstant">&quot;org.seasar.golf.validator.DateValidator.MINIMUM&quot;</span>,
+            <span class="synConstant">&quot;org.seasar.golf.validator.DateValidator.MAXIMUM&quot;</span>};        
     }
-    private DateFormat parseFormat = formatShort; 
-    private DateFormat displayFormat =formatShort; 
+    <span class="synType">private</span> DateFormat parseFormat = formatShort; 
+    <span class="synType">private</span> DateFormat displayFormat =formatShort; 
 
-    public ValidationMessage validate(Object data, String label, 
-				Object key, ValueModel valueModel, 
-            FormManager formManager, boolean requiredCheck) {
-        String newDataS = null;
+    <span class="synType">public</span> ValidationMessage validate(Object data, String label, 
+					Object key, ValueModel valueModel, 
+            FormManager formManager, <span class="synType">boolean</span> requiredCheck) {
+        String newDataS = <span class="synConstant">null</span>;
         String dataS = getDataString(data);
-        if (dataS.length() == 0) {
-            return null;
+        <span class="synStatement">if</span> (dataS.length() == <span class="synConstant">0</span>) {
+            <span class="synStatement">return</span> <span class="synConstant">null</span>;
         }
         String displayLabel = getDisplayLabel(label);
 
-        Date dd = null;
-        try {
+        Date dd = <span class="synConstant">null</span>;
+        <span class="synStatement">try</span> {
            dd = parseFormat.parse(dataS);
            newDataS = displayFormat.format(dd);
 
 <span class="style1">           if (!dataS.equals(newDataS)) {
-                ValidationUtil.updateValueModel(valueModel, key, newDataS);
+               formManager.getFormValidationManager().setFireValidate(false);
+               ValidationUtil.updateValueModel(valueModel, key, newDataS);
+               formManager.getFormValidationManager().setFireValidate(true);
            }</span>
 
-        } catch (ParseException ex) {
-            return new SimpleValidationMessage(
-				displayLabel + getMessage(0, dataS), Severity.ERROR, key );
+        } <span class="synStatement">catch</span> (ParseException ex) {
+            <span class="synStatement">return</span> <span class="synStatement">new</span> SimpleValidationMessage(displayLabel 
+						+ getMessage(<span class="synConstant">0</span>, dataS), Severity.ERROR, key );
         }
-        int rdate = ValidationUtil.getRelativeToToday(dd);
-        if (minRelativeDate != null) {
-            if (rdate < minRelativeDate) {
-                 return new SimpleValidationMessage(displayLabel + 
-                        getMessage(1, displayFormat.format(
-                         ValidationUtil.getRelativeToToday(minRelativeDate)) ,
+        <span class="synType">int</span> rdate = ValidationUtil.getRelativeToToday(dd);
+        <span class="synStatement">if</span> (minRelativeDate != <span class="synConstant">null</span>) {
+            <span class="synStatement">if</span> (rdate &lt; minRelativeDate) {
+                 <span class="synStatement">return</span> <span class="synStatement">new</span> SimpleValidationMessage(displayLabel + 
+                        getMessage(<span class="synConstant">1</span>, displayFormat.format(
+									ValidationUtil.getRelativeToToday(minRelativeDate)) ,
                          newDataS), Severity.ERROR, key );
             }
         }
-        if (maxRelativeDate != null) {
-            if (rdate > maxRelativeDate) {
-                 return new SimpleValidationMessage(displayLabel + 
-                        getMessage(2, displayFormat.
-                         format(ValidationUtil.getRelativeToToday(maxRelativeDate)) ,
+        <span class="synStatement">if</span> (maxRelativeDate != <span class="synConstant">null</span>) {
+            <span class="synStatement">if</span> (rdate &gt; maxRelativeDate) {
+                 <span class="synStatement">return</span> <span class="synStatement">new</span> SimpleValidationMessage(displayLabel + 
+                        getMessage(<span class="synConstant">2</span>, displayFormat.format(
+									ValidationUtil.getRelativeToToday(maxRelativeDate)) ,
                          newDataS), Severity.ERROR, key );
             }
         }        
         
-        return null;
+        <span class="synStatement">return</span> <span class="synConstant">null</span>;
     }
 
-
-    public DateFormat getFormatShort() {
-        return formatShort;
+    <span class="synType">public</span> DateFormat getFormatShort() {
+        <span class="synStatement">return</span> formatShort;
     }
 
-    public void setFormatShort(DateFormat formatShort) {
-        this.formatShort = formatShort;
+    <span class="synType">public</span> <span class="synType">void</span> setFormatShort(DateFormat formatShort) {
+        <span class="synType">this</span>.formatShort = formatShort;
     }
 
-    public DateFormat getFormatLong() {
-        return formatLong;
+    <span class="synType">public</span> DateFormat getFormatLong() {
+        <span class="synStatement">return</span> formatLong;
     }
 
-    public void setFormatLong(DateFormat formatLong) {
-        this.formatLong = formatLong;
+    <span class="synType">public</span> <span class="synType">void</span> setFormatLong(DateFormat formatLong) {
+        <span class="synType">this</span>.formatLong = formatLong;
     }
 
-    public String getParseFormat() {
-        return getFormatSub(parseFormat);
+    <span class="synType">public</span> String getParseFormat() {
+        <span class="synStatement">return</span> getFormatSub(parseFormat);
     }
     
-    public String getFormatSub(DateFormat df) {
-          if (df == formatShort) {
-            return "S";
-        }   else {
-           return "L";
+    <span class="synType">public</span> String getFormatSub(DateFormat df) {
+          <span class="synStatement">if</span> (df == formatShort) {
+            <span class="synStatement">return</span> <span class="synConstant">&quot;S&quot;</span>;
+        }   <span class="synStatement">else</span> {
+           <span class="synStatement">return</span> <span class="synConstant">&quot;L&quot;</span>;
         }      
     }
 
-    public void setParseFormat(String type) {
-         if (type.toUpperCase().equals("L")) {
+    <span class="synType">public</span> <span class="synType">void</span> setParseFormat(String type) {
+         <span class="synStatement">if</span> (type.toUpperCase().equals(<span class="synConstant">&quot;L&quot;</span>)) {
              parseFormat = formatLong;
-        } else if (type.toUpperCase().equals("S")) {
+        } <span class="synStatement">else</span> <span class="synStatement">if</span> (type.toUpperCase().equals(<span class="synConstant">&quot;S&quot;</span>)) {
              parseFormat = formatShort;
-        } else {
-            throw (new IllegalArgumentException(
-					"parse Format should be L or S"));
+        } <span class="synStatement">else</span> {
+            <span class="synStatement">throw</span> (<span class="synStatement">new</span> IllegalArgumentException(<span class="synConstant">&quot;parse Format should be L or S&quot;</span>));
         }  
     }
     
-    public String getDisplayFormat() {
-         return getFormatSub(displayFormat);
+    <span class="synType">public</span> String getDisplayFormat() {
+         <span class="synStatement">return</span> getFormatSub(displayFormat);
     }
 
-    public void setDisplayFormat(String type) {
-         if (type.toUpperCase().equals("L")) {
+    <span class="synType">public</span> <span class="synType">void</span> setDisplayFormat(String type) {
+         <span class="synStatement">if</span> (type.toUpperCase().equals(<span class="synConstant">&quot;L&quot;</span>)) {
              displayFormat = formatLong;
-        } else if (type.toUpperCase().equals("S")) {  
+        } <span class="synStatement">else</span> <span class="synStatement">if</span> (type.toUpperCase().equals(<span class="synConstant">&quot;S&quot;</span>)) {  
              displayFormat =  formatShort;
-        } else {
-            throw (new IllegalArgumentException(
-					"display Format should be L or S"));
+        } <span class="synStatement">else</span> {
+            <span class="synStatement">throw</span> (<span class="synStatement">new</span> IllegalArgumentException(<span class="synConstant">&quot;display Format should be L or S&quot;</span>));
         } 
     }
 
-    public Integer getMinRelativeDate() {
-        return minRelativeDate;
+    <span class="synType">public</span> Integer getMinRelativeDate() {
+        <span class="synStatement">return</span> minRelativeDate;
     }
 
-    public void setMinRelativeDate(Integer minRelativeDate) {
-        this.minRelativeDate = minRelativeDate;
+    <span class="synType">public</span> <span class="synType">void</span> setMinRelativeDate(Integer minRelativeDate) {
+        <span class="synType">this</span>.minRelativeDate = minRelativeDate;
     }
 
-    public Integer getMaxRelativeDate() {
-        return maxRelativeDate;
+    <span class="synType">public</span> Integer getMaxRelativeDate() {
+        <span class="synStatement">return</span> maxRelativeDate;
     }
 
-    public void setMaxRelativeDate(Integer maxRelativeDate) {
-        this.maxRelativeDate = maxRelativeDate;
+    <span class="synType">public</span> <span class="synType">void</span> setMaxRelativeDate(Integer maxRelativeDate) {
+        <span class="synType">this</span>.maxRelativeDate = maxRelativeDate;
     }
     
 }
-</code>
+
 </pre>
-</div>
-<!--code end-->
 <dl>
 <dd>少し、長くなりましたが、ポイントは、赤字の部分で、Formatした結果をValue Modelに戻しています。
 <br>画面のFieldでもTableでもUtility が自動的に判断して、戻す様にしていますので、非常に簡単です。
@@ -248,13 +256,20 @@ public class DateValidator extends AbstractValidator{
 <br>また Call Paremeterの　requiredCheckは、HostにSubmit時などを想定していますので、ここで、単一項目の内容
 <br>だけでなく、他の項目との関連 チェックなども行える様配慮してあります。
 <br>Hostでプロセス時のエラーも同じ様なFormatで戻って来ることを考えており、自動的にシームレスに処理する予定です。
-</dd>
+<br>
+<span class="style2">Version 0.1.1より、複数Validatorに対応しました。CSVのValidator欄に　「、（カンマ）」区切りで、複数書けます。
+<br>
+この場合、CSVファイルは、文字列を「”（ダブルクオート）」で囲ったものになります。
+<br>
+また、Servirityも「ERROR]「WARNING」に加え「INFO」も使用できます。</span></dd>
+<dt>&nbsp;</dt>
 </dl>
 <h3><a name="link" id="link">リンク</a></h3>
 <dl>
   <dd><a href="index.html">GOLF HOMEへのリンク</a></dd>
 </dl>
-<!-- don't edit start --></td><td width="14"><img src="images/spacer.gif" alt="" height="14" width="14" /></td></tr><tr><td width="14"><img src="images/spacer.gif" alt="" height="30" width="14" /></td><td width="766"><img src="images/spacer.gif" alt="" height="30" width="592" /></td></tr><tr><td width="14"><img src="images/spacer.gif" alt="" height="14" width="14" /></td><td class="copyright" width="766">Copyright&copy;
+<!-- don't edit start --></td>
+<td width="14"><img src="images/spacer.gif" alt="" height="14" width="14" /></td></tr><tr><td width="14"><img src="images/spacer.gif" alt="" height="30" width="14" /></td><td width="766"><img src="images/spacer.gif" alt="" height="30" width="592" /></td></tr><tr><td width="14"><img src="images/spacer.gif" alt="" height="14" width="14" /></td><td class="copyright" width="766">Copyright&copy;
 2004-2005, The Seasar Foundation and the others. All rights reserved.</td>
 </tr></tbody></table></td><td class="backright" align="left" valign="top">&nbsp;</td>
 </tr><tr><td class="backunder" align="left" height="16" valign="top" width="780">&nbsp;</td>

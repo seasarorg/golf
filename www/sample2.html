@@ -76,7 +76,7 @@ pre { background-color: #e7ebff; color: #000000; width:100px}
 </dd>
 </dl>
 <pre>
-<span class="synType">public</span> <span class="synType">class</span> Example2Frame <span class="synType">extends</span> javax.swing.JFrame  <span class="synType">implements</span> GolfFormInterface {
+<span class="synType">public</span> <span class="synType">class</span> Example2Frame <span class="synType">extends</span> javax.swing.JFrame  <span class="style1">implements GolfFormInterface {</span>
     <span class="style1">private FormManager formManager = null;
     private GolfTableModel golfTableModel= new GolfTableModel();</span>
     
@@ -146,6 +146,12 @@ pre { background-color: #e7ebff; color: #000000; width:100px}
 <br><br></dd></dl><img src="images/example2-6.jpeg" />
 <br><br><dl><dd>また、JTableのModelとしては、GolfTableModelを使用する事により、BindingとValidationの機能が
 <br>使用できます。
+<br>
+<span class="style2">プログラムから、フィールドにDataをSet、Getする場合は、以下の様にでGolfTableModelに対して行ってください。
+<br>
+golfTableModel.setValueAt(value, row, column);
+<br>
+golfTableModel.getValueAt(row, column);</span><br>
 <br>それでは、次のExampleで、TableとFieldの連動機能を見てみましょう。
 </dd>
 </dl>
