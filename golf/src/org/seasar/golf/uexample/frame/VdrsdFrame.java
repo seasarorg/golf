@@ -13,12 +13,15 @@ import javax.swing.JPanel;
 import javax.swing.ListSelectionModel;
 import org.seasar.golf.GolfFormInterface;
 import org.seasar.golf.GolfTableModel;
+import org.seasar.golf.data.RequestData;
 import org.seasar.golf.data.ResultData;
 import org.seasar.golf.form.FormAction;
 import org.seasar.golf.form.FormAction.FormStack;
 import org.seasar.golf.form.FormManager;
+import org.seasar.golf.transaction.RequestDataFactory;
 import org.seasar.golf.util.TableUtil;
 import org.seasar.golf.transaction.TrxUtil;
+import org.seasar.golf.util.ValidationUtil;
 
 /**
  *
@@ -189,9 +192,14 @@ private void jB_BackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
 
 private void jB_EnterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jB_EnterActionPerformed
     int row = jTable1.getSelectionModel().getMinSelectionIndex();
+    if (row == -1) {
+        ValidationUtil.showErrorMessage("çsÇ™ëIÇŒÇÍÇƒÇ¢Ç‹ÇπÇÒ", formManager);
+        return;
+    }
     BigDecimal ccode = (BigDecimal) golfTableModel.getValueAt(row,0);
-    BigDecimal ccode2 = ccode;
-    BigDecimal ccode3 = ccode;    
+    RequestData requestData = RequestDataFactory.createRequestData("vdr","mode=NextInq",formManager);
+    requestData.getParams().put("ccode", ccode);
+    formManager.getSession().trxExecute(requestData, formManager);   
 }//GEN-LAST:event_jB_EnterActionPerformed
 
 private void jB_NewWindowActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jB_NewWindowActionPerformed

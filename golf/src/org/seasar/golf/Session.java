@@ -103,11 +103,11 @@ public class Session {
         if (resultData.getFormAction().getFormStack() != FormAction.FormStack.RESULT){
             SessionUtil.processAction(resultData.getFormAction(), this, resultData.getParams());
         }
-        if (resultData.getValidationResult().hasMessages()) {
+//        if (resultData.getValidationResult().hasMessages()) {
             resultData.setValidationResult(
                     TrxUtil.updateValidationResult( formManager, resultData.getValidationResult()));
             formManager.getFormValidationManager().setResult(resultData.getValidationResult());
-        }
+//        }
         return resultData;
     }
     public void closeFrame() {

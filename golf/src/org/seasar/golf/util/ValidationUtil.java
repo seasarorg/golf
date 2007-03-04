@@ -10,6 +10,7 @@
 package org.seasar.golf.util;
 
 import com.jgoodies.binding.value.ValueModel;
+import org.seasar.golf.validation.Severity;
 import org.seasar.golf.validation.ValidationMessage;
 import org.seasar.golf.validation.ValidationResult;
 import java.util.Calendar;
@@ -19,6 +20,8 @@ import javax.swing.table.TableModel;
 import org.seasar.framework.container.factory.SingletonS2ContainerFactory;
 import org.seasar.golf.GolfTableModel;
 import org.seasar.golf.form.FormManager;
+import org.seasar.golf.validation.message.SimpleValidationMessage;
+import org.seasar.golf.validator.FormValidationManager;
 import org.seasar.golf.validator.JTableFieldInfo;
 import org.seasar.golf.validator.RequiredValidator;
 import org.seasar.golf.validator.GolfValidator;
@@ -107,6 +110,13 @@ public class ValidationUtil {
         Calendar today = getToday();
         today.add(Calendar.DATE, rdate);
         return today.getTime();
+        
+    }
+    public static void showErrorMessage(String text, FormManager formManager) {
+        FormValidationManager validationManager = formManager.getFormValidationManager();
+        ValidationResult result = new ValidationResult();
+        result.addError(text);
+        validationManager.setResult(result);
         
     }
         
