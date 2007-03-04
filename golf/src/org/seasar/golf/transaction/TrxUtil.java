@@ -36,13 +36,16 @@ public class TrxUtil {
         //HashMap ht = formManager.getFormTrxManager().getHostToField();
         Object[] hosts = formManager.getFormTrxManager().getHostToField().keySet().toArray();
         for (Object host:hosts) {
-//        for (Enumeration e = formManager.getFormTrxManager().getHostToField().keys();
-//            e.hasMoreElements(); )   {
-//            String host = (String) e.nextElement();
             Object field = formManager.getValue((String) formManager.getFormTrxManager().getHostToField().get(host));
             requestData.getFields().put(host, field);
         }
     }  
+    public static void setFieldDataFromResult(ResultData resultData, FormManager formManager) {
+        Object[] hosts = formManager.getFormTrxManager().getHostToField().keySet().toArray();
+        for (Object host:hosts) {
+            formManager.setValue((String) formManager.getFormTrxManager().getHostToField().get(host),resultData.getField((String) host));
+        }
+    }     
     public static void setTableDataToRequest(
             String tableHostName, RequestData requestData, FormManager formManager) {  
         GolfTableModel tableModel = (GolfTableModel)formManager.getFormTrxManager().

@@ -10,7 +10,9 @@ import java.util.HashMap;
 import javax.swing.JMenuBar;
 import javax.swing.JPanel;
 import org.seasar.golf.GolfFormInterface;
+import org.seasar.golf.data.ResultData;
 import org.seasar.golf.form.FormManager;
+import org.seasar.golf.transaction.TrxUtil;
 
 /**
  *
@@ -331,8 +333,17 @@ private void jMenu1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:
         formManager.setValidationFromCsvResource("vdr_bind.csv");   
         formManager.setModeControlFromCsvResource("vdr_mode.csv");
         formManager.setMode("R");
+        if (params.containsKey("mode")) {
+            processMode(params);
+        }
     }
-
+    private void processMode(HashMap params) {
+        String mode = (String)params.get("mode");
+        if (mode.equals("ref")) {
+            TrxUtil.setFieldDataFromResult((ResultData)params.get("_resultData"), formManager);
+        }
+        
+    }
     public void processAction(HashMap params) {
     }
     public void setFormManger(FormManager formManager) {
