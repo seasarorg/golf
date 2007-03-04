@@ -57,7 +57,7 @@ public class VdrTrxLogic implements TransactionInterface{
     			resultData.getFormAction().setFormStack(FormStack.NEXT);
     			resultData.getFormAction().setForm("vdr");
     			resultData.getParams().put("mode", "ref");
-    			resultData.getFields().put("ccode",comp.getCcode());
+    			resultData.getFields().put("ccode",comp.getCcode().toString());
     			resultData.getFields().put("shortname",comp.getShortname());
     			resultData.getFields().put("name",comp.getName());
     			resultData.getFields().put("telephone",comp.getTelephone());
