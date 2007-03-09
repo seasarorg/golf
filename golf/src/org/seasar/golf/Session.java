@@ -19,6 +19,7 @@ import org.seasar.golf.data.RequestData;
 import org.seasar.golf.data.ResultData;
 import org.seasar.golf.form.ContainerManager;
 import org.seasar.golf.form.FormAction;
+import org.seasar.golf.form.FormAction.FormStack;
 import org.seasar.golf.form.FormManager;
 import org.seasar.golf.menu.MenuAction;
 import org.seasar.golf.menu.MenuActionItem;
@@ -60,6 +61,11 @@ public class Session {
                 textField.setText("");
             }
         }
+    }
+    public void processBackAction() {
+        FormAction formAction = new FormAction();
+        formAction.setFormStack(FormStack.BACK);
+        processAction(formAction, null);        
     }
     public void processAction(FormAction formAction, HashMap params) {
         SessionUtil.processAction(formAction, this, params);

@@ -76,8 +76,12 @@ public class FrameTemplate extends javax.swing.JFrame implements GolfFormInterfa
 
         jB_Back.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/NavBack.png")));
         jB_Back.setToolTipText("Back");
-        jB_Back.setEnabled(false);
         jB_Back.setPreferredSize(new java.awt.Dimension(25, 25));
+        jB_Back.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jB_BackActionPerformed(evt);
+            }
+        });
         toolBar.add(jB_Back);
 
         jB_Menu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/book_addressHS.png")));
@@ -136,6 +140,10 @@ public class FrameTemplate extends javax.swing.JFrame implements GolfFormInterfa
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+private void jB_BackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jB_BackActionPerformed
+     formManager.getSession().processBackAction();
+}//GEN-LAST:event_jB_BackActionPerformed
+
 private void jB_EnterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jB_EnterActionPerformed
 //    RequestData requestData = RequestDataFactory.createRequestData("vdr","mode=test",formManager);
 //    TrxUtil.setAllTableDataToRequest(requestData, formManager);
@@ -178,7 +186,7 @@ private void jTextActionKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:ev
     }
 
     public void initBinding(HashMap params) {
-        FrameUtil.setHeaderText("", formManager); 
+        FrameUtil.setTitle("", formManager); 
     }
 
     public void processAction(HashMap params) {

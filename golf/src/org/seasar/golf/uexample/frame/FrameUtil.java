@@ -21,13 +21,8 @@ public class FrameUtil {
     /** Creates a new instance of FrameUtil */
     private FrameUtil() {
     }
-    static void setHeaderText(String text, FormManager formManager){
-        setHeaderText(text, formManager.getSession());
+    static void setTitle(String text, FormManager formManager){
         formManager.getFrame().setTitle("Golf Example - " + text);
-        
+        formManager.getSession().getContainerFrame().setTitle("Golf Example - " + text);
     }
-    static void setHeaderText(String text, Session session){
-        ((ContainerFrame)session.getContainerFrame()).getLabelHeader().setText(text);  
-        ((ContainerFrame)session.getContainerFrame()).getLabelFooter().setText("");
-    }    
 }

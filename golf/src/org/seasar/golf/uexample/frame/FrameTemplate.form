@@ -129,11 +129,13 @@
                   <Image iconType="3" name="/image/NavBack.png"/>
                 </Property>
                 <Property name="toolTipText" type="java.lang.String" value="Back"/>
-                <Property name="enabled" type="boolean" value="false"/>
                 <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                   <Dimension value="[25, 25]"/>
                 </Property>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jB_BackActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="jB_Menu">
               <Properties>

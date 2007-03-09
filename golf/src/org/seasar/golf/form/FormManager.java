@@ -43,6 +43,7 @@ public class FormManager {
     private TableData modeControl;
     private Color ineditableBgColor;
     private Color normalBgColor;    
+    private String mode;
 
     /** Creates a new instance of FrameManager */
     public FormManager(JFrame frame) {
@@ -192,7 +193,12 @@ public class FormManager {
     } 
     
     public void setMode(String mode) {
-            FormManagerUtil.setMode(mode, modeControl, this);          
+            FormManagerUtil.setMode(mode, modeControl, this); 
+            this.mode = mode;
+    }
+    
+    public String getMode () {
+        return mode;
     }
     public void createReportList(JScrollPane js){
             GolfValidationResultViewFactory.createReportList(js, formValidationManager);
