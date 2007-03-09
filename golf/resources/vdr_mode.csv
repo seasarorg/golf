@@ -5,3 +5,5 @@
 "javax.swing.JTextField","jTextTel",,,"R"
 "javax.swing.JTextField","jTextCat","R","R","R"
 "javax.swing.JTextField","jTextVersion","R","R","R"
+"javax.swing.JButton","jB_Save",,,"D"
+"javax.swing.JButton","jB_Enter","D","D","D"
