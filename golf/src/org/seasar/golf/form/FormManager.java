@@ -44,6 +44,7 @@ public class FormManager {
     private Color ineditableBgColor;
     private Color normalBgColor;    
     private String mode;
+    private HashMap formData = new HashMap();    
 
     /** Creates a new instance of FrameManager */
     public FormManager(JFrame frame) {
@@ -246,6 +247,10 @@ public class FormManager {
 
     public void setNormalBgColor(Color normalBgColor) {
         this.normalBgColor = normalBgColor;
+    }
+
+    public HashMap getFormData() {
+        return formData;
     }
 
 }

@@ -256,9 +256,9 @@ private void jB_EnterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
         return;
     }
     BigDecimal ccode = (BigDecimal) golfTableModel.getValueAt(row,0);
-    RequestData requestData = RequestDataFactory.createRequestData("vdr","mode=NextInq",formManager);
+    RequestData requestData = RequestDataFactory.createRequestData("vdr","_mode=NextInq",formManager);
     requestData.getParams().put("ccode", ccode);
-    requestData.getParams().put("cat", cat);    
+    requestData.getParams().put("_cat", cat);    
     formManager.getSession().trxExecute(requestData, formManager);   
 }//GEN-LAST:event_jB_EnterActionPerformed
 
@@ -298,7 +298,7 @@ private void jTextActionKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:ev
     }
 
     public void initBinding(HashMap params) {
-        cat = (String)params.get("cat");
+        cat = (String)params.get("_cat");
         setTitle();
         formManager.createReportList(jScrollPane1);
         formManager.setValidationFromCsvResource("vdrsd_bind.csv");

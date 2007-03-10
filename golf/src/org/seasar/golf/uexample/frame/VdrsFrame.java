@@ -10,6 +10,7 @@ import java.util.HashMap;
 import javax.swing.JMenuBar;
 import javax.swing.JPanel;
 import org.seasar.golf.GolfFormInterface;
+import org.seasar.golf.data.DataUtil;
 import org.seasar.golf.data.RequestData;
 import org.seasar.golf.form.FormManager;
 import org.seasar.golf.transaction.RequestDataFactory;
@@ -267,7 +268,13 @@ private void jB_BackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
 }//GEN-LAST:event_jB_BackActionPerformed
 
 private void jB_EnterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jB_EnterActionPerformed
-    RequestData requestData = RequestDataFactory.createRequestData("vdrs","mode=test",formManager);
+    RequestData requestData = RequestDataFactory.createRequestData("vdrs",null,formManager);
+    if (formManager.getFormData().containsKey("_action")) {
+         if (formManager.getFormData().get("_action").equals("dataRequest")){
+             DataUtil.copyParam(formManager.getFormData(), requestData.getParams(), "_dataRequest");
+             DataUtil.copyParam(formManager.getFormData(), requestData.getParams(), "_action");
+         }
+    }
     formManager.getSession().trxExecute(requestData, formManager);
 }//GEN-LAST:event_jB_EnterActionPerformed
 
@@ -309,8 +316,11 @@ private void jTextActionKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:ev
     public void initBinding(HashMap params) {
         formManager.createReportList(jScrollPane1);
         formManager.setValidationFromCsvResource("vdrs_bind.csv");
-        formManager.setValue("jTextCat",(String)params.get("cat") );
+        formManager.setValue("jTextCat",(String)params.get("_cat") );
         setTitle();
+        if (params.containsKey("_action")) {
+            initAction(params);
+        }
     }
     private void setTitle() {
          String hdr = (jTextCat.getText().equals("V"))
@@ -318,6 +328,15 @@ private void jTextActionKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:ev
          jLabelHeader.setText(hdr);
         FrameUtil.setTitle(hdr, formManager);       
     }
+    
+    private void initAction(HashMap params){
+        formManager.getFormData().put("_action", params.get("_action"));
+        if (params.get("_action").equals("dataRequest")) {
+            formManager.getFormData().put("_dataRequest", params.get("_dataRequest"));
+        }
+        
+    }
+    
     public void processAction(HashMap params) {
     }
     public void setFormManger(FormManager formManager) {
