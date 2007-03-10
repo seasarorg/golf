@@ -15,6 +15,7 @@ import org.seasar.golf.GolfFormInterface;
 import org.seasar.golf.GolfTableModel;
 import org.seasar.golf.data.RequestData;
 import org.seasar.golf.data.ResultData;
+import org.seasar.golf.form.DataSelect;
 import org.seasar.golf.form.FormManager;
 import org.seasar.golf.transaction.RequestDataFactory;
 import org.seasar.golf.util.TableUtil;
@@ -256,7 +257,8 @@ private void jB_EnterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
     BigDecimal ccode = (BigDecimal) golfTableModel.getValueAt(row,0);
     if (formManager.getFormData().containsKey("_action")) {
         if (formManager.getFormData().get("_action").equals("dataRequest")) {
-            String action = (String)formManager.getFormData().get("_action");
+            DataSelect select = (DataSelect) formManager.getFormData().get("_dataRequest");
+            select.setSelectedDatum(ccode);
         }
     }
     

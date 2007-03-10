@@ -18,6 +18,7 @@ import org.seasar.framework.container.factory.SingletonS2ContainerFactory;
 import org.seasar.golf.data.RequestData;
 import org.seasar.golf.data.ResultData;
 import org.seasar.golf.form.ContainerManager;
+import org.seasar.golf.form.DataSelect;
 import org.seasar.golf.form.FormAction;
 import org.seasar.golf.form.FormAction.FormStack;
 import org.seasar.golf.form.FormManager;
@@ -61,6 +62,13 @@ public class Session {
                 textField.setText("");
             }
         }
+    }
+    public void processDataSelect(DataSelect dataSelect) {
+        FormAction formAction = new FormAction();
+        formAction.setForm(dataSelect.getRequestForm());
+        formAction.setFormStack(FormStack.SELECTED);
+        formAction.getParams().put("_dataSelect", dataSelect);
+        processAction(formAction, null);
     }
     public void processBackAction() {
         FormAction formAction = new FormAction();

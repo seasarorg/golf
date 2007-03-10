@@ -10,7 +10,7 @@ import java.util.HashMap;
 import javax.swing.JMenuBar;
 import javax.swing.JPanel;
 import org.seasar.golf.GolfFormInterface;
-import org.seasar.golf.form.DataRequest;
+import org.seasar.golf.form.DataSelect;
 import org.seasar.golf.form.FormAction;
 import org.seasar.golf.form.FormAction.FormStack;
 import org.seasar.golf.form.FormManager;
@@ -287,7 +287,7 @@ private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
    formAction.setForm("Vdrs");
    formAction.getParams().put("_cat", cat);
    formAction.getParams().put("_action","dataRequest");
-   formAction.getParams().put("_dataRequest",new DataRequest("vdri","ccode"));
+   formAction.getParams().put("_dataRequest",new DataSelect("vdri","ccode"));
    formManager.getSession().processAction(formAction, null);
 }//GEN-LAST:event_jButton1ActionPerformed
 
