@@ -15,8 +15,6 @@ import org.seasar.golf.GolfFormInterface;
 import org.seasar.golf.GolfTableModel;
 import org.seasar.golf.data.RequestData;
 import org.seasar.golf.data.ResultData;
-import org.seasar.golf.form.FormAction;
-import org.seasar.golf.form.FormAction.FormStack;
 import org.seasar.golf.form.FormManager;
 import org.seasar.golf.transaction.RequestDataFactory;
 import org.seasar.golf.util.TableUtil;
@@ -256,6 +254,12 @@ private void jB_EnterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
         return;
     }
     BigDecimal ccode = (BigDecimal) golfTableModel.getValueAt(row,0);
+    if (formManager.getFormData().containsKey("_action")) {
+        if (formManager.getFormData().get("_action").equals("dataRequest")) {
+            String action = (String)formManager.getFormData().get("_action");
+        }
+    }
+    
     RequestData requestData = RequestDataFactory.createRequestData("vdr","_mode=NextInq",formManager);
     requestData.getParams().put("ccode", ccode);
     requestData.getParams().put("_cat", cat);    
@@ -307,8 +311,17 @@ private void jTextActionKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:ev
     			jTable1, "CompanyTable", "CompanyTable", golfTableModel, "Vdrsd_table.csv");
         TableUtil.SetPreferedColumnWIdth(jTable1, new int[]{15,40,60,150,80 });  
         TrxUtil.setTableDataFromResult( "CompanyTable", (ResultData)params.get("_resultData"), formManager);
-
+        if (params.containsKey("_action")) {
+            initAction(params);
+        }
     }
+    private void initAction(HashMap params){
+        formManager.getFormData().put("_action", params.get("_action"));
+        if (params.get("_action").equals("dataRequest")) {
+            formManager.getFormData().put("_dataRequest", params.get("_dataRequest"));
+        }
+        
+    }    
     private void setTitle() {
         String hdr = (cat).equals("V") 
                 ?"Vendor Selection List":"Customer Selection List";
