@@ -270,8 +270,8 @@ private void jB_BackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
 private void jB_EnterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jB_EnterActionPerformed
     RequestData requestData = RequestDataFactory.createRequestData("vdrs",null,formManager);
     if (formManager.getFormData().containsKey("_action")) {
-         if (formManager.getFormData().get("_action").equals("dataRequest")){
-             DataUtil.copyParam(formManager.getFormData(), requestData.getParams(), "_dataRequest");
+         if (formManager.getFormData().get("_action").equals("dataSelect")){
+             DataUtil.copyParam(formManager.getFormData(), requestData.getParams(), "_dataSelect");
              DataUtil.copyParam(formManager.getFormData(), requestData.getParams(), "_action");
          }
     }
@@ -331,8 +331,8 @@ private void jTextActionKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:ev
     
     private void initAction(HashMap params){
         formManager.getFormData().put("_action", params.get("_action"));
-        if (params.get("_action").equals("dataRequest")) {
-            formManager.getFormData().put("_dataRequest", params.get("_dataRequest"));
+        if (params.get("_action").equals("dataSelect")) {
+            formManager.getFormData().put("_dataSelect", params.get("_dataSelect"));
         }
         
     }

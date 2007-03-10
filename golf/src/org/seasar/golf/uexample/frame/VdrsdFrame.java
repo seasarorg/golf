@@ -13,6 +13,7 @@ import javax.swing.JPanel;
 import javax.swing.ListSelectionModel;
 import org.seasar.golf.GolfFormInterface;
 import org.seasar.golf.GolfTableModel;
+import org.seasar.golf.data.DataUtil;
 import org.seasar.golf.data.RequestData;
 import org.seasar.golf.data.ResultData;
 import org.seasar.golf.form.DataSelect;
@@ -256,9 +257,11 @@ private void jB_EnterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
     }
     BigDecimal ccode = (BigDecimal) golfTableModel.getValueAt(row,0);
     if (formManager.getFormData().containsKey("_action")) {
-        if (formManager.getFormData().get("_action").equals("dataRequest")) {
-            DataSelect select = (DataSelect) formManager.getFormData().get("_dataRequest");
+        if (formManager.getFormData().get("_action").equals("dataSelect")) {
+            DataSelect select = (DataSelect) formManager.getFormData().get("_dataSelect");
             select.setSelectedDatum(ccode);
+            formManager.getSession().processDataSelect(select);
+            return;
         }
     }
     
@@ -319,8 +322,8 @@ private void jTextActionKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:ev
     }
     private void initAction(HashMap params){
         formManager.getFormData().put("_action", params.get("_action"));
-        if (params.get("_action").equals("dataRequest")) {
-            formManager.getFormData().put("_dataRequest", params.get("_dataRequest"));
+        if (params.get("_action").equals("dataSelect")) {
+            DataUtil.copyParam(params, formManager.getFormData(), "_dataSelect");
         }
         
     }    

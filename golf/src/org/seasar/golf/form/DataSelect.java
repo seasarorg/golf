@@ -1,5 +1,5 @@
 /*
- * DataRequest.java
+ * DataSelect.java
  *
  * Created on 2007/03/10, 18:26
  *
@@ -17,7 +17,7 @@ import java.io.Serializable;
  */
 public class DataSelect implements Serializable{
     
-    /** Creates a new instance of DataRequest */
+    /** Creates a new instance of DataSelect */
     public DataSelect() {
     }
     public DataSelect(String form, String field) {

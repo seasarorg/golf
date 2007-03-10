@@ -6,6 +6,7 @@
 
 package org.seasar.golf.uexample.frame;
 
+import java.math.BigDecimal;
 import java.util.HashMap;
 import javax.swing.JMenuBar;
 import javax.swing.JPanel;
@@ -286,8 +287,8 @@ private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
    formAction.setFormStack(FormStack.NEXT);
    formAction.setForm("Vdrs");
    formAction.getParams().put("_cat", cat);
-   formAction.getParams().put("_action","dataRequest");
-   formAction.getParams().put("_dataRequest",new DataSelect("vdri","ccode"));
+   formAction.getParams().put("_action","dataSelect");
+   formAction.getParams().put("_dataSelect",new DataSelect("vdri","ccode"));
    formManager.getSession().processAction(formAction, null);
 }//GEN-LAST:event_jButton1ActionPerformed
 
@@ -357,6 +358,14 @@ private void jTextActionKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:ev
     }
 
     public void processAction(HashMap params) {
+         if (params.containsKey("_dataSelect")) {
+            DataSelect select = (DataSelect)params.get("_dataSelect");
+            if (select.getRequestField().equals("ccode")) {
+                jTextCcode.setText(((BigDecimal)select.getSelectedDatum()).toString());
+            }
+        }
+            
+
     }
     public void setFormManger(FormManager formManager) {
         this.formManager = formManager;
