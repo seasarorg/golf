@@ -9,6 +9,7 @@
 
 package org.seasar.golf;
 
+import javax.swing.JDialog;
 import javax.swing.JFrame;
 import org.seasar.framework.container.factory.SingletonS2ContainerFactory;
 import org.seasar.golf.form.FormManager;

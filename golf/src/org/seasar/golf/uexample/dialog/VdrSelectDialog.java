@@ -4,8 +4,9 @@
  * Created on 2007/03/12, 20:46
  */
 
-package org.seasar.golf.uexample.frame;
+package org.seasar.golf.uexample.dialog;
 
+import java.awt.Dialog;
 import java.util.HashMap;
 import org.seasar.golf.GolfDialog;
 import org.seasar.golf.form.FormManager;
@@ -21,6 +22,10 @@ public class VdrSelectDialog extends javax.swing.JDialog implements GolfDialog {
         super(parent, modal);
         initComponents();
     }
+    public VdrSelectDialog(Dialog parent, boolean modal) {
+        super(parent, modal);
+        initComponents();
+    }    
 
     private FormManager formManager = null;
  //   private GolfTableModel golfTableModel= new GolfTableModel();        
@@ -44,6 +49,7 @@ public class VdrSelectDialog extends javax.swing.JDialog implements GolfDialog {
         jButtonCancel = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setLocationByPlatform(true);
 
         jPanel1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         jPanel1.setPreferredSize(new java.awt.Dimension(400, 30));
@@ -165,7 +171,7 @@ public class VdrSelectDialog extends javax.swing.JDialog implements GolfDialog {
     }
 
     public void initBinding(HashMap params) {
-        throw new UnsupportedOperationException("Not supported yet.");
+        //
     }
 
     public void processAction(HashMap params) {

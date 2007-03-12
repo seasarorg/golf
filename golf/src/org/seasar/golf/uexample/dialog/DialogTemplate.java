@@ -4,7 +4,7 @@
  * Created on 2007/03/12, 20:46
  */
 
-package org.seasar.golf.uexample.frame;
+package org.seasar.golf.uexample.dialog;
 
 import java.util.HashMap;
 import org.seasar.golf.GolfDialog;

@@ -9,8 +9,14 @@
 
 package org.seasar.golf;
 
+import java.lang.reflect.Constructor;
+import java.lang.reflect.InvocationTargetException;
 import java.util.HashMap;
+import javax.swing.JDialog;
 import javax.swing.JFrame;
+import org.seasar.framework.container.ComponentDef;
+import org.seasar.framework.container.S2Container;
+import org.seasar.framework.container.factory.SingletonS2ContainerFactory;
 import org.seasar.golf.form.FormManager;
 import org.seasar.golf.form.FormAction;
 
@@ -46,6 +52,10 @@ public class SessionUtil {
                         int newNo = session.getFormManagers().size() - 2;
                         setForm(newNo, session);
                         break;
+                case DIALOG:
+                        int dialogNo = session.getFormManagers().size();
+                        createDialog(dialogNo,formAction, session, params);
+                    break;                        
                 case NEWMENU :
                         session.getConnection().addSession();
                     break;         
@@ -100,6 +110,57 @@ public class SessionUtil {
                     session.getContainerManager().setForm( golfForm); 
                     return golfForm;
         }
+        public static JDialog createDialog(String formName, Session session, int index){
+               JDialog dialog = null ; 
+               ComponentDef cdef ;
+               S2Container container = SingletonS2ContainerFactory.getContainer();
+               cdef = container.getComponentDef(formName +"Dialog");               
+               FormManager parent = (FormManager) session.getFormManagers().get(index - 1);
+               Constructor constructors[] = cdef.getComponentClass().getConstructors();
+            try {
+                    if (parent.getFrame() == null ) {
+                        Class param[] = { java.awt.Dialog.class, Boolean.TYPE };
+                        Constructor constructor = cdef.getComponentClass().getConstructor(param);
+                        dialog = (JDialog) constructor.newInstance( parent.getDialog(), Boolean.TRUE);                        
+               } else {
+                        Class param[] = { java.awt.Frame.class, Boolean.TYPE };      
+                        Constructor constructor = cdef.getComponentClass().getConstructor(param);
+                        dialog = (JDialog) constructor.newInstance(parent.getFrame(), Boolean.TRUE );
+                    }
+                } catch (IllegalArgumentException ex) {
+                    ex.printStackTrace();
+                } catch (IllegalAccessException ex) {
+                    ex.printStackTrace();
+                } catch (InstantiationException ex) {
+                    ex.printStackTrace();
+                } catch (InvocationTargetException ex) {
+                    ex.printStackTrace();
+                } catch (SecurityException ex) {
+                ex.printStackTrace();
+               } catch (NoSuchMethodException ex) {
+                ex.printStackTrace();
+            }
+
+//                  javax.swing.JDialog dialog = org.seasar.golf.Factory.
+//                          createDialog(formName + "Dialog");
+                FormManager formManager = new FormManager(null);
+                formManager.setDialog(dialog);
+                formManager.init();
+                formManager.setSession(session);
+                formManager.setForm(formName); 
+                ((org.seasar.golf.GolfDialog) dialog).setFormManger(formManager);
+                return dialog;
+        }        
+        private static void createDialog(int index, FormAction formAction, Session session, HashMap params) {
+                 javax.swing.JDialog dialog =  createDialog(formAction.getForm(), session, index);
+                java.util.HashMap actionParam = formAction.getParams();
+                HashMap newParams =mergrParams(params, actionParam);
+                ((org.seasar.golf.GolfDialog) dialog).initBinding(newParams);
+                session.getFormManagers().add(((org.seasar.golf.GolfDialog) dialog).getFormManager()); 
+                dialog.setVisible(true);
+                //‚±‚±‚Å Dialog •\Ž¦
+                 removeUpperForm(index -1, session);
+        }         
         private static void createAndSetForm(int index, FormAction formAction, Session session, HashMap params) {
                 createForm(index, formAction, session, params);
                 setForm(index, session);

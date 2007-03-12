@@ -87,22 +87,29 @@ public class FormManager {
     }
     
     public void addAllJcomponent() {
-    	Field[] fld =frame.getClass().getDeclaredFields();
-    	for(int i=0; i < fld.length; i++) {
-    		try {
-    			fld[i].setAccessible(true);
-    			Object jc = null;
-				if ((jc = fld[i].get(frame)) instanceof JComponent) {
-					addComponentName((JComponent) jc, fld[i].getName());
-				}
-			} catch (IllegalArgumentException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			} catch (IllegalAccessException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-    	}
+        Object parent = null;
+        if (frame != null) {
+            parent = frame;
+        } else {
+            parent = dialog;
+        }
+
+    	Field[] fld =parent.getClass().getDeclaredFields();
+        for(int i=0; i < fld.length; i++) {
+                try {
+                        fld[i].setAccessible(true);
+                        Object jc = null;
+                                    if ((jc = fld[i].get(parent)) instanceof JComponent) {
+                                        addComponentName((JComponent) jc, fld[i].getName());
+                                }
+                        } catch (IllegalArgumentException e) {
+                                // TODO Auto-generated catch block
+                                e.printStackTrace();
+                        } catch (IllegalAccessException e) {
+                                // TODO Auto-generated catch block
+                                e.printStackTrace();
+                        }
+        }
     }
     public HashMap getComponentNameIndex() {
             return componentNameIndex;

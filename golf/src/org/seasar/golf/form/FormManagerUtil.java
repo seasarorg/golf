@@ -24,8 +24,14 @@ public class FormManagerUtil {
 	}
 	private static HashMap formHistory = new HashMap();
 	public static void generateFieldCsv(FormManager fm) {
+                Class formClass;
+                if (fm.getFrame() != null) {
+                    formClass = fm.getFrame() .getClass() ;
+                } else {
+                    formClass = fm.getDialog().getClass();
+                }
 		if (GolfSetting.isDebug()) {
-			if (!formHistory.containsKey(fm.getFrame().getClass())){
+			if (!formHistory.containsKey(formClass)){
 				TableData td = new TableData();
 				td.setColumnIdentifires(new String[]{"class","name"});
                                 Object[] keys =  fm.getComponentNameIndex().keySet().toArray();
@@ -37,19 +43,19 @@ public class FormManagerUtil {
 				}
 				TableUtil.WriteToCsv(td,
 						GolfSetting.getSetting("csvpath") + 
-						fm.getFrame().getClass().toString().substring(6)+
+						formClass .toString().substring(6)+
 						".csv", "ms932");
 				String s = GolfSetting.getSetting("csvpath") + 
 				fm.getClass().toString().substring(6)+
 				".csv";
-				formHistory.put(fm.getFrame().getClass(),s);
+				formHistory.put(formClass ,s);
 			}
 			
 		}
 	}
-         public  static  GolfForm getFrame(String frameName) {
-            return (GolfForm) SingletonS2ContainerFactory.getContainer().getComponent(frameName);
-        }
+//         public  static  GolfForm getFrame(String frameName) {
+//            return (GolfForm) SingletonS2ContainerFactory.getContainer().getComponent(frameName);
+//        }
 	public static  void setTableColumnSub(JTable jt, String tableDisplayName, 
 			GolfTableModel gtm, TableData td, FormValidationManager formValidationManager, String tableHostName) {
 		ColumnDef[] columnDefs = new ColumnDef[td.getRowCount()];

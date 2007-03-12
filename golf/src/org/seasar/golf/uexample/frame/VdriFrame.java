@@ -56,6 +56,7 @@ public class VdriFrame extends javax.swing.JFrame implements GolfForm{
         jLabel2 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         jLabelCopyFrom = new javax.swing.JLabel();
+        jButton2 = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenu2 = new javax.swing.JMenu();
@@ -186,6 +187,13 @@ public class VdriFrame extends javax.swing.JFrame implements GolfForm{
 
         jLabelCopyFrom.setText("Copy From");
 
+        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/FindHS.png")));
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+
         org.jdesktop.layout.GroupLayout contentPaneLayout = new org.jdesktop.layout.GroupLayout(contentPane);
         contentPane.setLayout(contentPaneLayout);
         contentPaneLayout.setHorizontalGroup(
@@ -204,7 +212,9 @@ public class VdriFrame extends javax.swing.JFrame implements GolfForm{
                 .add(jTextCcode, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 69, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(jButton1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 27, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 248, Short.MAX_VALUE)
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                .add(jButton2, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 26, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 215, Short.MAX_VALUE)
                 .add(jScrollPane1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 332, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                 .add(28, 28, 28))
             .add(contentPaneLayout.createSequentialGroup()
@@ -226,7 +236,8 @@ public class VdriFrame extends javax.swing.JFrame implements GolfForm{
                         .add(jLabel2)
                         .add(jLabelCopyFrom))
                     .add(jButton1)
-                    .add(jScrollPane1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 85, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                    .add(jScrollPane1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 85, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                    .add(jButton2))
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 397, Short.MAX_VALUE)
                 .add(contentPaneLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING)
                     .add(contentPaneLayout.createSequentialGroup()
@@ -281,6 +292,16 @@ public class VdriFrame extends javax.swing.JFrame implements GolfForm{
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+   FormAction formAction = new FormAction();
+   formAction.setFormStack(FormStack.DIALOG);
+   formAction.setForm("VdrSelect");
+   formAction.getParams().put("_cat", cat);
+   formAction.getParams().put("_action","dataSelect");
+   formAction.getParams().put("_dataSelect",new DataSelect("vdri","ccode"));
+   formManager.getSession().processAction(formAction, null);
+}//GEN-LAST:event_jButton2ActionPerformed
 
 private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
    FormAction formAction = new FormAction();
@@ -397,6 +418,7 @@ private void jTextActionKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:ev
     private javax.swing.JButton jB_NewWindow;
     private javax.swing.JButton jB_Save;
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel8;
