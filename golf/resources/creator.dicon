@@ -11,4 +11,5 @@
 	<component class="org.seasar.remoting.common.creator.ConnectorCreator"/>
 	<component class="org.seasar.framework.container.creator.LogicCreator"/>
 	<component class="org.seasar.golf.creator.FrameCreator"/>
+	<component class="org.seasar.golf.creator.DialogCreator"/>
 </components>
