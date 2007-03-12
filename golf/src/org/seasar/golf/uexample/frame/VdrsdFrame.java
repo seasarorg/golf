@@ -11,7 +11,7 @@ import java.util.HashMap;
 import javax.swing.JMenuBar;
 import javax.swing.JPanel;
 import javax.swing.ListSelectionModel;
-import org.seasar.golf.GolfFormInterface;
+import org.seasar.golf.GolfForm;
 import org.seasar.golf.GolfTableModel;
 import org.seasar.golf.data.DataUtil;
 import org.seasar.golf.data.RequestData;
@@ -27,7 +27,7 @@ import org.seasar.golf.util.ValidationUtil;
  *
  * @author  shimura
  */
-public class VdrsdFrame extends javax.swing.JFrame implements GolfFormInterface{
+public class VdrsdFrame extends javax.swing.JFrame implements GolfForm{
     private FormManager formManager = null;
     private GolfTableModel golfTableModel= new GolfTableModel();    
     private String cat;

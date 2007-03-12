@@ -18,7 +18,7 @@ import org.seasar.golf.form.FormManager;
  *
  * @author shimura
  */
-public interface GolfFormInterface {
+public interface GolfForm {
 
     FormManager getFormManager();
     void setFormManger(FormManager formManager);

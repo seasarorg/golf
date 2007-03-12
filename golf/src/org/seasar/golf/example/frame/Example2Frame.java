@@ -10,7 +10,7 @@ import java.util.HashMap;
 import javax.swing.JMenuBar;
 import javax.swing.JPanel;
 import javax.swing.ListSelectionModel;
-import org.seasar.golf.GolfFormInterface;
+import org.seasar.golf.GolfForm;
 import org.seasar.golf.GolfTableModel;
 import org.seasar.golf.form.FormManager;
 import org.seasar.golf.util.TableUtil;
@@ -19,7 +19,7 @@ import org.seasar.golf.util.TableUtil;
  *
  * @author  shimura
  */
-public class Example2Frame extends javax.swing.JFrame  implements GolfFormInterface {
+public class Example2Frame extends javax.swing.JFrame  implements GolfForm {
     private FormManager formManager = null;
     private GolfTableModel golfTableModel= new GolfTableModel();
     

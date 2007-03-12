@@ -11,7 +11,7 @@ import javax.swing.JMenuBar;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.ListSelectionModel;
-import org.seasar.golf.GolfFormInterface;
+import org.seasar.golf.GolfForm;
 import org.seasar.golf.GolfTableModel;
 import org.seasar.golf.binding.GolfBindingUtil;
 import org.seasar.golf.binding.TableBindHandler;
@@ -22,7 +22,7 @@ import org.seasar.golf.util.TableUtil;
  *
  * @author  shimura
  */
-public class Example3Frame extends javax.swing.JFrame  implements GolfFormInterface {
+public class Example3Frame extends javax.swing.JFrame  implements GolfForm {
     private FormManager formManager = null;
     private GolfTableModel golfTableModel = new GolfTableModel();
     private TableBindHandler table1BindHandler = null;

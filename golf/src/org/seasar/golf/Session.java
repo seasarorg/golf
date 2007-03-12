@@ -51,7 +51,7 @@ public class Session {
                 getContainer().getComponent(TrxDispatcherInterface.class);
     }
     public void init(){
-        ((GolfFormInterface)containerFrame).initBinding(null);
+        ((GolfForm)containerFrame).initBinding(null);
         processMenuAction("MENU");
         
     }

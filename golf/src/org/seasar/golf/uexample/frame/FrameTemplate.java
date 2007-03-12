@@ -9,14 +9,14 @@ package org.seasar.golf.uexample.frame;
 import java.util.HashMap;
 import javax.swing.JMenuBar;
 import javax.swing.JPanel;
-import org.seasar.golf.GolfFormInterface;
+import org.seasar.golf.GolfForm;
 import org.seasar.golf.form.FormManager;
 
 /**
  *
  * @author  shimura
  */
-public class FrameTemplate extends javax.swing.JFrame implements GolfFormInterface{
+public class FrameTemplate extends javax.swing.JFrame implements GolfForm{
     private FormManager formManager = null;
  //   private GolfTableModel golfTableModel= new GolfTableModel();    
     /** Creates new form VdrFrame */

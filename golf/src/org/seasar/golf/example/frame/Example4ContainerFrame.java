@@ -10,7 +10,7 @@ import java.util.HashMap;
 import javax.swing.JFrame;
 import javax.swing.JMenuBar;
 import javax.swing.JPanel;
-import org.seasar.golf.GolfFormInterface;
+import org.seasar.golf.GolfForm;
 import org.seasar.golf.form.ContainerManager;
 import org.seasar.golf.form.FormManager;
 
@@ -18,7 +18,7 @@ import org.seasar.golf.form.FormManager;
  *
  * @author  shimura
  */
-public class Example4ContainerFrame extends javax.swing.JFrame implements GolfFormInterface{
+public class Example4ContainerFrame extends javax.swing.JFrame implements GolfForm{
     private ContainerManager containerMgr;
     /** Creates new form Example4ContainerFrame */
     public Example4ContainerFrame() {

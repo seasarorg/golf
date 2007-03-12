@@ -12,7 +12,7 @@ import javax.swing.JPanel;
 import javax.swing.JTree;
 import javax.swing.tree.DefaultMutableTreeNode;
 import org.seasar.framework.container.factory.SingletonS2ContainerFactory;
-import org.seasar.golf.GolfFormInterface;
+import org.seasar.golf.GolfForm;
 import org.seasar.golf.form.FormManager;
 import org.seasar.golf.menu.MenuDisplayItem;
 import org.seasar.golf.menu.MenuFactory;
@@ -22,7 +22,7 @@ import org.seasar.golf.util.TreeUtil;
  *
  * @author  shimura
  */
-public class MenuFrame extends javax.swing.JFrame  implements GolfFormInterface {
+public class MenuFrame extends javax.swing.JFrame  implements GolfForm {
     public FormManager formManager = null;
     
     /**

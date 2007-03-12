@@ -13,6 +13,7 @@ import java.awt.Color;
 import java.lang.reflect.Field;
 import java.util.HashMap;
 import javax.swing.JComponent;
+import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
@@ -45,8 +46,10 @@ public class FormManager {
     private Color normalBgColor;    
     private String mode;
     private HashMap formData = new HashMap();    
+    private JDialog dialog;
 
     /** Creates a new instance of FrameManager */
+    
     public FormManager(JFrame frame) {
         this.setFrame(frame);
     }
@@ -251,6 +254,14 @@ public class FormManager {
 
     public HashMap getFormData() {
         return formData;
+    }
+
+    public JDialog getDialog() {
+        return dialog;
+    }
+
+    public void setDialog(JDialog dialog) {
+        this.dialog = dialog;
     }
 
 }

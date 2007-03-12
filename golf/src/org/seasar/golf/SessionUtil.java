@@ -65,7 +65,7 @@ public class SessionUtil {
                             }
                         }
                         if (i > 0) {
-                            GolfFormInterface form = setForm(i, session);
+                            GolfForm form = setForm(i, session);
                             form.processAction(formAction.getParams());
                         }
                     break;
@@ -81,7 +81,7 @@ public class SessionUtil {
                 formManager.init();
                 formManager.setSession(session);
                 formManager.setForm(formName); 
-                ((org.seasar.golf.GolfFormInterface) form).setFormManger(formManager);
+                ((org.seasar.golf.GolfForm) form).setFormManger(formManager);
                 return form;
         }
         
@@ -89,13 +89,13 @@ public class SessionUtil {
                 javax.swing.JFrame form =  createForm(formAction.getForm(), session);
                 java.util.HashMap actionParam = formAction.getParams();
                 HashMap newParams =mergrParams(params, actionParam);
-                ((org.seasar.golf.GolfFormInterface) form).initBinding(newParams);
+                ((org.seasar.golf.GolfForm) form).initBinding(newParams);
                 removeUpperForm(index - 1, session);
-                session.getFormManagers().add(((org.seasar.golf.GolfFormInterface) form).getFormManager());
+                session.getFormManagers().add(((org.seasar.golf.GolfForm) form).getFormManager());
 }
-        public static GolfFormInterface setForm(int index, Session session ){
+        public static GolfForm setForm(int index, Session session ){
                     removeUpperForm(index , session);
-                    GolfFormInterface golfForm =   (GolfFormInterface)((FormManager) session.getFormManagers().get(index
+                    GolfForm golfForm =   (GolfForm)((FormManager) session.getFormManagers().get(index
                             )).getFrame();
                     session.getContainerManager().setForm( golfForm); 
                     return golfForm;
@@ -106,6 +106,11 @@ public class SessionUtil {
         } 
         public static void removeUpperForm(int index, Session session) {
             while(session.getFormManagers().size() > index + 1) {
+                if (((FormManager)session.getFormManagers().get(session.getFormManagers().size() - 1))
+                    .getDialog() != null) {
+                    ((FormManager)session.getFormManagers().get(session.getFormManagers().size() - 1))
+                    .getDialog().dispose();
+                }
                 session.getFormManagers().remove(session.getFormManagers().size() - 1);
             }
         }

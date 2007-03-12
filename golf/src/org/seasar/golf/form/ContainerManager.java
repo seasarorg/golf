@@ -13,7 +13,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import org.jdesktop.layout.GroupLayout;
 import org.seasar.golf.Factory;
-import org.seasar.golf.GolfFormInterface;
+import org.seasar.golf.GolfForm;
 
 /**
  *
@@ -29,13 +29,13 @@ public class ContainerManager {
     }
 
     public JFrame createFormAndSetForm(String newForm) {
-        GolfFormInterface newFrame = null;
-        newFrame = (GolfFormInterface)Factory.createForm(newForm);
+        GolfForm newFrame = null;
+        newFrame = (GolfForm)Factory.createForm(newForm);
         newFrame.initBinding(null);
         return setForm(newFrame);
     }
     
-    public JFrame setForm(GolfFormInterface newFrame) {
+    public JFrame setForm(GolfForm newFrame) {
         container.getRootPane().setJMenuBar(newFrame.getMenu());
         String title = ((JFrame)newFrame).getTitle();
         if (title != null && title.length() > 0) {
@@ -45,7 +45,7 @@ public class ContainerManager {
         }
         GroupLayout layout = (GroupLayout)container.getContentPane().getLayout();
         if (currentPanel == null) {
-            currentPanel = ((GolfFormInterface)container).getContentPanel();
+            currentPanel = ((GolfForm)container).getContentPanel();
         }
         layout.replace(currentPanel, newFrame.getContentPanel());
         currentPanel = newFrame.getContentPanel();

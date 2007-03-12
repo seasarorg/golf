@@ -9,7 +9,7 @@ package org.seasar.golf.uexample.frame;
 import java.util.HashMap;
 import javax.swing.JMenuBar;
 import javax.swing.JPanel;
-import org.seasar.golf.GolfFormInterface;
+import org.seasar.golf.GolfForm;
 import org.seasar.golf.data.ResultData;
 import org.seasar.golf.form.FormManager;
 import org.seasar.golf.transaction.TrxUtil;
@@ -18,7 +18,7 @@ import org.seasar.golf.transaction.TrxUtil;
  *
  * @author  shimura
  */
-public class VdrFrame extends javax.swing.JFrame implements GolfFormInterface{
+public class VdrFrame extends javax.swing.JFrame implements GolfForm{
     private FormManager formManager = null;
     private String cat="";
     //private GolfTableModel golfTableModel= new GolfTableModel();    

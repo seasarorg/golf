@@ -8,7 +8,7 @@ import javax.swing.JTable;
 import javax.swing.text.JTextComponent;
 import org.seasar.framework.container.factory.SingletonS2ContainerFactory;
 import org.seasar.golf.ColumnDef;
-import org.seasar.golf.GolfFormInterface;
+import org.seasar.golf.GolfForm;
 import org.seasar.golf.GolfTableModel;
 import org.seasar.golf.data.TableData;
 import org.seasar.golf.util.GolfSetting;
@@ -47,8 +47,8 @@ public class FormManagerUtil {
 			
 		}
 	}
-         public  static  GolfFormInterface getFrame(String frameName) {
-            return (GolfFormInterface) SingletonS2ContainerFactory.getContainer().getComponent(frameName);
+         public  static  GolfForm getFrame(String frameName) {
+            return (GolfForm) SingletonS2ContainerFactory.getContainer().getComponent(frameName);
         }
 	public static  void setTableColumnSub(JTable jt, String tableDisplayName, 
 			GolfTableModel gtm, TableData td, FormValidationManager formValidationManager, String tableHostName) {
