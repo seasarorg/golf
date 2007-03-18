@@ -46,7 +46,8 @@ public class VdrTrxLogic implements TransactionInterface{
         return resultData;
     }
     private void processMode(RequestData requestData, ResultData resultData){
-    	String mode = (String) requestData.getParams().get("mode");
+    	String mode = (String) requestData.getParams().get("_mode");
+    	String cat = (String) requestData.getParams().get("_cat");
     	if (mode.equals("NextInq")){
     		BigDecimal ccode = (BigDecimal) requestData.getParams().get("ccode");
     		Company comp = companyDao.getEntity(ccode);
@@ -56,7 +57,8 @@ public class VdrTrxLogic implements TransactionInterface{
     		} else {
     			resultData.getFormAction().setFormStack(FormStack.NEXT);
     			resultData.getFormAction().setForm("vdr");
-    			resultData.getParams().put("mode", "ref");
+    			resultData.getParams().put("_mode", "ref");
+    			resultData.getParams().put("_cat", cat);    			
     			resultData.getFields().put("ccode",comp.getCcode().toString());
     			resultData.getFields().put("shortname",comp.getShortname());
     			resultData.getFields().put("name",comp.getName());
