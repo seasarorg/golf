@@ -7,6 +7,7 @@
 package org.seasar.golf.uexample.dialog;
 
 import java.awt.Dialog;
+import java.math.BigDecimal;
 import java.util.HashMap;
 import javax.swing.ListSelectionModel;
 import org.seasar.golf.GolfDialog;
@@ -14,10 +15,12 @@ import org.seasar.golf.GolfTableModel;
 import org.seasar.golf.data.DataUtil;
 import org.seasar.golf.data.RequestData;
 import org.seasar.golf.data.ResultData;
+import org.seasar.golf.form.DataSelect;
 import org.seasar.golf.form.FormManager;
 import org.seasar.golf.transaction.RequestDataFactory;
 import org.seasar.golf.transaction.TrxUtil;
 import org.seasar.golf.util.TableUtil;
+import org.seasar.golf.util.ValidationUtil;
 
 /**
  *
@@ -193,6 +196,7 @@ public class VdrSelectDialog extends javax.swing.JDialog implements GolfDialog {
          if (formManager.getFormData().get("_action").equals("dataSelect")){
              DataUtil.copyParam(formManager.getFormData(), requestData.getParams(), "_dataSelect");
              DataUtil.copyParam(formManager.getFormData(), requestData.getParams(), "_action");
+             DataUtil.copyParam(formManager.getFormData(), requestData.getParams(), "_cat");
          }
     }
     formManager.getSession().trxExecute(requestData, formManager);
@@ -204,7 +208,20 @@ private void jButtonCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN
 }//GEN-LAST:event_jButtonCancelActionPerformed
 
 private void jButtonEnterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEnterActionPerformed
-    // TODO add your handling code here:
+    int row = jTable1.getSelectionModel().getMinSelectionIndex();
+    if (row == -1) {
+        ValidationUtil.showErrorMessage("çsÇ™ëIÇŒÇÍÇƒÇ¢Ç‹ÇπÇÒ", formManager);
+        return;
+    }
+    BigDecimal ccode = (BigDecimal) golfTableModel.getValueAt(row,0);
+    if (formManager.getFormData().containsKey("_action")) {
+        if (formManager.getFormData().get("_action").equals("dataSelect")) {
+            DataSelect select = (DataSelect) formManager.getFormData().get("_dataSelect");
+            select.setSelectedDatum(ccode);
+            formManager.getSession().processDataSelect(select);
+            return;
+        }
+    }
 }//GEN-LAST:event_jButtonEnterActionPerformed
     
     /**
@@ -246,6 +263,7 @@ private void jButtonEnterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
     }
     private void initAction(HashMap params){
         formManager.getFormData().put("_action", params.get("_action"));
+        formManager.getFormData().put("_cat", params.get("_cat"));        
         if (params.get("_action").equals("dataSelect")) {
             formManager.getFormData().put("_dataSelect", params.get("_dataSelect"));
         }

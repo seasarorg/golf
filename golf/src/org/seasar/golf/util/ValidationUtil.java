@@ -76,6 +76,12 @@ public class ValidationUtil {
     public static GolfValidator getValidator(String validatorName) {
         return (GolfValidator)SingletonS2ContainerFactory.getContainer().getComponent(validatorName.trim());
     }
+    public static void updateValueModelWithoutValidation(FormManager formManager, 
+                final ValueModel valueModel, final Object key, final String newDataS) {
+        formManager.getFormValidationManager().setFireValidate(false);
+        updateValueModel(valueModel, key,  newDataS);
+        formManager.getFormValidationManager().setFireValidate(true);        
+    }
     public static void updateValueModel(final ValueModel valueModel, final Object key, final String newDataS) {
         if (valueModel != null)    {
             valueModel.setValue(newDataS);

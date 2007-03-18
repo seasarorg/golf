@@ -19,7 +19,7 @@ import java.util.HashMap;
 public class FormAction implements Serializable {
     public enum FormStack {
         MENU, FIRST, SAME, NEXT, BACK, DIALOG, NEWMENU, 
-            NEWFIRST, RESULT, SELECTED, DIALOGPROCESS}  
+            NEWFIRST, RESULT, SELECTED, PROCESS, DIALOGPROCESS}  
     private FormStack formStack = FormStack.RESULT;
     private String form = null;
     private HashMap params = new HashMap();
