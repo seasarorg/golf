@@ -79,6 +79,10 @@ public class SessionUtil {
                             form.processAction(formAction.getParams());
                         }
                     break;
+            case DIALOGPROCESS:
+                        int processNo = session.getFormManagers().size() - 1;
+                        ((GolfDialog)session.getFormManagers().get(processNo).getFrame()).processAction(params);
+                    break;
                 default:
                     break;
             }

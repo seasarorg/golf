@@ -142,7 +142,7 @@ public class Session {
         return containerFrame;
     }
     
-    public ArrayList getFormManagers() {
+    public ArrayList <FormManager> getFormManagers() {
         return formManagers;
     }
     
