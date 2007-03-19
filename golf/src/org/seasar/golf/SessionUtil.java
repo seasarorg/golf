@@ -1,3 +1,4 @@
+
 /*
  * SessionUtil.java
  *
@@ -79,18 +80,17 @@ public class SessionUtil {
                             form.processAction(formAction.getParams());
                         }
                     break;
-            case PROCESS:
-                        int processNo = session.getFormManagers().size() - 1;
-                        ((GolfForm)session.getFormManagers().get(processNo).getFrame()).processAction(params);
-                    break;                    
-            case DIALOGPROCESS:
-                        int dialogProcessNo = session.getFormManagers().size() - 1;
-                        ((GolfDialog)session.getFormManagers().get(dialogProcessNo).getDialog()).processAction(params);
-                    break;
                 default:
                     break;
             }
-
+            if (formAction.isProcessAction()) {
+                FormManager formManager = session.getFormManagers().get(session.getFormManagers().size() - 1);
+                if (formManager.getFrame() != null) {
+                    ((GolfForm)formManager.getFrame()).processAction(params);
+                } else {
+                    ((GolfDialog)formManager.getDialog()).processAction(params);                    
+                }
+            }
         }   
         public static JFrame createForm(String formName, Session session){
                   javax.swing.JFrame form = org.seasar.golf.Factory.

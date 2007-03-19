@@ -19,11 +19,20 @@ import java.util.HashMap;
 public class FormAction implements Serializable {
     public enum FormStack {
         MENU, FIRST, SAME, NEXT, BACK, DIALOG, NEWMENU, 
-            NEWFIRST, RESULT, SELECTED, PROCESS, DIALOGPROCESS}  
+            NEWFIRST, RESULT, SELECTED}  
     private FormStack formStack = FormStack.RESULT;
     private String form = null;
     private HashMap params = new HashMap();
-    /** Creates a new instance of FormAction */
+    private boolean processAction = false;
+    
+    public void setProcessAction(boolean processAction) {
+        this.processAction = processAction;
+    }
+
+    public boolean isProcessAction() {
+        return processAction;
+    }
+/** Creates a new instance of FormAction */
     public FormAction() {
     }
     
