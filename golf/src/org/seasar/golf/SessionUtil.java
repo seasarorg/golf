@@ -31,6 +31,7 @@ public class SessionUtil {
         private SessionUtil() {
         }
         public static void processAction(FormAction formAction, Session session, HashMap params) {
+            HashMap newParams = mergeParams(params, formAction.getParams());
             switch (formAction.getFormStack()) {
                 case MENU :
                         if (session.getFormManagers().size()==0) {
@@ -39,15 +40,15 @@ public class SessionUtil {
                         setForm(0, session);
                     break;
                 case FIRST :
-                        createAndSetForm(1,formAction, session, params);
+                        createAndSetForm(1,formAction, session, newParams);
                     break;  
                 case NEXT:
                         int no = session.getFormManagers().size();
-                        createAndSetForm(no,formAction, session, params);
+                        createAndSetForm(no,formAction, session, newParams);
                     break;
                 case SAME:
                         int sameNo = session.getFormManagers().size() - 1;
-                        createAndSetForm(sameNo,formAction, session, params);
+                        createAndSetForm(sameNo,formAction, session, newParams);
                     break;                    
                 case BACK:
                         int newNo = session.getFormManagers().size() - 2;
@@ -55,7 +56,7 @@ public class SessionUtil {
                         break;
                 case DIALOG:
                         int dialogNo = session.getFormManagers().size();
-                        createDialog(dialogNo,formAction, session, params);
+                        createDialog(dialogNo,formAction, session, newParams);
                     break;                        
                 case NEWMENU :
                         session.getConnection().addSession();
@@ -66,7 +67,7 @@ public class SessionUtil {
                             break;
                         }
                         formAction.setFormStack(FormAction.FormStack.FIRST);
-                        s.processAction(formAction, params);
+                        s.processAction(formAction, newParams);
                     break;        
             case SELECTED:
                         int i = 0;
@@ -77,7 +78,8 @@ public class SessionUtil {
                         }
                         if (i > 0) {
                             GolfForm form = setForm(i, session);
-                            form.processAction(formAction.getParams());
+                            formAction.setProcessAction(true);
+                            //form.processAction(formAction.getParams());
                         }
                     break;
                 default:
@@ -86,9 +88,9 @@ public class SessionUtil {
             if (formAction.isProcessAction()) {
                 FormManager formManager = session.getFormManagers().get(session.getFormManagers().size() - 1);
                 if (formManager.getFrame() != null) {
-                    ((GolfForm)formManager.getFrame()).processAction(params);
+                    ((GolfForm)formManager.getFrame()).processAction(newParams);
                 } else {
-                    ((GolfDialog)formManager.getDialog()).processAction(params);                    
+                    ((GolfDialog)formManager.getDialog()).processAction(newParams);                    
                 }
             }
         }   
@@ -105,9 +107,7 @@ public class SessionUtil {
         
         public static void createForm(int index, FormAction formAction, Session session, HashMap params) {
                 javax.swing.JFrame form =  createForm(formAction.getForm(), session);
-                java.util.HashMap actionParam = formAction.getParams();
-                HashMap newParams =mergrParams(params, actionParam);
-                ((org.seasar.golf.GolfForm) form).initBinding(newParams);
+                ((org.seasar.golf.GolfForm) form).initBinding(params);
                 removeUpperForm(index - 1, session);
                 session.getFormManagers().add(((org.seasar.golf.GolfForm) form).getFormManager());
 }
@@ -161,12 +161,10 @@ public class SessionUtil {
         }        
         private static void createDialog(int index, FormAction formAction, Session session, HashMap params) {
                  javax.swing.JDialog dialog =  createDialog(formAction.getForm(), session, index);
-                java.util.HashMap actionParam = formAction.getParams();
-                HashMap newParams =mergrParams(params, actionParam);
-                ((org.seasar.golf.GolfDialog) dialog).initBinding(newParams);
+                ((org.seasar.golf.GolfDialog) dialog).initBinding(params);
                 session.getFormManagers().add(((org.seasar.golf.GolfDialog) dialog).getFormManager()); 
                 dialog.setVisible(true);
-                //‚±‚±‚Å Dialog •\Ž¦
+                //\u3053\u3053\u3067 Dialog \u8868\u793A
                  removeUpperForm(index -1, session);
         }         
         private static void createAndSetForm(int index, FormAction formAction, Session session, HashMap params) {
@@ -195,7 +193,7 @@ public class SessionUtil {
             return param;
         }
 
-    private static HashMap mergrParams(HashMap params, HashMap actionParams) {
+    private static HashMap mergeParams(HashMap params, HashMap actionParams) {
         HashMap newParams = new HashMap();
         if (actionParams!=null) {
             newParams.putAll(actionParams);
