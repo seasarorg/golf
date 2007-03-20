@@ -194,7 +194,8 @@ public class VdrSelectDialog extends javax.swing.JDialog implements GolfDialog {
     RequestData requestData = RequestDataFactory.createRequestData("vdrSelect",null,formManager);
     if (formManager.getFormData().containsKey("_action")) {
          if (formManager.getFormData().get("_action").equals("dataSelect")){
-             DataUtil.copyParam(formManager.getFormData(), requestData.getParams(), "_dataSelect");
+             formManager.getFormDatum(requestData.getParams(), "_dataSelect");
+//             DataUtil.copyParam(formManager.getFormData(), requestData.getParams(), "_dataSelect");
              DataUtil.copyParam(formManager.getFormData(), requestData.getParams(), "_action");
              DataUtil.copyParam(formManager.getFormData(), requestData.getParams(), "_cat");
          }
@@ -262,10 +263,13 @@ private void jButtonEnterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
         }        
     }
     private void initAction(HashMap params){
-        formManager.getFormData().put("_action", params.get("_action"));
-        formManager.getFormData().put("_cat", params.get("_cat"));        
+        formManager.setFormDatum(params, "_action");
+        formManager.setFormDatum(params, "_cat");         
+//        formManager.getFormData().put("_action", params.get("_action"));
+//        formManager.getFormData().put("_cat", params.get("_cat"));        
         if (params.get("_action").equals("dataSelect")) {
-            formManager.getFormData().put("_dataSelect", params.get("_dataSelect"));
+            formManager.setFormDatum(params, "_dataSelect");
+//            formManager.getFormData().put("_dataSelect", params.get("_dataSelect"));
         }
         
     }    

@@ -299,7 +299,7 @@ private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
    formAction.setForm("VdrSelect");
    formAction.getParams().put("_cat", cat);
    formAction.getParams().put("_action","dataSelect");
-   formAction.getParams().put("_dataSelect",new DataSelect("vdri","ccode"));
+   formAction.getParams().put("_dataSelect",new DataSelect(formManager,"ccode"));
    formManager.getSession().processAction(formAction, null);
 }//GEN-LAST:event_jButton2ActionPerformed
 
@@ -309,7 +309,7 @@ private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
    formAction.setForm("Vdrs");
    formAction.getParams().put("_cat", cat);
    formAction.getParams().put("_action","dataSelect");
-   formAction.getParams().put("_dataSelect",new DataSelect("vdri","ccode"));
+   formAction.getParams().put("_dataSelect",new DataSelect(formManager,"ccode"));
    formManager.getSession().processAction(formAction, null);
 }//GEN-LAST:event_jButton1ActionPerformed
 

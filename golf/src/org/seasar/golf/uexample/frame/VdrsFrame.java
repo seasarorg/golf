@@ -330,9 +330,11 @@ private void jTextActionKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:ev
     }
     
     private void initAction(HashMap params){
-        formManager.getFormData().put("_action", params.get("_action"));
+        formManager.setFormDatum(params, "_action");        
+//        formManager.getFormData().put("_action", params.get("_action"));
         if (params.get("_action").equals("dataSelect")) {
-            formManager.getFormData().put("_dataSelect", params.get("_dataSelect"));
+            formManager.setFormDatum(params, "_dataSelect");
+//            formManager.getFormData().put("_dataSelect", params.get("_dataSelect"));
         }
         
     }
