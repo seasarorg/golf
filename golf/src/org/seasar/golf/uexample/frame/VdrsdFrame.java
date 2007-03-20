@@ -13,7 +13,6 @@ import javax.swing.JPanel;
 import javax.swing.ListSelectionModel;
 import org.seasar.golf.GolfForm;
 import org.seasar.golf.GolfTableModel;
-import org.seasar.golf.data.DataUtil;
 import org.seasar.golf.data.RequestData;
 import org.seasar.golf.data.ResultData;
 import org.seasar.golf.form.DataSelect;
@@ -314,7 +313,7 @@ private void jTextActionKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:ev
         formManager.setValidationFromCsvResource("vdrsd_bind.csv");
         jTable1.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
         formManager.setTableColumnFromCsvResource(
-    			jTable1, "CompanyTable", "CompanyTable", golfTableModel, "Vdrsd_table.csv");
+    			jTable1, "CompanyTable", "CompanyTable", golfTableModel, "vdrsd_table.csv");
         TableUtil.SetPreferedColumnWIdth(jTable1, new int[]{15,40,60,150,80 });  
         TrxUtil.setTableDataFromResult( "CompanyTable", (ResultData)params.get("_resultData"), formManager);
         if (params.containsKey("_action")) {
@@ -323,10 +322,8 @@ private void jTextActionKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:ev
     }
     private void initAction(HashMap params){
         formManager.setFormDatum(params, "_action");
-//        formManager.getFormData().put("_action", params.get("_action"));
         if (params.get("_action").equals("dataSelect")) {
             formManager.setFormDatum(params, "_dataSelect");
-//            DataUtil.copyParam(params, formManager.getFormData(), "_dataSelect");
         }
         
     }    

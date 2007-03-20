@@ -10,7 +10,6 @@ import java.util.HashMap;
 import javax.swing.JMenuBar;
 import javax.swing.JPanel;
 import org.seasar.golf.GolfForm;
-import org.seasar.golf.data.DataUtil;
 import org.seasar.golf.data.RequestData;
 import org.seasar.golf.form.FormManager;
 import org.seasar.golf.transaction.RequestDataFactory;
@@ -271,8 +270,8 @@ private void jB_EnterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
     RequestData requestData = RequestDataFactory.createRequestData("vdrs",null,formManager);
     if (formManager.getFormData().containsKey("_action")) {
          if (formManager.getFormData().get("_action").equals("dataSelect")){
-             DataUtil.copyParam(formManager.getFormData(), requestData.getParams(), "_dataSelect");
-             DataUtil.copyParam(formManager.getFormData(), requestData.getParams(), "_action");
+             formManager.getFormDatum(requestData.getParams(), "_dataSelect");
+             formManager.getFormDatum(requestData.getParams(), "_action");             
          }
     }
     formManager.getSession().trxExecute(requestData, formManager);
@@ -331,10 +330,8 @@ private void jTextActionKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:ev
     
     private void initAction(HashMap params){
         formManager.setFormDatum(params, "_action");        
-//        formManager.getFormData().put("_action", params.get("_action"));
         if (params.get("_action").equals("dataSelect")) {
             formManager.setFormDatum(params, "_dataSelect");
-//            formManager.getFormData().put("_dataSelect", params.get("_dataSelect"));
         }
         
     }

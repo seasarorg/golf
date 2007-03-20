@@ -33,12 +33,11 @@ public class Example2Frame extends javax.swing.JFrame  implements GolfForm {
         formManager.createReportList(jScrollPane1);
         jTable1.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
         formManager.setTableColumnFromCsvResource(
-    			jTable1, "Test Table", golfTableModel, "Example2_table1.csv");
+    			jTable1, "Test Table", golfTableModel, "example2_table1.csv");
         for (int i=0; i < 5; i++) {
             addNewRow();
         }
         TableUtil.SetPreferedColumnWIdth(jTable1, new int[]{15,40,60,150,40,80 });
-        //frameManager.setValidationFromCsvResource("Example1Frame_bind.csv");
     }
     /** This method is called from within the constructor to
      * initialize the form.

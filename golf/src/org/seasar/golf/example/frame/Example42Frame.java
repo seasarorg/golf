@@ -145,8 +145,8 @@ public class Example42Frame extends javax.swing.JFrame implements GolfForm{
         formManager = new FormManager(this);
         formManager.init();
         formManager.createReportList(jScrollPane1);
-        formManager.setValidationFromCsvResource("Example4_2_bind.csv");
-        formManager.setBindFromCsvResource("Example4_2_bind2.csv"); 
+        formManager.setValidationFromCsvResource("example4_2_bind.csv");
+        formManager.setBindFromCsvResource("example4_2_bind2.csv"); 
     }
 
     public void processAction(HashMap params) {

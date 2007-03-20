@@ -29,7 +29,7 @@ public class MenuImpl  implements MenuInterface{
     public boolean createMenu(JTree jt, String role){
         TableData td = new TableData();
         try {
-            TableUtil.ReadCsvFromResource(td, role + "Menu.csv");
+            TableUtil.ReadCsvFromResource(td, role + "menu.csv");
         } catch (ResourceNotFoundRuntimeException ex) {
                 return false;
         }
@@ -54,7 +54,7 @@ public class MenuImpl  implements MenuInterface{
 
     public void setAction(HashMap action) {
         TableData td = new TableData();
-        TableUtil.ReadCsvFromResource(td, "menuAction.csv");       
+        TableUtil.ReadCsvFromResource(td, "menuaction.csv");       
         for (int i = 0; i < td.getRowCount(); i++) {
             MenuActionItem item = 
                     new MenuActionItem((String)td.getValueAt(i,1), (String)td.getValueAt(i,2));

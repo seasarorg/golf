@@ -12,7 +12,6 @@ import java.util.HashMap;
 import javax.swing.ListSelectionModel;
 import org.seasar.golf.GolfDialog;
 import org.seasar.golf.GolfTableModel;
-import org.seasar.golf.data.DataUtil;
 import org.seasar.golf.data.RequestData;
 import org.seasar.golf.data.ResultData;
 import org.seasar.golf.form.DataSelect;
@@ -195,9 +194,8 @@ public class VdrSelectDialog extends javax.swing.JDialog implements GolfDialog {
     if (formManager.getFormData().containsKey("_action")) {
          if (formManager.getFormData().get("_action").equals("dataSelect")){
              formManager.getFormDatum(requestData.getParams(), "_dataSelect");
-//             DataUtil.copyParam(formManager.getFormData(), requestData.getParams(), "_dataSelect");
-             DataUtil.copyParam(formManager.getFormData(), requestData.getParams(), "_action");
-             DataUtil.copyParam(formManager.getFormData(), requestData.getParams(), "_cat");
+             formManager.getFormDatum(requestData.getParams(), "_action");
+             formManager.getFormDatum(requestData.getParams(), "_cat");             
          }
     }
     formManager.getSession().trxExecute(requestData, formManager);
@@ -253,10 +251,10 @@ private void jButtonEnterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
     public void initBinding(HashMap params) {
         this.setResizable(false);
         formManager.createReportList(jScrollPane1);
-        formManager.setValidationFromCsvResource("VdrSelect_Bind.csv");        
+        formManager.setValidationFromCsvResource("vdrselect_bind.csv");        
         jTable1.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
         formManager.setTableColumnFromCsvResource(
-    			jTable1, "CompanyTable", "CompanyTable", golfTableModel, "Vdrsd_table.csv");
+    			jTable1, "CompanyTable", "CompanyTable", golfTableModel, "vdrsd_table.csv");
         TableUtil.SetPreferedColumnWIdth(jTable1, new int[]{15,40,60,150,80 });         
         if (params.containsKey("_action")) {
             initAction(params);
@@ -265,11 +263,8 @@ private void jButtonEnterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
     private void initAction(HashMap params){
         formManager.setFormDatum(params, "_action");
         formManager.setFormDatum(params, "_cat");         
-//        formManager.getFormData().put("_action", params.get("_action"));
-//        formManager.getFormData().put("_cat", params.get("_cat"));        
         if (params.get("_action").equals("dataSelect")) {
             formManager.setFormDatum(params, "_dataSelect");
-//            formManager.getFormData().put("_dataSelect", params.get("_dataSelect"));
         }
         
     }    

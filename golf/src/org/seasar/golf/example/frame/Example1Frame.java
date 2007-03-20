@@ -28,8 +28,8 @@ public class Example1Frame extends javax.swing.JFrame  implements GolfForm {
         formManager = new FormManager(this);
         formManager.init();
         formManager.createReportList(jScrollPane1);
-        formManager.setValidationFromCsvResource("Example1_bind.csv");
-        formManager.setBindFromCsvResource("Example1_bind2.csv");
+        formManager.setValidationFromCsvResource("example1_bind.csv");
+        formManager.setBindFromCsvResource("example1_bind2.csv");
         ((SelectionInList )formManager.getFormBindingManager().getValueModel("jComboBox1")).setListModel(
             new javax.swing.DefaultComboBoxModel(new String[] {"", "Item 11", "Item 22", "Item 33", "Item 44" }));
 
