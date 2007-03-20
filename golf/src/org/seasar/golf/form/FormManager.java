@@ -270,5 +270,10 @@ public class FormManager {
     public void setDialog(JDialog dialog) {
         this.dialog = dialog;
     }
-
+    public void setFormDatum(HashMap params, Object key) {
+        formData.put(key, params.get(key));
+    }
+    public void getFormDatum(HashMap params, Object key) {
+        params.put(key, formData.get(key));
+      
 }

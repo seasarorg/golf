@@ -24,6 +24,10 @@ public class DataSelect implements Serializable{
         this.requestForm = form;
         this.requestField = field;
     }    
+    public DataSelect(FormManager formManager, String field) {
+        this.requestForm = formManager.getForm();
+        this.requestField = field;
+    }    
     private String requestForm;
     private String requestField;
     private Object[] selectedData;
