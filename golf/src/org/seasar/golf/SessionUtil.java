@@ -85,6 +85,7 @@ public class SessionUtil {
                 default:
                     break;
             }
+
             if (formAction.isProcessAction()) {
                 FormManager formManager = session.getFormManagers().get(session.getFormManagers().size() - 1);
                 if (formManager.getFrame() != null) {
