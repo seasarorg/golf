@@ -11,10 +11,12 @@ import java.util.HashMap;
 import javax.swing.JMenuBar;
 import javax.swing.JPanel;
 import org.seasar.golf.GolfForm;
+import org.seasar.golf.data.RequestData;
 import org.seasar.golf.form.DataSelect;
 import org.seasar.golf.form.FormAction;
 import org.seasar.golf.form.FormAction.FormStack;
 import org.seasar.golf.form.FormManager;
+import org.seasar.golf.transaction.RequestDataFactory;
 
 /**
  *
@@ -331,8 +333,10 @@ private void jB_BackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
 }//GEN-LAST:event_jB_BackActionPerformed
 
 private void jB_EnterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jB_EnterActionPerformed
-//    RequestData requestData = RequestDataFactory.createRequestData("vdr","mode=test",formManager);
-
+    RequestData requestData = RequestDataFactory.createRequestData("vdri",null,formManager);
+    formManager.getFormDatum(requestData.getParams(), "_cat");
+    requestData.getParams().put("_mode", formManager.getMode());
+    formManager.getSession().trxExecute(requestData, formManager);
 }//GEN-LAST:event_jB_EnterActionPerformed
 
 private void jB_NewWindowActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jB_NewWindowActionPerformed

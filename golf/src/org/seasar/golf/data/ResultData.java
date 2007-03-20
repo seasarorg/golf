@@ -35,6 +35,9 @@ public class ResultData implements Serializable  {
     public Object getField(String fld) {
         return getFields().get(fld);
     }
+    public void setField(String fld, Object val){
+        getFields().put(fld, val);
+    }
     public HashMap getTables() {
         return tables;
     }
@@ -56,5 +59,8 @@ public class ResultData implements Serializable  {
     }
     public Object getParam(String fld) {
         return getParams().get(fld);
-    }        
+    }
+    public void setParam(String fld, Object val){
+        getParams().put(fld, val);
+    }
 }

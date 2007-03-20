@@ -265,7 +265,7 @@ private void jB_EnterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
         }
     }
     
-    RequestData requestData = RequestDataFactory.createRequestData("vdr","_mode=NextInq",formManager);
+    RequestData requestData = RequestDataFactory.createRequestData("vdr","_action=NextInq,_mode=R",formManager);
     requestData.getParams().put("ccode", ccode);
     requestData.getParams().put("_cat", cat);    
     formManager.getSession().trxExecute(requestData, formManager);   

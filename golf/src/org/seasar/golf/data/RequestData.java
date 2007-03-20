@@ -58,6 +58,10 @@ public class RequestData implements Serializable {
     }
     public Object getParam(String fld) {
         return getParams().get(fld);
+    }   
+    
+    public void setParam(String fld, Object val){
+        getParams().put(fld, val);
     }    
     public void setParams(HashMap params) {
         this.params = params;

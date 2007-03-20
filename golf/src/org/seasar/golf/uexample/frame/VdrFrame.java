@@ -410,17 +410,14 @@ private void jMenu1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:
         formManager.setValidationFromCsvResource("vdr_bind.csv");   
         formManager.setModeControlFromCsvResource("vdr_mode.csv");
         cat = (String)params.get("_cat");
-        setMode("R");
         if (params.containsKey("_mode")) {
-            processMode(params);
+            setMode((String)params.get("_mode"));
+        } else {
+            setMode("R");
         }
-    }
-    private void processMode(HashMap params) {
-        String mode = (String)params.get("_mode");
-        if (mode.equals("ref")) {
-            TrxUtil.setFieldDataFromResult((ResultData)params.get("_resultData"), formManager);
+        if (params.containsKey("_action")) {
+            processAction(params);
         }
-        
     }
     private void setMode(String mode) {
         formManager.setMode(mode);
@@ -429,19 +426,23 @@ private void jMenu1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:
     private void setTitle() {
         String title = (cat.equals("V")) ? "Vendor ":"Customer";
         if (formManager.getMode().equals("R")) {
-            title = title +  "表示";
+            title = title +  "\u8868\u793A";
         }
         if (formManager.getMode().equals("U")) {
-            title = title +  "更新";
+            title = title +  "\u66F4\u65B0";
         }
         if (formManager.getMode().equals("C")) {
-            title = title +  "新規";
+            title = title +  "\u65B0\u898F";
         }   
         jLabelHeader.setText(title);        
         FrameUtil.setTitle(title, formManager);        
     }
     
     public void processAction(HashMap params) {
+        String action = (String)params.get("_action");
+        if (action.equals("Result")) {
+            TrxUtil.setFieldDataFromResult((ResultData)params.get("_resultData"), formManager);
+        }
     }
     public void setFormManger(FormManager formManager) {
         this.formManager = formManager;
