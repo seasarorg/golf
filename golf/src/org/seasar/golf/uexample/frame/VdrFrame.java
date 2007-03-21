@@ -353,7 +353,16 @@ private void jB_SaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
     requestData.setParam("_cat",cat);
     requestData.setParam("_mode", formManager.getMode());
     requestData.setParam("_action","Save"); 
-    formManager.getSession().trxExecute(requestData, formManager);
+    ResultData resultData = formManager.getSession().trxExecute(requestData, formManager);
+    if (resultData.getValidationResult().hasErrors()){
+        return;
+    }
+    if (formManager.getMode().equals("C")) {
+        setMode("U");
+    }
+    TrxUtil.setFieldDataFromResult(resultData, formManager);
+    formManager.getFormValidationManager().setResult(resultData.getValidationResult());
+ 
 }//GEN-LAST:event_jB_SaveActionPerformed
 
     private void jTextActionKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextActionKeyReleased
