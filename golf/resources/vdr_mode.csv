@@ -7,3 +7,6 @@
 "javax.swing.JTextField","jTextVersion","R","R","R"
 "javax.swing.JButton","jB_Save",,,"D"
 "javax.swing.JButton","jB_Enter","D","D","D"
+"javax.swing.JMenuItem","jMenuDisplay","D",,"D"
+"javax.swing.JMenuItem","jMenuUpdate","D","D",
+"javax.swing.JMenuItem","jMenuCreate","D",,
