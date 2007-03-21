@@ -114,14 +114,10 @@ public class Session {
     }
     public ResultData trxExecute(RequestData requestData, FormManager formManager) {
         ResultData resultData = trxDispatcher.execute(requestData);
-//        if (resultData.getFormAction().getFormStack() != FormAction.FormStack.RESULT){
-            SessionUtil.processAction(resultData.getFormAction(), this, resultData.getParams());
-//        }
-//        if (resultData.getValidationResult().hasMessages()) {
-            resultData.setValidationResult(
-                    TrxUtil.updateValidationResult( formManager, resultData.getValidationResult()));
-            formManager.getFormValidationManager().setResult(resultData.getValidationResult());
-//        }
+        SessionUtil.processAction(resultData.getFormAction(), this, resultData.getParams());
+        resultData.setValidationResult(
+                TrxUtil.updateValidationResult( formManager, resultData.getValidationResult()));
+        formManager.getFormValidationManager().setResult(resultData.getValidationResult());
         return resultData;
     }
     public void closeFrame() {

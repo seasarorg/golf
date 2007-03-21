@@ -324,7 +324,7 @@ private void jMenuUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
 }//GEN-LAST:event_jMenuUpdateActionPerformed
 
 private void jMenuCreateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuCreateActionPerformed
-    jTextCcode.setText("");
+    formManager.setValue("jTextCcode", "");
     setMode("C");
 }//GEN-LAST:event_jMenuCreateActionPerformed
 
@@ -334,8 +334,8 @@ private void jB_BackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
 
 private void jB_EnterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jB_EnterActionPerformed
     RequestData requestData = RequestDataFactory.createRequestData("vdri",null,formManager);
-    formManager.getFormDatum(requestData.getParams(), "_cat");
-    requestData.getParams().put("_mode", formManager.getMode());
+    requestData.setParam("_cat",cat);
+    requestData.setParam("_mode", formManager.getMode());
     formManager.getSession().trxExecute(requestData, formManager);
 }//GEN-LAST:event_jB_EnterActionPerformed
 
@@ -379,14 +379,18 @@ private void jTextActionKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:ev
         formManager.setValidationFromCsvResource("vdri_bind.csv");   
         formManager.setModeControlFromCsvResource("vdri_mode.csv");
         cat = (String)params.get("_cat");
-        setMode("R");
+        if (params.containsKey("_mode")) {
+            setMode((String)params.get("_mode"));
+        } else {
+            setMode("R");
+        }
     }
 
     public void processAction(HashMap params) {
          if (params.containsKey("_dataSelect")) {
             DataSelect select = (DataSelect)params.get("_dataSelect");
             if (select.getRequestField().equals("ccode")) {
-                jTextCcode.setText(((BigDecimal)select.getSelectedDatum()).toString());
+                formManager.setValue("jTextCcode", ((BigDecimal)select.getSelectedDatum()).toString());
             }
         }
             

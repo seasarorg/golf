@@ -220,7 +220,6 @@
                   <Image iconType="3" name="/image/saveHS.png"/>
                 </Property>
                 <Property name="toolTipText" type="java.lang.String" value="Save"/>
-                <Property name="enabled" type="boolean" value="false"/>
                 <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                   <Dimension value="[25, 25]"/>
                 </Property>

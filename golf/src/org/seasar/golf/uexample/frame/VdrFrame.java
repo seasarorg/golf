@@ -10,8 +10,10 @@ import java.util.HashMap;
 import javax.swing.JMenuBar;
 import javax.swing.JPanel;
 import org.seasar.golf.GolfForm;
+import org.seasar.golf.data.RequestData;
 import org.seasar.golf.data.ResultData;
 import org.seasar.golf.form.FormManager;
+import org.seasar.golf.transaction.RequestDataFactory;
 import org.seasar.golf.transaction.TrxUtil;
 
 /**
@@ -97,7 +99,6 @@ public class VdrFrame extends javax.swing.JFrame implements GolfForm{
 
         jB_Save.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/saveHS.png")));
         jB_Save.setToolTipText("Save");
-        jB_Save.setEnabled(false);
         jB_Save.setPreferredSize(new java.awt.Dimension(25, 25));
         jB_Save.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -344,7 +345,15 @@ private void jB_BackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
 }//GEN-LAST:event_jB_BackActionPerformed
 
 private void jB_SaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jB_SaveActionPerformed
-    // TODO add your handling code here:
+    formManager.getFormValidationManager().Validate(true);
+    if (formManager.getFormValidationManager().getResult().hasMessages()) {
+        return;
+    }
+    RequestData requestData = RequestDataFactory.createRequestData("vdr",null,formManager);
+    requestData.setParam("_cat",cat);
+    requestData.setParam("_mode", formManager.getMode());
+    requestData.setParam("_action","Save"); 
+    formManager.getSession().trxExecute(requestData, formManager);
 }//GEN-LAST:event_jB_SaveActionPerformed
 
     private void jTextActionKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextActionKeyReleased
@@ -373,7 +382,8 @@ private void jMenuUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
 }//GEN-LAST:event_jMenuUpdateActionPerformed
 
 private void jMenuCreateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuCreateActionPerformed
-    jTextCcode.setText("");
+    formManager.setValue("jTextCcode","");
+    formManager.setValue("jTextVersion","");
     setMode("C");
 }//GEN-LAST:event_jMenuCreateActionPerformed
 

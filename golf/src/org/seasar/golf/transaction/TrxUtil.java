@@ -122,7 +122,9 @@ public class TrxUtil {
              if (msg.key() != null ) {
                  if (msg.key() instanceof String ) {
 
-                     MessageKey = formManager.getFormTrxManager().getHostToField().get(msg.key());
+ //                    MessageKey = formManager.getFormTrxManager().getHostToField().get(msg.key());
+                     MessageKey = formManager.getComponentFromName(
+                             (String)formManager.getFormTrxManager().getHostToField().get(msg.key()));
                      
                  } else if (msg.key() instanceof HostTableFieldInfo ) {
                      GolfTableModel gtm = (GolfTableModel) formManager.getFormTrxManager().

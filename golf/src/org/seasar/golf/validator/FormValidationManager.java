@@ -44,7 +44,12 @@ public class FormValidationManager extends AbstractValidationResultModel {
         }
         validationResult.addAll(validationResultTemp.getErrors());    
         validationResult.addAll(validationResultTemp.getWarnings());
-        validationResult.addAll(validationResultTemp.getInfos());         
+        validationResult.addAll(validationResultTemp.getInfos());
+        setFocus();
+        firePropertyChanges(oldResult, validationResult);
+    }
+
+    private void setFocus() {
         if (validationResult.hasMessages()) {
             Object errorKey = ((ValidationMessage)validationResult.getMessages().get(0)).key();
             if (errorKey instanceof TableKey) {
@@ -57,7 +62,6 @@ public class FormValidationManager extends AbstractValidationResultModel {
                 }
             }
         }
-        firePropertyChanges(oldResult, validationResult);
     }
 
     public ValidationResult getResult() {
@@ -67,6 +71,7 @@ public class FormValidationManager extends AbstractValidationResultModel {
     public void setResult(ValidationResult newResult) {
         ValidationResult oldResult = validationResult;
         validationResult = newResult;
+        setFocus();
         firePropertyChanges(oldResult, validationResult);
     }
 
