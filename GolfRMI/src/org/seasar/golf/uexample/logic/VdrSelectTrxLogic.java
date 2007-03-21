@@ -54,21 +54,10 @@ public class VdrSelectTrxLogic implements TransactionInterface{
         resultData.getFormAction().setFormStack(FormAction.FormStack.RESULT);
         CompanyCB cb = new CompanyCB();
        	cb.query().setCat_Equal((String)requestData.getParam("_cat"));
-//        if (requestData.getField("ccode") != null) {
-//        	String sCcode = (String) requestData.getField("ccode");
-//        	long lmax = Long.parseLong((sCcode+"99999").substring(0, 5));
-//        	long lmin = Long.parseLong((sCcode+"00000").substring(0, 5));
-//        	BigDecimal bmax = BigDecimal.valueOf(lmax);
-//        	BigDecimal bmin = BigDecimal.valueOf(lmin);
-//        	cb.query().setCcode_GreaterEqual(bmin);
-//        	cb.query().setCcode_LessEqual(bmax);
-//        }
         if (requestData.getField("shortname") != null) {
         	cb.query().setShortname_PrefixSearch((String) requestData.getField("shortname"));
         }     
-//        if (requestData.getField("name") != null) {
-//        	cb.query().setShortname_PrefixSearch((String) requestData.getField("name"));
-//        }         
+       
         List <Company> compl = bhv.selectList(cb);
         if (compl.size() == 0) {
         	resultData.getValidationResult().add(new SimpleValidationMessage(
@@ -80,9 +69,7 @@ public class VdrSelectTrxLogic implements TransactionInterface{
             		 DataUtil.copyParam(requestData.getParams(), resultData.getParams(), "_dataSelect"); 
         		 }
         	 }
-        	 resultData.getFormAction().setFormStack(FormAction.FormStack.DIALOGPROCESS);
-//        	 resultData.getFormAction().setForm("vdrsd");
-//        	 resultData.getParams().put("_cat", requestData.getField("cat"));
+        	 resultData.getFormAction().setProcessAction(true);
         	 TableData td = new TableData();
         	 td.setColumnIdentifires(new Object[]{"ccode","shortname","name","telephone","cat","versionno" });
         	 for(Company comp:compl) {

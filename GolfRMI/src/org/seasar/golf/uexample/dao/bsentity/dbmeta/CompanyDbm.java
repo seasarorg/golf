@@ -23,10 +23,10 @@ import org.seasar.golf.uexample.dao.exentity.Company;
  *     
  * 
  * [sequence]
- *     
+ *     company_ccode_seq
  * 
  * [identity]
- *     ccode
+ *     
  * 
  * [update-date]
  *     

@@ -20,10 +20,10 @@ import org.seasar.golf.uexample.dao.exentity.Company;
  *     
  * 
  * [sequence]
- *     
+ *     company_ccode_seq
  * 
  * [identity]
- *     ccode
+ *     
  * 
  * [update-date]
  *     
@@ -197,4 +197,14 @@ public interface BsCompanyDao extends org.seasar.golf.uexample.dao.allcommon.Dao
      */
     public int deleteList(java.util.List<Company> entityList);
 
+
+    /** SQL-Annotation for selectNextVal(). */
+    public String selectNextVal_SQL = "select nextval ('company_ccode_seq')";
+
+    /**
+     * Select next value as sequence.
+     * 
+     * @return Next value. (NotNull)
+     */
+    public java.math.BigDecimal selectNextVal();
 }

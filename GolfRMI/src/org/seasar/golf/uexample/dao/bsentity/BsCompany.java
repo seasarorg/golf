@@ -23,10 +23,10 @@ import org.seasar.golf.uexample.dao.bsentity.dbmeta.CompanyDbm;
  *     
  * 
  * [sequence]
- *     
+ *     company_ccode_seq
  * 
  * [identity]
- *     ccode
+ *     
  * 
  * [update-date]
  *     
@@ -49,9 +49,6 @@ public abstract class BsCompany implements Entity, java.io.Serializable {
     
     /** VERSION_NO-Annotation */
     public static final String VERSION_NO_PROPERTY = "versionno";
-    
-    /** ID-Annotation */
-    public static final String ccode_ID = "identity";
 
     // =====================================================================================
     //                                                                             Attribute

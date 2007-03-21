@@ -214,6 +214,15 @@ public abstract class BsCompanyBhv extends org.seasar.golf.uexample.dao.allcommo
     }
 
 
+    /**
+     * Select next value as sequence. (Delegate-Method)
+     * 
+     * @return Next value. (NotNull)
+     */
+    public java.math.BigDecimal delegateSelectNextVal() {
+        return getMyDao().selectNextVal();
+    }
+
 
     /**
      * Insert one entity. (Delegate-Method)
@@ -405,6 +414,18 @@ public abstract class BsCompanyBhv extends org.seasar.golf.uexample.dao.allcommo
 
 
   
+    // =====================================================================================
+    //                                                                              Sequence
+    //                                                                              ========
+    /**
+     * Select next value as sequence.
+     * 
+     * @return Next value. (NotNull)
+     */
+    public java.math.BigDecimal selectNextVal() {
+        return getMyDao().selectNextVal();
+    }
+
     // =====================================================================================
     //                                                                         Load Refferer
     //                                                                         =============
@@ -606,30 +627,6 @@ public abstract class BsCompanyBhv extends org.seasar.golf.uexample.dao.allcommo
     // =====================================================================================
     //                                                                        Various Insert
     //                                                                        ==============
-      
-    /* (non-javadoc) 
-     * Copy-insert.
-     * 
-     * @param primaryKey Primary-keys. (NotNull)
-     * @return Inserted count.
-     * @exception org.seasar.golf.uexample.dao.allcommon.exception.RecordHasAlreadyBeenDeletedException
-     */
-    public int copyInsertByPKValueAfterSelect(java.math.BigDecimal ccode) {
-        Company entity = new Company();
-        entity.setCcode(ccode);
-        final CompanyCB cb = newMyConditionBean();
-        cb.acceptPrimaryKeyMapString(entity.extractPrimaryKeyMapString());
-        final Company currentEntity = selectEntityWithDeletedCheck(cb);
-        return delegateInsert(currentEntity);
-    }
-    
-    /**
-     * Filter 'copy-insert' entity.
-     * 
-     * @param entity Entity. (NotNull)
-     */
-    protected void filterCopyInsertEntity(Company entity) {
-    }
   
     // =====================================================================================
     //                                                                            CBSetupper

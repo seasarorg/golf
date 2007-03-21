@@ -11,11 +11,13 @@ package org.seasar.golf.uexample.logic;
 
 import java.math.BigDecimal;
 
+import org.seasar.framework.container.S2Container;
 import org.seasar.golf.data.RequestData;
 import org.seasar.golf.data.ResultData;
 import org.seasar.golf.form.FormAction;
 import org.seasar.golf.form.FormAction.FormStack;
 import org.seasar.golf.transaction.TransactionInterface;
+import org.seasar.golf.uexample.dao.exbhv.CompanyBhv;
 import org.seasar.golf.uexample.dao.exdao.CompanyDao;
 import org.seasar.golf.uexample.dao.exentity.Company;
 import org.seasar.golf.validation.Severity;
@@ -27,7 +29,8 @@ import org.seasar.golf.validator.HostTableFieldInfo;
  * @author shimura
  */
 public class VdrTrxLogic implements TransactionInterface{
-    private CompanyDao companyDao;
+    private CompanyBhv bhv;
+    private S2Container container;
     /** Creates a new instance of VdrTransaction */
     public VdrTrxLogic() {
     }
@@ -38,39 +41,78 @@ public class VdrTrxLogic implements TransactionInterface{
     public ResultData execute(RequestData requestData) {
         ResultData resultData = new ResultData();
         processMode(requestData, resultData);
-//        resultData.getFormAction().setFormStack(FormAction.FormStack.RESULT);
-//        resultData.getValidationResult().add(new SimpleValidationMessage(
-//        		"Text:ERROR DAYO", Severity.ERROR, "Text1"));
-//        resultData.getValidationResult().add(new SimpleValidationMessage(
-//        		"Table ERROR HOT DAYOoo", Severity.ERROR, new HostTableFieldInfo("TestTable",1,"qty")));        
         return resultData;
     }
     private void processMode(RequestData requestData, ResultData resultData){
-    	String mode = (String) requestData.getParams().get("_mode");
-    	String cat = (String) requestData.getParams().get("_cat");
-    	if (mode.equals("NextInq")){
-    		BigDecimal ccode = (BigDecimal) requestData.getParams().get("ccode");
-    		Company comp = companyDao.getEntity(ccode);
-    		if (comp == null){
-    	        resultData.getValidationResult().add(new SimpleValidationMessage(
-        		"CCode not found (" + ccode.toString()+")", Severity.ERROR));
-    		} else {
-    			resultData.getFormAction().setFormStack(FormStack.NEXT);
-    			resultData.getFormAction().setForm("vdr");
-    			resultData.getParams().put("_mode", "ref");
-    			resultData.getParams().put("_cat", cat);    			
-    			resultData.getFields().put("ccode",comp.getCcode().toString());
-    			resultData.getFields().put("shortname",comp.getShortname());
-    			resultData.getFields().put("name",comp.getName());
-    			resultData.getFields().put("telephone",comp.getTelephone());
-    			resultData.getFields().put("cat",comp.getCat());
-    			resultData.getFields().put("version",comp.getVersionno().toString());
-    		}
+    	String mode = (String) requestData.getParam("_mode");
+    	String cat = (String) requestData.getParam("_cat");
+    	String action = (String) requestData.getParam("_action");    	
+    	if (action.equals("NextInq")){
+    		nextInq(requestData, resultData, mode, cat);
+    	}  else	if (action.equals("Save")){
+    		save(requestData, resultData, mode, cat);
     	}
     }
 
-	public void setCompanyDao(CompanyDao companyDao) {
-		this.companyDao = companyDao;
+	private void save(RequestData requestData, ResultData resultData, String mode, String cat) {
+		resultData.getFormAction().setFormStack(FormStack.RESULT);
+		Company company = new Company();
+		company.setCat((String) requestData.getField("cat"));
+		company.setShortname((String) requestData.getField("shortname"));	
+		company.setName((String) requestData.getField("name"));	
+		BigDecimal ccode = null;
+		if (requestData.getFields().containsKey("telephone")) {
+			company.setTelephone((String) requestData.getField("telephone"));				
+		}
+		
+		if (mode.equals("C")) {
+			ccode = bhv.getMyDao().selectNextVal();
+			company.setCcode(ccode);
+			try {
+				bhv.getMyDao().insert(company);
+			} catch (RuntimeException e) {
+				e.printStackTrace();
+			}
+		} else if (mode.equals("U")) {
+			ccode = new BigDecimal((String)requestData.getField("ccode"));
+			company.setCcode(ccode);	
+			company.setVersionno(new BigDecimal((String)requestData.getField("version")));			
+			bhv.update(company);
+		}
+		requestData.setParam("ccode", ccode);
+		nextInq(requestData, resultData, mode, cat);
+		resultData.getFormAction().setFormStack(FormStack.RESULT);
+		if (!resultData.getValidationResult().hasMessages()){
+			resultData.getValidationResult().add(
+					new SimpleValidationMessage("Update Completed", Severity.INFO));
+		}
+		
+	}
+
+	private void nextInq(RequestData requestData, ResultData resultData, String mode, String cat) {
+		BigDecimal ccode = (BigDecimal) requestData.getParam("ccode");
+		Company comp = bhv.getMyDao().getEntity(ccode);
+		if (comp == null){
+		    resultData.getValidationResult().add(new SimpleValidationMessage(
+			"CCode not found (" + ccode.toString()+")", Severity.ERROR));
+		} else {
+			resultData.getFormAction().setFormStack(FormStack.NEXT);
+			resultData.getFormAction().setForm("vdr");
+			resultData.setParam("_mode", mode);
+			resultData.setParam("_cat", cat);   
+			resultData.setParam("_action", "Result");     			
+			resultData.setField("ccode",comp.getCcode().toString());
+			resultData.setField("shortname",comp.getShortname());
+			resultData.setField("name",comp.getName());
+			resultData.setField("telephone",comp.getTelephone());
+			resultData.setField("cat",comp.getCat());
+			resultData.setField("version",comp.getVersionno().toString());
+		}
+	}
+
+	public void setContainer(S2Container container) {
+		this.container = container;
+    	bhv = (CompanyBhv) container.getComponent("companyBhv");		
 	}
 
 }
