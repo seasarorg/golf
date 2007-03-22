@@ -57,7 +57,7 @@
 	-->
 
 	<!-- for PostgreSQL -->
-
+<!--
 	<component name="xaDataSource"
 		class="org.seasar.extension.dbcp.impl.XADataSourceImpl">
 		<property name="driverClassName">
@@ -69,8 +69,20 @@
         <property name="user">"postgres"</property>
         <property name="password">"postgres"</property>
     </component>
-
-
+	-->
+    <!-- H2   -->  
+	<component name="xaDataSource"
+		class="org.seasar.extension.dbcp.impl.XADataSourceImpl">
+		<property name="driverClassName">
+			"org.h2.Driver"
+        </property>
+        <property name="URL">
+			"jdbc:h2:tcp://localhost:9092/golf"
+        </property>
+        <property name="user">"sa"</property>
+        <property name="password">""</property>
+    </component>
+	
 	<!-- MySQL
 	- MySQL4.0以下でマルチバイト文字を扱う場合には，URL指定の後に，
 		以下の接続パラメータを追加で指定してください．
