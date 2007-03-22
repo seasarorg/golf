@@ -1,0 +1,89 @@
+03-22 21:59:03 jdbc[0]: SQLException
+org.h2.jdbc.JdbcSQLException: Syntax error in SQL statement REATE[*] TABLE COMPANY
+(
+  CCODE INT4 NOT NULL,
+  CAT CHAR(1) NOT NULL,
+  SHORTNAME VARCHAR(20) NOT NULL,
+  NAME VARCHAR(60) NOT NULL,
+  TELEPHONE VARCHAR(15),
+  VERSIONNO INT4 NOT NULL DEFAULT 0,
+  CONSTRAINT COMPANY_PKEY PRIMARY KEY (CCODE)
+) ; expected ROLLBACK, REVOKE, RUNSCRIPT, { [42001-44]
+	at org.h2.message.Message.getSQLException(Message.java:65)
+	at org.h2.message.Message.getSyntaxError(Message.java:75)
+	at org.h2.command.Parser.getSyntaxError(Parser.java:426)
+	at org.h2.command.Parser.parse(Parser.java:409)
+	at org.h2.command.Parser.parse(Parser.java:224)
+	at org.h2.command.Parser.prepareCommand(Parser.java:191)
+	at org.h2.engine.Session.prepareLocal(Session.java:174)
+	at org.h2.engine.Session.prepareCommand(Session.java:156)
+	at org.h2.jdbc.JdbcConnection.prepareCommand(JdbcConnection.java:993)
+	at org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:143)
+	at org.h2.server.web.AppThread.getResult(AppThread.java:945)
+	at org.h2.server.web.AppThread.query(AppThread.java:615)
+	at org.h2.server.web.AppThread.process(AppThread.java:71)
+	at org.h2.server.web.WebServerThread.run(WebServerThread.java:127)
+03-22 22:00:36 jdbc[0]: SQLException
+org.h2.jdbc.JdbcSQLException: Syntax error in SQL statement CREATE SEQUENCE COMPANY_CCODE_SEQ
+  INCREMENT 1[*]
+  MINVALUE 1
+  MAXVALUE 9223372036854775807
+  START 10020
+  CACHE 1 ; expected BY [42001-44]
+	at org.h2.message.Message.getSQLException(Message.java:65)
+	at org.h2.message.Message.getSyntaxError(Message.java:75)
+	at org.h2.command.Parser.read(Parser.java:2052)
+	at org.h2.command.Parser.parseCreateSequence(Parser.java:3027)
+	at org.h2.command.Parser.parseCreate(Parser.java:2872)
+	at org.h2.command.Parser.parse(Parser.java:274)
+	at org.h2.command.Parser.parse(Parser.java:220)
+	at org.h2.command.Parser.prepareCommand(Parser.java:191)
+	at org.h2.engine.Session.prepareLocal(Session.java:174)
+	at org.h2.engine.Session.prepareCommand(Session.java:156)
+	at org.h2.jdbc.JdbcConnection.prepareCommand(JdbcConnection.java:993)
+	at org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:143)
+	at org.h2.server.web.AppThread.getResult(AppThread.java:945)
+	at org.h2.server.web.AppThread.query(AppThread.java:615)
+	at org.h2.server.web.AppThread.process(AppThread.java:71)
+	at org.h2.server.web.WebServerThread.run(WebServerThread.java:127)
+03-22 22:02:45 jdbc[0]: SQLException
+org.h2.jdbc.JdbcSQLException: Syntax error in SQL statement CREATE SEQUENCE "IF NOT EXISTS" NEWSEQUENCENAME[*]
+START WITH 10030  [42000-44]
+	at org.h2.message.Message.getSQLException(Message.java:65)
+	at org.h2.message.Message.getSQLException(Message.java:47)
+	at org.h2.message.Message.getSyntaxError(Message.java:70)
+	at org.h2.command.Parser.getSyntaxError(Parser.java:417)
+	at org.h2.command.Parser.prepareCommand(Parser.java:208)
+	at org.h2.engine.Session.prepareLocal(Session.java:174)
+	at org.h2.engine.Session.prepareCommand(Session.java:156)
+	at org.h2.jdbc.JdbcConnection.prepareCommand(JdbcConnection.java:993)
+	at org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:143)
+	at org.h2.server.web.AppThread.getResult(AppThread.java:945)
+	at org.h2.server.web.AppThread.query(AppThread.java:615)
+	at org.h2.server.web.AppThread.process(AppThread.java:71)
+	at org.h2.server.web.WebServerThread.run(WebServerThread.java:127)
+03-22 23:17:32 jdbc[0]: SQLException
+org.h2.jdbc.JdbcSQLException: Syntax error in SQL statement SELECT * FROM COMPANY ORDER BY ; expected =, NOT, EXISTS [42001-44]
+	at org.h2.message.Message.getSQLException(Message.java:65)
+	at org.h2.message.Message.getSyntaxError(Message.java:75)
+	at org.h2.command.Parser.getSyntaxError(Parser.java:426)
+	at org.h2.command.Parser.readTerm(Parser.java:1916)
+	at org.h2.command.Parser.readFactor(Parser.java:1508)
+	at org.h2.command.Parser.readSum(Parser.java:1495)
+	at org.h2.command.Parser.readConcat(Parser.java:1487)
+	at org.h2.command.Parser.readCondition(Parser.java:1368)
+	at org.h2.command.Parser.readAnd(Parser.java:1349)
+	at org.h2.command.Parser.readExpression(Parser.java:1341)
+	at org.h2.command.Parser.parseSelectUnion(Parser.java:1129)
+	at org.h2.command.Parser.parseSelect(Parser.java:1070)
+	at org.h2.command.Parser.parse(Parser.java:339)
+	at org.h2.command.Parser.parse(Parser.java:224)
+	at org.h2.command.Parser.prepareCommand(Parser.java:191)
+	at org.h2.engine.Session.prepareLocal(Session.java:174)
+	at org.h2.engine.Session.prepareCommand(Session.java:156)
+	at org.h2.jdbc.JdbcConnection.prepareCommand(JdbcConnection.java:993)
+	at org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:143)
+	at org.h2.server.web.AppThread.getResult(AppThread.java:945)
+	at org.h2.server.web.AppThread.query(AppThread.java:615)
+	at org.h2.server.web.AppThread.process(AppThread.java:71)
+	at org.h2.server.web.WebServerThread.run(WebServerThread.java:127)
