@@ -92,7 +92,6 @@ public class SessionUtil {
                     ((GolfForm)formManager.getFrame()).processAction(newParams);
                 } else {
                     ((GolfDialog)formManager.getDialog()).processAction(newParams);                    
-                }
             }
         }   
         public static JFrame createForm(String formName, Session session){
