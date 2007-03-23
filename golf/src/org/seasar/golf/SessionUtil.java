@@ -121,7 +121,18 @@ public class SessionUtil {
         }
         public static JDialog createDialog(String formName, Session session, int index){
                FormManager parent = (FormManager) session.getFormManagers().get(index - 1);            
-               JDialog dialog = null ; 
+               JDialog dialog = createDialogSub(formName, parent);
+
+                FormManager formManager = new FormManager(null);
+                formManager.setDialog(dialog);
+                formManager.init();
+                formManager.setSession(session);
+                formManager.setForm(formName); 
+                ((org.seasar.golf.GolfDialog) dialog).setFormManger(formManager);
+                return dialog;
+        }
+		private static JDialog createDialogSub(String formName, FormManager parent) {
+			JDialog dialog = null ; 
                ComponentDef cdef ;
                S2Container container = SingletonS2ContainerFactory.getContainer();
                cdef = container.getComponentDef(formName +"Dialog");               
@@ -150,15 +161,8 @@ public class SessionUtil {
                } catch (NoSuchMethodException ex) {
                 ex.printStackTrace();
             }
-
-                FormManager formManager = new FormManager(null);
-                formManager.setDialog(dialog);
-                formManager.init();
-                formManager.setSession(session);
-                formManager.setForm(formName); 
-                ((org.seasar.golf.GolfDialog) dialog).setFormManger(formManager);
-                return dialog;
-        }        
+			return dialog;
+		}        
         private static void createDialog(int index, FormAction formAction, Session session, HashMap params) {
                  javax.swing.JDialog dialog =  createDialog(formAction.getForm(), session, index);
                 ((org.seasar.golf.GolfDialog) dialog).initBinding(params);
