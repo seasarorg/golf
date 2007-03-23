@@ -138,8 +138,12 @@ public class VdrFrame extends javax.swing.JFrame implements GolfForm{
         toolBar.add(jB_NewWindow);
 
         jB_Delete.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/DeleteHS.png")));
-        jB_Delete.setEnabled(false);
         jB_Delete.setPreferredSize(new java.awt.Dimension(25, 25));
+        jB_Delete.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jB_DeleteActionPerformed(evt);
+            }
+        });
         toolBar.add(jB_Delete);
 
         jLabel2.setText("\u30b3\u30fc\u30c9");
@@ -339,6 +343,10 @@ public class VdrFrame extends javax.swing.JFrame implements GolfForm{
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+private void jB_DeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jB_DeleteActionPerformed
+    // TODO add your handling code here:
+}//GEN-LAST:event_jB_DeleteActionPerformed
 
 private void jB_BackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jB_BackActionPerformed
     formManager.getSession().processBackAction();

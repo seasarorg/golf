@@ -91,7 +91,8 @@ public class SessionUtil {
                 if (formManager.getFrame() != null) {
                     ((GolfForm)formManager.getFrame()).processAction(newParams);
                 } else {
-                    ((GolfDialog)formManager.getDialog()).processAction(newParams);                    
+                    ((GolfDialog)formManager.getDialog()).processAction(newParams); 
+                }
             }
         }   
         public static JFrame createForm(String formName, Session session){
@@ -119,11 +120,12 @@ public class SessionUtil {
                     return golfForm;
         }
         public static JDialog createDialog(String formName, Session session, int index){
+               FormManager parent = (FormManager) session.getFormManagers().get(index - 1);            
                JDialog dialog = null ; 
                ComponentDef cdef ;
                S2Container container = SingletonS2ContainerFactory.getContainer();
                cdef = container.getComponentDef(formName +"Dialog");               
-               FormManager parent = (FormManager) session.getFormManagers().get(index - 1);
+
                Constructor constructors[] = cdef.getComponentClass().getConstructors();
             try {
                     if (parent.getFrame() == null ) {
@@ -149,8 +151,6 @@ public class SessionUtil {
                 ex.printStackTrace();
             }
 
-//                  javax.swing.JDialog dialog = org.seasar.golf.Factory.
-//                          createDialog(formName + "Dialog");
                 FormManager formManager = new FormManager(null);
                 formManager.setDialog(dialog);
                 formManager.init();
