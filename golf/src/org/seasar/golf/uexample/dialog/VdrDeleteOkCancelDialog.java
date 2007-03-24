@@ -7,12 +7,13 @@
 package org.seasar.golf.uexample.dialog;
 
 import org.seasar.golf.dialog.DialogConst;
+import org.seasar.golf.dialog.GolfMsgBox;
 
 /**
  *
  * @author  00018663
  */
-public class VdrDeleteOkCancelDialog extends javax.swing.JDialog {
+public class VdrDeleteOkCancelDialog extends javax.swing.JDialog  implements GolfMsgBox {
 
     
     /** Creates new form VdrDeleteOkCancelDialog */

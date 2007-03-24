@@ -18,6 +18,7 @@ import javax.swing.JFrame;
 import org.seasar.framework.container.ComponentDef;
 import org.seasar.framework.container.S2Container;
 import org.seasar.framework.container.factory.SingletonS2ContainerFactory;
+import org.seasar.golf.dialog.GolfMsgBox;
 import org.seasar.golf.form.FormManager;
 import org.seasar.golf.form.FormAction;
 
@@ -131,7 +132,15 @@ public class SessionUtil {
                 ((org.seasar.golf.GolfDialog) dialog).setFormManger(formManager);
                 return dialog;
         }
-		private static JDialog createDialogSub(String formName, FormManager parent) {
+        
+        public static int showDialog(String formName, FormManager parent) {
+            JDialog jd = createDialogSub(formName, parent);
+            jd.setVisible(true);
+            int ret = ((GolfMsgBox)jd).getReturnStatus();
+            jd.dispose();
+            return ret;
+        }
+	public static JDialog createDialogSub(String formName, FormManager parent) {
 			JDialog dialog = null ; 
                ComponentDef cdef ;
                S2Container container = SingletonS2ContainerFactory.getContainer();
@@ -168,8 +177,7 @@ public class SessionUtil {
                 ((org.seasar.golf.GolfDialog) dialog).initBinding(params);
                 session.getFormManagers().add(((org.seasar.golf.GolfDialog) dialog).getFormManager()); 
                 dialog.setVisible(true);
-                //\u3053\u3053\u3067 Dialog \u8868\u793A
-                 removeUpperForm(index -1, session);
+                removeUpperForm(index -1, session);
         }         
         private static void createAndSetForm(int index, FormAction formAction, Session session, HashMap params) {
                 createForm(index, formAction, session, params);

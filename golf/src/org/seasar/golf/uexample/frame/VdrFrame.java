@@ -10,8 +10,10 @@ import java.util.HashMap;
 import javax.swing.JMenuBar;
 import javax.swing.JPanel;
 import org.seasar.golf.GolfForm;
+import org.seasar.golf.SessionUtil;
 import org.seasar.golf.data.RequestData;
 import org.seasar.golf.data.ResultData;
+import org.seasar.golf.dialog.DialogConst;
 import org.seasar.golf.form.FormManager;
 import org.seasar.golf.transaction.RequestDataFactory;
 import org.seasar.golf.transaction.TrxUtil;
@@ -345,7 +347,20 @@ public class VdrFrame extends javax.swing.JFrame implements GolfForm{
     }// </editor-fold>//GEN-END:initComponents
 
 private void jB_DeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jB_DeleteActionPerformed
-    // TODO add your handling code here:
+     int i  = SessionUtil.showDialog("VdrDeleteOkCancel", formManager);
+     if (i == DialogConst.OK) {
+    RequestData requestData = RequestDataFactory.createRequestData("vdr",null,formManager);
+    requestData.setParam("_cat",cat);
+    requestData.setParam("_mode", formManager.getMode());
+    requestData.setParam("_action","Delete"); 
+    ResultData resultData = formManager.getSession().trxExecute(requestData, formManager);
+    if (resultData.getValidationResult().hasErrors()){
+        return;
+    }
+    TrxUtil.setFieldDataFromResult(resultData, formManager);
+    formManager.getFormValidationManager().setResult(resultData.getValidationResult());
+     }
+
 }//GEN-LAST:event_jB_DeleteActionPerformed
 
 private void jB_BackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jB_BackActionPerformed
@@ -470,6 +485,7 @@ private void jMenu1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:
         if (action.equals("Result")) {
             TrxUtil.setFieldDataFromResult((ResultData)params.get("_resultData"), formManager);
         }
+      
     }
     public void setFormManger(FormManager formManager) {
         this.formManager = formManager;

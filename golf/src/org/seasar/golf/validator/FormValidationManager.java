@@ -11,10 +11,12 @@ package org.seasar.golf.validator;
 
 import java.util.ArrayList;
 import javax.swing.JComponent;
+import org.seasar.golf.data.ResultData;
 import org.seasar.golf.validation.ValidationMessage;
 import org.seasar.golf.validation.ValidationResult;
 import org.seasar.golf.validation.util.AbstractValidationResultModel;
 import org.seasar.golf.form.FormManager;
+import org.seasar.golf.transaction.TrxUtil;
 
 /**
  *
@@ -68,6 +70,10 @@ public class FormValidationManager extends AbstractValidationResultModel {
         return validationResult;
     }
 
+    public void setHostResult(ResultData resultData){
+        setResult(TrxUtil.updateValidationResult(
+                this.formManager, resultData.getValidationResult()));
+     }
     public void setResult(ValidationResult newResult) {
         ValidationResult oldResult = validationResult;
         validationResult = newResult;

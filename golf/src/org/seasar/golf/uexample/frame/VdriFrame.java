@@ -12,11 +12,13 @@ import javax.swing.JMenuBar;
 import javax.swing.JPanel;
 import org.seasar.golf.GolfForm;
 import org.seasar.golf.data.RequestData;
+import org.seasar.golf.data.ResultData;
 import org.seasar.golf.form.DataSelect;
 import org.seasar.golf.form.FormAction;
 import org.seasar.golf.form.FormAction.FormStack;
 import org.seasar.golf.form.FormManager;
 import org.seasar.golf.transaction.RequestDataFactory;
+import org.seasar.golf.transaction.TrxUtil;
 
 /**
  *
@@ -393,7 +395,15 @@ private void jTextActionKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:ev
                 formManager.setValue("jTextCcode", ((BigDecimal)select.getSelectedDatum()).toString());
             }
         }
-            
+         else if (params.containsKey("_action")) {
+             String action = (String)params.get("_action");
+             ResultData resultData = (ResultData)params.get("_resultData");
+             if (action.equals("DeleteComple")) {
+                formManager.setValue("jTextCcode", "");   
+                formManager.getFormValidationManager().setHostResult(resultData);
+             }
+
+        }             
 
     }
     public void setFormManger(FormManager formManager) {

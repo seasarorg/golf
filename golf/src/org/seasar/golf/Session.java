@@ -25,7 +25,6 @@ import org.seasar.golf.form.FormManager;
 import org.seasar.golf.menu.MenuAction;
 import org.seasar.golf.menu.MenuActionItem;
 import org.seasar.golf.transaction.TrxDispatcherInterface;
-import org.seasar.golf.transaction.TrxUtil;
 
 /**
  *
@@ -115,9 +114,7 @@ public class Session {
     public ResultData trxExecute(RequestData requestData, FormManager formManager) {
         ResultData resultData = trxDispatcher.execute(requestData);
         SessionUtil.processAction(resultData.getFormAction(), this, resultData.getParams());
-        resultData.setValidationResult(
-                TrxUtil.updateValidationResult( formManager, resultData.getValidationResult()));
-        formManager.getFormValidationManager().setResult(resultData.getValidationResult());
+        formManager.getFormValidationManager().setHostResult(resultData);
         return resultData;
     }
     public void closeFrame() {
