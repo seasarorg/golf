@@ -416,7 +416,9 @@ public final class ValidationResult implements Serializable {
     public boolean hasWarnings() {
         return hasSeverity(getMessages(), Severity.WARNING);
     }
-    
+     public boolean hasInfos() {
+        return hasSeverity(getMessages(), Severity.INFO);
+    }   
     
     /**
      * Returns an unmodifiable List of all validation messages. 
