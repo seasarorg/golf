@@ -10,3 +10,4 @@
 "javax.swing.JMenuItem","jMenuDisplay","D",,"D"
 "javax.swing.JMenuItem","jMenuUpdate","D","D",
 "javax.swing.JMenuItem","jMenuCreate","D",,
+javax.swing.JButton,jB_Delete,"D",,"D"
