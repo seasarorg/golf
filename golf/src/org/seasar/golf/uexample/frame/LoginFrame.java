@@ -17,6 +17,8 @@
 package org.seasar.golf.uexample.frame;
 
 import java.util.HashMap;
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
 import org.seasar.framework.container.factory.SingletonS2ContainerFactory;
 import org.seasar.golf.Connection;
 import org.seasar.golf.uexample.logic.LoginLogic;
@@ -33,6 +35,10 @@ public class LoginFrame extends javax.swing.JFrame {
      */
     public LoginFrame() {
         initComponents();
+        
+        ClassLoader cl = this.getClass().getClassLoader(); 
+        // Create icons 
+        Icon saveIcon  = new ImageIcon(cl.getResource("image/app.png"));        
     }
     
     /** This method is called from within the constructor to

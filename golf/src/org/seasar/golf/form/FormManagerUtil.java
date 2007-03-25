@@ -17,6 +17,7 @@
 package org.seasar.golf.form;
 
 import java.awt.Color;
+import java.io.File;
 import java.util.ArrayList;
 import java.util.HashMap;
 import javax.swing.JComponent;
@@ -44,26 +45,28 @@ public class FormManagerUtil {
                 } else {
                     formClass = fm.getDialog().getClass();
                 }
-		if (GolfSetting.isDebug()) {
-			if (!formHistory.containsKey(formClass)){
-				TableData td = new TableData();
-				td.setColumnIdentifires(new String[]{"class","name"});
-                                Object[] keys =  fm.getComponentNameIndex().keySet().toArray();
-                                for( Object key:keys) {
-                                    td.addRow(new String[]{
-                                                    fm.getComponentNameIndex().get(key).getClass().toString()
-                                                    .substring(6), (String)key });
-				
-				}
-				TableUtil.WriteToCsv(td,
-						GolfSetting.getSetting("csvpath") + 
-						formClass .toString().substring(6)+
-						".csv", "ms932");
-				String s = GolfSetting.getSetting("csvpath") + 
-				fm.getClass().toString().substring(6)+
-				".csv";
-				formHistory.put(formClass ,s);
-			}
+                File f = new File(GolfSetting.getSetting("csvpath") );
+		if (f.exists() && GolfSetting.isDebug()) {
+
+                    if (!formHistory.containsKey(formClass)){
+                            TableData td = new TableData();
+                            td.setColumnIdentifires(new String[]{"class","name"});
+                                    Object[] keys =  fm.getComponentNameIndex().keySet().toArray();
+                                    for( Object key:keys) {
+                                        td.addRow(new String[]{
+                                                        fm.getComponentNameIndex().get(key).getClass().toString()
+                                                        .substring(6), (String)key });
+
+                            }
+                            TableUtil.WriteToCsv(td,
+                                            GolfSetting.getSetting("csvpath") + 
+                                            formClass .toString().substring(6)+
+                                            ".csv", "ms932");
+                            String s = GolfSetting.getSetting("csvpath") + 
+                            fm.getClass().toString().substring(6)+
+                            ".csv";
+                            formHistory.put(formClass ,s);
+                    }
 			
 		}
 	}
