@@ -310,7 +310,7 @@ public class VdriFrame extends javax.swing.JFrame implements GolfForm{
 private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
    FormAction formAction = new FormAction();
    formAction.setFormStack(FormStack.DIALOG);
-   formAction.setForm("VdrSelect");
+   formAction.setForm("vdrSelect");
    formAction.getParams().put("_cat", cat);
    formAction.getParams().put("_action","dataSelect");
    formAction.getParams().put("_dataSelect",new DataSelect(formManager,"ccode"));
@@ -320,7 +320,7 @@ private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
 private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
    FormAction formAction = new FormAction();
    formAction.setFormStack(FormStack.NEXT);
-   formAction.setForm("Vdrs");
+   formAction.setForm("vdrs");
    formAction.getParams().put("_cat", cat);
    formAction.getParams().put("_action","dataSelect");
    formAction.getParams().put("_dataSelect",new DataSelect(formManager,"ccode"));
