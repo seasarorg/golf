@@ -2,6 +2,6 @@
 <!DOCTYPE components PUBLIC "-//SEASAR//DTD S2Container 2.4//EN" 
 	"http://www.seasar.org/dtd/components24.dtd">
 <components xmlns:xi="http://www.w3.org/2001/XInclude">
-	<include condition="#ENV != 'ut'" path="cooldeploy.dicon"/>
+	<include condition="#ENV != 'ut'" path="warmdeploy.dicon"/>
 	<include condition="#ENV == 'ut'" path="hotdeploy.dicon"/>
 </components>
