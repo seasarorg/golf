@@ -72,8 +72,11 @@
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.modules.form.editors2.FontEditor">
           <FontInfo relative="false">
-            <Font name="MS UI Gothic" size="14" style="0"/>
+            <Font name="MS UI Gothic" size="14" style="1"/>
           </FontInfo>
+        </Property>
+        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="ff" green="0" id="blue" palette="1" red="0" type="palette"/>
         </Property>
         <Property name="text" type="java.lang.String" value="&#x524a;&#x9664;&#x3057;&#x3066;&#x3082;&#x826f;&#x3044;&#x3067;&#x3059;&#x304b;&#xff1f;"/>
       </Properties>
