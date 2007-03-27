@@ -55,6 +55,18 @@ public class MenuFrame extends javax.swing.JFrame  implements GolfForm {
         jScrollPane1 = new javax.swing.JScrollPane();
         jTree1 = new javax.swing.JTree();
         jPanel1 = new javax.swing.JPanel();
+        jPanel5 = new javax.swing.JPanel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jTextArea1 = new javax.swing.JTextArea();
+        jLabel11 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jTextField1 = new javax.swing.JTextField();
         jPanel3 = new javax.swing.JPanel();
@@ -82,15 +94,102 @@ public class MenuFrame extends javax.swing.JFrame  implements GolfForm {
         jScrollPane1.setViewportView(jTree1);
 
         jPanel1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        jPanel5.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Demo \u6ce8\u610f", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("MS UI Gothic", 0, 12), javax.swing.UIManager.getDefaults().getColor("nbProgressBar.popupText.selectBackground")));
+        jLabel3.setText("\u73fe\u6642\u70b9\u3067\u306f\u3001\u53d6\u5f15\u5148\u3068\u9867\u5ba2\u306e\u6a5f\u80fd\u306e\u307f\u5b9f\u88c5\u3057\u3066\u3042\u308a\u307e\u3059\u3002");
+
+        jLabel4.setText("\u4f8b\u3048\u3070\u3001\u53d6\u5f15\u5148\u306e\u5de6\u306e\u300c\uff0b\u300d\u3092\u30af\u30ea\u30c3\u30af\u3057\u3066\u3001Node\u3092\u958b\u304d\u3001\u691c\u7d22\u306a\u3069\u3092\u30af\u30ea\u30c3\u30af\u3057\u3066\u304f\u3060\u3055\u3044\u3002");
+
+        jLabel5.setText("\u300c\u30c4\u30fc\u30eb\u30d0\u30fc\u300d\u306b\u3042\u308bTextBox\u306f\u3001\uff62Expert Mode\u300d\u3067\u3001\u76f4\u63a5CODE\u3092\u5165\u529b\u3059\u308b\u4e8b\u306b\u3088\u308a\u3001\u5f53\u8a72\u753b\u9762\u304c\u8868\u793a\u3055\u308c\u307e\u3059\u3002");
+
+        jLabel6.setText("\u305f\u3068\u3048\u3070\u300cVDRS\u300d\u3068\u5165\u529b\u5f8c\u300cEnter\u300d\u30ad\u30fc\u3092\u62bc\u305b\u3070\u3001\u53d6\u5f15\u5148\u691c\u7d22\u753b\u9762\u304c\u8868\u793a\u3055\u308c\u307e\u3059\u3002");
+
+        jLabel7.setText("\u307e\u305f\u3001\u982d\u306b\u300c\uff20\u300d\u3092\u4ed8\u3051\u308b\u3068\u3001\u65b0\u3057\u3044 Window\u3092\u958b\u3044\u3066\u3001\u753b\u9762\u304c\u8868\u793a\u3055\u308c\u307e\u3059\u3002\uff08\u6700\u5927 Window\u6570\u306f\u5236\u9650\u53ef\u80fd\uff09");
+
+        jLabel8.setText("\u300c\uff20MENU\u300d\u3068\u5165\u529b\u3059\u308b\u3068\u3001\u65b0\u3057\u3044 Window\u306bMENU\u304c\u8868\u793a\u3055\u308c\u307e\u3059\u3002");
+
+        jLabel9.setText("\u300c\uff20VDRS\u300d\u3068\u5165\u529b\u3059\u308b\u3068\u3001\u65b0\u3057\u3044 Window\u306b\u3001\u53d6\u5f15\u5148\u691c\u7d22\u753b\u9762\u304c\u8868\u793a\u3055\u308c\u307e\u3059\u3002");
+
+        jLabel10.setText("\u306a\u304a\u3001\u3053\u306e\u6a5f\u80fd\u306f\u3001\u3059\u3079\u3066\u306e\u753b\u9762\u306b\u5b9f\u88c5\u3055\u308c\u3066\u3044\u307e\u3059\u3002");
+
+        org.jdesktop.layout.GroupLayout jPanel5Layout = new org.jdesktop.layout.GroupLayout(jPanel5);
+        jPanel5.setLayout(jPanel5Layout);
+        jPanel5Layout.setHorizontalGroup(
+            jPanel5Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+            .add(jPanel5Layout.createSequentialGroup()
+                .addContainerGap(24, Short.MAX_VALUE)
+                .add(jPanel5Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                    .add(jLabel3)
+                    .add(jLabel4)
+                    .add(jLabel5)
+                    .add(jLabel6)
+                    .add(jLabel7)))
+            .add(jPanel5Layout.createSequentialGroup()
+                .addContainerGap()
+                .add(jLabel8)
+                .addContainerGap(221, Short.MAX_VALUE))
+            .add(jPanel5Layout.createSequentialGroup()
+                .addContainerGap()
+                .add(jLabel9)
+                .addContainerGap(162, Short.MAX_VALUE))
+            .add(jPanel5Layout.createSequentialGroup()
+                .addContainerGap()
+                .add(jLabel10)
+                .addContainerGap(286, Short.MAX_VALUE))
+        );
+        jPanel5Layout.setVerticalGroup(
+            jPanel5Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+            .add(jPanel5Layout.createSequentialGroup()
+                .add(jLabel3)
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                .add(jLabel4)
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                .add(jLabel5)
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                .add(jLabel6)
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                .add(jLabel7)
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                .add(jLabel8)
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                .add(jLabel9)
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                .add(jLabel10)
+                .addContainerGap(org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        jTextArea1.setColumns(20);
+        jTextArea1.setEditable(false);
+        jTextArea1.setRows(5);
+        jTextArea1.setText("Group,Menu,Form,Parameter\n\u53d6\u5f15\u5148,,,\n,\u691c\u7d22,VDRS,\n,\u8868\u793a,VDR,mode=R\n,\u65b0\u898f,VDR,mode=C\n,\u4fee\u6b63,VDR,mode=U");
+        jScrollPane2.setViewportView(jTextArea1);
+
+        jLabel11.setText("Menu\u306e\u5b9a\u7fa9\u306f\u3001\u4e0b\u8a18\u306e\u3088\u3046\u306aCSV \u306b\u3066\u3001\u8a2d\u5b9a\u3067\u304d\u307e\u3059\u3002");
+
         org.jdesktop.layout.GroupLayout jPanel1Layout = new org.jdesktop.layout.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(0, 578, Short.MAX_VALUE)
+            .add(jPanel1Layout.createSequentialGroup()
+                .add(jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                    .add(jPanel5, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .add(jPanel1Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .add(jScrollPane2, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 218, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                    .add(jPanel1Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .add(jLabel11)))
+                .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(0, 480, Short.MAX_VALUE)
+            .add(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .add(jPanel5, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                .add(jLabel11)
+                .add(18, 18, 18)
+                .add(jScrollPane2, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 141, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(111, Short.MAX_VALUE))
         );
 
         jPanel2.setBorder(javax.swing.BorderFactory.createEtchedBorder());
@@ -107,7 +206,7 @@ public class MenuFrame extends javax.swing.JFrame  implements GolfForm {
             jPanel2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(jPanel2Layout.createSequentialGroup()
                 .add(jTextField1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 108, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(688, Short.MAX_VALUE))
+                .addContainerGap(684, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
@@ -115,7 +214,7 @@ public class MenuFrame extends javax.swing.JFrame  implements GolfForm {
         );
 
         jPanel3.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        jPanel3.setPreferredSize(new java.awt.Dimension(731, 29));
+        jPanel3.setPreferredSize(new java.awt.Dimension(796, 29));
         jLabel2.setFont(new java.awt.Font("MS UI Gothic", 0, 14));
         jLabel2.setText("Status Information");
 
@@ -128,9 +227,9 @@ public class MenuFrame extends javax.swing.JFrame  implements GolfForm {
             jPanel3Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(jPanel3Layout.createSequentialGroup()
                 .add(jLabel2)
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .add(jLabelFooter, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 645, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                .add(36, 36, 36))
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 15, Short.MAX_VALUE)
+                .add(jLabelFooter, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 590, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                .add(79, 79, 79))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
@@ -156,7 +255,7 @@ public class MenuFrame extends javax.swing.JFrame  implements GolfForm {
                 .add(jLabel1)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(jLabelHeader)
-                .addContainerGap(550, Short.MAX_VALUE))
+                .addContainerGap(546, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
@@ -172,14 +271,17 @@ public class MenuFrame extends javax.swing.JFrame  implements GolfForm {
         ContentPaneLayout.setHorizontalGroup(
             ContentPaneLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(ContentPaneLayout.createSequentialGroup()
-                .add(jScrollPane1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 211, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(jPanel1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .add(ContentPaneLayout.createSequentialGroup()
-                .add(2, 2, 2)
-                .add(jPanel4, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 798, Short.MAX_VALUE))
-            .add(jPanel2, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .add(jPanel3, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 800, Short.MAX_VALUE)
+                .add(ContentPaneLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                    .add(ContentPaneLayout.createSequentialGroup()
+                        .add(jScrollPane1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 211, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                        .add(jPanel1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .add(jPanel3, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                    .add(jPanel2, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .add(ContentPaneLayout.createSequentialGroup()
+                        .add(2, 2, 2)
+                        .add(jPanel4, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 794, Short.MAX_VALUE)))
+                .addContainerGap())
         );
         ContentPaneLayout.setVerticalGroup(
             ContentPaneLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
@@ -204,7 +306,7 @@ public class MenuFrame extends javax.swing.JFrame  implements GolfForm {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(org.jdesktop.layout.GroupLayout.TRAILING, ContentPane, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .add(ContentPane, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 798, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
@@ -258,7 +360,16 @@ private void jTree1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:even
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel ContentPane;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JLabel jLabelFooter;
     private javax.swing.JLabel jLabelHeader;
     private javax.swing.JMenu jMenu1;
@@ -267,7 +378,10 @@ private void jTree1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:even
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
+    private javax.swing.JPanel jPanel5;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JTextArea jTextArea1;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTree jTree1;
     // End of variables declaration//GEN-END:variables
