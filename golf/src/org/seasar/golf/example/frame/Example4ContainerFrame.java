@@ -55,7 +55,7 @@ public class Example4ContainerFrame extends javax.swing.JFrame implements GolfFo
         jMenuItem1 = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Container Title");
         jPanel1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         jLabel1.setFont(new java.awt.Font("‚l‚r –¾’©", 0, 36));
