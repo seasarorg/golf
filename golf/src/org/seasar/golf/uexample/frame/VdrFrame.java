@@ -77,6 +77,7 @@ public class VdrFrame extends javax.swing.JFrame implements GolfForm{
         jPanel1 = new javax.swing.JPanel();
         jLabel8 = new javax.swing.JLabel();
         jLabelHeader = new javax.swing.JLabel();
+        jPanel2 = new javax.swing.JPanel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenu2 = new javax.swing.JMenu();
@@ -228,6 +229,17 @@ public class VdrFrame extends javax.swing.JFrame implements GolfForm{
                 .addContainerGap(org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
+        org.jdesktop.layout.GroupLayout jPanel2Layout = new org.jdesktop.layout.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+            .add(0, 664, Short.MAX_VALUE)
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+            .add(0, 176, Short.MAX_VALUE)
+        );
+
         org.jdesktop.layout.GroupLayout contentPaneLayout = new org.jdesktop.layout.GroupLayout(contentPane);
         contentPane.setLayout(contentPaneLayout);
         contentPaneLayout.setHorizontalGroup(
@@ -260,6 +272,10 @@ public class VdrFrame extends javax.swing.JFrame implements GolfForm{
             .add(toolBar, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 796, Short.MAX_VALUE)
             .add(jPanel1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 796, Short.MAX_VALUE)
             .add(jPanel3, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 796, Short.MAX_VALUE)
+            .add(contentPaneLayout.createSequentialGroup()
+                .addContainerGap()
+                .add(jPanel2, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(120, Short.MAX_VALUE))
         );
 
         contentPaneLayout.linkSize(new java.awt.Component[] {jTextCat, jTextCcode, jTextName, jTextShort, jTextTel, jTextVersion}, org.jdesktop.layout.GroupLayout.HORIZONTAL);
@@ -296,11 +312,14 @@ public class VdrFrame extends javax.swing.JFrame implements GolfForm{
                         .add(contentPaneLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
                             .add(jLabel3)
                             .add(jTextVersion))
-                        .add(342, 342, 342))
+                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED))
                     .add(contentPaneLayout.createSequentialGroup()
                         .add(6, 6, 6)
                         .add(jScrollPane1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 85, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)))
+                        .add(65, 65, 65)))
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                .add(jPanel2, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                .add(160, 160, 160)
                 .add(jPanel3, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 18, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
         );
 
@@ -355,6 +374,10 @@ public class VdrFrame extends javax.swing.JFrame implements GolfForm{
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+private void jB_Delete1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jB_Delete1ActionPerformed
+    // TODO add your handling code here:
+}//GEN-LAST:event_jB_Delete1ActionPerformed
 
 private void jB_DeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jB_DeleteActionPerformed
      int i  = SessionUtil.showDialog("VdrDeleteOkCancel", formManager);
@@ -525,6 +548,7 @@ private void jMenu1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:
     private javax.swing.JMenuItem jMenuDisplay;
     private javax.swing.JMenuItem jMenuUpdate;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField jTextAction;
