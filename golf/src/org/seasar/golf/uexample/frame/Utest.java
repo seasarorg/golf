@@ -16,6 +16,10 @@
 
 package org.seasar.golf.uexample.frame;
 
+import org.seasar.framework.container.factory.SingletonS2ContainerFactory;
+import org.seasar.golf.data.RequestData;
+import org.seasar.golf.data.ResultData;
+import org.seasar.golf.transaction.TrxDispatcherInterface;
 import org.seasar.golf.util.GolfSetting;
 
 
@@ -28,9 +32,15 @@ public class Utest {
     /** Creates a new instance of Utest */
     public Utest() {
     }
+
     public static void main(String args[]) {
+
         GolfSetting.setLookAndFeel();
         org.seasar.framework.container.factory.SingletonS2ContainerFactory.init();
+        TrxDispatcherInterface trxDispatcher = (TrxDispatcherInterface) SingletonS2ContainerFactory.getContainer().getComponent(TrxDispatcherInterface.class );
+        RequestData requestData = new RequestData();
+        requestData.setTransactionCode("dummy");
+        ResultData resultData = trxDispatcher.execute(requestData);  
         javax.swing.JFrame loginFrame = (javax.swing.JFrame) org.seasar.framework.container.factory.SingletonS2ContainerFactory.getContainer().getComponent("loginFrame");
         loginFrame.setVisible(true);
     }

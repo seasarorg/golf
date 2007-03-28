@@ -21,6 +21,9 @@ import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import org.seasar.framework.container.factory.SingletonS2ContainerFactory;
 import org.seasar.golf.Connection;
+import org.seasar.golf.data.RequestData;
+import org.seasar.golf.data.ResultData;
+import org.seasar.golf.transaction.TrxDispatcherInterface;
 import org.seasar.golf.uexample.logic.LoginLogic;
 import org.seasar.golf.uexample.util.factory.UexampleFactory;
 
@@ -30,7 +33,8 @@ import org.seasar.golf.uexample.util.factory.UexampleFactory;
  */
 public class LoginFrame extends javax.swing.JFrame {
     private Connection connection = new Connection();
-    /**
+
+       /**
      * Creates new form LoginFrame
      */
     public LoginFrame() {
@@ -38,7 +42,8 @@ public class LoginFrame extends javax.swing.JFrame {
         
         ClassLoader cl = this.getClass().getClassLoader(); 
         // Create icons 
-        Icon saveIcon  = new ImageIcon(cl.getResource("image/app.png"));        
+        Icon saveIcon  = new ImageIcon(cl.getResource("image/app.png"));  
+
     }
     
     /** This method is called from within the constructor to
@@ -150,7 +155,7 @@ public class LoginFrame extends javax.swing.JFrame {
             this.setVisible(false);
         } else {
      
-            error.setText("User ID or Password Error");
+            //error.setText("User ID or Password Error");
         }
     
     }//GEN-LAST:event_jButton1ActionPerformed
@@ -166,6 +171,8 @@ public class LoginFrame extends javax.swing.JFrame {
             }
         });
     }
+
+
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;

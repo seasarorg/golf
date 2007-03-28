@@ -20,7 +20,10 @@ import javax.swing.JFrame;
 import org.seasar.framework.container.factory.SingletonS2ContainerFactory;
 import org.seasar.golf.Factory;
 import org.seasar.golf.GolfForm;
+import org.seasar.golf.data.RequestData;
+import org.seasar.golf.data.ResultData;
 import org.seasar.golf.form.FormManagerUtil;
+import org.seasar.golf.transaction.TrxDispatcherInterface;
 import org.seasar.golf.util.GolfSetting;
 
 /**
@@ -98,7 +101,7 @@ public class ExampleLauncher extends javax.swing.JFrame {
 
         jLabel3.setText("\u3066\u4e0b\u3055\u3044");
 
-        jLabel4.setText("\\bin\\GolfRMIh2.bat\u3092\u30af\u30ea\u30c3\u30af\u3057\u3066Server");
+        jLabel4.setText("\\bin\\GolfRMI.bat\u3092\u30af\u30ea\u30c3\u30af\u3057\u3066Server");
 
         jLabel5.setText("\u30d7\u30ed\u30b0\u30e9\u30e0\u3092\u5b9f\u884c\u3057\u3066\u304f\u3060\u3055\u3044");
 
@@ -175,6 +178,10 @@ public class ExampleLauncher extends javax.swing.JFrame {
 private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
         GolfSetting.setLookAndFeel();
         org.seasar.framework.container.factory.SingletonS2ContainerFactory.init();
+        TrxDispatcherInterface trxDispatcher = (TrxDispatcherInterface) SingletonS2ContainerFactory.getContainer().getComponent(TrxDispatcherInterface.class );
+        RequestData requestData = new RequestData();
+        requestData.setTransactionCode("dummy");
+        ResultData resultData = trxDispatcher.execute(requestData);        
         javax.swing.JFrame loginFrame = (javax.swing.JFrame) org.seasar.framework.container.factory.SingletonS2ContainerFactory.getContainer().getComponent("loginFrame");
         loginFrame.setVisible(true);
 }//GEN-LAST:event_jButton5ActionPerformed

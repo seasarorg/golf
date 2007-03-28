@@ -173,7 +173,7 @@
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel4">
           <Properties>
-            <Property name="text" type="java.lang.String" value="\bin\GolfRMIh2.bat&#x3092;&#x30af;&#x30ea;&#x30c3;&#x30af;&#x3057;&#x3066;Server"/>
+            <Property name="text" type="java.lang.String" value="\bin\GolfRMI.bat&#x3092;&#x30af;&#x30ea;&#x30c3;&#x30af;&#x3057;&#x3066;Server"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel5">
