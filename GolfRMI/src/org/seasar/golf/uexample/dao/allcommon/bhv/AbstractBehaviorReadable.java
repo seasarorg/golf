@@ -397,7 +397,7 @@ public abstract class AbstractBehaviorReadable implements BehaviorReadable {
      */
     protected void assertStringNotNullAndNotTrimmedEmpty(String variableName, String value) {
         assertObjectNotNull("variableName", variableName);
-        assertObjectNotNull("value", value);
+        assertObjectNotNull(variableName, value);
         if (value.trim().length() ==0) {
             String msg = "The value should not be empty: variableName=" + variableName + " value=" + value;
             throw new IllegalArgumentException(msg);

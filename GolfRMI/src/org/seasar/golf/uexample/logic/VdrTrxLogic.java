@@ -1,10 +1,17 @@
 /*
- * VdrTransaction.java
+ * Copyright 2004-2007 the Seasar Foundation and the Others.
  *
- * Created on 2007/02/04, 10:24
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
  *
- * To change this template, choose Tools | Template Manager
- * and open the template in the editor.
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, 
+ * either express or implied. See the License for the specific language
+ * governing permissions and limitations under the License.
  */
 
 package org.seasar.golf.uexample.logic;
@@ -14,15 +21,12 @@ import java.math.BigDecimal;
 import org.seasar.framework.container.S2Container;
 import org.seasar.golf.data.RequestData;
 import org.seasar.golf.data.ResultData;
-import org.seasar.golf.form.FormAction;
 import org.seasar.golf.form.FormAction.FormStack;
 import org.seasar.golf.transaction.TransactionInterface;
 import org.seasar.golf.uexample.dao.exbhv.CompanyBhv;
-import org.seasar.golf.uexample.dao.exdao.CompanyDao;
 import org.seasar.golf.uexample.dao.exentity.Company;
 import org.seasar.golf.validation.Severity;
 import org.seasar.golf.validation.message.SimpleValidationMessage;
-import org.seasar.golf.validator.HostTableFieldInfo;
 
 /**
  *
@@ -51,8 +55,26 @@ public class VdrTrxLogic implements TransactionInterface{
     		nextInq(requestData, resultData, mode, cat);
     	}  else	if (action.equals("Save")){
     		save(requestData, resultData, mode, cat);
-    	}
+		}  else	if (action.equals("Delete")){
+			delete(requestData, resultData, mode, cat);
+		}    	
     }
+
+	private void delete(RequestData requestData, ResultData resultData, String mode, String cat) {
+		resultData.getFormAction().setFormStack(FormStack.RESULT);
+		BigDecimal ccode = new BigDecimal((String)requestData.getField("ccode"));
+		Company company = new Company();	
+		company.setCcode(ccode);	
+		company.setVersionno(new BigDecimal((String)requestData.getField("version")));				
+		int no = bhv.getMyDao().delete(company);
+		if (no == 1) {
+			resultData.getFormAction().setFormStack(FormStack.BACK);			
+			resultData.getValidationResult().add(
+					new SimpleValidationMessage("Delete Completed", Severity.INFO,"ccode"));	
+			resultData.getFormAction().setProcessAction(true);
+			resultData.setParam("_action", "DeleteComple");
+		}
+	}
 
 	private void save(RequestData requestData, ResultData resultData, String mode, String cat) {
 		resultData.getFormAction().setFormStack(FormStack.RESULT);
@@ -79,8 +101,7 @@ public class VdrTrxLogic implements TransactionInterface{
 			company.setVersionno(new BigDecimal((String)requestData.getField("version")));			
 			bhv.update(company);
 		}
-		requestData.setParam("ccode", ccode);
-		nextInq(requestData, resultData, mode, cat);
+		getCompanyFromDb(ccode, resultData, mode, cat);
 		resultData.getFormAction().setFormStack(FormStack.RESULT);
 		if (!resultData.getValidationResult().hasMessages()){
 			resultData.getValidationResult().add(
@@ -91,12 +112,18 @@ public class VdrTrxLogic implements TransactionInterface{
 
 	private void nextInq(RequestData requestData, ResultData resultData, String mode, String cat) {
 		BigDecimal ccode = (BigDecimal) requestData.getParam("ccode");
+		getCompanyFromDb(ccode, resultData, mode, cat);
+		if (!resultData.getValidationResult().hasMessages()) {
+			resultData.getFormAction().setFormStack(FormStack.NEXT);		
+		}
+	}
+
+	private void getCompanyFromDb(BigDecimal ccode, ResultData resultData, String mode, String cat) {
 		Company comp = bhv.getMyDao().getEntity(ccode);
 		if (comp == null){
 		    resultData.getValidationResult().add(new SimpleValidationMessage(
 			"CCode not found (" + ccode.toString()+")", Severity.ERROR));
 		} else {
-			resultData.getFormAction().setFormStack(FormStack.NEXT);
 			resultData.getFormAction().setForm("vdr");
 			resultData.setParam("_mode", mode);
 			resultData.setParam("_cat", cat);   

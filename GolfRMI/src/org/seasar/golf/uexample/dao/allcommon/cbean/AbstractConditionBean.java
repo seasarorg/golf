@@ -1,14 +1,13 @@
 package org.seasar.golf.uexample.dao.allcommon.cbean;
 
 
+import org.seasar.golf.uexample.dao.allcommon.cbean.ConditionBeanContext;
 import org.seasar.golf.uexample.dao.allcommon.dbmeta.DBMeta;
 import org.seasar.golf.uexample.dao.allcommon.dbmeta.DBMetaInstanceHandler;
 import org.seasar.golf.uexample.dao.allcommon.helper.MapListString;
 import org.seasar.golf.uexample.dao.allcommon.helper.MapListStringImpl;
 import org.seasar.golf.uexample.dao.allcommon.cbean.sqlclause.OrderByClause;
 import org.seasar.golf.uexample.dao.allcommon.cbean.sqlclause.SqlClause;
-import org.seasar.golf.uexample.dao.allcommon.cbean.sqlclause.SqlClausePostgreSql;
-
 
 /**
  * The condition-bean as abstract.
@@ -21,7 +20,10 @@ public abstract class AbstractConditionBean implements ConditionBean {
     //                                                                             Attribute
     //                                                                             =========
     /** SQL clause instance. */
-    protected final SqlClause _sqlClause = new SqlClausePostgreSql(getTableDbName());
+    protected final SqlClause _sqlClause;
+    {
+        _sqlClause = ConditionBeanContext.createSqlClause(getTableDbName());
+    }
 
     // =====================================================================================
     //                                                                             SqlClause

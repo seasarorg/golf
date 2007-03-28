@@ -4,6 +4,7 @@ package org.seasar.golf.uexample.dao.allcommon.cbean.sqlclause;
 import java.util.Map;
 
 import org.seasar.golf.uexample.dao.allcommon.cbean.ckey.ConditionKey;
+import org.seasar.golf.uexample.dao.allcommon.cbean.coption.ConditionOption;
 import org.seasar.golf.uexample.dao.allcommon.cbean.cvalue.ConditionValue;
 
 /**
@@ -135,6 +136,16 @@ public interface SqlClause {
     /**
      * Register where clause.
      * 
+     * @param columnFullName Column-full-name([table-name].[column-name]). (NotNull)
+     * @param key Condition key. (NotNull)
+     * @param value Condition value. (NotNull)
+     * @param option Condition option. (NotNull)
+     */
+    public void registerWhereClause(String columnFullName, ConditionKey key, ConditionValue value, ConditionOption option);
+
+    /**
+     * Register where clause.
+     * 
      * @param clause Where-clause. (NotNull)
      */
     public void registerWhereClause(String clause);
@@ -143,9 +154,17 @@ public interface SqlClause {
     //                                                                           InlineWhere
     //                                                                           ===========
     public void registerBaseTableInlineWhereClause(String columnName, ConditionKey key, ConditionValue value);
+    public void registerBaseTableInlineWhereClause(String columnName, ConditionKey key, ConditionValue value, ConditionOption option);
     public void registerBaseTableInlineWhereClause(String value);
     public void registerOuterJoinInlineWhereClause(String aliasName, String columnName, ConditionKey key, ConditionValue value);
+    public void registerOuterJoinInlineWhereClause(String aliasName, String columnName, ConditionKey key, ConditionValue value, ConditionOption option);
     public void registerOuterJoinInlineWhereClause(String aliasName, String value);
+
+    // =====================================================================================
+    //                                                               AdditionalConditionAsOr
+    //                                                               =======================
+    public void makeAdditionalConditionAsOrEffective();
+    public void ignoreAdditionalConditionAsOr();
 
     // =====================================================================================
     //                                                                               OrderBy

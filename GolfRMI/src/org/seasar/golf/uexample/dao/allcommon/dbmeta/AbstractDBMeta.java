@@ -115,10 +115,11 @@ public abstract class AbstractDBMeta implements DBMeta {
      */
     public String getCapPropNameByUncapPropName(String uncapPropName) {
         assertStringNotNullAndNotTrimmedEmpty("uncapPropName", uncapPropName);
-        final String capPropName = (String)getDbNameUncapPropNameMap().get(uncapPropName);
+        final String dbName = getDbNameByMultiName(uncapPropName);
+        final String capPropName = (String)getDbNameCapPropNameMap().get(dbName);
         if (capPropName == null) {
-            String msg = "The dbNameUncapPropNameMap didn't contain the key of '" + uncapPropName + "': ";
-            throw new IllegalStateException(msg + getDbNameUncapPropNameMap());
+            String msg = "The dbNameCapPropNameMap didn't contain the key of '" + dbName + "': ";
+            throw new IllegalStateException(msg + getDbNameCapPropNameMap());
         }
         return capPropName;
     }
@@ -147,7 +148,8 @@ public abstract class AbstractDBMeta implements DBMeta {
      */
     public String getUncapPropNameByCapPropName(String capPropName) {
         assertStringNotNullAndNotTrimmedEmpty("capPropName", capPropName);
-        final String uncapPropName = (String)getDbNameUncapPropNameMap().get(capPropName);
+        final String dbName = getDbNameByMultiName(capPropName);
+        final String uncapPropName = (String)getDbNameUncapPropNameMap().get(dbName);
         if (uncapPropName == null) {
             String msg = "The dbNameUncapPropNameMap didn't contain the key of '" + capPropName + "': ";
             throw new IllegalStateException(msg + getDbNameUncapPropNameMap());

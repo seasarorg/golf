@@ -2,6 +2,7 @@ package org.seasar.golf.uexample.dao.allcommon.cbean.sqlclause;
 
 
 import org.seasar.golf.uexample.dao.allcommon.cbean.ckey.*;
+import org.seasar.golf.uexample.dao.allcommon.cbean.coption.ConditionOption;
 import org.seasar.golf.uexample.dao.allcommon.cbean.cvalue.ConditionValue;
 
 /**
@@ -49,6 +50,9 @@ public abstract class AbstractSqlClause implements SqlClause {
 
     /** Is fetch-narrowing effective? Default value is false. */
     protected boolean _isFetchScopeEffective = false;
+
+    /** Is additional condition as or effective?*/
+    protected boolean _isAdditionalConditionAsOrEffective = false;
 
     // =====================================================================================
     //                                                                           Constructor
@@ -340,13 +344,29 @@ public abstract class AbstractSqlClause implements SqlClause {
     /**
      * This method implements the method that is declared at super.
      * 
-     * @param readColumnName Real-column-name([table-name].[column-name]). (NotNull)
+     * @param columnFullName Column-full-name([table-name].[column-name]). (NotNull)
      * @param key Condition key. (NotNull)
      * @param value Condition value. (NotNull)
      */
-    public void registerWhereClause(String readColumnName, ConditionKey key, ConditionValue value) {
-        assertStringNotNullAndNotTrimmedEmpty("readColumnName", readColumnName);
-        key.addWhereClause(_whereList, readColumnName, value);
+    public void registerWhereClause(String columnFullName, ConditionKey key, ConditionValue value) {
+        assertStringNotNullAndNotTrimmedEmpty("columnFullName", columnFullName);
+        key.addWhereClause(_whereList, columnFullName, value);
+        arrangeWhereListAdditionalConditionAsOr(_whereList);
+    }
+
+    /**
+     * Register where clause.
+     * 
+     * @param columnFullName Column-full-name([table-name].[column-name]). (NotNull)
+     * @param key Condition key. (NotNull)
+     * @param value Condition value. (NotNull)
+     * @param option Operand option. (NotNull)
+     */
+    public void registerWhereClause(String columnFullName, ConditionKey key, ConditionValue value, ConditionOption option) {
+        assertStringNotNullAndNotTrimmedEmpty("columnFullName", columnFullName);
+        assertObjectNotNull("option of " + columnFullName, option);
+        key.addWhereClause(_whereList, columnFullName, value, option);
+        arrangeWhereListAdditionalConditionAsOr(_whereList);
     }
 
     /**
@@ -357,15 +377,23 @@ public abstract class AbstractSqlClause implements SqlClause {
     public void registerWhereClause(String clause) {
         assertStringNotNullAndNotTrimmedEmpty("clause", clause);
         _whereList.add(clause);
+        arrangeWhereListAdditionalConditionAsOr(_whereList);
     }
 
     // =====================================================================================
     //                                                                           InlineWhere
     //                                                                           ===========
     public void registerBaseTableInlineWhereClause(String columnName, ConditionKey key, ConditionValue value) {
-        registerWhereClause(columnName, key, value);
-        final String inlineWhereClause = (String)_whereList.remove(_whereList.size()-1);
-        _baseTableInlineWhereList.add(inlineWhereClause);
+        assertStringNotNullAndNotTrimmedEmpty("columnName", columnName);
+        key.addWhereClause(_baseTableInlineWhereList, columnName, value);
+        arrangeWhereListAdditionalConditionAsOr(_baseTableInlineWhereList);
+    }
+
+    public void registerBaseTableInlineWhereClause(String columnName, ConditionKey key, ConditionValue value, ConditionOption option) {
+        assertStringNotNullAndNotTrimmedEmpty("columnName", columnName);
+        assertObjectNotNull("option of " + columnName, option);
+        key.addWhereClause(_baseTableInlineWhereList, columnName, value, option);
+        arrangeWhereListAdditionalConditionAsOr(_baseTableInlineWhereList);
     }
 
     public void registerBaseTableInlineWhereClause(String value) {
@@ -374,16 +402,25 @@ public abstract class AbstractSqlClause implements SqlClause {
 
     public void registerOuterJoinInlineWhereClause(String aliasName, String columnName, ConditionKey key, ConditionValue value) {
         assertNotYetOuterJoin(aliasName);
+        assertStringNotNullAndNotTrimmedEmpty("columnName", columnName);
         final LeftOuterJoinInfo joinInfo = (LeftOuterJoinInfo)_outerJoinMap.get(aliasName);
-        registerWhereClause(columnName, key, value);
-        final String inlineWhereClause = (String)_whereList.remove(_whereList.size()-1);
-        joinInfo.addInlineWhereClause(inlineWhereClause);
+        key.addWhereClause(joinInfo.getInlineWhereClauseList(), columnName, value);
+        arrangeWhereListAdditionalConditionAsOr(joinInfo.getInlineWhereClauseList());
+    }
+
+    public void registerOuterJoinInlineWhereClause(String aliasName, String columnName, ConditionKey key, ConditionValue value, ConditionOption option) {
+        assertNotYetOuterJoin(aliasName);
+        assertStringNotNullAndNotTrimmedEmpty("columnName", columnName);
+        final LeftOuterJoinInfo joinInfo = (LeftOuterJoinInfo)_outerJoinMap.get(aliasName);
+        key.addWhereClause(joinInfo.getInlineWhereClauseList(), columnName, value, option);
+        arrangeWhereListAdditionalConditionAsOr(joinInfo.getInlineWhereClauseList());
     }
 
     public void registerOuterJoinInlineWhereClause(String aliasName, String value) {
         assertNotYetOuterJoin(aliasName);
         final LeftOuterJoinInfo joinInfo = (LeftOuterJoinInfo)_outerJoinMap.get(aliasName);
         joinInfo.addInlineWhereClause(value);
+        arrangeWhereListAdditionalConditionAsOr(joinInfo.getInlineWhereClauseList());
     }
 
     /**
@@ -395,6 +432,29 @@ public abstract class AbstractSqlClause implements SqlClause {
         if (!_outerJoinMap.containsKey(aliasName)) {
             String msg = "The alias name have not registered in outer join yet: " + aliasName;
             throw new IllegalStateException(msg);
+        }
+    }
+
+    // =====================================================================================
+    //                                                               AdditionalConditionAsOr
+    //                                                               =======================
+    public void makeAdditionalConditionAsOrEffective() {
+        _isAdditionalConditionAsOrEffective = true;
+    }
+
+    public void ignoreAdditionalConditionAsOr() {
+        _isAdditionalConditionAsOrEffective = false;
+    }
+
+    protected void arrangeWhereListAdditionalConditionAsOr(java.util.List<String> whereList) {
+        if (_isAdditionalConditionAsOrEffective) {
+            if (whereList.size() < 2) {
+                String msg = "The whereList should have two more elements when the isAdditionalConditionAsOrEffective is true: " + toString();
+                throw new IllegalStateException(msg);
+            }
+            final String lastWhereClause = (String)whereList.remove(whereList.size() - 1);
+            final String preWhereClause = (String)whereList.remove(whereList.size() - 1);
+            whereList.add("(" + preWhereClause + " or " + lastWhereClause + ")");
         }
     }
 

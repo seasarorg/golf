@@ -5,9 +5,9 @@ import org.seasar.golf.uexample.dao.cbean.cq.*;
 
 import org.seasar.golf.uexample.dao.allcommon.cbean.*;
 import org.seasar.golf.uexample.dao.allcommon.cbean.ckey.*;
+import org.seasar.golf.uexample.dao.allcommon.cbean.coption.ConditionOption;
 import org.seasar.golf.uexample.dao.allcommon.cbean.cvalue.ConditionValue;
 import org.seasar.golf.uexample.dao.allcommon.cbean.sqlclause.SqlClause;
-
 
 /**
  * The condition-query of {table.Name}.
@@ -37,9 +37,18 @@ public class VendorCIQ extends AbstractBsVendorCQ {
     // =====================================================================================
     //                                                                                 Query
     //                                                                                 =====
-    protected void registerQuery(ConditionKey key, Object value, ConditionValue cvalue
+    protected void setupConditionValueAndRegisterWhereClause(ConditionKey key, Object value, ConditionValue cvalue
                                                              , String colName, String capPropName, String uncapPropName) {
         registerInlineQuery(key, value, cvalue, colName, capPropName, uncapPropName);
+    }
+
+    protected void setupConditionValueAndRegisterWhereClause(ConditionKey key, Object value, ConditionValue cvalue
+                                                             , String colName, String capPropName, String uncapPropName, ConditionOption option) {
+        registerInlineQuery(key, value, cvalue, colName, capPropName, uncapPropName, option);
+    }
+
+    protected void registerWhereClause(String whereClause) {
+        registerInlineWhereClause(whereClause);
     }
 
       

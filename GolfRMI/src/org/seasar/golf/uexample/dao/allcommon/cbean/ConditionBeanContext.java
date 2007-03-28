@@ -1,5 +1,7 @@
 package org.seasar.golf.uexample.dao.allcommon.cbean;
 
+import org.seasar.golf.uexample.dao.allcommon.cbean.sqlclause.*;
+
 /**
  * Condition-Bean context. (referring to s2pager)
  * 
@@ -8,7 +10,10 @@ package org.seasar.golf.uexample.dao.allcommon.cbean;
 public class ConditionBeanContext {
 
     /** The thread-local for this. */
-    private static ThreadLocal<ConditionBean> _threadLocal = new ThreadLocal<ConditionBean>();
+    private static final ThreadLocal<ConditionBean> _threadLocal = new ThreadLocal<ConditionBean>();
+
+    /** The database product name. */
+    private static String _databaseProductName;
 
     /**
      * Get fetch-narrowing-bean on thread.
@@ -73,6 +78,54 @@ public class ConditionBeanContext {
             return true;
         } else {
             return false;
+        }
+    }
+
+    /**
+     * Get database product name.
+     * 
+     * @return Database product name.
+     */
+    public static String getDatabaseProductName() {
+        return _databaseProductName;
+    }
+
+    /**
+     * Set database product name.
+     * 
+     * @param name Database product name. (NotNull)
+     */
+    public static void setDatabaseProductName(String name) {
+        if (_databaseProductName != null) {
+            String msg = "Already set up: current=" + _databaseProductName + " your=" + name;
+            throw new IllegalStateException(msg);
+        }
+        _databaseProductName = name;
+    }
+
+    public static SqlClause createSqlClause(String tableDbName) {
+        final String databaseProductName = getDatabaseProductName();
+        if (databaseProductName == null) {
+            return new SqlClausePostgreSql(tableDbName);
+        } else {
+            final String name = databaseProductName.toLowerCase();
+            if (name.startsWith("derby")) {
+                return new SqlClauseDerby(tableDbName);
+            } else if (name.startsWith("oracle")) {
+                return new SqlClauseOracle(tableDbName);
+            } else if (name.startsWith("firebird")) {
+                return new SqlClauseFirebird(tableDbName);
+            } else if (name.startsWith("mysql")) {
+                return new SqlClauseMySql(tableDbName);
+            } else if (name.startsWith("postgre")) {
+                return new SqlClausePostgreSql(tableDbName);
+            } else if (name.startsWith("mssql")) {
+                return new SqlClauseSqlServer(tableDbName);
+            } else if (name.startsWith("db2")) {
+                return new SqlClauseDb2(tableDbName);
+            } else {
+                return new SqlClausePostgreSql(tableDbName);
+            }
         }
     }
 }

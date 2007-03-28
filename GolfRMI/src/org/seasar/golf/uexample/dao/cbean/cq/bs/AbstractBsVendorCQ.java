@@ -64,77 +64,77 @@ public abstract class AbstractBsVendorCQ extends AbstractConditionQuery {
     /**
      * Set the value of id using equal. { = }
      * 
-     * @param value The value of id as equal.
+     * @param id The value of id as equal.
      */
-    public void setId_Equal(java.math.BigDecimal value) {
-        registerId(ConditionKey.CK_EQUAL, value);
+    public void setId_Equal(java.math.BigDecimal id) {
+        registerId(ConditionKey.CK_EQUAL, id);
     }
-      
+            
     /**
      * Set the value of id using notEqual. { != }
      * 
-     * @param value The value of id as notEqual.
+     * @param id The value of id as notEqual.
      */
-    public void setId_NotEqual(java.math.BigDecimal value) {
-        registerId(ConditionKey.CK_NOT_EQUAL, value);
+    public void setId_NotEqual(java.math.BigDecimal id) {
+        registerId(ConditionKey.CK_NOT_EQUAL, id);
     }
-
+            
     /**
      * Set the value of id using greaterThan. { &gt; }
      * 
-     * @param value The value of id as greaterThan.
+     * @param id The value of id as greaterThan.
      */
-    public void setId_GreaterThan(java.math.BigDecimal value) {
-        registerId(ConditionKey.CK_GREATER_THAN, value);
+    public void setId_GreaterThan(java.math.BigDecimal id) {
+        registerId(ConditionKey.CK_GREATER_THAN, id);
     }
-
+            
     /**
      * Set the value of id using lessThan. { &lt; }
      * 
-     * @param value The value of id as lessThan.
+     * @param id The value of id as lessThan.
      */
-    public void setId_LessThan(java.math.BigDecimal value) {
-        registerId(ConditionKey.CK_LESS_THAN, value);
+    public void setId_LessThan(java.math.BigDecimal id) {
+        registerId(ConditionKey.CK_LESS_THAN, id);
     }
-      
+            
     /**
      * Set the value of id using greaterEqual. { &gt;= }
      * 
-     * @param value The value of id as greaterEqual.
+     * @param id The value of id as greaterEqual.
      */
-    public void setId_GreaterEqual(java.math.BigDecimal value) {
-        registerId(ConditionKey.CK_GREATER_EQUAL, value);
+    public void setId_GreaterEqual(java.math.BigDecimal id) {
+        registerId(ConditionKey.CK_GREATER_EQUAL, id);
     }
-
+            
     /**
      * Set the value of id using lessEqual. { &lt;= }
      * 
-     * @param value The value of id as lessEqual.
+     * @param id The value of id as lessEqual.
      */
-    public void setId_LessEqual(java.math.BigDecimal value) {
-        registerId(ConditionKey.CK_LESS_EQUAL, value);
+    public void setId_LessEqual(java.math.BigDecimal id) {
+        registerId(ConditionKey.CK_LESS_EQUAL, id);
     }
-
+                  
     /**
      * Set the value of id using inScope. { in (a, b) }
      * If the element in the list is null or empty-string, the condition-element is ignored.
      * 
-     * @param valueList The value of id as inScope.
+     * @param idList The value of id as inScope.
      */
-    public void setId_InScope(java.util.List<java.math.BigDecimal> valueList) {
-        registerId(ConditionKey.CK_IN_SCOPE, valueList);
+    public void setId_InScope(java.util.List<java.math.BigDecimal> idList) {
+        registerId(ConditionKey.CK_IN_SCOPE, idList);
     }
-
+            
     /**
      * Set the value of id using notInScope. { not in (a, b) }
      * If the element in the list is null or empty-string, the condition-element is ignored.
      * 
-     * @param valueList The value of id as notInScope.
+     * @param idList The value of id as notInScope.
      */
-    public void setId_NotInScope(java.util.List<java.math.BigDecimal> valueList) {
-        registerId(ConditionKey.CK_NOT_IN_SCOPE, valueList);
+    public void setId_NotInScope(java.util.List<java.math.BigDecimal> idList) {
+        registerId(ConditionKey.CK_NOT_IN_SCOPE, idList);
     }
-                                          
+                                                
     /**
      * Register condition of id.
      * 
@@ -170,92 +170,114 @@ public abstract class AbstractBsVendorCQ extends AbstractConditionQuery {
      * Set the value of vcode using equal. { = }
      * If the value is null or empty-string, this condition is ignored.
      * 
-     * @param value The value of vcode as equal.
+     * @param vcode The value of vcode as equal.
      */
-    public void setVcode_Equal(String value) {
-        registerVcode(ConditionKey.CK_EQUAL, filterRemoveEmptyString(value));
+    public void setVcode_Equal(String vcode) {
+        registerVcode(ConditionKey.CK_EQUAL, filterRemoveEmptyString(vcode));
     }
-            
+                  
     /**
      * Set the value of vcode using notEqual. { != }
      * If the value is null or empty-string, this condition is ignored.
      * 
-     * @param value The value of vcode as notEqual.
+     * @param vcode The value of vcode as notEqual.
      */
-    public void setVcode_NotEqual(String value) {
-        registerVcode(ConditionKey.CK_NOT_EQUAL, filterRemoveEmptyString(value));
+    public void setVcode_NotEqual(String vcode) {
+        registerVcode(ConditionKey.CK_NOT_EQUAL, filterRemoveEmptyString(vcode));
     }
-
+            
     /**
      * Set the value of vcode using greaterThan. { &gt; }
      * If the value is null or empty-string, this condition is ignored.
      * 
-     * @param value The value of vcode as greaterThan.
+     * @param vcode The value of vcode as greaterThan.
      */
-    public void setVcode_GreaterThan(String value) {
-        registerVcode(ConditionKey.CK_GREATER_THAN, filterRemoveEmptyString(value));
+    public void setVcode_GreaterThan(String vcode) {
+        registerVcode(ConditionKey.CK_GREATER_THAN, filterRemoveEmptyString(vcode));
     }
-
+            
     /**
      * Set the value of vcode using lessThan. { &lt; }
      * If the value is null or empty-string, this condition is ignored.
      * 
-     * @param value The value of vcode as lessThan.
+     * @param vcode The value of vcode as lessThan.
      */
-    public void setVcode_LessThan(String value) {
-        registerVcode(ConditionKey.CK_LESS_THAN, filterRemoveEmptyString(value));
+    public void setVcode_LessThan(String vcode) {
+        registerVcode(ConditionKey.CK_LESS_THAN, filterRemoveEmptyString(vcode));
     }
-
+            
     /**
      * Set the value of vcode using greaterEqual. { &gt;= }
      * If the value is null or empty-string, this condition is ignored.
      * 
-     * @param value The value of vcode as greaterEqual.
+     * @param vcode The value of vcode as greaterEqual.
      */
-    public void setVcode_GreaterEqual(String value) {
-        registerVcode(ConditionKey.CK_GREATER_EQUAL, filterRemoveEmptyString(value));
+    public void setVcode_GreaterEqual(String vcode) {
+        registerVcode(ConditionKey.CK_GREATER_EQUAL, filterRemoveEmptyString(vcode));
     }
-
+            
     /**
      * Set the value of vcode using lessEqual. { &lt;= }
      * If the value is null or empty-string, this condition is ignored.
      * 
-     * @param value The value of vcode as lessEqual.
+     * @param vcode The value of vcode as lessEqual.
      */
-    public void setVcode_LessEqual(String value) {
-        registerVcode(ConditionKey.CK_LESS_EQUAL, filterRemoveEmptyString(value));
+    public void setVcode_LessEqual(String vcode) {
+        registerVcode(ConditionKey.CK_LESS_EQUAL, filterRemoveEmptyString(vcode));
     }
-
+            
     /**
      * Set the value of vcode using prefixSearch. { like 'xxx%' }
      * If the value is null or empty-string, this condition is ignored.
      * 
-     * @param value The value of vcode as prefixSearch.
+     * @param vcode The value of vcode as prefixSearch.
      */
-    public void setVcode_PrefixSearch(String value) {
-        registerVcode(ConditionKey.CK_PREFIX_SEARCH, filterRemoveEmptyString(value));
+    public void setVcode_PrefixSearch(String vcode) {
+        registerVcode(ConditionKey.CK_PREFIX_SEARCH, filterRemoveEmptyString(vcode));
+    }
+            
+    /**
+     * Set the value of vcode using likeSearch. { like '%xxx%' }
+     * If the value is null or empty-string, this condition is ignored.
+     * You can invoke this method several times and the conditions are set up.
+     * 
+     * @param vcode The value of vcode as likeSearch.
+     * @param likeSearchOption Like search option. (NotNull)
+     */
+    public void setVcode_LikeSearch(String vcode, org.seasar.golf.uexample.dao.allcommon.cbean.coption.LikeSearchOption option) {
+        registerLikeSearchQuery(ConditionKey.CK_LIKE_SEARCH, filterRemoveEmptyString(vcode), getCValueVcode(), COL_vcode, J_Vcode, UJ_vcode, option);
+    }
+            
+    /**
+     * Set the value of vcode using inScope. { in ('a', 'b') }
+     * If the element in the list is null or empty-string, the condition-element is ignored.
+     * 
+     * @param vcodeList The value of vcode as inScope.
+     */
+    public void setVcode_InScope(java.util.List<String> vcodeList) {
+        registerVcode(ConditionKey.CK_IN_SCOPE, filterRemoveEmptyStringFromList(vcodeList));
     }
 
     /**
      * Set the value of vcode using inScope. { in ('a', 'b') }
      * If the element in the list is null or empty-string, the condition-element is ignored.
      * 
-     * @param valueList The value of vcode as inScope.
+     * @param vcode The value of vcode as inScope.
      */
-    public void setVcode_InScope(java.util.List<String> valueList) {
-        registerVcode(ConditionKey.CK_IN_SCOPE, filterRemoveEmptyStringFromList(valueList));
+    public void setVcode_InScope(String vcode, org.seasar.golf.uexample.dao.allcommon.cbean.coption.InScopeOption option) {
+        registerInScopeQuery(ConditionKey.CK_IN_SCOPE, filterRemoveEmptyString(vcode), getCValueVcode(), COL_vcode, J_Vcode, UJ_vcode, option);
     }
-
+            
     /**
      * Set the value of vcode using notInScope. { not in ('a', 'b') }
      * If the element in the list is null or empty-string, the condition-element is ignored.
      * 
-     * @param valueList The value of vcode as notInScope.
+     * @param vcodeList The value of vcode as notInScope.
      */
-    public void setVcode_NotInScope(java.util.List<String> valueList) {
-        registerVcode(ConditionKey.CK_NOT_IN_SCOPE, filterRemoveEmptyStringFromList(valueList));
+    public void setVcode_NotInScope(java.util.List<String> vcodeList) {
+        registerVcode(ConditionKey.CK_NOT_IN_SCOPE, filterRemoveEmptyStringFromList(vcodeList));
     }
-                                              
+                                                    
     /**
      * Register condition of vcode.
      * 
@@ -291,92 +313,114 @@ public abstract class AbstractBsVendorCQ extends AbstractConditionQuery {
      * Set the value of shortname using equal. { = }
      * If the value is null or empty-string, this condition is ignored.
      * 
-     * @param value The value of shortname as equal.
+     * @param shortname The value of shortname as equal.
      */
-    public void setShortname_Equal(String value) {
-        registerShortname(ConditionKey.CK_EQUAL, filterRemoveEmptyString(value));
+    public void setShortname_Equal(String shortname) {
+        registerShortname(ConditionKey.CK_EQUAL, filterRemoveEmptyString(shortname));
     }
-            
+                  
     /**
      * Set the value of shortname using notEqual. { != }
      * If the value is null or empty-string, this condition is ignored.
      * 
-     * @param value The value of shortname as notEqual.
+     * @param shortname The value of shortname as notEqual.
      */
-    public void setShortname_NotEqual(String value) {
-        registerShortname(ConditionKey.CK_NOT_EQUAL, filterRemoveEmptyString(value));
+    public void setShortname_NotEqual(String shortname) {
+        registerShortname(ConditionKey.CK_NOT_EQUAL, filterRemoveEmptyString(shortname));
     }
-
+            
     /**
      * Set the value of shortname using greaterThan. { &gt; }
      * If the value is null or empty-string, this condition is ignored.
      * 
-     * @param value The value of shortname as greaterThan.
+     * @param shortname The value of shortname as greaterThan.
      */
-    public void setShortname_GreaterThan(String value) {
-        registerShortname(ConditionKey.CK_GREATER_THAN, filterRemoveEmptyString(value));
+    public void setShortname_GreaterThan(String shortname) {
+        registerShortname(ConditionKey.CK_GREATER_THAN, filterRemoveEmptyString(shortname));
     }
-
+            
     /**
      * Set the value of shortname using lessThan. { &lt; }
      * If the value is null or empty-string, this condition is ignored.
      * 
-     * @param value The value of shortname as lessThan.
+     * @param shortname The value of shortname as lessThan.
      */
-    public void setShortname_LessThan(String value) {
-        registerShortname(ConditionKey.CK_LESS_THAN, filterRemoveEmptyString(value));
+    public void setShortname_LessThan(String shortname) {
+        registerShortname(ConditionKey.CK_LESS_THAN, filterRemoveEmptyString(shortname));
     }
-
+            
     /**
      * Set the value of shortname using greaterEqual. { &gt;= }
      * If the value is null or empty-string, this condition is ignored.
      * 
-     * @param value The value of shortname as greaterEqual.
+     * @param shortname The value of shortname as greaterEqual.
      */
-    public void setShortname_GreaterEqual(String value) {
-        registerShortname(ConditionKey.CK_GREATER_EQUAL, filterRemoveEmptyString(value));
+    public void setShortname_GreaterEqual(String shortname) {
+        registerShortname(ConditionKey.CK_GREATER_EQUAL, filterRemoveEmptyString(shortname));
     }
-
+            
     /**
      * Set the value of shortname using lessEqual. { &lt;= }
      * If the value is null or empty-string, this condition is ignored.
      * 
-     * @param value The value of shortname as lessEqual.
+     * @param shortname The value of shortname as lessEqual.
      */
-    public void setShortname_LessEqual(String value) {
-        registerShortname(ConditionKey.CK_LESS_EQUAL, filterRemoveEmptyString(value));
+    public void setShortname_LessEqual(String shortname) {
+        registerShortname(ConditionKey.CK_LESS_EQUAL, filterRemoveEmptyString(shortname));
     }
-
+            
     /**
      * Set the value of shortname using prefixSearch. { like 'xxx%' }
      * If the value is null or empty-string, this condition is ignored.
      * 
-     * @param value The value of shortname as prefixSearch.
+     * @param shortname The value of shortname as prefixSearch.
      */
-    public void setShortname_PrefixSearch(String value) {
-        registerShortname(ConditionKey.CK_PREFIX_SEARCH, filterRemoveEmptyString(value));
+    public void setShortname_PrefixSearch(String shortname) {
+        registerShortname(ConditionKey.CK_PREFIX_SEARCH, filterRemoveEmptyString(shortname));
+    }
+            
+    /**
+     * Set the value of shortname using likeSearch. { like '%xxx%' }
+     * If the value is null or empty-string, this condition is ignored.
+     * You can invoke this method several times and the conditions are set up.
+     * 
+     * @param shortname The value of shortname as likeSearch.
+     * @param likeSearchOption Like search option. (NotNull)
+     */
+    public void setShortname_LikeSearch(String shortname, org.seasar.golf.uexample.dao.allcommon.cbean.coption.LikeSearchOption option) {
+        registerLikeSearchQuery(ConditionKey.CK_LIKE_SEARCH, filterRemoveEmptyString(shortname), getCValueShortname(), COL_shortname, J_Shortname, UJ_shortname, option);
+    }
+            
+    /**
+     * Set the value of shortname using inScope. { in ('a', 'b') }
+     * If the element in the list is null or empty-string, the condition-element is ignored.
+     * 
+     * @param shortnameList The value of shortname as inScope.
+     */
+    public void setShortname_InScope(java.util.List<String> shortnameList) {
+        registerShortname(ConditionKey.CK_IN_SCOPE, filterRemoveEmptyStringFromList(shortnameList));
     }
 
     /**
      * Set the value of shortname using inScope. { in ('a', 'b') }
      * If the element in the list is null or empty-string, the condition-element is ignored.
      * 
-     * @param valueList The value of shortname as inScope.
+     * @param shortname The value of shortname as inScope.
      */
-    public void setShortname_InScope(java.util.List<String> valueList) {
-        registerShortname(ConditionKey.CK_IN_SCOPE, filterRemoveEmptyStringFromList(valueList));
+    public void setShortname_InScope(String shortname, org.seasar.golf.uexample.dao.allcommon.cbean.coption.InScopeOption option) {
+        registerInScopeQuery(ConditionKey.CK_IN_SCOPE, filterRemoveEmptyString(shortname), getCValueShortname(), COL_shortname, J_Shortname, UJ_shortname, option);
     }
-
+            
     /**
      * Set the value of shortname using notInScope. { not in ('a', 'b') }
      * If the element in the list is null or empty-string, the condition-element is ignored.
      * 
-     * @param valueList The value of shortname as notInScope.
+     * @param shortnameList The value of shortname as notInScope.
      */
-    public void setShortname_NotInScope(java.util.List<String> valueList) {
-        registerShortname(ConditionKey.CK_NOT_IN_SCOPE, filterRemoveEmptyStringFromList(valueList));
+    public void setShortname_NotInScope(java.util.List<String> shortnameList) {
+        registerShortname(ConditionKey.CK_NOT_IN_SCOPE, filterRemoveEmptyStringFromList(shortnameList));
     }
-                                              
+                                                    
     /**
      * Register condition of shortname.
      * 
@@ -412,92 +456,114 @@ public abstract class AbstractBsVendorCQ extends AbstractConditionQuery {
      * Set the value of name using equal. { = }
      * If the value is null or empty-string, this condition is ignored.
      * 
-     * @param value The value of name as equal.
+     * @param name The value of name as equal.
      */
-    public void setName_Equal(String value) {
-        registerName(ConditionKey.CK_EQUAL, filterRemoveEmptyString(value));
+    public void setName_Equal(String name) {
+        registerName(ConditionKey.CK_EQUAL, filterRemoveEmptyString(name));
     }
-            
+                  
     /**
      * Set the value of name using notEqual. { != }
      * If the value is null or empty-string, this condition is ignored.
      * 
-     * @param value The value of name as notEqual.
+     * @param name The value of name as notEqual.
      */
-    public void setName_NotEqual(String value) {
-        registerName(ConditionKey.CK_NOT_EQUAL, filterRemoveEmptyString(value));
+    public void setName_NotEqual(String name) {
+        registerName(ConditionKey.CK_NOT_EQUAL, filterRemoveEmptyString(name));
     }
-
+            
     /**
      * Set the value of name using greaterThan. { &gt; }
      * If the value is null or empty-string, this condition is ignored.
      * 
-     * @param value The value of name as greaterThan.
+     * @param name The value of name as greaterThan.
      */
-    public void setName_GreaterThan(String value) {
-        registerName(ConditionKey.CK_GREATER_THAN, filterRemoveEmptyString(value));
+    public void setName_GreaterThan(String name) {
+        registerName(ConditionKey.CK_GREATER_THAN, filterRemoveEmptyString(name));
     }
-
+            
     /**
      * Set the value of name using lessThan. { &lt; }
      * If the value is null or empty-string, this condition is ignored.
      * 
-     * @param value The value of name as lessThan.
+     * @param name The value of name as lessThan.
      */
-    public void setName_LessThan(String value) {
-        registerName(ConditionKey.CK_LESS_THAN, filterRemoveEmptyString(value));
+    public void setName_LessThan(String name) {
+        registerName(ConditionKey.CK_LESS_THAN, filterRemoveEmptyString(name));
     }
-
+            
     /**
      * Set the value of name using greaterEqual. { &gt;= }
      * If the value is null or empty-string, this condition is ignored.
      * 
-     * @param value The value of name as greaterEqual.
+     * @param name The value of name as greaterEqual.
      */
-    public void setName_GreaterEqual(String value) {
-        registerName(ConditionKey.CK_GREATER_EQUAL, filterRemoveEmptyString(value));
+    public void setName_GreaterEqual(String name) {
+        registerName(ConditionKey.CK_GREATER_EQUAL, filterRemoveEmptyString(name));
     }
-
+            
     /**
      * Set the value of name using lessEqual. { &lt;= }
      * If the value is null or empty-string, this condition is ignored.
      * 
-     * @param value The value of name as lessEqual.
+     * @param name The value of name as lessEqual.
      */
-    public void setName_LessEqual(String value) {
-        registerName(ConditionKey.CK_LESS_EQUAL, filterRemoveEmptyString(value));
+    public void setName_LessEqual(String name) {
+        registerName(ConditionKey.CK_LESS_EQUAL, filterRemoveEmptyString(name));
     }
-
+            
     /**
      * Set the value of name using prefixSearch. { like 'xxx%' }
      * If the value is null or empty-string, this condition is ignored.
      * 
-     * @param value The value of name as prefixSearch.
+     * @param name The value of name as prefixSearch.
      */
-    public void setName_PrefixSearch(String value) {
-        registerName(ConditionKey.CK_PREFIX_SEARCH, filterRemoveEmptyString(value));
+    public void setName_PrefixSearch(String name) {
+        registerName(ConditionKey.CK_PREFIX_SEARCH, filterRemoveEmptyString(name));
+    }
+            
+    /**
+     * Set the value of name using likeSearch. { like '%xxx%' }
+     * If the value is null or empty-string, this condition is ignored.
+     * You can invoke this method several times and the conditions are set up.
+     * 
+     * @param name The value of name as likeSearch.
+     * @param likeSearchOption Like search option. (NotNull)
+     */
+    public void setName_LikeSearch(String name, org.seasar.golf.uexample.dao.allcommon.cbean.coption.LikeSearchOption option) {
+        registerLikeSearchQuery(ConditionKey.CK_LIKE_SEARCH, filterRemoveEmptyString(name), getCValueName(), COL_name, J_Name, UJ_name, option);
+    }
+            
+    /**
+     * Set the value of name using inScope. { in ('a', 'b') }
+     * If the element in the list is null or empty-string, the condition-element is ignored.
+     * 
+     * @param nameList The value of name as inScope.
+     */
+    public void setName_InScope(java.util.List<String> nameList) {
+        registerName(ConditionKey.CK_IN_SCOPE, filterRemoveEmptyStringFromList(nameList));
     }
 
     /**
      * Set the value of name using inScope. { in ('a', 'b') }
      * If the element in the list is null or empty-string, the condition-element is ignored.
      * 
-     * @param valueList The value of name as inScope.
+     * @param name The value of name as inScope.
      */
-    public void setName_InScope(java.util.List<String> valueList) {
-        registerName(ConditionKey.CK_IN_SCOPE, filterRemoveEmptyStringFromList(valueList));
+    public void setName_InScope(String name, org.seasar.golf.uexample.dao.allcommon.cbean.coption.InScopeOption option) {
+        registerInScopeQuery(ConditionKey.CK_IN_SCOPE, filterRemoveEmptyString(name), getCValueName(), COL_name, J_Name, UJ_name, option);
     }
-
+            
     /**
      * Set the value of name using notInScope. { not in ('a', 'b') }
      * If the element in the list is null or empty-string, the condition-element is ignored.
      * 
-     * @param valueList The value of name as notInScope.
+     * @param nameList The value of name as notInScope.
      */
-    public void setName_NotInScope(java.util.List<String> valueList) {
-        registerName(ConditionKey.CK_NOT_IN_SCOPE, filterRemoveEmptyStringFromList(valueList));
+    public void setName_NotInScope(java.util.List<String> nameList) {
+        registerName(ConditionKey.CK_NOT_IN_SCOPE, filterRemoveEmptyStringFromList(nameList));
     }
-                                              
+                                                    
     /**
      * Register condition of name.
      * 
@@ -533,92 +599,114 @@ public abstract class AbstractBsVendorCQ extends AbstractConditionQuery {
      * Set the value of telephone using equal. { = }
      * If the value is null or empty-string, this condition is ignored.
      * 
-     * @param value The value of telephone as equal.
+     * @param telephone The value of telephone as equal.
      */
-    public void setTelephone_Equal(String value) {
-        registerTelephone(ConditionKey.CK_EQUAL, filterRemoveEmptyString(value));
+    public void setTelephone_Equal(String telephone) {
+        registerTelephone(ConditionKey.CK_EQUAL, filterRemoveEmptyString(telephone));
     }
-            
+                  
     /**
      * Set the value of telephone using notEqual. { != }
      * If the value is null or empty-string, this condition is ignored.
      * 
-     * @param value The value of telephone as notEqual.
+     * @param telephone The value of telephone as notEqual.
      */
-    public void setTelephone_NotEqual(String value) {
-        registerTelephone(ConditionKey.CK_NOT_EQUAL, filterRemoveEmptyString(value));
+    public void setTelephone_NotEqual(String telephone) {
+        registerTelephone(ConditionKey.CK_NOT_EQUAL, filterRemoveEmptyString(telephone));
     }
-
+            
     /**
      * Set the value of telephone using greaterThan. { &gt; }
      * If the value is null or empty-string, this condition is ignored.
      * 
-     * @param value The value of telephone as greaterThan.
+     * @param telephone The value of telephone as greaterThan.
      */
-    public void setTelephone_GreaterThan(String value) {
-        registerTelephone(ConditionKey.CK_GREATER_THAN, filterRemoveEmptyString(value));
+    public void setTelephone_GreaterThan(String telephone) {
+        registerTelephone(ConditionKey.CK_GREATER_THAN, filterRemoveEmptyString(telephone));
     }
-
+            
     /**
      * Set the value of telephone using lessThan. { &lt; }
      * If the value is null or empty-string, this condition is ignored.
      * 
-     * @param value The value of telephone as lessThan.
+     * @param telephone The value of telephone as lessThan.
      */
-    public void setTelephone_LessThan(String value) {
-        registerTelephone(ConditionKey.CK_LESS_THAN, filterRemoveEmptyString(value));
+    public void setTelephone_LessThan(String telephone) {
+        registerTelephone(ConditionKey.CK_LESS_THAN, filterRemoveEmptyString(telephone));
     }
-
+            
     /**
      * Set the value of telephone using greaterEqual. { &gt;= }
      * If the value is null or empty-string, this condition is ignored.
      * 
-     * @param value The value of telephone as greaterEqual.
+     * @param telephone The value of telephone as greaterEqual.
      */
-    public void setTelephone_GreaterEqual(String value) {
-        registerTelephone(ConditionKey.CK_GREATER_EQUAL, filterRemoveEmptyString(value));
+    public void setTelephone_GreaterEqual(String telephone) {
+        registerTelephone(ConditionKey.CK_GREATER_EQUAL, filterRemoveEmptyString(telephone));
     }
-
+            
     /**
      * Set the value of telephone using lessEqual. { &lt;= }
      * If the value is null or empty-string, this condition is ignored.
      * 
-     * @param value The value of telephone as lessEqual.
+     * @param telephone The value of telephone as lessEqual.
      */
-    public void setTelephone_LessEqual(String value) {
-        registerTelephone(ConditionKey.CK_LESS_EQUAL, filterRemoveEmptyString(value));
+    public void setTelephone_LessEqual(String telephone) {
+        registerTelephone(ConditionKey.CK_LESS_EQUAL, filterRemoveEmptyString(telephone));
     }
-
+            
     /**
      * Set the value of telephone using prefixSearch. { like 'xxx%' }
      * If the value is null or empty-string, this condition is ignored.
      * 
-     * @param value The value of telephone as prefixSearch.
+     * @param telephone The value of telephone as prefixSearch.
      */
-    public void setTelephone_PrefixSearch(String value) {
-        registerTelephone(ConditionKey.CK_PREFIX_SEARCH, filterRemoveEmptyString(value));
+    public void setTelephone_PrefixSearch(String telephone) {
+        registerTelephone(ConditionKey.CK_PREFIX_SEARCH, filterRemoveEmptyString(telephone));
+    }
+            
+    /**
+     * Set the value of telephone using likeSearch. { like '%xxx%' }
+     * If the value is null or empty-string, this condition is ignored.
+     * You can invoke this method several times and the conditions are set up.
+     * 
+     * @param telephone The value of telephone as likeSearch.
+     * @param likeSearchOption Like search option. (NotNull)
+     */
+    public void setTelephone_LikeSearch(String telephone, org.seasar.golf.uexample.dao.allcommon.cbean.coption.LikeSearchOption option) {
+        registerLikeSearchQuery(ConditionKey.CK_LIKE_SEARCH, filterRemoveEmptyString(telephone), getCValueTelephone(), COL_telephone, J_Telephone, UJ_telephone, option);
+    }
+            
+    /**
+     * Set the value of telephone using inScope. { in ('a', 'b') }
+     * If the element in the list is null or empty-string, the condition-element is ignored.
+     * 
+     * @param telephoneList The value of telephone as inScope.
+     */
+    public void setTelephone_InScope(java.util.List<String> telephoneList) {
+        registerTelephone(ConditionKey.CK_IN_SCOPE, filterRemoveEmptyStringFromList(telephoneList));
     }
 
     /**
      * Set the value of telephone using inScope. { in ('a', 'b') }
      * If the element in the list is null or empty-string, the condition-element is ignored.
      * 
-     * @param valueList The value of telephone as inScope.
+     * @param telephone The value of telephone as inScope.
      */
-    public void setTelephone_InScope(java.util.List<String> valueList) {
-        registerTelephone(ConditionKey.CK_IN_SCOPE, filterRemoveEmptyStringFromList(valueList));
+    public void setTelephone_InScope(String telephone, org.seasar.golf.uexample.dao.allcommon.cbean.coption.InScopeOption option) {
+        registerInScopeQuery(ConditionKey.CK_IN_SCOPE, filterRemoveEmptyString(telephone), getCValueTelephone(), COL_telephone, J_Telephone, UJ_telephone, option);
     }
-
+            
     /**
      * Set the value of telephone using notInScope. { not in ('a', 'b') }
      * If the element in the list is null or empty-string, the condition-element is ignored.
      * 
-     * @param valueList The value of telephone as notInScope.
+     * @param telephoneList The value of telephone as notInScope.
      */
-    public void setTelephone_NotInScope(java.util.List<String> valueList) {
-        registerTelephone(ConditionKey.CK_NOT_IN_SCOPE, filterRemoveEmptyStringFromList(valueList));
+    public void setTelephone_NotInScope(java.util.List<String> telephoneList) {
+        registerTelephone(ConditionKey.CK_NOT_IN_SCOPE, filterRemoveEmptyStringFromList(telephoneList));
     }
-                                          
+                                                
     /**
      * Set the value of telephone using isNull. { is null }
      */
@@ -667,77 +755,77 @@ public abstract class AbstractBsVendorCQ extends AbstractConditionQuery {
     /**
      * Set the value of versionno using equal. { = }
      * 
-     * @param value The value of versionno as equal.
+     * @param versionno The value of versionno as equal.
      */
-    public void setVersionno_Equal(java.math.BigDecimal value) {
-        registerVersionno(ConditionKey.CK_EQUAL, value);
+    public void setVersionno_Equal(java.math.BigDecimal versionno) {
+        registerVersionno(ConditionKey.CK_EQUAL, versionno);
     }
-      
+            
     /**
      * Set the value of versionno using notEqual. { != }
      * 
-     * @param value The value of versionno as notEqual.
+     * @param versionno The value of versionno as notEqual.
      */
-    public void setVersionno_NotEqual(java.math.BigDecimal value) {
-        registerVersionno(ConditionKey.CK_NOT_EQUAL, value);
+    public void setVersionno_NotEqual(java.math.BigDecimal versionno) {
+        registerVersionno(ConditionKey.CK_NOT_EQUAL, versionno);
     }
-
+            
     /**
      * Set the value of versionno using greaterThan. { &gt; }
      * 
-     * @param value The value of versionno as greaterThan.
+     * @param versionno The value of versionno as greaterThan.
      */
-    public void setVersionno_GreaterThan(java.math.BigDecimal value) {
-        registerVersionno(ConditionKey.CK_GREATER_THAN, value);
+    public void setVersionno_GreaterThan(java.math.BigDecimal versionno) {
+        registerVersionno(ConditionKey.CK_GREATER_THAN, versionno);
     }
-
+            
     /**
      * Set the value of versionno using lessThan. { &lt; }
      * 
-     * @param value The value of versionno as lessThan.
+     * @param versionno The value of versionno as lessThan.
      */
-    public void setVersionno_LessThan(java.math.BigDecimal value) {
-        registerVersionno(ConditionKey.CK_LESS_THAN, value);
+    public void setVersionno_LessThan(java.math.BigDecimal versionno) {
+        registerVersionno(ConditionKey.CK_LESS_THAN, versionno);
     }
-      
+            
     /**
      * Set the value of versionno using greaterEqual. { &gt;= }
      * 
-     * @param value The value of versionno as greaterEqual.
+     * @param versionno The value of versionno as greaterEqual.
      */
-    public void setVersionno_GreaterEqual(java.math.BigDecimal value) {
-        registerVersionno(ConditionKey.CK_GREATER_EQUAL, value);
+    public void setVersionno_GreaterEqual(java.math.BigDecimal versionno) {
+        registerVersionno(ConditionKey.CK_GREATER_EQUAL, versionno);
     }
-
+            
     /**
      * Set the value of versionno using lessEqual. { &lt;= }
      * 
-     * @param value The value of versionno as lessEqual.
+     * @param versionno The value of versionno as lessEqual.
      */
-    public void setVersionno_LessEqual(java.math.BigDecimal value) {
-        registerVersionno(ConditionKey.CK_LESS_EQUAL, value);
+    public void setVersionno_LessEqual(java.math.BigDecimal versionno) {
+        registerVersionno(ConditionKey.CK_LESS_EQUAL, versionno);
     }
-
+                  
     /**
      * Set the value of versionno using inScope. { in (a, b) }
      * If the element in the list is null or empty-string, the condition-element is ignored.
      * 
-     * @param valueList The value of versionno as inScope.
+     * @param versionnoList The value of versionno as inScope.
      */
-    public void setVersionno_InScope(java.util.List<java.math.BigDecimal> valueList) {
-        registerVersionno(ConditionKey.CK_IN_SCOPE, valueList);
+    public void setVersionno_InScope(java.util.List<java.math.BigDecimal> versionnoList) {
+        registerVersionno(ConditionKey.CK_IN_SCOPE, versionnoList);
     }
-
+            
     /**
      * Set the value of versionno using notInScope. { not in (a, b) }
      * If the element in the list is null or empty-string, the condition-element is ignored.
      * 
-     * @param valueList The value of versionno as notInScope.
+     * @param versionnoList The value of versionno as notInScope.
      */
-    public void setVersionno_NotInScope(java.util.List<java.math.BigDecimal> valueList) {
-        registerVersionno(ConditionKey.CK_NOT_IN_SCOPE, valueList);
+    public void setVersionno_NotInScope(java.util.List<java.math.BigDecimal> versionnoList) {
+        registerVersionno(ConditionKey.CK_NOT_IN_SCOPE, versionnoList);
     }
-                                          
+                                                
     /**
      * Register condition of versionno.
      * 

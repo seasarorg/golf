@@ -10,22 +10,6 @@ import org.seasar.golf.uexample.dao.allcommon.cbean.sqlclause.SqlClausePostgreSq
 public class SimplePagingBean extends SimpleOrderByBean implements PagingBean {
 
     // =====================================================================================
-    //                                                                             Attribute
-    //                                                                             =========
-    /** SQL clause instance. */
-    protected final SqlClause _sqlClause;
-
-    // =====================================================================================
-    //                                                                           Constructor
-    //                                                                           ===========
-    /**
-     * Constructor.
-     */
-    public SimplePagingBean() {
-        _sqlClause = new SqlClausePostgreSql("Dummy");
-    }
-
-    // =====================================================================================
     //                                                                             SqlClause
     //                                                                             =========
     /**

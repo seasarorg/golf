@@ -22,7 +22,6 @@ import org.seasar.dao.Dbms;
 import org.seasar.dao.RelationPropertyType;
 import org.seasar.dao.RelationRowCreator;
 import org.seasar.dao.ResultSetHandlerFactory;
-import org.seasar.dao.impl.BeanMetaDataFactoryImpl;
 import org.seasar.dao.impl.BeanMetaDataImpl;
 import org.seasar.dao.impl.DaoMetaDataImpl;
 import org.seasar.dao.impl.RelationRowCreatorImpl;
@@ -35,6 +34,8 @@ import org.seasar.framework.beans.PropertyDesc;
 import org.seasar.framework.util.StringUtil;
 
 import org.seasar.golf.uexample.dao.allcommon.cbean.ConditionBeanContext;
+
+import org.seasar.golf.uexample.dao.allcommon.annotation.OutsideSql;
 
 /**
  * DaoMetaDataImpl for DaoGen.
@@ -49,6 +50,9 @@ public class S2DaoMetaDataExtension extends DaoMetaDataImpl {
     public S2DaoMetaDataExtension() {
     }
 
+    // =====================================================================================
+    //                                                                         Bean Enhancer
+    //                                                                         =============
     protected BeanEnhancer beanEnhancer;
 
     public BeanEnhancer getBeanEnhancer() {
@@ -60,9 +64,21 @@ public class S2DaoMetaDataExtension extends DaoMetaDataImpl {
     }
 
     // =====================================================================================
+    //                                                            Outside Sql Check Override
+    //                                                            ==========================
+    protected void setupMethodByAuto(Method method) {
+        final OutsideSql outsideSql = method.getAnnotation(OutsideSql.class);
+        if (outsideSql != null) {
+            String msg = "This method '" + method.getName() + "()' should use Outside Sql but the file was not found!";
+            msg = msg + " Expected sql file name is '" + method.getDeclaringClass().getSimpleName() + "_" + method.getName() + ".sql'";
+            throw new IllegalStateException(msg);
+        }
+        super.setupMethodByAuto(method);
+    }
+
+    // =====================================================================================
     //                                                      ResultSetHandlerFactory Override
     //                                                      ================================
-
     protected ResultSetHandlerFactory createResultSetHandlerFactory(final BeanMetaData beanMetaData) {
         return new ResultSetHandlerFactoryExtension(beanMetaData);
     }
@@ -239,7 +255,7 @@ public class S2DaoMetaDataExtension extends DaoMetaDataImpl {
     protected Class getOriginalBeanClass(Method method) {
         final Class retType = method.getReturnType();
         if (java.util.List.class.isAssignableFrom(retType)) {
-            final Class elementType = MethodUtil.getElementTypeOfListFromReturnMethod(method);
+            final Class elementType = InternalMethodUtil.getElementTypeOfListFromReturnMethod(method);
             if (elementType != null) {
                 return elementType;
             } else {
@@ -254,7 +270,7 @@ public class S2DaoMetaDataExtension extends DaoMetaDataImpl {
         }
     }
     
-    protected static class MethodUtil {
+    protected static class InternalMethodUtil {
         public static Class getElementTypeOfListFromReturnMethod(Method method) {
             return ReflectionUtil.getElementTypeOfListFromReturnType(method);
         }

@@ -180,7 +180,11 @@ public interface Entity {
      */
     public void clearModifiedPropertyNames();
 
-    public static class EntityModifiedProperties {
+    public static class EntityModifiedProperties implements java.io.Serializable {
+
+        /** Serial version UID. (Default) */
+        private static final long serialVersionUID = 1L;
+
         /** Set of properties. */
         protected java.util.Set<String> _propertiesSet = new java.util.LinkedHashSet<String>();
 

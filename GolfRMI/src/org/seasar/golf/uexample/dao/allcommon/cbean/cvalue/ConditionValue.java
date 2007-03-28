@@ -3,6 +3,9 @@ package org.seasar.golf.uexample.dao.allcommon.cbean.cvalue;
 
 import java.util.List;
 
+import org.seasar.golf.uexample.dao.allcommon.cbean.coption.LikeSearchOption;
+import org.seasar.golf.uexample.dao.allcommon.cbean.coption.InScopeOption;
+
 /**
  * Condition value.
  * 
@@ -10,6 +13,9 @@ import java.util.List;
  */
 public class ConditionValue {
 
+    // ===================================================================================
+    //                                                                               Equal
+    //                                                                               =====
     /** Value of equal. */
     protected Object _equalValue;
 
@@ -29,6 +35,36 @@ public class ConditionValue {
      * @return this. (NotNull)
      */
     public ConditionValue setEqual(Object value) {
+        _equalValue = value;
+        return this;
+    }
+
+    /**
+     * Does it has the value of equal?
+     * 
+     * @return Determination. (NotNull)
+     */
+    public boolean hasEqual() {
+        return _equalValue != null;
+    }
+
+    /**
+     * Does the value equal the value of equal?
+     * 
+     * @param value The value of equal. (Nullable)
+     * @return Determination. (NotNull)
+     */
+    public boolean equalEqual(Object value) {
+        return hasEqual() ? _equalValue.equals(value) : value == null;
+    }
+
+    /**
+     * Override the value of equal.
+     * 
+     * @param value The value of equal. (Nullable)
+     * @return this. (NotNull)
+     */
+    public ConditionValue overrideEqual(Object value) {
         _equalValue = value;
         return this;
     }
@@ -56,6 +92,9 @@ public class ConditionValue {
         return this;
     }
 
+    // ===================================================================================
+    //                                                                           Not Equal
+    //                                                                           =========
     /** Value of notEqual. */
     protected Object _notEqualValue;
 
@@ -75,6 +114,36 @@ public class ConditionValue {
      * @return this. (NotNull)
      */
     public ConditionValue setNotEqual(Object value) {
+        _notEqualValue = value;
+        return this;
+    }
+
+    /**
+     * Does it has the value of notEqual?
+     * 
+     * @return Determination. (NotNull)
+     */
+    public boolean hasNotEqual() {
+        return _notEqualValue != null;
+    }
+
+    /**
+     * Does the value equal the value of notEqual?
+     * 
+     * @param value The value of notEqual. (Nullable)
+     * @return Determination. (NotNull)
+     */
+    public boolean equalNotEqual(Object value) {
+        return hasNotEqual() ? _notEqualValue.equals(value) : value == null;
+    }
+
+    /**
+     * Override the value of notEqual.
+     * 
+     * @param value The value of notEqual. (Nullable)
+     * @return this. (NotNull)
+     */
+    public ConditionValue overrideNotEqual(Object value) {
         _notEqualValue = value;
         return this;
     }
@@ -102,6 +171,9 @@ public class ConditionValue {
         return this;
     }
 
+    // ===================================================================================
+    //                                                                        Greater Than
+    //                                                                        ============
     /** Value of greaterThan. */
     protected Object _greaterThanValue;
 
@@ -121,6 +193,36 @@ public class ConditionValue {
      * @return this. (NotNull)
      */
     public ConditionValue setGreaterThan(Object value) {
+        _greaterThanValue = value;
+        return this;
+    }
+
+    /**
+     * Does it has the value of greaterThan?
+     * 
+     * @return Determination. (NotNull)
+     */
+    public boolean hasGreaterThan() {
+        return _greaterThanValue != null;
+    }
+
+    /**
+     * Does the value equal the value of greaterThan?
+     * 
+     * @param value The value of greaterThan. (Nullable)
+     * @return Determination. (NotNull)
+     */
+    public boolean equalGreaterThan(Object value) {
+        return hasGreaterThan() ? _greaterThanValue.equals(value) : value == null;
+    }
+
+    /**
+     * Override the value of greaterThan.
+     * 
+     * @param value The value of greaterThan. (Nullable)
+     * @return this. (NotNull)
+     */
+    public ConditionValue overrideGreaterThan(Object value) {
         _greaterThanValue = value;
         return this;
     }
@@ -148,6 +250,9 @@ public class ConditionValue {
         return this;
     }
 
+    // ===================================================================================
+    //                                                                           Less Than
+    //                                                                           =========
     /** Value of lessThan. */
     protected Object _lessThanValue;
 
@@ -167,6 +272,36 @@ public class ConditionValue {
      * @return this. (NotNull)
      */
     public ConditionValue setLessThan(Object value) {
+        _lessThanValue = value;
+        return this;
+    }
+
+    /**
+     * Does it has the value of lessThan?
+     * 
+     * @return Determination. (NotNull)
+     */
+    public boolean hasLessThan() {
+        return _lessThanValue != null;
+    }
+
+    /**
+     * Does the value equal the value of lessThan?
+     * 
+     * @param value The value of lessThan. (Nullable)
+     * @return Determination. (NotNull)
+     */
+    public boolean equalLessThan(Object value) {
+        return hasLessThan() ? _lessThanValue.equals(value) : value == null;
+    }
+
+    /**
+     * Override the value of lessThan.
+     * 
+     * @param value The value of lessThan. (Nullable)
+     * @return this. (NotNull)
+     */
+    public ConditionValue overrideLessThan(Object value) {
         _lessThanValue = value;
         return this;
     }
@@ -194,6 +329,9 @@ public class ConditionValue {
         return this;
     }
 
+    // ===================================================================================
+    //                                                                       Greater Equal
+    //                                                                       =============
     /** Value of greaterEqual. */
     protected Object _greaterEqualValue;
 
@@ -213,6 +351,36 @@ public class ConditionValue {
      * @return this. (NotNull)
      */
     public ConditionValue setGreaterEqual(Object value) {
+        _greaterEqualValue = value;
+        return this;
+    }
+
+    /**
+     * Does it has the value of greaterEqual?
+     * 
+     * @return Determination. (NotNull)
+     */
+    public boolean hasGreaterEqual() {
+        return _greaterEqualValue != null;
+    }
+
+    /**
+     * Does the value equal the value of greaterEqual?
+     * 
+     * @param value The value of greaterEqual. (Nullable)
+     * @return Determination. (NotNull)
+     */
+    public boolean equalGreaterEqual(Object value) {
+        return hasGreaterEqual() ? _greaterEqualValue.equals(value) : value == null;
+    }
+
+    /**
+     * Override the value of greaterEqual.
+     * 
+     * @param value The value of greaterEqual. (Nullable)
+     * @return this. (NotNull)
+     */
+    public ConditionValue overrideGreaterEqual(Object value) {
         _greaterEqualValue = value;
         return this;
     }
@@ -240,6 +408,9 @@ public class ConditionValue {
         return this;
     }
 
+    // ===================================================================================
+    //                                                                          Less Equal
+    //                                                                          ==========
     /** Value of lessEqual. */
     protected Object _lessEqualValue;
 
@@ -259,6 +430,36 @@ public class ConditionValue {
      * @return this. (NotNull)
      */
     public ConditionValue setLessEqual(Object value) {
+        _lessEqualValue = value;
+        return this;
+    }
+
+    /**
+     * Does it has the value of lessEqual?
+     * 
+     * @return Determination. (NotNull)
+     */
+    public boolean hasLessEqual() {
+        return _lessEqualValue != null;
+    }
+
+    /**
+     * Does the value equal the value of lessEqual?
+     * 
+     * @param value The value of lessEqual. (Nullable)
+     * @return Determination. (NotNull)
+     */
+    public boolean equalLessEqual(Object value) {
+        return hasLessEqual() ? _lessEqualValue.equals(value) : value == null;
+    }
+
+    /**
+     * Override the value of lessEqual.
+     * 
+     * @param value The value of lessEqual. (Nullable)
+     * @return this. (NotNull)
+     */
+    public ConditionValue overrideLessEqual(Object value) {
         _lessEqualValue = value;
         return this;
     }
@@ -286,6 +487,9 @@ public class ConditionValue {
         return this;
     }
 
+    // ===================================================================================
+    //                                                                       Prefix Search
+    //                                                                       =============
     /** Value of prefixSearch. */
     protected Object _prefixSearch;
 
@@ -305,6 +509,36 @@ public class ConditionValue {
      * @return this. (NotNull)
      */
     public ConditionValue setPrefixSearch(Object value) {
+        _prefixSearch = value;
+        return this;
+    }
+
+    /**
+     * Does it has the value of prefixSearch?
+     * 
+     * @return Determination. (NotNull)
+     */
+    public boolean hasPrefixSearch() {
+        return _prefixSearch != null;
+    }
+
+    /**
+     * Does the value equal the value of prefixSearch?
+     * 
+     * @param value The value of prefixSearch. (Nullable)
+     * @return Determination. (NotNull)
+     */
+    public boolean equalPrefixSearch(Object value) {
+        return hasPrefixSearch() ? _prefixSearch.equals(value) : value == null;
+    }
+
+    /**
+     * Override the value of prefixSearch.
+     * 
+     * @param value The value of prefixSearch. (Nullable)
+     * @return this. (NotNull)
+     */
+    public ConditionValue overridePrefixSearch(Object value) {
         _prefixSearch = value;
         return this;
     }
@@ -332,8 +566,106 @@ public class ConditionValue {
         return this;
     }
 
+    // ===================================================================================
+    //                                                                         Like Search
+    //                                                                         ===========
+    /** Value of likeSearch. */
+    protected java.util.List<LikeSearchValue> _likeSearch;
+
+    /** Value of likeSearch for spare. */
+    protected java.util.List<LikeSearchValue> _likeSearch4Spare;
+
+    /**
+     * Get the value of likeSearch.
+     * 
+     * @return The value of likeSearch. (Nullable)
+     */
+    public String getLikeSearch() {
+        if (_likeSearch == null) {
+            return null;
+        }
+        if (_likeSearch.isEmpty() && !_likeSearch4Spare.isEmpty()) {
+            for (int index=0; index < _likeSearch4Spare.size(); index++) {
+                _likeSearch.add(_likeSearch4Spare.get(index));
+            }
+        }
+        final LikeSearchValue likeSearchValue = (LikeSearchValue)_likeSearch.remove(0);
+        return (String)filterValue(likeSearchValue.generateRealValue());
+    }
+
+    /**
+     * Set the value of likeSearch.
+     * 
+     * @param value The value of likeSearch. (Nullable)
+     * @return this. (NotNull)
+     */
+    public ConditionValue setLikeSearch(String value, LikeSearchOption option) {
+        if (_likeSearch == null) {
+            _likeSearch = new java.util.ArrayList<LikeSearchValue>();
+            _likeSearch4Spare= new java.util.ArrayList<LikeSearchValue>();
+        }
+        if (_likeSearch.isEmpty() && !_likeSearch4Spare.isEmpty()) {
+            for (int index=0; index < _likeSearch4Spare.size(); index++) {
+                _likeSearch.add(_likeSearch4Spare.get(index));
+            }
+        }
+        final LikeSearchValue likeSearchValue = new LikeSearchValue(value, option);
+        _likeSearch.add(likeSearchValue);
+        _likeSearch4Spare.add(likeSearchValue);
+        return this;
+    }
+
+    /** Location of likeSearch. */
+    protected String _likeSearchLocation;
+
+    /**
+     * Get the location of likeSearch.
+     * 
+     * @return The location of likeSearch. (Nullable)
+     */
+    public String getLikeSearchLocation() {
+        return _likeSearchLocation;
+    }
+
+    /**
+     * Set the location of likeSearch.
+     * 
+     * @param location The location of likeSearch. (Nullable)
+     * @return this. (NotNull)
+     */
+    public ConditionValue setLikeSearchLocation(String location) {
+        _likeSearchLocation = location;
+        return this;
+    }
+
+    protected static class LikeSearchValue {
+        protected String _value;
+        protected LikeSearchOption _option;
+        public LikeSearchValue(String value, LikeSearchOption option) {
+            _value = value;
+            _option = option;
+        }
+        public String getValue() {
+            return _value;
+        }
+        public LikeSearchOption getOption() {
+            return _option;
+        }
+        public String generateRealValue() {
+            if (_option == null) {
+                return _value;
+            }
+            return _option.generateRealValue(_value);
+        }
+    }
+
+    // ===================================================================================
+    //                                                                            In Scope
+    //                                                                            ========
     /** Value of inScope. */
     protected List _inScope;
+
+    protected InScopeOption _inScopeOption;
 
     /**
      * Get the value of inScope.
@@ -341,6 +673,9 @@ public class ConditionValue {
      * @return The value of inScope. (Nullable)
      */
     public List getInScope() {
+        if (_inScopeOption != null) {
+            return filterValue(_inScopeOption.generateRealValueList(_inScope));
+        }
         return filterValue(_inScope);
     }
 
@@ -351,6 +686,42 @@ public class ConditionValue {
      * @return this. (NotNull)
      */
     public ConditionValue setInScope(List value) {
+        _inScope = value;
+        return this;
+    }
+
+    public ConditionValue setInScope(List value, InScopeOption option) {
+        _inScope = value;
+        _inScopeOption = option;
+        return this;
+    }
+
+    /**
+     * Does it has the value of inScope?
+     * 
+     * @return Determination. (NotNull)
+     */
+    public boolean hasInScope() {
+        return _inScope != null;
+    }
+
+    /**
+     * Does the value equal the value of inScope?
+     * 
+     * @param value The value of inScope. (Nullable)
+     * @return Determination. (NotNull)
+     */
+    public boolean equalInScope(List value) {
+        return hasInScope() ? _inScope.equals(value) : value == null;
+    }
+
+    /**
+     * Override the value of inScope.
+     * 
+     * @param value The value of inScope. (Nullable)
+     * @return this. (NotNull)
+     */
+    public ConditionValue overrideInScope(List value) {
         _inScope = value;
         return this;
     }
@@ -378,6 +749,9 @@ public class ConditionValue {
         return this;
     }
 
+    // ===================================================================================
+    //                                                                        Not In Scope
+    //                                                                        ============
     /** Value of notInScope. */
     protected List _notInScope;
 
@@ -397,6 +771,36 @@ public class ConditionValue {
      * @return this. (NotNull)
      */
     public ConditionValue setNotInScope(List value) {
+        _notInScope = value;
+        return this;
+    }
+
+    /**
+     * Does it has the value of inNotScope?
+     * 
+     * @return Determination. (NotNull)
+     */
+    public boolean hasNotInScope() {
+        return _notInScope != null;
+    }
+
+    /**
+     * Does the value equal the value of inNotScope?
+     * 
+     * @param value The value of inNotScope. (Nullable)
+     * @return Determination. (NotNull)
+     */
+    public boolean equalNotInScope(List value) {
+        return hasNotInScope() ? _notInScope.equals(value) : value == null;
+    }
+
+    /**
+     * Override the value of inNotScope.
+     * 
+     * @param value The value of inNotScope. (Nullable)
+     * @return this. (NotNull)
+     */
+    public ConditionValue overrideNotInScope(List value) {
         _notInScope = value;
         return this;
     }
@@ -424,6 +828,9 @@ public class ConditionValue {
         return this;
     }
 
+    // ===================================================================================
+    //                                                                             Is Null
+    //                                                                             =======
     /** Value of isNull. */
     protected Object _isNullValue;
 
@@ -445,6 +852,15 @@ public class ConditionValue {
     public ConditionValue setIsNull(Object value) {
         _isNullValue = value;
         return this;
+    }
+
+    /**
+     * Does it has the value of isNull?
+     * 
+     * @return Determination. (NotNull)
+     */
+    public boolean hasIsNull() {
+        return _isNullValue != null;
     }
 
     /** Location of isNull. */
@@ -470,6 +886,9 @@ public class ConditionValue {
         return this;
     }
 
+    // ===================================================================================
+    //                                                                         Is Not Null
+    //                                                                         ===========
     /** Value of isNotNull. */
     protected Object _isNotNullValue;
 
@@ -491,6 +910,15 @@ public class ConditionValue {
     public ConditionValue setIsNotNull(Object value) {
         _isNotNullValue = value;
         return this;
+    }
+
+    /**
+     * Does it has the value of isNotNull?
+     * 
+     * @return Determination. (NotNull)
+     */
+    public boolean hasIsNotNull() {
+        return _isNotNullValue != null;
     }
 
     /** Location of isNotNull. */

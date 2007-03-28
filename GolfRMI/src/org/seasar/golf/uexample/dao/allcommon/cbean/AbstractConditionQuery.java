@@ -2,6 +2,9 @@ package org.seasar.golf.uexample.dao.allcommon.cbean;
 
 
 import org.seasar.golf.uexample.dao.allcommon.cbean.ckey.ConditionKey;
+import org.seasar.golf.uexample.dao.allcommon.cbean.coption.ConditionOption;
+import org.seasar.golf.uexample.dao.allcommon.cbean.coption.LikeSearchOption;
+import org.seasar.golf.uexample.dao.allcommon.cbean.coption.InScopeOption;
 import org.seasar.golf.uexample.dao.allcommon.cbean.cvalue.ConditionValue;
 import org.seasar.golf.uexample.dao.allcommon.dbmeta.DBMeta;
 import org.seasar.golf.uexample.dao.allcommon.dbmeta.DBMetaInstanceHandler;
@@ -191,21 +194,102 @@ public abstract class AbstractConditionQuery implements ConditionQuery {
     //                                                                                 Query
     //                                                                                 =====
     protected void registerQuery(ConditionKey key, Object value, ConditionValue cvalue
-                                                             , String colName, String capPropName, String uncapPropName) {
+                                 , String colName, String capPropName, String uncapPropName) {
         if (key.isValidRegistration(cvalue, value, key.getConditionKey() + " of " + getRealAliasName() + "." + uncapPropName)) {
-            key.setupConditionValue(cvalue, value, getLocation(uncapPropName, key));// If Java, UncapProp!
-            getSqlClause().registerWhereClause(getRealColumnName(colName), key, cvalue);
+            setupConditionValueAndRegisterWhereClause(key, value, cvalue, colName, capPropName, uncapPropName);
         }
     }
 
-    protected void registerInlineQuery(ConditionKey key, Object value, ConditionValue cvalue
+    protected void registerQuery(ConditionKey key, Object value, ConditionValue cvalue
+                                 , String colName, String capPropName, String uncapPropName, ConditionOption option) {
+        if (key.isValidRegistration(cvalue, value, key.getConditionKey() + " of " + getRealAliasName() + "." + uncapPropName)) {
+            setupConditionValueAndRegisterWhereClause(key, value, cvalue, colName, capPropName, uncapPropName, option);
+        }
+    }
+
+    protected void registerLikeSearchQuery(ConditionKey key, String value, ConditionValue cvalue
+                                     , String colName, String capPropName, String uncapPropName, LikeSearchOption option) {
+        if (key.isValidRegistration(cvalue, value, key.getConditionKey() + " of " + getRealAliasName() + "." + uncapPropName)) {
+            if (value != null && option.isSplit()) {
+                final String[] strArray = option.generateSplitValueArray(value);
+                for (int i=0; i < strArray.length; i++) {
+                    final String currentValue = strArray[i];
+                    setupConditionValueAndRegisterWhereClause(key, currentValue, cvalue, colName, capPropName, uncapPropName, option);
+
+                    // Callback for LikeAsOr!
+                    final java.util.List<LikeSearchOption.LikeAsOrCallback> callbackList = option.getLikeAsOrCallbackList();
+                    if (!callbackList.isEmpty()) {
+                        getSqlClause().makeAdditionalConditionAsOrEffective();
+                        for (java.util.Iterator ite = callbackList.iterator(); ite.hasNext(); ) {
+                            final LikeSearchOption.LikeAsOrCallback likeAsOrCallback = (LikeSearchOption.LikeAsOrCallback)ite.next();
+                            final String additionalTargetPropertyName = likeAsOrCallback.getAdditionalTargetPropertyName();
+                            final String filteredValue = likeAsOrCallback.filterValue(currentValue);
+                            final LikeSearchOption optionDeepCopy = (LikeSearchOption)option.createDeepCopy();
+                            optionDeepCopy.clearLikeAsOrCallback();
+                            final LikeSearchOption filteredOption = likeAsOrCallback.filterOption(optionDeepCopy);
+                            invokeSetterLikeSearch(additionalTargetPropertyName, filteredValue, filteredOption);
+                        }
+                        getSqlClause().ignoreAdditionalConditionAsOr();
+                    }
+                }
+            } else {
+                setupConditionValueAndRegisterWhereClause(key, value, cvalue, colName, capPropName, uncapPropName, option);
+            }
+        }
+    }
+
+    protected void registerInScopeQuery(ConditionKey key, String value, ConditionValue cvalue
+                                     , String colName, String capPropName, String uncapPropName, InScopeOption option) {
+        if (key.isValidRegistration(cvalue, value, key.getConditionKey() + " of " + getRealAliasName() + "." + uncapPropName)) {
+            if (value != null && option.isSplit()) {
+                final String[] strArray = option.generateSplitValueArray(value);
+                final java.util.List<String> realValueList = new java.util.ArrayList<String>();
+                for (int i=0; i < strArray.length; i++) {
+                    final String currentValue = strArray[i];
+                    realValueList.add(currentValue);
+                }
+                setupConditionValueAndRegisterWhereClause(key, realValueList, cvalue, colName, capPropName, uncapPropName, option);
+            } else {
+                setupConditionValueAndRegisterWhereClause(key, value, cvalue, colName, capPropName, uncapPropName, option);
+            }
+        }
+    }
+
+    protected void setupConditionValueAndRegisterWhereClause(ConditionKey key, Object value, ConditionValue cvalue
                                                              , String colName, String capPropName, String uncapPropName) {
+        key.setupConditionValue(cvalue, value, getLocation(uncapPropName, key));// If Java, UncapProp!
+        getSqlClause().registerWhereClause(getRealColumnName(colName), key, cvalue);
+    }
+
+    protected void setupConditionValueAndRegisterWhereClause(ConditionKey key, Object value, ConditionValue cvalue
+                                                             , String colName, String capPropName, String uncapPropName, ConditionOption option) {
+        key.setupConditionValue(cvalue, value, getLocation(uncapPropName, key), option);// If Java, UncapProp!
+        getSqlClause().registerWhereClause(getRealColumnName(colName), key, cvalue, option);
+    }
+
+    // =====================================================================================
+    //                                                                         Query(Inline)
+    //                                                                         =============
+    protected void registerInlineQuery(ConditionKey key, Object value, ConditionValue cvalue
+                                       , String colName, String capPropName, String uncapPropName) {
         if (key.isValidRegistration(cvalue, value, key.getConditionKey() + " of " + getRealAliasName() + "." + uncapPropName)) {
             key.setupConditionValue(cvalue, value, getLocation(uncapPropName, key));// If Java, UncapProp!
             if (isBaseQuery(this)) {
                 getSqlClause().registerBaseTableInlineWhereClause(colName, key, cvalue);
             } else {
                 getSqlClause().registerOuterJoinInlineWhereClause(getRealAliasName(), colName, key, cvalue);
+            }
+        }
+    }
+
+    protected void registerInlineQuery(ConditionKey key, Object value, ConditionValue cvalue
+                                       , String colName, String capPropName, String uncapPropName, ConditionOption option) {
+        if (key.isValidRegistration(cvalue, value, key.getConditionKey() + " of " + getRealAliasName() + "." + uncapPropName)) {
+            key.setupConditionValue(cvalue, value, getLocation(uncapPropName, key), option);// If Java, UncapProp!
+            if (isBaseQuery(this)) {
+                getSqlClause().registerBaseTableInlineWhereClause(colName, key, cvalue, option);
+            } else {
+                getSqlClause().registerOuterJoinInlineWhereClause(getRealAliasName(), colName, key, cvalue, option);
             }
         }
     }
@@ -217,18 +301,7 @@ public abstract class AbstractConditionQuery implements ConditionQuery {
                                  , String columnName, String relatedColumnName, String propertyName) {
         final String realColumnName = getRealColumnName(columnName);
         final String subQueryClause = getInScopeSubQuerySql(subQuery, relatedColumnName, propertyName);
-        getSqlClause().registerWhereClause(realColumnName + " in (" + subQueryClause + ")");
-    }
-
-    protected void registerInlineInScopeSubQuery(ConditionQuery subQuery
-                                 , String columnName, String relatedColumnName, String propertyName) {
-        final String subQueryClause = getInScopeSubQuerySql(subQuery, relatedColumnName, propertyName);
-        final String finalClause = columnName + " in (" + subQueryClause + ")";
-        if (isBaseQuery(this)) {
-            getSqlClause().registerBaseTableInlineWhereClause(finalClause);
-        } else {
-            getSqlClause().registerOuterJoinInlineWhereClause(getRealAliasName(), finalClause);
-        }
+        registerWhereClause(realColumnName + " in (" + subQueryClause + ")");
     }
 
     protected String getInScopeSubQuerySql(ConditionQuery subQuery
@@ -245,7 +318,7 @@ public abstract class AbstractConditionQuery implements ConditionQuery {
                                  , String columnName, String relatedColumnName, String propertyName) {
         final String realColumnName = getRealColumnName(columnName);
         final String subQueryClause = getExistsSubQuerySql(subQuery, realColumnName, relatedColumnName, propertyName);
-        getSqlClause().registerWhereClause("exists (" + subQueryClause + ")");
+        registerWhereClause("exists (" + subQueryClause + ")");
     }
 
 // *Unsupport ExistsSubQuery as inline because it's so dangerous.
@@ -259,6 +332,18 @@ public abstract class AbstractConditionQuery implements ConditionQuery {
         final String parentCondition = " and " + relatedColumnName + " = " + realColumnName;
         final String whereClause = replaceString(subQuery.getSqlClause().getWhereClause() + parentCondition, oldStr, newStr);
         return selectClause + " " + fromClause + " " + whereClause;
+    }
+
+    protected void registerWhereClause(String whereClause) {
+        getSqlClause().registerWhereClause(whereClause);
+    }
+
+    protected void registerInlineWhereClause(String whereClause) {
+        if (isBaseQuery(this)) {
+            getSqlClause().registerBaseTableInlineWhereClause(whereClause);
+        } else {
+            getSqlClause().registerOuterJoinInlineWhereClause(getRealAliasName(), whereClause);
+        }
     }
 
     // =====================================================================================
@@ -327,6 +412,30 @@ public abstract class AbstractConditionQuery implements ConditionQuery {
         }
         try {
             method.invoke(this, new Object[]{value});
+        } catch (IllegalAccessException e) {
+            throw new RuntimeException(e);
+        } catch (java.lang.reflect.InvocationTargetException e) {
+            throw new RuntimeException(e.getCause());
+        }
+    }
+
+    protected void invokeSetterLikeSearch(String columnMultiName, Object value, LikeSearchOption option) {
+        if (value == null) {
+            return;
+        }
+        final DBMeta dbmeta = DBMetaInstanceHandler.getInstanceByTableDbName(getTableDbName());
+        final String columnCapPropName = dbmeta.getCapPropNameByMultiName(columnMultiName);
+        String methodName = "set" + columnCapPropName + "_" + "likeSearch".substring(0, 1).toUpperCase() + "likeSearch".substring(1);
+        java.lang.reflect.Method method = null;
+        try {
+            method = this.getClass().getMethod(methodName, new Class[]{value.getClass(), LikeSearchOption.class});
+        } catch (NoSuchMethodException e) {
+            String msg = "The columnMultiName is not existing in this table: columnMultiName=" + columnMultiName;
+            msg = msg + " tableName=" + getTableDbName() + " methodName=" + methodName;
+            throw new RuntimeException(msg, e);
+        }
+        try {
+            method.invoke(this, new Object[]{value, option});
         } catch (IllegalAccessException e) {
             throw new RuntimeException(e);
         } catch (java.lang.reflect.InvocationTargetException e) {

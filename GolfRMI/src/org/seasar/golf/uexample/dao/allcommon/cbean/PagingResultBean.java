@@ -21,11 +21,17 @@ public class PagingResultBean<T> extends ListResultBean<T> {
     /** The value of current page number. */
     protected int _currentPageNumber;
 
-    /** The value of page-group size. */
-    protected int _pageGroupSize = 0;
+    // -----------------------------------------
+    //                                Page Group
+    //                                ----------
+    /** The value of page-group option. */
+    protected PageGroupOption _pageGroupOption;
 
-    /** The value of page-range size. */
-    protected int _pageRangeSize = 0;
+    // -----------------------------------------
+    //                                Page Range
+    //                                ----------
+    /** The value of page-range option. */
+    protected PageRangeOption _pageRangeOption;
 
     // =====================================================================================
     //                                                                           Constructor
@@ -37,8 +43,8 @@ public class PagingResultBean<T> extends ListResultBean<T> {
     }
 
     // =====================================================================================
-    //                                                                         Getter Setter
-    //                                                                         =============
+    //                                                                              Accessor
+    //                                                                              ========
     /**
      * Get the value of pageSize.
      * 
@@ -51,10 +57,10 @@ public class PagingResultBean<T> extends ListResultBean<T> {
     /**
      * Set the value of pageSize.
      * 
-     * @param value The value of pageSize.
+     * @param pageSize The value of pageSize.
      */
-    public void setPageSize(int value) {
-        _pageSize = value;
+    public void setPageSize(int pageSize) {
+        _pageSize = pageSize;
     }
 
     /**
@@ -69,10 +75,10 @@ public class PagingResultBean<T> extends ListResultBean<T> {
     /**
      * Set the value of currentPageNumber.
      * 
-     * @param value The value of currentPageNumber.
+     * @param currentPageNumber The value of currentPageNumber.
      */
-    public void setCurrentPageNumber(int value) {
-        _currentPageNumber = value;
+    public void setCurrentPageNumber(int currentPageNumber) {
+        _currentPageNumber = currentPageNumber;
     }
 
     /**
@@ -102,13 +108,16 @@ public class PagingResultBean<T> extends ListResultBean<T> {
         return calculateCurrentEndRecordNumber(_currentPageNumber, _pageSize);
     }
 
+    // -----------------------------------------
+    //                                Page Group
+    //                                ----------
     /**
      * Get the value of pageGroupSize.
      * 
      * @return The value of pageGroupSize.
      */
     public int getPageGroupSize() {
-        return _pageGroupSize;
+        return _pageGroupOption != null ? _pageGroupOption.getPageGroupSize() : 0;
     }
 
     /**
@@ -116,26 +125,85 @@ public class PagingResultBean<T> extends ListResultBean<T> {
      * 
      * @param value The value of pageGroupSize.
      */
-    public void setPageGroupSize(int value) {
-        _pageGroupSize = value;
+    public void setPageGroupSize(int pageGroupSize) {
+        final PageGroupOption option = new PageGroupOption();
+        option.setPageGroupSize(pageGroupSize);
+        setPageGroupOption(option);
     }
 
+    /**
+     * Set the value of pageGroupOption.
+     * 
+     * @param pageGroupOption The value of pageGroupOption.
+     */
+    public void setPageGroupOption(PageGroupOption pageGroupOption) {
+        _pageGroupOption = pageGroupOption;
+    }
+
+    public static class PageGroupOption {
+        protected int _pageGroupSize;
+
+        public int getPageGroupSize() {
+            return _pageGroupSize;
+        }
+
+        public void setPageGroupSize(int pageGroupSize) {
+            _pageGroupSize = pageGroupSize;
+        }
+    }
+
+    // -----------------------------------------
+    //                                Page Range
+    //                                ----------
     /**
      * Get the value of pageRangeSize.
      * 
      * @return The value of pageRangeSize.
      */
     public int getPageRangeSize() {
-        return _pageRangeSize;
+        return _pageRangeOption != null ? _pageRangeOption.getPageRangeSize() : 0;
     }
 
     /**
      * Set the value of pageRangeSize.
      * 
-     * @param value The value of pageRangeSize.
+     * @param pageRangeSize The value of pageRangeSize.
      */
-    public void setPageRangeSize(int value) {
-        _pageRangeSize = value;
+    public void setPageRangeSize(int pageRangeSize) {
+        final PageRangeOption option = new PageRangeOption();
+        option.setPageRangeSize(pageRangeSize);
+        setPageRangeOption(option);
+    }
+
+    /**
+     * Set the value of pageRangeOption.
+     * 
+     * @param value The value of pageRangeOption.
+     */
+    public void setPageRangeOption(PageRangeOption pageRangeOption) {
+        _pageRangeOption = pageRangeOption;
+    }
+
+    public static class PageRangeOption {
+        protected int _pageRangeSize;
+
+        protected boolean _fillLimit;
+        
+        public int getPageRangeSize() {
+            return _pageRangeSize;
+        }
+
+        public void setPageRangeSize(int pageRangeSize) {
+            _pageRangeSize = pageRangeSize;
+        }
+
+        public boolean isFillLimit() {
+            return _fillLimit;
+        }
+
+        public void setFillLimit(boolean fillLimit) {
+            _fillLimit = fillLimit;
+        }
     }
 
     // =====================================================================================
@@ -200,8 +268,8 @@ public class PagingResultBean<T> extends ListResultBean<T> {
      * @return Current page-group start-page-number.
      */
     public int calculateCurrentPageGroupStartPageNumber() {
-        assertPageGroupSizeValid();
-        final int pageGroupSize = _pageGroupSize;
+        assertPageGroupValid();
+        final int pageGroupSize = _pageGroupOption.getPageGroupSize();
         final int currentPageNumber = _currentPageNumber;
 
         int currentPageGroupNumber = (currentPageNumber / pageGroupSize);
@@ -226,8 +294,8 @@ public class PagingResultBean<T> extends ListResultBean<T> {
      * @return Current page-group page-number-list.
      */
     public java.util.List<Integer> getCurrentPageGroupPageNumberList() {
-        assertPageGroupSizeValid();
-        final int pageGroupSize = _pageGroupSize;
+        assertPageGroupValid();
+        final int pageGroupSize = _pageGroupOption.getPageGroupSize();
         final int allPageCount = getAllPageCount();
         final int currentPageGroupStartPageNumber = calculateCurrentPageGroupStartPageNumber();
         if (!(currentPageGroupStartPageNumber > 0)) {
@@ -251,7 +319,7 @@ public class PagingResultBean<T> extends ListResultBean<T> {
      * @return Current page-group page-number-array.
      */
     public int[] getCurrentPageGroupPageNumberArray() {
-        assertPageGroupSizeValid();
+        assertPageGroupValid();
         return convertListToIntArray(getCurrentPageGroupPageNumberList());
     }
 
@@ -262,8 +330,8 @@ public class PagingResultBean<T> extends ListResultBean<T> {
      * @return Determination.
      */
     public boolean isExistPrePageGroup() {
-        assertPageGroupSizeValid();
-        return (_currentPageNumber > _pageGroupSize);
+        assertPageGroupValid();
+        return (_currentPageNumber > _pageGroupOption.getPageGroupSize());
     }
 
     /**
@@ -273,27 +341,30 @@ public class PagingResultBean<T> extends ListResultBean<T> {
      * @return Determination.
      */
     public boolean isExistNextPageGroup() {
-        assertPageGroupSizeValid();
+        assertPageGroupValid();
         int currentPageGroupStartPageNumber = calculateCurrentPageGroupStartPageNumber();
         if (!(currentPageGroupStartPageNumber > 0)) {
             String msg = "currentPageGroupStartPageNumber should be greater than 0. {> 0} But:";
             msg = msg + " currentPageGroupStartPageNumber=" + currentPageGroupStartPageNumber;
             throw new IllegalStateException(msg);
         }
-        int nextPageGroupStartPageNumber = currentPageGroupStartPageNumber + _pageGroupSize;
+        int nextPageGroupStartPageNumber = currentPageGroupStartPageNumber + _pageGroupOption.getPageGroupSize();
         return (nextPageGroupStartPageNumber <= getAllPageCount());
     }
 
-    protected void assertPageGroupSizeValid() {
-        final int pageGroupSize = _pageGroupSize;
-        if (pageGroupSize == 0) {
-            String msg = "The pageGroupSize should be greater than 1. But the value is zero.";
-            msg = msg + " pageGroupSize=" + pageGroupSize;
+    protected void assertPageGroupValid() {
+        if (_pageGroupOption == null) {
+            String msg = "The pageGroupOption should not be null. Please invoke setPageGroupOption().";
             throw new IllegalStateException(msg);
         }
-        if (pageGroupSize == 1) {
+        if (_pageGroupOption.getPageGroupSize() == 0) {
+            String msg = "The pageGroupSize should be greater than 1. But the value is zero.";
+            msg = msg + " pageGroupSize=" + _pageGroupOption.getPageGroupSize();
+            throw new IllegalStateException(msg);
+        }
+        if (_pageGroupOption.getPageGroupSize() == 1) {
             String msg = "The pageGroupSize should be greater than 1. But the value is one.";
-            msg = msg + " pageGroupSize=" + pageGroupSize;
+            msg = msg + " pageGroupSize=" + _pageGroupOption.getPageGroupSize();
             throw new IllegalStateException(msg);
         }
     }
@@ -303,13 +374,13 @@ public class PagingResultBean<T> extends ListResultBean<T> {
     //                                  ----------
     /**
      * Get current page-range page-number-list.
-     * Using values are currentPageNumber and pageRangeSize and allPageCount.
+     * Using values are pageRangeOption and currentPageNumber and allPageCount.
      * 
-     * @return Current page-range page-number-list.
+     * @return Current page-range page-number-list. (NotNull)
      */
     public java.util.List<Integer> getCurrentPageRangePageNumberList() {
-        assertPageRangeSizeValid();
-        final int pageRangeSize = _pageRangeSize;
+        assertPageRangeValid();
+        final int pageRangeSize = _pageRangeOption.getPageRangeSize();
         final int allPageCount = this.getAllPageCount();
         final int currentPageNumber = _currentPageNumber;
 
@@ -324,32 +395,36 @@ public class PagingResultBean<T> extends ListResultBean<T> {
         resultList.add(new Integer(currentPageNumber));
 
         final int endPageNumber = (currentPageNumber + pageRangeSize);
-        for (int i=currentPageNumber+1 ; i <= endPageNumber; i++) {
-            if (i > allPageCount) {
-                break;
-            }
+        for (int i = currentPageNumber + 1 ; i <= endPageNumber && i <= allPageCount; i++) {
             resultList.add(new Integer(i));
+        }
+
+        final boolean fillLimit = _pageRangeOption.isFillLimit();
+        final int limitSize = (pageRangeSize * 2) + 1;
+        if (fillLimit && !resultList.isEmpty() && resultList.size() < limitSize) {
+            final Integer firstElements = (Integer)resultList.get(0);
+            final Integer lastElements = (Integer)resultList.get(resultList.size() - 1);
+            if (firstElements.intValue() > 1) {
+                for (int i = firstElements.intValue() - 1 ; resultList.size() < limitSize && i > 0; i--) {
+                    resultList.add(0, new Integer(i));
+                }
+            }
+            for (int i = lastElements.intValue() + 1 ; resultList.size() < limitSize && i <= allPageCount; i++) {
+                resultList.add(new Integer(i));
+            }
         }
         return resultList;
     }
 
     /**
      * Get current page-range page-number-array.
-     * Using values are currentPageNumber and pageRangeSize and allPageCount.
+     * Using values are pageRangeOption and currentPageNumber and allPageCount.
      * 
      * @return Current page-range page-number-array.
      */
     public int[] getCurrentPageRangePageNumberArray() {
-        assertPageRangeSizeValid();
+        assertPageRangeValid();
         return convertListToIntArray(getCurrentPageRangePageNumberList());
-    }
-
-    protected void assertPageRangeSizeValid() {
-        final int pageRangeSize = _pageRangeSize;
-        if (pageRangeSize == 0) {
-            String msg = "The pageRangeSize should be greater than 1. But the value is zero.";
-            throw new IllegalStateException(msg);
-        }
     }
 
     protected int[] convertListToIntArray(java.util.List<Integer> ls) {
@@ -365,12 +440,12 @@ public class PagingResultBean<T> extends ListResultBean<T> {
 
     /**
      * Is existing previous page-range?
-     * Using values are currentPageNumber and pageRangeSize.
+     * Using values are pageRangeOption and currentPageNumber and allPageCount.
      * 
      * @return Determination.
      */
     public boolean isExistPrePageRange() {
-        assertPageRangeSizeValid();
+        assertPageRangeValid();
         final int[] array = getCurrentPageRangePageNumberArray();
         if (array.length == 0) {
             return false;
@@ -380,17 +455,29 @@ public class PagingResultBean<T> extends ListResultBean<T> {
 
     /**
      * Is existing next page-range?
-     * Using values are currentPageNumber and pageRangeSize and allPageCount.
+     * Using values are pageRangeOption and currentPageNumber and allPageCount.
      * 
      * @return Determination.
      */
     public boolean isExistNextPageRange() {
-        assertPageRangeSizeValid();
+        assertPageRangeValid();
         final int[] array = getCurrentPageRangePageNumberArray();
         if (array.length == 0) {
             return false;
         }
         return array[array.length-1] < getAllPageCount();
+    }
+
+    protected void assertPageRangeValid() {
+        if (_pageRangeOption == null) {
+            String msg = "The pageRangeOption should not be null. Please invoke setPageRangeOption().";
+            throw new IllegalStateException(msg);
+        }
+        final int pageRangeSize = _pageRangeOption.getPageRangeSize();
+        if (pageRangeSize == 0) {
+            String msg = "The pageRangeSize should be greater than 1. But the value is zero.";
+            throw new IllegalStateException(msg);
+        }
     }
 
     // =====================================================================================

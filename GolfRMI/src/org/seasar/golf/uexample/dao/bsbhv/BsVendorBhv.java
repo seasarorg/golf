@@ -262,7 +262,7 @@ public abstract class BsVendorBhv extends org.seasar.golf.uexample.dao.allcommon
      * @return Inserted count.
      */
     public int delegateInsertList(java.util.List<Vendor> entityList) {
-        assertListNotNullAndEmpty(entityList);
+        assertListNotNullAndNotEmpty(entityList);
         return getMyDao().insertList(entityList);
     }
 
@@ -273,7 +273,7 @@ public abstract class BsVendorBhv extends org.seasar.golf.uexample.dao.allcommon
      * @return Updated count.
      */
     public int delegateUpdateList(java.util.List<Vendor> entityList) {
-        assertListNotNullAndEmpty(entityList);
+        assertListNotNullAndNotEmpty(entityList);
         return getMyDao().updateList(entityList);
     }
 
@@ -284,7 +284,7 @@ public abstract class BsVendorBhv extends org.seasar.golf.uexample.dao.allcommon
      * @return Deleted count.
      */
     public int delegateDeleteList(java.util.List<Vendor> entityList) {
-        assertListNotNullAndEmpty(entityList);
+        assertListNotNullAndNotEmpty(entityList);
         return getMyDao().deleteList(entityList);
     }
 
@@ -577,7 +577,7 @@ public abstract class BsVendorBhv extends org.seasar.golf.uexample.dao.allcommon
      * @return Inserted count.
      */
     public int insertList(java.util.List<Vendor> entityList) {
-        assertListNotNullAndEmpty(entityList);
+        assertListNotNullAndNotEmpty(entityList);
         return delegateInsertList(entityList);
     }
 
@@ -588,7 +588,7 @@ public abstract class BsVendorBhv extends org.seasar.golf.uexample.dao.allcommon
      * @return Updated count.
      */
     public int updateList(java.util.List<Vendor> entityList) {
-        assertListNotNullAndEmpty(entityList);
+        assertListNotNullAndNotEmpty(entityList);
         return delegateUpdateList(entityList);
     }
 
@@ -599,7 +599,7 @@ public abstract class BsVendorBhv extends org.seasar.golf.uexample.dao.allcommon
      * @return Deleted count.
      */
     public int deleteList(java.util.List<Vendor> entityList) {
-        assertListNotNullAndEmpty(entityList);
+        assertListNotNullAndNotEmpty(entityList);
         return delegateDeleteList(entityList);
     }
 

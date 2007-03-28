@@ -53,10 +53,10 @@ public class ListResultBean<T> implements java.util.List<T>, java.io.Serializabl
     /**
      * Set the value of tableDbName.
      * 
-     * @param value The value of tableDbName.
+     * @param tableDbName The value of tableDbName.
      */
-    public void setTableDbName(String value) {
-        _tableDbName = value;
+    public void setTableDbName(String tableDbName) {
+        _tableDbName = tableDbName;
     }
 
     /**
@@ -71,10 +71,10 @@ public class ListResultBean<T> implements java.util.List<T>, java.io.Serializabl
     /**
      * Set the value of allRecordCount.
      * 
-     * @param value The value of allRecordCount.
+     * @param allRecordCount The value of allRecordCount.
      */
-    public void setAllRecordCount(int value) {
-        _allRecordCount = value;
+    public void setAllRecordCount(int allRecordCount) {
+        _allRecordCount = allRecordCount;
     }
 
     /**
@@ -89,10 +89,10 @@ public class ListResultBean<T> implements java.util.List<T>, java.io.Serializabl
     /**
      * Set the value of selectedList.
      * 
-     * @param value Selected list. (NotNull)
+     * @param selectedList Selected list. (NotNull)
      */
-    public void setSelectedList(java.util.List<T> value) {
-        _selectedList = value;
+    public void setSelectedList(java.util.List<T> selectedList) {
+        _selectedList = selectedList;
     }
 
     /**
@@ -107,10 +107,10 @@ public class ListResultBean<T> implements java.util.List<T>, java.io.Serializabl
     /**
      * Set the value of orderByClause.
      * 
-     * @param value The value of orderByClause. (NotNull)
+     * @param orderByClause The value of orderByClause. (NotNull)
      */
-    public void setOrderByClause(OrderByClause value) {
-        _orderByClause = value;
+    public void setOrderByClause(OrderByClause orderByClause) {
+        _orderByClause = orderByClause;
     }
 
     // =====================================================================================

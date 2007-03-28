@@ -1,6 +1,7 @@
 package org.seasar.golf.uexample.dao.allcommon.cbean.ckey;
 
 
+import org.seasar.golf.uexample.dao.allcommon.cbean.coption.ConditionOption;
 import org.seasar.golf.uexample.dao.allcommon.cbean.cvalue.ConditionValue;
 
 /**
@@ -33,6 +34,9 @@ public abstract class ConditionKey {
 
     /** The condition key of prefixSearch. */
     public static final ConditionKey CK_PREFIX_SEARCH = new ConditionKeyPrefixSearch();
+
+    /** The condition key of likeSearch. */
+    public static final ConditionKey CK_LIKE_SEARCH = new ConditionKeyLikeSearch();
 
     /** The condition key of inScope. */
     public static final ConditionKey CK_IN_SCOPE = new ConditionKeyInScope();
@@ -101,6 +105,24 @@ public abstract class ConditionKey {
     }
 
     /**
+     * Add where clause.
+     * 
+     * @param conditionList Condition list. (NotNull)
+     * @param columnName Column name. (NotNull)
+     * @param value Condition value. (NotNull)
+     * @param option Condition option. (NotNull)
+     * @return this.
+     */
+    public ConditionKey addWhereClause(java.util.List<String> conditionList, String columnName, ConditionValue value, ConditionOption option) {
+        if (value == null) {
+            String msg = "Argument[value] must not be null:";
+            throw new IllegalArgumentException(msg + " value=" + value + " this.toString()=" + toString());
+        }
+        doAddWhereClause(conditionList, columnName, value, option);
+        return this;
+    }
+
+    /**
      * Do add where clause.
      * 
      * @param conditionList Condition list. (NotNull)
@@ -108,6 +130,16 @@ public abstract class ConditionKey {
      * @param value Condition value. (NotNull)
      */
     abstract protected void doAddWhereClause(java.util.List<String> conditionList, String columnName, ConditionValue value);
+
+    /**
+     * Do add where clause.
+     * 
+     * @param conditionList Condition list. (NotNull)
+     * @param columnName Column name. (NotNull)
+     * @param value Condition value. (NotNull)
+     * @param option Condition option. (NotNull)
+     */
+    abstract protected void doAddWhereClause(java.util.List<String> conditionList, String columnName, ConditionValue value, ConditionOption option);
 
     /**
      * Setup condition value.
@@ -127,6 +159,24 @@ public abstract class ConditionKey {
     }
 
     /**
+     * Setup condition value.
+     * 
+     * @param conditionValue Condition value. (NotNull)
+     * @param value Value. (Nullable)
+     * @param location Location. (Nullable)
+     * @param option Condition option. (NotNull)
+     * @return Condition value. (The same as argument[conditionValue]) (NotNull)
+     */
+    public ConditionValue setupConditionValue(ConditionValue conditionValue, Object value, String location, ConditionOption option) {
+        if (conditionValue == null) {
+            String msg = "Argument[conditionValue] must not be null:";
+            throw new IllegalArgumentException(msg + " value=" + value + " this.toString()=" + toString());
+        }
+        doSetupConditionValue(conditionValue, value, location, option);
+        return conditionValue;
+    }
+
+    /**
      * Do setup condition value.
      * 
      * @param conditionValue Condition value. (NotNull)
@@ -134,6 +184,16 @@ public abstract class ConditionKey {
      * @param location Location. (NotNull)
      */
     abstract protected void doSetupConditionValue(ConditionValue conditionValue, Object value, String location);
+
+    /**
+     * Do setup condition value.
+     * 
+     * @param conditionValue Condition value. (NotNull)
+     * @param value Value. (NotNull)
+     * @param location Location. (NotNull)
+     * @param option Condition option. (NotNull)
+     */
+    abstract protected void doSetupConditionValue(ConditionValue conditionValue, Object value, String location, ConditionOption option);
 
     /**
      * Build bind clause. (for s2dao)
@@ -144,6 +204,18 @@ public abstract class ConditionKey {
      */
     protected String buildBindClause(String columnName, String location) {
         return columnName + " " + getOperand() + " " + "/*dto." + location + "*/null";
+    }
+
+    /**
+     * Build bind clause. (for s2dao)
+     * 
+     * @param columnName Column name. (NotNull)
+     * @param location Location. (NotNull)
+     * @param additionalOption Additional option. (NotNull)
+     * @return Bind clause. (NotNull)
+     */
+    protected String buildBindClauseWithRearOption(String columnName, String location, String rearOption) {
+        return columnName + " " + getOperand() + " " + "/*dto." + location + "*/null" + rearOption;
     }
 
     /**

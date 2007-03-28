@@ -446,8 +446,6 @@ public class CompanyDbm extends AbstractDBMeta {
         }
     }
 
-
-
     // =====================================================================================
     //                                                                         Determination
     //                                                                         =============

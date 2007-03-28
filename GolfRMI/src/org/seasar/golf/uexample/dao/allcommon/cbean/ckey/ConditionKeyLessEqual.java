@@ -4,6 +4,7 @@ package org.seasar.golf.uexample.dao.allcommon.cbean.ckey;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
+import org.seasar.golf.uexample.dao.allcommon.cbean.coption.ConditionOption;
 import org.seasar.golf.uexample.dao.allcommon.cbean.cvalue.ConditionValue;
 
 /**
@@ -36,10 +37,14 @@ public class ConditionKeyLessEqual extends ConditionKey {
         if (value == null) {
             return false;
         }
-        Object valueObject = conditionValue.getLessEqual();
-        if (valueObject != null && valueObject.equals(value)) {
-            _log.warn("The value has already registered at " + callerName + ": " + valueObject + " = " + value);
-            return false;
+        if (conditionValue.hasLessEqual()) {
+            if (conditionValue.equalLessEqual(value)) {
+                _log.warn("The value has already registered at " + callerName + ": value=" + value);
+                return false;
+            } else {
+                conditionValue.overrideLessEqual(value);
+                return false;
+            }
         }
         return true;
     }
@@ -59,6 +64,18 @@ public class ConditionKeyLessEqual extends ConditionKey {
     }
 
     /**
+     * This method implements super#doAddWhereClause().
+     * 
+     * @param conditionList Condition list. (NotNull)
+     * @param columnName Column name. (NotNull)
+     * @param value Condition value. (NotNull)
+     * @param option Condition option. (NotNull)
+     */
+    protected void doAddWhereClause(java.util.List<String> conditionList, String columnName, ConditionValue value, ConditionOption option) {
+        throw new UnsupportedOperationException("doAddWhereClause that has ConditionOption is unsupported!!!");
+    }
+
+    /**
      * This method implements super#doSetupConditionValue().
      * 
      * @param conditionValue Condition value. (NotNull)
@@ -67,5 +84,17 @@ public class ConditionKeyLessEqual extends ConditionKey {
      */
     protected void doSetupConditionValue(ConditionValue conditionValue, Object value, String location) {
         conditionValue.setLessEqual(value).setLessEqualLocation(location);
+    }
+
+    /**
+     * This method implements super#doSetupConditionValue().
+     * 
+     * @param conditionValue Condition value. (NotNull)
+     * @param value Value. (NotNull)
+     * @param location Location. (NotNull)
+     * @param option Condition option. (NotNull)
+     */
+    protected void doSetupConditionValue(ConditionValue conditionValue, Object value, String location, ConditionOption option) {
+        throw new UnsupportedOperationException("doSetupConditionValue with condition-option is unsupported!!!");
     }
 }

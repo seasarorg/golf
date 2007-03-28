@@ -429,11 +429,11 @@ public abstract class BsCompany implements Entity, java.io.Serializable {
         MapStringUtil.acceptColumnValueMapString(columnValueMapString, this);
     }
 
-    protected void checkTypeString(Object value, String propertyName, String typeName) {
+    private void checkTypeString(Object value, String propertyName, String typeName) {
         MapStringUtil.checkTypeString(value, propertyName, typeName);
     }
 
-    protected long parseDateString(Object value, String propertyName, String typeName) {
+    private long parseDateString(Object value, String propertyName, String typeName) {
         return MapStringUtil.parseDateString(value, propertyName, typeName);
     }
 
@@ -459,13 +459,11 @@ public abstract class BsCompany implements Entity, java.io.Serializable {
      * @return Primary-key map-string. (NotNull)
      */
     public String extractPrimaryKeyMapString(String startBrace, String endBrace, String delimiter, String equal) {
-
         final String mapMarkAndStartBrace = MAP_STRING_MAP_MARK + startBrace;
         final StringBuffer sb = new StringBuffer();
-      
-        sb.append(delimiter).append("ccode").append(equal);
-        sb.append((_ccode != null ? _ccode.toString() : ""));
-      
+  
+        appendColumnValueString(sb, delimiter, equal, "ccode", _ccode);
+  
         sb.delete(0, delimiter.length()).insert(0, mapMarkAndStartBrace).append(endBrace);
         return sb.toString();
 
@@ -492,28 +490,26 @@ public abstract class BsCompany implements Entity, java.io.Serializable {
     public String extractColumnValueMapString(String startBrace, String endBrace, String delimiter, String equal) {
         final String mapMarkAndStartBrace = MAP_STRING_MAP_MARK + startBrace;
         final StringBuffer sb = new StringBuffer();
-    
-        sb.append(delimiter).append("ccode").append(equal);
-        sb.append((_ccode != null ? _ccode.toString() : ""));
-        
-        sb.append(delimiter).append("cat").append(equal);
-        sb.append((_cat != null ? _cat.toString() : ""));
-        
-        sb.append(delimiter).append("shortname").append(equal);
-        sb.append((_shortname != null ? _shortname.toString() : ""));
-        
-        sb.append(delimiter).append("name").append(equal);
-        sb.append((_name != null ? _name.toString() : ""));
-        
-        sb.append(delimiter).append("telephone").append(equal);
-        sb.append((_telephone != null ? _telephone.toString() : ""));
-        
-        sb.append(delimiter).append("versionno").append(equal);
-        sb.append((_versionno != null ? _versionno.toString() : ""));
-    
+        appendColumnValueString(sb, delimiter, equal, "ccode", _ccode);
+        appendColumnValueString(sb, delimiter, equal, "cat", _cat);
+        appendColumnValueString(sb, delimiter, equal, "shortname", _shortname);
+        appendColumnValueString(sb, delimiter, equal, "name", _name);
+        appendColumnValueString(sb, delimiter, equal, "telephone", _telephone);
+        appendColumnValueString(sb, delimiter, equal, "versionno", _versionno);
+
         sb.delete(0, delimiter.length()).insert(0, mapMarkAndStartBrace).append(endBrace);
         return sb.toString();
     }
+
+    private void appendColumnValueString(StringBuffer sb, String delimiter, String equal, String colName, Object value) {
+        sb.append(delimiter).append(colName).append(equal);
+        if (value instanceof java.util.Date) {
+            sb.append((value != null ? formatDate((java.util.Date)value) : ""));
+        } else {
+            sb.append((value != null ? value.toString() : ""));
+        }
+    }
+
 
 
     protected String formatDate(java.util.Date value) {

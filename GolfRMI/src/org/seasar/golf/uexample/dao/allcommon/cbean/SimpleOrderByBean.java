@@ -2,7 +2,6 @@ package org.seasar.golf.uexample.dao.allcommon.cbean;
 
 import org.seasar.golf.uexample.dao.allcommon.cbean.sqlclause.OrderByClause;
 import org.seasar.golf.uexample.dao.allcommon.cbean.sqlclause.SqlClause;
-import org.seasar.golf.uexample.dao.allcommon.cbean.sqlclause.SqlClausePostgreSql;
 
 /// <summary>
 /// The order-by-bean as simple implemetation.
@@ -15,6 +14,9 @@ public class SimpleOrderByBean implements OrderByBean {
     //                                                                             =========
     /** SQL clause instance. */
     protected final SqlClause _sqlClause;
+    {
+        _sqlClause = ConditionBeanContext.createSqlClause("Dummy");
+    }
 
     // =====================================================================================
     //                                                                           Constructor
@@ -23,7 +25,6 @@ public class SimpleOrderByBean implements OrderByBean {
      * Constructor.
      */
     public SimpleOrderByBean() {
-        _sqlClause = new SqlClausePostgreSql("Dummy");
     }
 
     // =====================================================================================
