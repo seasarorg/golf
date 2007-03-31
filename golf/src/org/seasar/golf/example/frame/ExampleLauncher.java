@@ -22,7 +22,6 @@ import org.seasar.golf.Factory;
 import org.seasar.golf.GolfForm;
 import org.seasar.golf.data.RequestData;
 import org.seasar.golf.data.ResultData;
-import org.seasar.golf.form.FormManagerUtil;
 import org.seasar.golf.transaction.TrxDispatcherInterface;
 import org.seasar.golf.util.GolfSetting;
 
