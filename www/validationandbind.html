@@ -1,0 +1,84 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ja" lang="ja"><head><!-- don't edit start --><title>GOLF－Binding</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><meta http-equiv="Content-Style-Type" content="text/css" /><link href="s2click.css" type="text/css" rel="stylesheet" media="screen" /><link href="seasar_b.css" type="text/css" rel="stylesheet" media="screen" /><link href="seasar_p.css" type="text/css" rel="stylesheet" media="print" /><script src="seasar_b.js" type="text/JavaScript" language="JavaScript">
+</script>
+<style type="text/css">
+<!--
+.style1 {color: #0033FF}
+.style2 {color: #FF0000}
+-->
+</style>
+</head>
+<body style="direction: ltr;" onload="preload('ja')"><table align="left" border="0" cellpadding="0" cellspacing="0" width="100%"><tbody><tr><td align="left" valign="top" width="780"><table class="white" border="0" cellpadding="0" cellspacing="0" width="780">
+<tbody><tr><td colspan="7"><img src="images/top01_b.gif" alt="" height="5" width="780" /></td></tr><tr><td><img src="images/top02_b.gif" alt="Seasar" height="117" width="235" /></td><td colspan="3"><img src="images/top03.gif" alt="DI Container with AOP" height="117" width="289" /></td><td colspan="3"><img src="images/spacer.gif" alt="" height="117" width="256" /></td></tr><tr><td rowspan="2"><img src="images/top04.gif" alt="" height="49" width="235" /></td><td><a href="http://www.seasar.org/index.html"><img src="images/menu01_b_ja.gif" alt="" id="menu01" onmouseover="swap(1)" onmouseout="restore(1)" name="menu01" border="0" height="30" width="78" /></a></td><td><a href="http://www.seasar.org/projects.html"><img src="images/menu02_b_ja.gif" alt="" id="menu02" onmouseover="swap(2)" onmouseout="restore(2)" name="menu02" border="0" height="30" width="101" /></a></td><td><a href="http://www.seasar.org/products.html"><img src="images/menu03_b_ja.gif" alt="" id="menu03" onmouseover="swap(3)" onmouseout="restore(3)" name="menu03" border="0" height="30" width="110" /></a></td><td><a href="http://www.seasar.org/resources.html"><img src="images/menu04_b_ja.gif" alt="" id="menu04" onmouseover="swap(4)" onmouseout="restore(4)" name="menu04" border="0" height="30" width="113" /></a></td><td><img src="images/menu05_b_ja.gif" alt="" id="menu05" onmouseover="swap(5)" onmouseout="restore(5)" name="menu05" border="0" height="30" width="109" /></td><td><img src="images/menu06.gif" alt="" height="30" width="34" /></td>
+</tr><tr><td colspan="6"><img src="images/spacer.gif" alt="" height="19" width="545" /></td></tr></tbody></table><table class="white" border="0" cellpadding="0" cellspacing="0" width="780"><tbody><tr align="left" valign="top"><td width="14"><img src="images/spacer.gif" alt="" height="14" width="14" /></td><td class="main" width="740"><!-- don't edit end --><!-- document start -->
+<dl>
+<dd>&nbsp;</dd>
+
+<h3><a name="document" id="document">項目にValidatorやServer連携項目名の設定
+</a></h3>
+</dl>
+
+<dl>
+<dd><a href="sample.html">Sampleの説明</a>でも紹介しましたが、下記の様に、CSV ファイルを用意するだけで、簡単に各項目に<br>
+Validatorの設定が出来ます。例えば、<span class="style1">formManager.setValidationFromCsvResource("example1_bind.csv"); </span></dd>
+</dl>
+<img src="images/bind1n.JPG" />
+<dl>
+<dd>それでは、各項目を見ていきましょう</dd>
+</dl>
+<dl>
+<ul>
+ <li><span class="style1">Class</span> この項目は、参考情報です。golfを「Debug」MODE（golf.propetiesで設定）動かすと、自動的に、下記の様にJComponentの
+<br>
+Classと変数名のCSV（例えば、org.seasar.golf.example.frame.Example1Frame.csv）が作成されますので、これから簡単にコピペ出来ます</li>
+ <img src="images/example1-9.jpeg" />
+ <li><span class="style1">Name</span>　JComponentの変数名です。なおBindingされたValue Model内容のGet/Setは、この名前を使用して<br>
+   <span class="style1">FormManager#getValue()</span>/<span class="style1">FormManager#setValue()</span>で行います。
+ <br>
+ <span class="style2">注意　Programから値をSetする場合は、JComponentのsetText()等ではなく、必ずこのMethodを使用して下さい。</span>
+ 
+ </li>　
+ <li><span class="style1">Immed</span>　Defaultでは、JComponentのFocusがLostした時点で、Value ModelのDataが変更されますが、<br>
+ HOT KEYの使用などで、即時に変更したい場合は、この欄に「T」と入力して下さい。
+ </li>
+ <li><span class="style1">Validator</span>　Diconで定義しているValidatorの名前を入力します。複数ある場合は、コンマ（,）区切りで入力可能です。</li>
+ <li><span class="style1">DisplayName</span>　Error発生時に、表示される項目名を指定出来ます。未入力の場合は、Nameが使用されます。</li>
+ <li><span class="style1">Required</span> Focus Lost時のCheckでは必須入力のCheckは行いませんが、この欄に「T」と入力し、Programから<br>
+   <span class="style1">formManager.getFormValidationManager().Validate(true);</span>と呼び出す事（通常はServerのTrasactionを呼び出す時）により、Check出来ます</li>
+ <li><span class="style1">HostName</span>　Serverを呼び出す時、この項目名で、RequestDataのfields HashMapに自動的にSet出来ます。<br>
+ また、ServerからResultDataを受け取った場合も、逆に自動的にSet可能になります。</li>  
+ <li><span class="style1">Choice</span> JRadioButtonの場合、Selectされた場合のValueをこれで定義します。尚この場合複数のRadioButtonを一つの<br>
+ ValueModelにBindingする必要がありますので、まず最初の一つだけここに定義します。２つめ以降は、このValueModelに後で追加でBindingします。</li>  
+  </ul>
+</dl>
+<dl>
+<dd>すでに定義した、ValueModelに追加でJComponentをBindingするには、例えば<br><span class="style1">formManager.setBindFromCsvResource("example1_bind.csv"); </span>で出来ます
+
+</dd>
+
+</dl>
+<img src="images/bind2n.JPG" />
+<dl>
+<dd></dd>
+</dl>
+
+            <h3><a name="link" id="link">リンク</a></h3>
+            <dl>
+
+              <dd><a href="concept.html">Golf 概要</a></dd>
+
+            </dl>
+            <dl>
+
+              <dd><a href="index.html">GOLF HOMEへのリンク</a></dd>
+
+            </dl>
+<!-- document end -->
+<!-- don't edit start --></td>
+<td width="14"><img src="images/spacer.gif" alt="" height="14" width="14" /></td></tr><tr><td width="14"><img src="images/spacer.gif" alt="" height="30" width="14" /></td><td width="766"><img src="images/spacer.gif" alt="" height="30" width="592" /></td></tr><tr><td width="14"><img src="images/spacer.gif" alt="" height="14" width="14" /></td><td class="copyright" width="766">Copyright&copy;
+2004-2005, The Seasar Foundation and the others. All rights reserved.</td>
+</tr></tbody></table></td><td class="backright" align="left" valign="top">&nbsp;</td>
+</tr><tr><td class="backunder" align="left" height="16" valign="top" width="780">&nbsp;</td>
+<td class="backcorner" align="left" height="16" valign="top">&nbsp;</td>
+</tr></tbody></table><!-- don't edit end --></body></html>

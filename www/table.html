@@ -1,0 +1,65 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ja" lang="ja"><head><!-- don't edit start --><title>GOLF-Table</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><meta http-equiv="Content-Style-Type" content="text/css" /><link href="s2click.css" type="text/css" rel="stylesheet" media="screen" /><link href="seasar_b.css" type="text/css" rel="stylesheet" media="screen" /><link href="seasar_p.css" type="text/css" rel="stylesheet" media="print" /><script src="seasar_b.js" type="text/JavaScript" language="JavaScript">
+</script>
+<style type="text/css">
+<!--
+.style1 {color: #FF0000}
+.style2 {color: #0033FF}
+-->
+</style>
+</head>
+<body style="direction: ltr;" onload="preload('ja')"><table align="left" border="0" cellpadding="0" cellspacing="0" width="100%"><tbody><tr><td align="left" valign="top" width="780"><table class="white" border="0" cellpadding="0" cellspacing="0" width="780">
+<tbody><tr><td colspan="7"><img src="images/top01_b.gif" alt="" height="5" width="780" /></td></tr><tr><td><img src="images/top02_b.gif" alt="Seasar" height="117" width="235" /></td><td colspan="3"><img src="images/top03.gif" alt="DI Container with AOP" height="117" width="289" /></td><td colspan="3"><img src="images/spacer.gif" alt="" height="117" width="256" /></td></tr><tr><td rowspan="2"><img src="images/top04.gif" alt="" height="49" width="235" /></td><td><a href="http://www.seasar.org/index.html"><img src="images/menu01_b_ja.gif" alt="" id="menu01" onmouseover="swap(1)" onmouseout="restore(1)" name="menu01" border="0" height="30" width="78" /></a></td><td><a href="http://www.seasar.org/projects.html"><img src="images/menu02_b_ja.gif" alt="" id="menu02" onmouseover="swap(2)" onmouseout="restore(2)" name="menu02" border="0" height="30" width="101" /></a></td><td><a href="http://www.seasar.org/products.html"><img src="images/menu03_b_ja.gif" alt="" id="menu03" onmouseover="swap(3)" onmouseout="restore(3)" name="menu03" border="0" height="30" width="110" /></a></td><td><a href="http://www.seasar.org/resources.html"><img src="images/menu04_b_ja.gif" alt="" id="menu04" onmouseover="swap(4)" onmouseout="restore(4)" name="menu04" border="0" height="30" width="113" /></a></td><td><img src="images/menu05_b_ja.gif" alt="" id="menu05" onmouseover="swap(5)" onmouseout="restore(5)" name="menu05" border="0" height="30" width="109" /></td><td><img src="images/menu06.gif" alt="" height="30" width="34" /></td>
+</tr><tr><td colspan="6"><img src="images/spacer.gif" alt="" height="19" width="545" /></td></tr></tbody></table><table class="white" border="0" cellpadding="0" cellspacing="0" width="780"><tbody><tr align="left" valign="top"><td width="14"><img src="images/spacer.gif" alt="" height="14" width="14" /></td><td class="main" width="740"><!-- don't edit end --><!-- document start -->
+<dl>
+<dd>&nbsp;</dd>
+
+<h3><a name="document" id="document"><a href="sample.html">Table項目の設定およびValidatorやServer連携項目名の設定</a>
+</a></h3>
+</dl>
+<dl>
+<dd><a href="sample2.html">Example ２</a>でも紹介しましたが、下記の様に、CSV ファイルを用意するだけで、Tableの項目の設定、<br>
+Validatorの設定が出来ます。例えば、<br>
+<span class="style1">formManager.setTableColumnFromCsvResource(jTable1, "Test Table", golfTableModel, "example2_table1.csv");</span></dd>
+</dl>
+<img src="images/tablebind.JPG" />
+<dl>
+<dd>それでは、各項目を見ていきましょう</dd>
+</dl>
+<dl>
+<ul>
+
+ <li><span class="style2">Field</span> 列名を指定します。</li>
+  <li><span class="style2">Class</span> 列のClassを指定します。下記の様に golf.propertiesで予め指定しておけば、省略形式で入力出来ます<br>
+  <img src="images/golfproperties.JPG" />
+  </li>
+  <li><span class="style2">CanEdit</span>　編集の可否を指定します。可の場合「T」を入力。</li>
+  <li><span class="style2">InsCheck</span>　必須 Checkの場合、このInsCheckが「T」の項目がnullでない場合、その行は有効と判断して、<br>
+  Checkの対象とします。</li>
+  <li><span class="style2">Validator</span> Diconで定義しているValidatorの名前を入力します。複数ある場合は、コンマ（,）区切りで入力可能です。</li>  	
+  <li><span class="style2">DisplayName</span> Error発生時に、表示される項目名を指定出来ます。未入力の場合は、Nameが使用されます。</li>
+  <li><span class="style2">Required</span> Focus Lost時のCheckでは必須入力のCheckは行いませんが、この欄に「T」と入力し、Programから<br>
+   <span class="style1">formManager.getFormValidationManager().Validate(true);</span>と呼び出す事（通常はServerのTrasactionを呼び出す時）により、Check出来ます</li>
+  <li><span class="style2">HostName</span> Serverに送られる、TableDataの列名を指定します。</li>
+ </ul>
+</dl>
+            <h3><a name="link" id="link">リンク</a></h3>
+            <dl>
+
+              <dd><a href="concept.html">Golf 概要</a></dd>
+
+            </dl>
+            <dl>
+
+              <dd><a href="index.html">GOLF HOMEへのリンク</a></dd>
+
+            </dl>
+<!-- document end -->
+<!-- don't edit start --></td>
+<td width="14"><img src="images/spacer.gif" alt="" height="14" width="14" /></td></tr><tr><td width="14"><img src="images/spacer.gif" alt="" height="30" width="14" /></td><td width="766"><img src="images/spacer.gif" alt="" height="30" width="592" /></td></tr><tr><td width="14"><img src="images/spacer.gif" alt="" height="14" width="14" /></td><td class="copyright" width="766">Copyright&copy;
+2004-2005, The Seasar Foundation and the others. All rights reserved.</td>
+</tr></tbody></table></td><td class="backright" align="left" valign="top">&nbsp;</td>
+</tr><tr><td class="backunder" align="left" height="16" valign="top" width="780">&nbsp;</td>
+<td class="backcorner" align="left" height="16" valign="top">&nbsp;</td>
+</tr></tbody></table><!-- don't edit end --></body></html>

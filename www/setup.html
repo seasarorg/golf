@@ -108,15 +108,15 @@
               <dd></dd>
 
               <h3><a name="document" id="document">NETBEANS
-5.5の場合
-              </a></h3>
+5.5（6.0）のセットアップ</a></h3>
 
             </dl>
 
             <dl>
 
-              <dd>NETBEANS
-5.5を起動し、「ファイル」メニューの「プロジェクトを開く」を実行してください。<br />
+              <dd>このSampleは、Netbeans 6.0を使用して作っているため、formのVersionが1.4となっています。 <br />
+			  NETBEANS 5.5の場合は、NetBeans Update Center ベータから「GUI Builder Update Pack」をインストールしておいて下さい<br />
+			  NETBEANS 5.5を起動し、「ファイル」メニューの「プロジェクトを開く」を実行してください。解凍した、Golfフォルダーを指定します。<br />
 
 なお、実行には JAVA 5.0を指定する必要があります。 JAVA　6.0の場合は、MatisseのLibraryが違いますので、
                 <br />
@@ -131,21 +131,24 @@ Importを変更する必要があり、現在は対応していません。（�
 機能を使用するのに必要な場合があります）<br />
 
 次に、GOLF プロジェクトを右クリックして、「プロジェクトの生成物を削除して構築」を実行してください。<br />
+実行には、H2 Databaseの起動と、GolfRMI Serverの起動が必要です。Client部分のみをみたいのであれば、<br />
+<a href="demo.html">Demoの実行</a>を参考に、これらを立ち上げて置いて下さい。<br />
+次に、GOLF プロジェクトを右クリックして　「プロジェクトをデバッグ」でサンプルが起動出来ます。<br>
 
-次に、GOLF プロジェクトを右クリックして　「プロジェクトをデバッグ」でサンプルが起動出来ます。
               </dd>
 
-              <h3><a name="document" id="document">ECLIPSE　3.xの場合
-              </a></h3>
+              <h3><a name="document" id="document">ECLIPSE　3.xのセットアップ</a></h3>
 
             
 
-            <dd>golfディレクトリをEclipseで「ファイル&rarr;インポート&rarr;既存のプロジェクトをワークスペースへ」してインポートしてください。
-<br />「Golf」プロジェクトを右クリックして、リフレッシュした後、メインクラスを「org.seasar.golf.example.frame.ExampleLauncher」<br />
+            <dd>まず、解凍した Golf￥libのすべてのファイルを、GolfRMI￥libにコピーして下さい。
+			GolfディレクトリをEclipseで「ファイル&rarr;インポート&rarr;既存のプロジェクトをワークスペースへ」してインポートしてください。
+<br />次に、GolfRMIディレクトリをEclipseで同様にImportして下さい。<br>
 
-にして実行して下さい<br />
+			下記を参考に、GolfRMIを実行して下さい。なお事前にbin\h2.batをクリックして、H2 Databaseを起動しておく必要があります。<br />
 
             </dd>
+			<img src="images/golfRMIDebug.JPG" />
 
             <h3><a name="link" id="link">リンク</a></h3>
 
@@ -154,7 +157,11 @@ Importを変更する必要があり、現在は対応していません。（�
               <dd><a href="sample.html">サンプルの実行へのリンク</a></dd>
 
             </dl>
+            <dl>
 
+              <dd><a href="concept.html">Golf 概要</a></dd>
+
+            </dl>
             <dl>
 
               <dd><a href="index.html">GOLF HOMEへのリンク</a></dd>

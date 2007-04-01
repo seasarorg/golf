@@ -10,6 +10,15 @@
 }
 .style4 {color: #3366FF}
 .style5 {color: #0000FF}
+.style6 {font-size: medium; font-weight: bold; color: #0000FF; }
+.style8 {color: #660000}
+.style9 {color: #3300FF}
+.style11 {color: #FF0000}
+.style12 {
+	color: #FF0000;
+	font-weight: bold;
+	font-size: 12pt;
+}
 -->
 </style>
 </head>
@@ -20,30 +29,54 @@
     <span class="style4">Golf Project</span>　とは、<span class="style4">Seasar Container</span>と<span class="style4">JGoodies</span>を利用した、 <span class="style4">Rich Client Platform</span>です。
     <span class="style4">Swing</span>を使い良くするということで、Swingに関係ある 「Golf」　と言う名前にしました。 
       </dd>
-  <dt>&nbsp; </dt>
-  <dd><br />取り合えず Version 0.1では下記内容となります。<br />   </dd>
-  <dd><br />
-  １．画面の作成は、Matisse で簡単に、自由にデザイン出来る <span class="style4">Netbeans 5.5の使用をお薦めします</span>。（なお、<span class="style4">Eclipse</span>でのProject設定もしていますので、その後のDicon関連には、EclipseでKijimunaのSupportも可能です） </dd>
-   </dd>  
-   <dd> <br />
-  ２．Validatorの設定は、Dicon に行い、それと画面のFieldとのMappingを、JAVAだけでなく、「CSV File Excelで編集）」で簡単に行える。 下記は Diconの例。（S2Conatinerの特徴を生かしています。）<br />
-  　      
-      <dd>&lt;components&gt;<br />
+  </dl>
+  <p class="style6">Version <span class="style11">0.2</span> に上がりました。 </p>
+  <p class="style6">複数のContainer Windows内に、各種画面を MENU経由だけでなく、<span class="style9">直接 画面コードを<br />　
+    入力する</span>、<span class="style8">Expert Mode</span>にも対応し、Rich Clientの特長を活かした、効率的に入力出来る<br />　
+    業務画面を、JAVA コードを最小限にして作成できます。</p>
+  <p class="style6">画面のモード（例えば、新規・更新・表示）に応じ、各入力 フィールド、ToolBarボタン、<br />　
+    Menu項目の「<span class="style8">表示・非表示</span>」「<span class="style8">Enable・Disable</span>」「<span class="style8">編集可否</span>」をCSV Fileで簡単に指定<br />　
+    できます。</p>
+  <p class="style6">画面のある フィールドに対し、子画面（または Dialog）を使用して、<span class="style8">検索した結果</span>を簡単に<br />　
+    埋め込めます。</p>
+  <p class="style6"><span class="style8">Server側</span>は、S2Containerを使用した S2RMIを利用することにより、Seasarの<span class="style8">Hot　deploy<br />　
+  </span>機能を活用し、Serverを立ち上げたまま、Transactionの追加・機能の追加が行えます。<br />　
+  （<span class="style8">サクサク感のある開発</span>）</p>
+  <p class="style6">Server側とのDataのやりとりは、CSV File（Validator定義のものをそのまま使用）の<br />　
+    host欄の項目と<span class="style8">自動的にMapping</span>されます。また、JTableについても同様に、Columnの<br />　
+    Validation定義のCSVの情報を使用して、自動的にMappingできます。
+  </p>
+  <p class="style6">Server側から、Error情報をSetする事により、<span class="style8">Client側のError表示 AREAに表示</span>すると<br />　
+    共に、最初のError Fieldに自動的にカーソルが移動する機能もあります。
+</p>
+  <p class="style6">Server側からの指示により、新たな画面を開いたり、一つ前の画面に戻ったり等の<br />　
+    <span class="style8">画面遷移</span>を簡単に指定できます。
+  </p>
+  <p class="style6">IDEが無くても、簡単にDEMOが見られますので、まず<span class="style8">DEMO</span>を見て下さい。</p>
+  <p class="style12"><a href="demo.html">Version 0.2 Demo</a></p>
+  <dl><h3><a name="document" id="document">特長</a>    </h3>
+          <dd>  １．画面の作成は、Matisse で簡単に、自由にデザイン出来る <span class="style4">Netbeans 5.5の使用をお薦めします</span>。（なお、<span class="style4">Eclipse</span>でのProject設定もしていますので、その後のDicon関連には、EclipseでKijimunaのSupportも可能です） </dd>
+          </dd>  
+          <dd> <br />
+      ２．Validatorの設定は、Dicon に行い、それと画面のFieldとのMappingを、JAVAだけでなく、「CSV File Excelで編集）」で簡単に行える。 下記は Diconの例。（S2Conatinerの特徴を生かしています。）<br />
+      　      
+          <dd>&lt;components&gt;<br />
   &lt;component name=&quot;min3max6string&quot; class=&quot;org.seasar.golf.validator.StringValidator&quot;&gt;<br />
   &lt;property name=&quot;minLength&quot;&gt;new Integer(3)&lt;/property&gt;<br />
   &lt;property name=&quot;maxLength&quot;&gt;new Integer(6)&lt;/property&gt;<br />
   &lt;/component&gt;<br />
   &lt;/components&gt;　<br />
-  <BR>例えば、一部省略していますが、下記の設定では 「jTextField1」　に、「min3max6string」という名前で、Diconに登録されたValidatorを適用し、 Error Message上に表記には、「Text」　を使用します。 　　<br />
-  画面に入力した時点では、必須 チェックは行いませんが、 「ENTER」ボタン等を押した場合には、 必須チェックを行います。<br />
-  この必須指定を Requiredで行います。 <br />
-  <img src="images/bind1.jpeg" width="476" height="133" /><br >
-  <span class="style5"><br >
-  Ver 0.1.1 対応　BindingはDefaultでは Focus Lost時に行われ、そのタイミングでValidationされますが、もしファンクション・キー<br>
-  対応などで、即座にBindingしたい場合は、「Immed」という列を追加し、そこに「T」を入力すると、即座にBindingされます</span><br>
-  ３．Validationした結果は、画面に定義した、Scroll Paneに即座に自動的に表示されます。 <br>
-  </dd></dl>
-  <img src="images/error1.jpeg" width="694" height="451" /><br>
+      <BR>例えば、一部省略していますが、下記の設定では 「jTextField1」　に、「min3max6string」という名前で、Diconに登録されたValidatorを適用し、 Error Message上に表記には、「Text」　を使用します。 　　<br />
+      画面に入力した時点では、必須 チェックは行いませんが、 「ENTER」ボタン等を押した場合には、 必須チェックを行います。<br />
+      この必須指定を Requiredで行います。 <br />
+      <img src="images/bind1.jpeg" width="476" height="133" /><br >
+      <span class="style5"><br >
+      Ver 0.1.1 対応　BindingはDefaultでは Focus Lost時に行われ、そのタイミングでValidationされますが、もしファンクション・キー<br>
+      対応などで、即座にBindingしたい場合は、「Immed」という列を追加し、そこに「T」を入力すると、即座にBindingされます</span><br>
+      ３．Validationした結果は、画面に定義した、Scroll Paneに即座に自動的に表示されます。 <br>
+          </dd>
+        </dl>
+        <img src="images/error1.jpeg" width="694" height="451" /><br>
   <dl><dd><br>
   ４．JTableを使用する場合は、そのColumn設定とValidationの設定を同様に「CSV File」で簡単に定義出来ます。 <br>
   <img src="images/table1.jpeg" width="563" height="148" /><br>
@@ -60,27 +93,25 @@
 <img src="images/container2.jpeg" width="697" height="567" />
   <br />  <br />
   
-<h3>今後の予定</a></h3>
+<h3>Version 0.2追加済み機能</a></h3>
       <ul>
           <li>ログイン後、複数のコンテナ画面を使用出来、それらでセッション情報を共有出来る。</li>
           <li>コンテナ画面のDefaultとして、Menu画面を配置し、Menuを選ぶ事で、同一画面内に該当画面を開く
 
           <li>どの画面でも、直接 トランザクションコード（画面コード）を入力する事により、メニューに戻らなくても、該当画面に ジャンプ出来る（指定で新たなコンテナ画面を開いてその中にジャンプ
-      　する事も可能）ホストとは、S2Remoting （S2Hessian, S2RMI等）を利用して、ホストの処理する トランザクションコード（Diconに定義した、Action）に処理を委ねる。
+      　する事も可能）ホストとは、S2Remoting （S2RMI、Ｓ２Ａｘｉｓ等）を利用して、ホストの処理する トランザクションコード（Diconに定義した、Action）に処理を委ねる。
             </p>
 
 
                 <li>ホストで処理した結果は、場合により同一画面に単に表示したり、新たな画面を開いて表示したり（WEBアプリケーションの Forwardに該当）、メニューに戻ったり、で指定出来る。
 
             尚上記の機能は、複雑な業務で多くの画面を使用する場合、統一的な効率の良い、ユーザーオペレーションと開発の両立を目指しています。
-
-      すでに、C#で 試作していたものを、JAVAに移植しながら改善予定です。
-  </li>
+      </li>
             </ul>
       </dd>
   </dl>
-<h3><a name="document" id="document">ド
-キュメント</a></h3>
+<a name="document" id="document">ド
+キュメント</a>
 <ul>
   <li><a href="setup.html">セットアップ</a></li>
 <li><a href="sample.html">Sampleを見てみよう</a></li>
@@ -90,6 +121,12 @@
 <h3><a name="download" id="download">ダ
 ウンロード</a></h3>
 <h4>最新版</h4>
+<dl>
+<dd><a href="download/golf-v0.2.zip">Golf V0.2</a>　Server処理に対応した最新Versionです。</dd>
+
+
+</dl>
+<h4>アーカイブ版</h4>
 <dl>
 <dd><a href="download/golf-v0.1.1.zip">Golf V0.1.1</a>　即座Binding対応、複数Validator対応等のVersionです。</dd>
 <dd><a href="download/golf-v0.1.zip">Golf V0.1</a>　Golf の最初のVersionで、Exampleも含まれています。 </dd>
@@ -104,7 +141,8 @@
   <dd>&nbsp;</dd>
 </dl> 
 <!-- document end -->
-<!-- don't edit start --></td><td width="14"><img src="images/spacer.gif" alt="" height="14" width="14" /></td></tr><tr><td width="14"><img src="images/spacer.gif" alt="" height="30" width="14" /></td><td width="766"><img src="images/spacer.gif" alt="" height="30" width="592" /></td></tr><tr><td width="14"><img src="images/spacer.gif" alt="" height="14" width="14" /></td><td class="copyright" width="766">Copyright&copy;
+<!-- don't edit start --></td>
+<td width="14"><img src="images/spacer.gif" alt="" height="14" width="14" /></td></tr><tr><td width="14"><img src="images/spacer.gif" alt="" height="30" width="14" /></td><td width="766"><img src="images/spacer.gif" alt="" height="30" width="592" /></td></tr><tr><td width="14"><img src="images/spacer.gif" alt="" height="14" width="14" /></td><td class="copyright" width="766">Copyright&copy;
 2004-2005, The Seasar Foundation and the others. All rights reserved.</td>
 </tr></tbody></table></td><td class="backright" align="left" valign="top">&nbsp;</td>
 </tr><tr><td class="backunder" align="left" height="16" valign="top" width="780">&nbsp;</td>

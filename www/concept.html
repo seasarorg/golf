@@ -1,0 +1,100 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ja" lang="ja"><head><!-- don't edit start --><title>GOLF　概要</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><meta http-equiv="Content-Style-Type" content="text/css" /><link href="s2click.css" type="text/css" rel="stylesheet" media="screen" /><link href="seasar_b.css" type="text/css" rel="stylesheet" media="screen" /><link href="seasar_p.css" type="text/css" rel="stylesheet" media="print" /><script src="seasar_b.js" type="text/JavaScript" language="JavaScript">
+</script></head>
+<body style="direction: ltr;" onload="preload('ja')"><table align="left" border="0" cellpadding="0" cellspacing="0" width="100%"><tbody><tr><td align="left" valign="top" width="780"><table class="white" border="0" cellpadding="0" cellspacing="0" width="780">
+<tbody><tr><td colspan="7"><img src="images/top01_b.gif" alt="" height="5" width="780" /></td></tr><tr><td><img src="images/top02_b.gif" alt="Seasar" height="117" width="235" /></td><td colspan="3"><img src="images/top03.gif" alt="DI Container with AOP" height="117" width="289" /></td><td colspan="3"><img src="images/spacer.gif" alt="" height="117" width="256" /></td></tr><tr><td rowspan="2"><img src="images/top04.gif" alt="" height="49" width="235" /></td><td><a href="http://www.seasar.org/index.html"><img src="images/menu01_b_ja.gif" alt="" id="menu01" onmouseover="swap(1)" onmouseout="restore(1)" name="menu01" border="0" height="30" width="78" /></a></td><td><a href="http://www.seasar.org/projects.html"><img src="images/menu02_b_ja.gif" alt="" id="menu02" onmouseover="swap(2)" onmouseout="restore(2)" name="menu02" border="0" height="30" width="101" /></a></td><td><a href="http://www.seasar.org/products.html"><img src="images/menu03_b_ja.gif" alt="" id="menu03" onmouseover="swap(3)" onmouseout="restore(3)" name="menu03" border="0" height="30" width="110" /></a></td><td><a href="http://www.seasar.org/resources.html"><img src="images/menu04_b_ja.gif" alt="" id="menu04" onmouseover="swap(4)" onmouseout="restore(4)" name="menu04" border="0" height="30" width="113" /></a></td><td><img src="images/menu05_b_ja.gif" alt="" id="menu05" onmouseover="swap(5)" onmouseout="restore(5)" name="menu05" border="0" height="30" width="109" /></td><td><img src="images/menu06.gif" alt="" height="30" width="34" /></td>
+</tr><tr><td colspan="6"><img src="images/spacer.gif" alt="" height="19" width="545" /></td></tr></tbody></table><table class="white" border="0" cellpadding="0" cellspacing="0" width="780"><tbody><tr align="left" valign="top"><td width="14"><img src="images/spacer.gif" alt="" height="14" width="14" /></td><td class="main" width="740"><!-- don't edit end --><!-- document start -->
+<dl>
+<dd>&nbsp;</dd>
+
+<h3><a name="document" id="document">概要
+</a></h3>
+</dl>
+
+<dl>
+<dd>GOLFのClient側 は、下記の様な階層で管理されています。</br>
+Login 画面等で認証されると、先ずConnection Objectが作られます。この中には、LoginしたUserに関する情報が保持されます。<br>
+また同時に、１つのSession Objectが作られ、その一番下位のFormManagerに、Menu画面がSetされます。<br>
+Session内で、複数の画面は、Stack状に管理され、その一番上位の画面がContainer画面（Session単位に保持）内にSet されます。 （Dialogは除く）
+</dd>
+</dl>
+<TABLE FRAME=VOID CELLSPACING=0 COLS=2 RULES=NONE BORDER=0>
+	<COLGROUP><COL WIDTH=217><COL WIDTH=222></COLGROUP>
+	<TBODY>
+		<TR>
+			<TD STYLE="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" WIDTH=217 HEIGHT=24 ALIGN=LEFT BGCOLOR="#CCCCFF"><FONT FACE="Arial" SIZE=4>FormManager(VDRSD)</FONT></TD>
+			<TD WIDTH=222 ALIGN=LEFT><BR></TD>
+		</TR>
+		<TR>
+			<TD STYLE="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" HEIGHT=24 ALIGN=LEFT BGCOLOR="#CCCCFF"><FONT FACE="Arial" SIZE=4>FormManager(VDRS)</FONT></TD>
+			<TD ALIGN=LEFT><BR></TD>
+		</TR>
+		<TR>
+			<TD STYLE="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" HEIGHT=24 ALIGN=LEFT BGCOLOR="#CCCCFF"><FONT FACE="Arial" SIZE=4>FormManager(MENU)</FONT></TD>
+			<TD STYLE="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" ALIGN=LEFT BGCOLOR="#CCCCFF"><FONT FACE="Arial" SIZE=4>FormManager(MENU)</FONT></TD>
+		</TR>
+		<TR>
+			<TD STYLE="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" HEIGHT=24 ALIGN=LEFT BGCOLOR="#E6FF00"><FONT FACE="Arial" SIZE=4>Session</FONT></TD>
+			<TD STYLE="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" ALIGN=LEFT BGCOLOR="#E6FF00"><FONT FACE="Arial" SIZE=4>Session</FONT></TD>
+		</TR>
+		<TR>
+			<TD STYLE="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" COLSPAN=2 HEIGHT=24 ALIGN=CENTER BGCOLOR="#99CCFF"><FONT FACE="Arial" SIZE=4>Connection</FONT></TD>
+			</TR>
+	</TBODY>
+</TABLE>
+<dl>
+<dd>FormManagerには、Frame（画面）のObjectが保持されると共に、機能的に役割分担する、各ManagerのObjectも保持されます。</dd>
+</dl>
+<TABLE FRAME=VOID CELLSPACING=0 COLS=4 RULES=NONE BORDER=0>
+	<COLGROUP><COL WIDTH=127><COL WIDTH=184><COL WIDTH=206><COL WIDTH=153></COLGROUP>
+	<TBODY>
+		<TR>
+			<TD STYLE="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" WIDTH=127 HEIGHT=24 ALIGN=LEFT BGCOLOR="#FFFFCC"><FONT SIZE=4>Frame(画面）</FONT></TD>
+			<TD STYLE="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" WIDTH=184 ALIGN=LEFT BGCOLOR="#CCFFFF"><FONT SIZE=4>FormBindingManager</FONT></TD>
+			<TD STYLE="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" WIDTH=206 ALIGN=LEFT BGCOLOR="#CCCCFF"><FONT SIZE=4>FormValidationManager</FONT></TD>
+			<TD STYLE="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" WIDTH=153 ALIGN=LEFT BGCOLOR="#FFCC99"><FONT SIZE=4>FormTrxManager</FONT></TD>
+		</TR>
+		<TR>
+			<TD STYLE="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" COLSPAN=4 HEIGHT=24 ALIGN=CENTER BGCOLOR="#99CCFF"><FONT SIZE=4>FormManager</FONT></TD>
+			</TR>
+	</TBODY>
+</TABLE>
+<dl>
+<dd>それでは、各Topicを見ていきましょう。</dd>
+</dl>
+<dl>
+<ul>
+  <li><a href="menu.html">MENU画面の作成</a></li>
+<li><a href="validationandbind.html">項目にValidatorやServer連携項目名の設定</a></li>
+<li><a href="sample.html">Validatorの説明</a></li>
+<li><a href="sample.html">Table項目の設定およびValidatorやServer連携項目名の設定</a></li>
+<li><a href="sample.html">画面モードの定義</a></li>
+<li><a href="sample.html">Server Transactionの呼び出し</a></li>
+<li><a href="sample.html">次画面指定方法の説明</a></li>
+<li><a href="sample.html">項目に子画面での検索結果を設定する方法</a></li>
+<li><a href="sample.html">LookAndFeelの設定方法</a></li>
+  </ul>
+</dl>
+<dl>
+<dd></dd>
+</dl>
+<img src="images/validate1.jpeg" />
+<!--code start-->
+<div class="excode"><pre>
+<code>
+
+</code>
+</pre></div>
+<!--code end-->
+
+<ul>
+<li><a href="datefield.html">datefield サンプル</a></li>
+  </ul>
+<!-- document end -->
+<!-- don't edit start --></td><td width="14"><img src="images/spacer.gif" alt="" height="14" width="14" /></td></tr><tr><td width="14"><img src="images/spacer.gif" alt="" height="30" width="14" /></td><td width="766"><img src="images/spacer.gif" alt="" height="30" width="592" /></td></tr><tr><td width="14"><img src="images/spacer.gif" alt="" height="14" width="14" /></td><td class="copyright" width="766">Copyright&copy;
+2004-2005, The Seasar Foundation and the others. All rights reserved.</td>
+</tr></tbody></table></td><td class="backright" align="left" valign="top">&nbsp;</td>
+</tr><tr><td class="backunder" align="left" height="16" valign="top" width="780">&nbsp;</td>
+<td class="backcorner" align="left" height="16" valign="top">&nbsp;</td>
+</tr></tbody></table><!-- don't edit end --></body></html>

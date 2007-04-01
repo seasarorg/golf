@@ -148,9 +148,8 @@ pre { background-color: #e7ebff; color: #000000; }
            newDataS = displayFormat.format(dd);
 
 <span class="style1">           if (!dataS.equals(newDataS)) {
-               formManager.getFormValidationManager().setFireValidate(false);
-               ValidationUtil.updateValueModel(valueModel, key, newDataS);
-               formManager.getFormValidationManager().setFireValidate(true);
+               ValidationUtil.updateValueModelWithoutValidation(
+			   		formManager, valueModel, key, newDataS);
            }</span>
 
         } <span class="synStatement">catch</span> (ParseException ex) {
