@@ -12,6 +12,7 @@ pre { background-color: #e7ebff; color: #000000; }
 .synIdentifier { color: #008080; }
 .synConstant { color: #c00000; }
 .synStatement { color: #804000; }
+.style1 {color: #0033FF}
 
 
 
@@ -45,15 +46,139 @@ pre { background-color: #e7ebff; color: #000000; }
 
 </pre>
 <dl>
-<dd></dd>
+<dd><span class="style1">RequestDataFactory#createRequestData(String transactionCode, String params, FormManager formManager) </span>は、３つの<br>
+パラメーターを取ります。ServerのtransactionCodeで、この例では 「vdri」と入力していますので、現在の実装では、GolfRMIの<br>
+VdriTrxLogic#execute(RequestData requestData)が呼び出されます。paramsには、必要であれば、Parameterを”AA=BB,CC=DD"の<br>
+形式で渡すことができます。３番目は、当該画面の　formManager変数を渡します。<br>
+この結果、RequestData Objectが作成され、画面にValidation設定時、HostNameが入っている Fieldの情報は、自動的にSetされます。<br>
+また、Tableの情報をSetしたい場合は、<br>
+<span class="style1">TrxUtil#setTableDataToRequest(String tableHostName, RequestData requestData, FormManager formManager)</span> または
+<span class="style1">TrxUtil#setAllTableDataToRequest(RequestData requestData, FormManager formManager)を使用します。
+</span>
+<br>追加のParameterは、RequestData#setParam()で指定します。<br>
+
+それでは、VdriTrxLogicを見てみましょう。
+
+</dd>
 </dl>
+<pre>
+<span class="synType">public</span> <span class="synType">class</span> VdriTrxLogic <span class="synType">implements</span> TransactionInterface{
+    <span class="synType">private</span> CompanyBhv bhv;
+    <span class="synType">private</span> S2Container container;
 
+    <span class="synType">public</span> VdriTrxLogic() {
+    }
 
-<ul>
-<li><a href="datefield.html">datefield サンプル</a></li>
-  </ul>
+    <span class="synType">public</span> ResultData execute(RequestData requestData) {
+
+        ResultData resultData = <span class="synStatement">new</span> ResultData();
+        selectProcess(requestData, resultData);
+        <span class="synStatement">return</span> resultData;
+    }
+    <span class="synType">private</span> <span class="synType">void</span> selectProcess(RequestData requestData, ResultData resultData) {
+        resultData.getFormAction().setFormStack(FormAction.FormStack.RESULT);
+        String sCcode = (String) requestData.getField(<span class="synConstant">&quot;ccode&quot;</span>);
+        String mode = (String) requestData.getParam(<span class="synConstant">&quot;_mode&quot;</span>);
+        String cat = (String) requestData.getParam(<span class="synConstant">&quot;_cat&quot;</span>);        
+        <span class="synStatement">if</span> ((sCcode == <span class="synConstant">null</span> || sCcode.length()== <span class="synConstant">0</span>) &amp;&amp; !mode.equals(<span class="synConstant">&quot;C&quot;</span>)) {
+        	resultData.getValidationResult().add(<span class="synStatement">new</span> SimpleValidationMessage(
+            		<span class="synConstant">&quot;必須項目が入力されていません&quot;</span>, Severity.ERROR, <span class="synConstant">&quot;ccode&quot;</span>));  
+        	<span class="synStatement">return</span>;
+        } <span class="synStatement">else</span> <span class="synStatement">if</span> (sCcode != <span class="synConstant">null</span> &amp;&amp; sCcode.length() &gt; <span class="synConstant">0</span> ){
+
+        		BigDecimal ccode = <span class="synConstant">null</span>;
+				<span class="synStatement">try</span> {
+					ccode = <span class="synStatement">new</span> BigDecimal(sCcode);
+				} <span class="synStatement">catch</span> (RuntimeException e) {
+		        	resultData.getValidationResult().add(<span class="synStatement">new</span> SimpleValidationMessage(
+			        		<span class="synConstant">&quot;該当Dataは見つかりません&quot;</span>, Severity.ERROR, <span class="synConstant">&quot;ccode&quot;</span>));
+		        	<span class="synStatement">return</span>;
+				}
+
+	        CompanyCB cb = <span class="synStatement">new</span> CompanyCB();
+	        cb.query().setCat_Equal(cat);
+	        cb.query().setCcode_Equal(ccode);
+	        List &lt;Company&gt; compl = bhv.selectList(cb);
+	        <span class="synStatement">if</span> (compl.size() == <span class="synConstant">0</span>) {
+	        	resultData.getValidationResult().add(<span class="synStatement">new</span> SimpleValidationMessage(
+	        		<span class="synConstant">&quot;該当Dataは見つかりません&quot;</span>, Severity.ERROR, <span class="synConstant">&quot;ccode&quot;</span>));
+	        } <span class="synStatement">else</span> {      
+	        	Company comp = compl.get(<span class="synConstant">0</span>);
+    			resultData.getFormAction().setFormStack(FormStack.NEXT);
+    			resultData.getFormAction().setForm(<span class="synConstant">&quot;vdr&quot;</span>);
+    			resultData.setParam(<span class="synConstant">&quot;_mode&quot;</span>, mode);
+    			resultData.setParam(<span class="synConstant">&quot;_cat&quot;</span>, cat);   
+    			resultData.setParam(<span class="synConstant">&quot;_action&quot;</span>, <span class="synConstant">&quot;Result&quot;</span>);   
+    			<span class="synStatement">if</span> (!mode.equals(<span class="synConstant">&quot;C&quot;</span>)) {
+    				resultData.setField(<span class="synConstant">&quot;ccode&quot;</span>,comp.getCcode().toString());
+        			resultData.setField(<span class="synConstant">&quot;version&quot;</span>,comp.getVersionno().toString());	    				
+    			}
+    			resultData.setField(<span class="synConstant">&quot;shortname&quot;</span>,comp.getShortname());
+    			resultData.setField(<span class="synConstant">&quot;name&quot;</span>,comp.getName());
+    			resultData.setField(<span class="synConstant">&quot;telephone&quot;</span>,comp.getTelephone());
+    			resultData.setField(<span class="synConstant">&quot;cat&quot;</span>,comp.getCat());
+	        }
+        } <span class="synStatement">else</span> {
+			resultData.getFormAction().setFormStack(FormStack.NEXT);
+			resultData.getFormAction().setForm(<span class="synConstant">&quot;vdr&quot;</span>);
+			resultData.setParam(<span class="synConstant">&quot;_mode&quot;</span>, mode);
+			resultData.setParam(<span class="synConstant">&quot;_cat&quot;</span>, cat);   
+			resultData.setParam(<span class="synConstant">&quot;_action&quot;</span>, <span class="synConstant">&quot;Result&quot;</span>); 
+			resultData.setField(<span class="synConstant">&quot;cat&quot;</span>,cat);
+        }
+    }
+
+	<span class="synType">public</span> <span class="synType">void</span> setContainer(S2Container container) {
+		<span class="synType">this</span>.container = container;
+    	bhv = (CompanyBhv) container.getComponent(<span class="synConstant">&quot;companyBhv&quot;</span>);		
+	}
+}
+
+</pre>
+
+<dl>
+<dd>resultData.getFormAction().setFormStack(FormAction.FormStack.RESULT)で、まず Defaultの次画面Modeを設定しています。<br>
+次画面Modeの詳細については、<a href="formstack.html">次画面指定方法の説明</a>を参照して下さい。<br>
+resultData.getValidationResult().add(new SimpleValidationMessage("該当Dataは見つかりません", Severity.ERROR, "ccode"));<br>
+が、ErrorMessageの追加例です。この場合、HostNameが「ccode」のFieldにFocusが自動的に移ります。<br>
+resultData.getFormAction().setFormStack(FormStack.NEXT);以下が、新しい画面に移る例です。<br>
+この様に、必要なParameter等を設定すればあとはFrameworkが自動的に面倒な処理は行います。<br>
+下記がTableにDataを設定する例です。（VdrsTrxLogicより抜粋）
+</dd>
+</dl>
+<pre>
+resultData.getFormAction().setFormStack(FormAction.FormStack.NEXT);
+resultData.getFormAction().setForm(<span class="synConstant">&quot;vdrsd&quot;</span>);
+resultData.setParam(<span class="synConstant">&quot;_cat&quot;</span>, requestData.getField(<span class="synConstant">&quot;cat&quot;</span>));
+TableData td = <span class="synStatement">new</span> TableData();
+td.setColumnIdentifires(<span class="synStatement">new</span> Object[]{<span class="synConstant">&quot;ccode&quot;</span>,<span class="synConstant">&quot;shortname&quot;</span>,<span class="synConstant">&quot;name&quot;</span>,<span class="synConstant">&quot;telephone&quot;</span>,<span class="synConstant">&quot;cat&quot;</span>,<span class="synConstant">&quot;versionno&quot;</span> });
+<span class="synStatement">for</span>(Company comp:compl) {
+        		 ArrayList row = <span class="synStatement">new</span> ArrayList();
+        		 row.add(comp.getCcode());
+        		 row.add(comp.getShortname());
+        		 row.add(comp.getName());
+        		 row.add(comp.getTelephone());
+        		 row.add(comp.getCat());        		 
+        		 row.add(comp.getVersionno().intValue());        			 
+        		 td.addRow(row);
+}
+resultData.getTables().put(<span class="synConstant">&quot;CompanyTable&quot;</span>,td);
+
+</pre>
+            <h3><a name="link" id="link">リンク</a></h3>
+            <dl>
+
+              <dd><a href="concept.html">Golf 概要</a></dd>
+
+            </dl>
+            <dl>
+
+              <dd><a href="index.html">GOLF HOMEへのリンク</a></dd>
+
+            </dl>
 <!-- document end -->
-<!-- don't edit start --></td><td><img src="images/spacer.gif" alt="" height="14" width="14" /></td>
+<!-- don't edit start --></td>
+  <td><img src="images/spacer.gif" alt="" height="14" width="14" /></td>
   </tr><tr><td><img src="images/spacer.gif" alt="" height="30" width="14" /></td>
   <td><img src="images/spacer.gif" alt="" height="30" width="592" /></td><td>&nbsp;</td>
   </tr><tr><td><img src="images/spacer.gif" alt="" height="14" width="14" /></td>
