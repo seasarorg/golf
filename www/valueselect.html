@@ -1,0 +1,108 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ja" lang="ja"><head><!-- don't edit start --><title>GOLF-ValueSelect</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><meta http-equiv="Content-Style-Type" content="text/css" /><link href="s2click.css" type="text/css" rel="stylesheet" media="screen" /><link href="seasar_b.css" type="text/css" rel="stylesheet" media="screen" /><link href="seasar_p.css" type="text/css" rel="stylesheet" media="print" /><script src="seasar_b.js" type="text/JavaScript" language="JavaScript">
+</script>
+<style type="text/css">
+<!--
+pre { background-color: #e7ebff; color: #000000; }
+.synSpecial { color: #c000c0; }
+.synType { color: #008000; }
+.synComment { color: #0000c0; }
+.synPreProc { color: #c000c0; }
+.synIdentifier { color: #008080; }
+.synConstant { color: #c00000; }
+.synStatement { color: #804000; }
+.style1 {color: #0033FF}
+-->
+</style>
+</head>
+<body style="direction: ltr;" onload="preload('ja')"><table align="left" border="0" cellpadding="0" cellspacing="0" width="100%"><tbody><tr><td align="left" valign="top" width="780"><table class="white" border="0" cellpadding="0" cellspacing="0" width="780">
+<tbody><tr><td colspan="7"><img src="images/top01_b.gif" alt="" height="5" width="780" /></td></tr><tr><td><img src="images/top02_b.gif" alt="Seasar" height="117" width="235" /></td><td colspan="3"><img src="images/top03.gif" alt="DI Container with AOP" height="117" width="289" /></td><td colspan="3"><img src="images/spacer.gif" alt="" height="117" width="256" /></td></tr><tr><td rowspan="2"><img src="images/top04.gif" alt="" height="49" width="235" /></td><td><a href="http://www.seasar.org/index.html"><img src="images/menu01_b_ja.gif" alt="" id="menu01" onmouseover="swap(1)" onmouseout="restore(1)" name="menu01" border="0" height="30" width="78" /></a></td><td><a href="http://www.seasar.org/projects.html"><img src="images/menu02_b_ja.gif" alt="" id="menu02" onmouseover="swap(2)" onmouseout="restore(2)" name="menu02" border="0" height="30" width="101" /></a></td><td><a href="http://www.seasar.org/products.html"><img src="images/menu03_b_ja.gif" alt="" id="menu03" onmouseover="swap(3)" onmouseout="restore(3)" name="menu03" border="0" height="30" width="110" /></a></td><td><a href="http://www.seasar.org/resources.html"><img src="images/menu04_b_ja.gif" alt="" id="menu04" onmouseover="swap(4)" onmouseout="restore(4)" name="menu04" border="0" height="30" width="113" /></a></td><td><img src="images/menu05_b_ja.gif" alt="" id="menu05" onmouseover="swap(5)" onmouseout="restore(5)" name="menu05" border="0" height="30" width="109" /></td><td><img src="images/menu06.gif" alt="" height="30" width="34" /></td>
+</tr><tr><td colspan="6"><img src="images/spacer.gif" alt="" height="19" width="545" /></td></tr></tbody></table><table class="white" border="0" cellpadding="0" cellspacing="0" width="780"><tbody><tr align="left" valign="top"><td width="14"><img src="images/spacer.gif" alt="" height="14" width="14" /></td><td class="main" width="740"><!-- don't edit end --><!-- document start -->
+<dl>
+<dd>&nbsp;</dd>
+
+<h3><a name="document" id="document">項目に子画面での検索結果を設定する方法
+</a></h3>
+</dl>
+
+<dl>
+<dd>それでは、DemoのVdri 画面での、Codeの検索を見て見ましょう。下記の２つの例です。最初は、通常画面を使用して検索する場合。<br>
+次は Dialog Modeで検索する場合です。</dd>
+</dl>
+<pre>
+<span class="synType">private</span> <span class="synType">void</span> jButton1ActionPerformed(java.awt.event.ActionEvent evt) {                                         
+   FormAction formAction = <span class="synStatement">new</span> FormAction();
+   formAction.setFormStack(FormStack.NEXT);
+   formAction.setForm(<span class="synConstant">&quot;vdrs&quot;</span>);
+   formAction.getParams().put(<span class="synConstant">&quot;_cat&quot;</span>, cat);
+   formAction.getParams().put(<span class="synConstant">&quot;_action&quot;</span>,<span class="synConstant">&quot;dataSelect&quot;</span>);
+   formAction.getParams().put(<span class="synConstant">&quot;_dataSelect&quot;</span>,<span class="synStatement">new</span> DataSelect(formManager,<span class="synConstant">&quot;ccode&quot;</span>));
+   formManager.getSession().processAction(formAction, <span class="synConstant">null</span>);
+} 
+
+</pre>
+<pre>
+<span class="synType">private</span> <span class="synType">void</span> jButton2ActionPerformed(java.awt.event.ActionEvent evt) {                                         
+   FormAction formAction = <span class="synStatement">new</span> FormAction();
+   formAction.setFormStack(FormStack.DIALOG);
+   formAction.setForm(<span class="synConstant">&quot;vdrSelect&quot;</span>);
+   formAction.getParams().put(<span class="synConstant">&quot;_cat&quot;</span>, cat);
+   formAction.getParams().put(<span class="synConstant">&quot;_action&quot;</span>,<span class="synConstant">&quot;dataSelect&quot;</span>);
+   formAction.getParams().put(<span class="synConstant">&quot;_dataSelect&quot;</span>,<span class="synStatement">new</span> DataSelect(formManager,<span class="synConstant">&quot;ccode&quot;</span>));
+   formManager.getSession().processAction(formAction, <span class="synConstant">null</span>);
+}    
+
+</pre>
+<dl>
+<dd>FormStack.NEXT　と　FormStack.DIALOGしか違わないのが判ると思います。<br>
+  <span class="style1">formAction.getParams().put("_dataSelect",new DataSelect(formManager,"ccode"));</span>で、DataSelect Objectに戻す<br>
+項目名をSetしています。<br>
+それでは、「VdrSelectDialog」で、選んだ値を戻す処理を見てみましょう。
+
+</dd>
+</dl>
+<pre>
+<span class="synType">private</span> <span class="synType">void</span> jButtonEnterActionPerformed(java.awt.event.ActionEvent evt) {                                             
+    <span class="synType">int</span> row = jTable1.getSelectionModel().getMinSelectionIndex();
+    <span class="synStatement">if</span> (row == -<span class="synConstant">1</span>) {
+        ValidationUtil.showErrorMessage(<span class="synConstant">&quot;行が選ばれていません&quot;</span>, formManager);
+        <span class="synStatement">return</span>;
+    }
+    BigDecimal ccode = (BigDecimal) golfTableModel.getValueAt(row,<span class="synConstant">0</span>);
+    <span class="synStatement">if</span> (formManager.getFormData().containsKey(<span class="synConstant">&quot;_action&quot;</span>)) {
+        <span class="synStatement">if</span> (formManager.getFormData().get(<span class="synConstant">&quot;_action&quot;</span>).equals(<span class="synConstant">&quot;dataSelect&quot;</span>)) {
+            DataSelect select = (DataSelect) formManager.getFormData().get(<span class="synConstant">&quot;_dataSelect&quot;</span>);
+            select.setSelectedDatum(ccode);
+            formManager.getSession().processDataSelect(select);
+            <span class="synStatement">return</span>;
+        }
+    }
+} 
+
+</pre>
+<dl>
+<dd>最初呼ばれる時にParameterにSetされていた、DataSelect Objectに戻すDataをsetした後、<br>
+<span class="style1">formManager.getSession().processDataSelect(select);</span>　を呼んでいますね。<br>
+この様に簡単に、選んだDataを呼び出し画面の項目に埋め込む事ができます。
+</dd>
+</dl>
+
+            <h3><a name="link" id="link">リンク</a></h3>
+            <dl>
+
+              <dd><a href="concept.html">Golf 概要</a></dd>
+
+            </dl>
+            <dl>
+
+              <dd><a href="index.html">GOLF HOMEへのリンク</a></dd>
+
+            </dl>
+<!-- document end -->
+<!-- don't edit start --></td><td width="14"><img src="images/spacer.gif" alt="" height="14" width="14" /></td></tr><tr><td width="14"><img src="images/spacer.gif" alt="" height="30" width="14" /></td><td width="766"><img src="images/spacer.gif" alt="" height="30" width="592" /></td></tr><tr><td width="14"><img src="images/spacer.gif" alt="" height="14" width="14" /></td><td class="copyright" width="766">Copyright&copy;
+2004-2005, The Seasar Foundation and the others. All rights reserved.</td>
+</tr></tbody></table></td><td class="backright" align="left" valign="top">&nbsp;</td>
+</tr><tr><td class="backunder" align="left" height="16" valign="top" width="780">&nbsp;</td>
+<td class="backcorner" align="left" height="16" valign="top">&nbsp;</td>
+</tr></tbody></table><!-- don't edit end --></body></html>

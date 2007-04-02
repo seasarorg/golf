@@ -165,6 +165,17 @@ td.setColumnIdentifires(<span class="synStatement">new</span> Object[]{<span cla
 resultData.getTables().put(<span class="synConstant">&quot;CompanyTable&quot;</span>,td);
 
 </pre>
+
+<dl>
+<dd>FormAction.FormStack.NEXTの場合,下記の例の様にsetFormで指定した Formが作成されそのinitActionのParameterの_result<br>
+に ResultDataが渡されます。以下の例では、そのResultDataのTableDataをTableにSetしています。<br>
+<span class="style1">TrxUtil.setTableDataFromResult( "CompanyTable", (ResultData)params.get("_resultData"), formManager);</span>（VdrsdFrameの例）<br>
+また、FormAction.FormStack.RESULT等の場合で、<span class="style1">resultData.getFormAction().setProcessAction(true);</span>とすることにより、<br>
+そのformの<span class="style1">processAction（）</span>が自動的に呼ばれます。
+
+</dd>
+</dl>
+
             <h3><a name="link" id="link">リンク</a></h3>
             <dl>
 
