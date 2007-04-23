@@ -1,0 +1,350 @@
+        1 個のファイルをコピーしました。
+Buildfile: j:\wk\dbflute\dbflute-0.4\build-torque.xml
+
+check-use-classpath:
+
+check-run-only-on-schema-change:
+
+om-check:
+
+om:
+     [echo] +------------------------------------------+
+     [echo] |                                          |
+     [echo] | Generating Peer-based Object Model for   |
+     [echo] | YOUR Torque project!                     |
+     [echo] |                                          |
+     [echo] +------------------------------------------+
+
+om-classpath:
+
+om-template:
+[torque-data-model] Using contextProperties file: J:\wk\dbflute\dbflute-0.4\build.properties
+[torque-data-model] 2007-03-21 20:35:49,945 [main] DEBUG (DfAntTaskUtil#getBuildProperties():62) - Using contextProperties file: J:\wk\dbflute\dbflute-0.4\build.properties
+[torque-data-model] 2007-03-21 20:35:49,992 [main] DEBUG (DfAntTaskUtil#getBuildProperties():87) - [Properties]: size=23
+[torque-data-model] 2007-03-21 20:35:49,992 [main] DEBUG (DfAntTaskUtil#getBuildProperties():91) -     torque.statementResultSetConcurrency = ResultSet.CONCUR_READ_ONLY
+[torque-data-model] 2007-03-21 20:35:49,992 [main] DEBUG (DfAntTaskUtil#getBuildProperties():91) -     torque.isVersionAfter1040 = true
+[torque-data-model] 2007-03-21 20:35:50,008 [main] DEBUG (DfAntTaskUtil#getBuildProperties():91) -     torque.database.driver = org.postgresql.Driver
+[torque-data-model] 2007-03-21 20:35:50,008 [main] DEBUG (DfAntTaskUtil#getBuildProperties():91) -     torque.project = golf
+[torque-data-model] 2007-03-21 20:35:50,008 [main] DEBUG (DfAntTaskUtil#getBuildProperties():91) -     torque.isMakeConditionQueryNumericArgumentLong = false
+[torque-data-model] 2007-03-21 20:35:50,008 [main] DEBUG (DfAntTaskUtil#getBuildProperties():91) -     torque.database.schema = 
+[torque-data-model] 2007-03-21 20:35:50,008 [main] DEBUG (DfAntTaskUtil#getBuildProperties():91) -     torque.isMakeDeprecated = false
+[torque-data-model] 2007-03-21 20:35:50,008 [main] DEBUG (DfAntTaskUtil#getBuildProperties():91) -     } = 
+[torque-data-model] 2007-03-21 20:35:50,008 [main] DEBUG (DfAntTaskUtil#getBuildProperties():91) -     torque.packageBase = org.seasar.golf.uexample.dao
+[torque-data-model] 2007-03-21 20:35:50,008 [main] DEBUG (DfAntTaskUtil#getBuildProperties():91) -     torque.statementResultSetType = ResultSet.TYPE_SCROLL_INSENSITIVE
+[torque-data-model] 2007-03-21 20:35:50,008 [main] DEBUG (DfAntTaskUtil#getBuildProperties():91) -     torque.sequenceDefinitionMap = map:{ company = company_ccode_seq 
+[torque-data-model] 2007-03-21 20:35:50,023 [main] DEBUG (DfAntTaskUtil#getBuildProperties():91) -     torque.database.user = postgres
+[torque-data-model] 2007-03-21 20:35:50,023 [main] DEBUG (DfAntTaskUtil#getBuildProperties():91) -     torque.invokeSqlDirectoryDefinitionMap = map:{ isAutoCommit = false ; isRollbackOnly = true ; isErrorContinue = false ; sqlDirectory = ./playsql }
+[torque-data-model] 2007-03-21 20:35:50,023 [main] DEBUG (DfAntTaskUtil#getBuildProperties():91) -     torque.database.url = jdbc:postgresql://localhost:5432/golf
+[torque-data-model] 2007-03-21 20:35:50,023 [main] DEBUG (DfAntTaskUtil#getBuildProperties():91) -     torque.database.password = postgres
+[torque-data-model] 2007-03-21 20:35:50,023 [main] DEBUG (DfAntTaskUtil#getBuildProperties():91) -     torque.targetLanguage = java
+[torque-data-model] 2007-03-21 20:35:50,023 [main] DEBUG (DfAntTaskUtil#getBuildProperties():91) -     torque.isMakeBehaviorForUpdate = false
+[torque-data-model] 2007-03-21 20:35:50,023 [main] DEBUG (DfAntTaskUtil#getBuildProperties():91) -     torque.isMakeConditionQueryEqualEmptyString = false
+[torque-data-model] 2007-03-21 20:35:50,023 [main] DEBUG (DfAntTaskUtil#getBuildProperties():91) -     torque.isAvailableBehaviorGeneration = true
+[torque-data-model] 2007-03-21 20:35:50,023 [main] DEBUG (DfAntTaskUtil#getBuildProperties():91) -     torque.versionNoFieldName = versionno
+[torque-data-model] 2007-03-21 20:35:50,039 [main] DEBUG (DfAntTaskUtil#getBuildProperties():91) -     torque.invokeReplaceSchemaDefinitionMap = map:{ isAutoCommit = false ; isRollbackOnly = false ; isErrorContinue = true ; sqlFile = ./playsql/replace-schema.sql }
+[torque-data-model] 2007-03-21 20:35:50,055 [main] DEBUG (DfAntTaskUtil#getBuildProperties():91) -     torque.java.dir = ../src/
+[torque-data-model] 2007-03-21 20:35:50,055 [main] DEBUG (DfAntTaskUtil#getBuildProperties():91) -     torque.database = postgresql
+[torque-data-model] Generating to file J:\wk\dbflute\src\report.golf.om.generation
+[torque-data-model] 2007-03-21 20:35:50,680 [main] INFO  (XmlToAppData#parseFile():171) - Parsing file: 'project-schema-golf.xml'
+[torque-data-model] 2007-03-21 20:35:50,742 [main] INFO  (DTDResolver#resolveEntity():117) - Resolver: used database.dtd from 'org.apache.torque.engine.database.transform' package
+[torque-data-model] 2007-03-21 20:35:50,820 [main] DEBUG (XmlToAppData#endElement():282) - endElement(, , column) called
+[torque-data-model] 2007-03-21 20:35:50,820 [main] DEBUG (XmlToAppData#endElement():282) - endElement(, , column) called
+[torque-data-model] 2007-03-21 20:35:50,820 [main] DEBUG (XmlToAppData#endElement():282) - endElement(, , column) called
+[torque-data-model] 2007-03-21 20:35:50,836 [main] DEBUG (XmlToAppData#endElement():282) - endElement(, , column) called
+[torque-data-model] 2007-03-21 20:35:50,836 [main] DEBUG (XmlToAppData#endElement():282) - endElement(, , column) called
+[torque-data-model] 2007-03-21 20:35:50,852 [main] DEBUG (XmlToAppData#endElement():282) - endElement(, , column) called
+[torque-data-model] 2007-03-21 20:35:50,867 [main] DEBUG (XmlToAppData#endElement():282) - endElement(, , table) called
+[torque-data-model] 2007-03-21 20:35:50,867 [main] DEBUG (XmlToAppData#endElement():282) - endElement(, , column) called
+[torque-data-model] 2007-03-21 20:35:50,883 [main] DEBUG (XmlToAppData#endElement():282) - endElement(, , column) called
+[torque-data-model] 2007-03-21 20:35:50,883 [main] DEBUG (XmlToAppData#endElement():282) - endElement(, , column) called
+[torque-data-model] 2007-03-21 20:35:50,883 [main] DEBUG (XmlToAppData#endElement():282) - endElement(, , column) called
+[torque-data-model] 2007-03-21 20:35:50,898 [main] DEBUG (XmlToAppData#endElement():282) - endElement(, , column) called
+[torque-data-model] 2007-03-21 20:35:50,898 [main] DEBUG (XmlToAppData#endElement():282) - endElement(, , column) called
+[torque-data-model] 2007-03-21 20:35:50,914 [main] DEBUG (XmlToAppData#endElement():282) - endElement(, , table) called
+[torque-data-model] 2007-03-21 20:35:50,914 [main] DEBUG (XmlToAppData#endElement():282) - endElement(, , database) called
+[torque-data-model] 2007-03-21 20:35:51,617 [main] DEBUG (Database#initializeCustomizeDao():538) - /=============================
+[torque-data-model] 2007-03-21 20:35:51,633 [main] DEBUG (Database#initializeCustomizeDao():539) - ...Initializing customize dao.
+[torque-data-model] 2007-03-21 20:35:51,648 [main] DEBUG (Database#initializeCustomizeDao():569) - ========/
+[torque-data-model] 2007-03-21 20:35:51,648 [main] DEBUG (DfAdditionalForeignKeyInitializer#initializeAdditionalForeignKey():56) - /======================================
+[torque-data-model] 2007-03-21 20:35:51,648 [main] DEBUG (DfAdditionalForeignKeyInitializer#initializeAdditionalForeignKey():57) - ...Initializing additional foreign key.
+[torque-data-model] 2007-03-21 20:35:52,133 [main] DEBUG (DfAdditionalForeignKeyInitializer#initializeAdditionalForeignKey():128) - ========/
+[torque-data-model] 2007-03-21 20:35:52,195 [main] DEBUG (Database#debug():1388) - [behavior-interface & abstract]
+[torque-data-model] 2007-03-21 20:35:52,195 [main] DEBUG (Database#debug():1388) -     ...Parsing BehaviorReadable
+[torque-data-model] 2007-03-21 20:35:52,227 [main] DEBUG (Database#debug():1388) -     ...Parsing BehaviorWritable
+[torque-data-model] 2007-03-21 20:35:52,258 [main] DEBUG (Database#debug():1388) -     ...Parsing AbstractBehaviorReadable
+[torque-data-model] 2007-03-21 20:35:52,289 [main] DEBUG (Database#debug():1388) -     ...Parsing AbstractBehaviorWritable
+[torque-data-model] 2007-03-21 20:35:52,320 [main] DEBUG (Database#debug():1388) - ...Parsing dao-interface
+[torque-data-model] 2007-03-21 20:35:52,336 [main] DEBUG (Database#debug():1388) - public void parseEntityInterface() {
+[torque-data-model] 2007-03-21 20:35:52,336 [main] DEBUG (Database#debug():1388) -     parseEntity();
+[torque-data-model] 2007-03-21 20:35:52,352 [main] DEBUG (Database#debug():1388) -     parseEntityDefinedCommonColumn();
+[torque-data-model] 2007-03-21 20:35:52,383 [main] DEBUG (Database#debug():1388) - }
+[torque-data-model] 2007-03-21 20:35:52,383 [main] DEBUG (Database#debug():1388) - public void parseConditionBeanFramework() {
+[torque-data-model] 2007-03-21 20:35:52,383 [main] DEBUG (Database#debug():1388) -     ...Parsing FetchNarrowingBeanContext
+[torque-data-model] 2007-03-21 20:35:52,398 [main] DEBUG (Database#debug():1388) -     ...Parsing FetchNarrowingBean
+[torque-data-model] 2007-03-21 20:35:52,398 [main] DEBUG (Database#debug():1388) -     ...Parsing SimpleOrderByBean
+[torque-data-model] 2007-03-21 20:35:53,164 [main] DEBUG (Database#debug():1388) -     ...Parsing SimplePagingBean
+[torque-data-model] 2007-03-21 20:35:53,164 [main] DEBUG (Database#debug():1388) -     ...Parsing PagingResultBean
+[torque-data-model] 2007-03-21 20:35:53,180 [main] DEBUG (Database#debug():1388) -     ...Parsing ListResultBean
+[torque-data-model] 2007-03-21 20:35:53,211 [main] DEBUG (Database#debug():1388) -     ...Parsing ConditionBeanContext
+[torque-data-model] 2007-03-21 20:35:53,227 [main] DEBUG (Database#debug():1388) -     ...Parsing ConditionBean
+[torque-data-model] 2007-03-21 20:35:53,242 [main] DEBUG (Database#debug():1388) -     ...Parsing ConditionQuery
+[torque-data-model] 2007-03-21 20:35:53,242 [main] DEBUG (Database#debug():1388) -     ...Parsing PagingBean
+[torque-data-model] 2007-03-21 20:35:53,258 [main] DEBUG (Database#debug():1388) -     ...Parsing OrderByBean
+[torque-data-model] 2007-03-21 20:35:53,258 [main] DEBUG (Database#debug():1388) -     ...Parsing SelectResource
+[torque-data-model] 2007-03-21 20:35:53,258 [main] DEBUG (Database#debug():1388) -     ...Parsing AbstractConditionBean
+[torque-data-model] 2007-03-21 20:35:53,289 [main] DEBUG (Database#debug():1388) -     ...Parsing AbstractConditionQuery
+[torque-data-model] 2007-03-21 20:35:53,305 [main] DEBUG (Database#debug():1388) -     ...Parsing ConditionKey
+[torque-data-model] 2007-03-21 20:35:53,305 [main] DEBUG (Database#debug():1388) -     ...Parsing ConditionKey_equal
+[torque-data-model] 2007-03-21 20:35:53,320 [main] DEBUG (Database#debug():1388) -     ...Parsing ConditionKey_notEqual
+[torque-data-model] 2007-03-21 20:35:53,336 [main] DEBUG (Database#debug():1388) -     ...Parsing ConditionKey_greaterThan
+[torque-data-model] 2007-03-21 20:35:53,352 [main] DEBUG (Database#debug():1388) -     ...Parsing ConditionKey_lessThan
+[torque-data-model] 2007-03-21 20:35:53,352 [main] DEBUG (Database#debug():1388) -     ...Parsing ConditionKey_greaterEqual
+[torque-data-model] 2007-03-21 20:35:53,367 [main] DEBUG (Database#debug():1388) -     ...Parsing ConditionKey_lessEqual
+[torque-data-model] 2007-03-21 20:35:53,367 [main] DEBUG (Database#debug():1388) -     ...Parsing ConditionKey_prefixSearch
+[torque-data-model] 2007-03-21 20:35:53,367 [main] DEBUG (Database#debug():1388) -     ...Parsing ConditionKey_inScope
+[torque-data-model] 2007-03-21 20:35:53,383 [main] DEBUG (Database#debug():1388) -     ...Parsing ConditionKey_notInScope
+[torque-data-model] 2007-03-21 20:35:53,383 [main] DEBUG (Database#debug():1388) -     ...Parsing ConditionKey_isNull
+[torque-data-model] 2007-03-21 20:35:53,383 [main] DEBUG (Database#debug():1388) -     ...Parsing ConditionKey_isNotNull
+[torque-data-model] 2007-03-21 20:35:53,414 [main] DEBUG (Database#debug():1388) -     ...Parsing ConditionValue
+[torque-data-model] 2007-03-21 20:35:53,430 [main] DEBUG (Database#debug():1388) -     ...Parsing SqlClause
+[torque-data-model] 2007-03-21 20:35:53,430 [main] DEBUG (Database#debug():1388) -     ...Parsing AbstractSqlClause
+[torque-data-model] 2007-03-21 20:35:53,461 [main] DEBUG (Database#debug():1388) -     ...Parsing SqlClause_postgresql
+[torque-data-model] 2007-03-21 20:35:53,477 [main] DEBUG (Database#debug():1388) -     ...Parsing OrderByClause
+[torque-data-model] 2007-03-21 20:35:53,492 [main] DEBUG (Database#debug():1388) -     ...Parsing OrderByElement
+[torque-data-model] 2007-03-21 20:35:53,492 [main] DEBUG (Database#debug():1388) - }
+[torque-data-model] 2007-03-21 20:35:53,492 [main] DEBUG (Database#debug():1388) - public void parseDBMetaClass() {
+[torque-data-model] 2007-03-21 20:35:53,492 [main] DEBUG (Database#debug():1388) -     parseDBMeta();
+[torque-data-model] 2007-03-21 20:35:53,508 [main] DEBUG (Database#debug():1388) -     parseAbstractDBMeta();
+[torque-data-model] 2007-03-21 20:35:53,523 [main] DEBUG (Database#debug():1388) -     parseDBMetaInstanceHandler();
+[torque-data-model] 2007-03-21 20:35:53,727 [main] DEBUG (Database#debug():1388) - public void parseExceptionClass() {
+[torque-data-model] 2007-03-21 20:35:53,727 [main] DEBUG (Database#debug():1388) -     parseRecordHasAlreadyBeenDeletedException();
+[torque-data-model] 2007-03-21 20:35:53,727 [main] DEBUG (Database#debug():1388) -     parseRecordHasOverlappedException();
+[torque-data-model] 2007-03-21 20:35:53,727 [main] DEBUG (Database#debug():1388) -     parseSelectedCountExceedMaxCountException();
+[torque-data-model] 2007-03-21 20:35:53,742 [main] DEBUG (Database#debug():1388) - }
+[torque-data-model] 2007-03-21 20:35:53,742 [main] DEBUG (Database#debug():1388) - public void parseHelperClass() {
+[torque-data-model] 2007-03-21 20:35:53,742 [main] DEBUG (Database#debug():1388) -     parseMapListString();
+[torque-data-model] 2007-03-21 20:35:53,742 [main] DEBUG (Database#debug():1388) -     parseMapListStringImpl();
+[torque-data-model] 2007-03-21 20:35:53,773 [main] DEBUG (Database#debug():1388) -     parseMapStringBuilder();
+[torque-data-model] 2007-03-21 20:35:53,789 [main] DEBUG (Database#debug():1388) -     parseMapStringBuilderImpl();
+[torque-data-model] 2007-03-21 20:35:53,789 [main] DEBUG (Database#debug():1388) - }
+[torque-data-model] 2007-03-21 20:35:53,789 [main] DEBUG (Database#debug():1388) - parseDaoDicon() {
+[torque-data-model] 2007-03-21 20:35:53,789 [main] DEBUG (Database#debug():1388) -     /dbflute.dicon
+[torque-data-model] 2007-03-21 20:35:53,805 [main] DEBUG (Database#debug():1388) - }
+[torque-data-model] 2007-03-21 20:35:53,805 [main] DEBUG (Database#debug():1388) - public void parseDaoSelector() {
+[torque-data-model] 2007-03-21 20:35:53,820 [main] DEBUG (Database#debug():1388) -     parseDaoSelector();
+[torque-data-model] 2007-03-21 20:35:53,836 [main] DEBUG (Database#debug():1388) -     parseCacheDaoSelector();
+[torque-data-model] 2007-03-21 20:35:53,836 [main] DEBUG (Database#debug():1388) - }
+[torque-data-model] 2007-03-21 20:35:53,836 [main] DEBUG (Database#debug():1388) - parseGenMetaData();
+[torque-data-model] 2007-03-21 20:35:53,867 [main] DEBUG (Database#debug():1388) - public void parseInterceptorClass() {
+[torque-data-model] 2007-03-21 20:35:53,867 [main] DEBUG (Database#debug():1388) -     parseCommonColumnSetupAbstractInterceptor();
+[torque-data-model] 2007-03-21 20:35:53,883 [main] DEBUG (Database#debug():1388) -     parseCommonColumnSetupBeforeInsertInterceptor();
+[torque-data-model] 2007-03-21 20:35:53,898 [main] DEBUG (Database#debug():1388) -     parseCommonColumnSetupBeforeUpdateInterceptor();
+[torque-data-model] 2007-03-21 20:35:53,898 [main] DEBUG (Database#debug():1388) -     parseCommonColumnSetupBeforeDeleteInterceptor();
+[torque-data-model] 2007-03-21 20:35:53,914 [main] DEBUG (Database#debug():1388) - }
+[torque-data-model] 2007-03-21 20:35:54,008 [main] DEBUG (Database#debug():1388) - public void parseTableList() {
+[torque-data-model] 2007-03-21 20:35:54,008 [main] DEBUG (Database#debug():1388) -     final List<Table> tableList = getTableList();
+[torque-data-model] 2007-03-21 20:35:54,008 [main] DEBUG (Database#debug():1388) -     for (Table tbl : tableList) {
+[torque-data-model] 2007-03-21 20:35:54,008 [main] DEBUG (Database#debug():1388) -         parseTable(tbl); // company : Company
+[torque-data-model] 2007-03-21 20:35:54,070 [main] WARN  (DfBuildProperties#mapProp():279) - FlPropertyUtil#intProp() threw the exception with The key[torque.sequenceDefinitionMap]
+[torque-data-model] java.lang.IllegalArgumentException: Argument[mapString] must end with '}': mapString=map:{ company = company_ccode_seq
+[torque-data-model] 	at org.seasar.dbflute.helper.mapstring.DfMapListStringImpl.assertMapString(DfMapListStringImpl.java:419)
+[torque-data-model] 	at org.seasar.dbflute.helper.mapstring.DfMapListStringImpl.generateMap(DfMapListStringImpl.java:125)
+[torque-data-model] 	at org.seasar.dbflute.util.DfPropertyUtil.mapProp(DfPropertyUtil.java:129)
+[torque-data-model] 	at org.seasar.dbflute.DfBuildProperties.mapProp(DfBuildProperties.java:270)
+[torque-data-model] 	at org.seasar.dbflute.DfBuildProperties.getSequenceDefinitionMap(DfBuildProperties.java:331)
+[torque-data-model] 	at org.apache.torque.engine.database.model.Database.getSequenceDefinitionMap(Database.java:787)
+[torque-data-model] 	at org.apache.torque.engine.database.model.Table.isUseSequence(Table.java:1666)
+[torque-data-model] 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+[torque-data-model] 	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:39)
+[torque-data-model] 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:25)
+[torque-data-model] 	at java.lang.reflect.Method.invoke(Method.java:585)
+[torque-data-model] 	at org.apache.velocity.runtime.parser.node.ASTMethod.execute(ASTMethod.java:260)
+[torque-data-model] 	at org.apache.velocity.runtime.parser.node.ASTReference.execute(ASTReference.java:207)
+[torque-data-model] 	at org.apache.velocity.runtime.parser.node.ASTReference.evaluate(ASTReference.java:337)
+[torque-data-model] 	at org.apache.velocity.runtime.parser.node.ASTExpression.evaluate(ASTExpression.java:84)
+[torque-data-model] 	at org.apache.velocity.runtime.parser.node.ASTIfStatement.render(ASTIfStatement.java:107)
+[torque-data-model] 	at org.apache.velocity.runtime.parser.node.SimpleNode.render(SimpleNode.java:271)
+[torque-data-model] 	at org.apache.velocity.Template.merge(Template.java:296)
+[torque-data-model] 	at org.apache.velocity.texen.Generator.parse(Generator.java:425)
+[torque-data-model] 	at org.apache.velocity.texen.Generator.parse(Generator.java:361)
+[torque-data-model] 	at sun.reflect.GeneratedMethodAccessor11.invoke(Unknown Source)
+[torque-data-model] 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:25)
+[torque-data-model] 	at java.lang.reflect.Method.invoke(Method.java:585)
+[torque-data-model] 	at org.apache.velocity.runtime.parser.node.ASTMethod.execute(ASTMethod.java:260)
+[torque-data-model] 	at org.apache.velocity.runtime.parser.node.ASTReference.execute(ASTReference.java:207)
+[torque-data-model] 	at org.apache.velocity.runtime.parser.node.ASTReference.render(ASTReference.java:250)
+[torque-data-model] 	at org.apache.velocity.runtime.parser.node.ASTBlock.render(ASTBlock.java:94)
+[torque-data-model] 	at org.apache.velocity.runtime.parser.node.SimpleNode.render(SimpleNode.java:271)
+[torque-data-model] 	at org.apache.velocity.runtime.parser.node.ASTIfStatement.render(ASTIfStatement.java:128)
+[torque-data-model] 	at org.apache.velocity.runtime.parser.node.ASTBlock.render(ASTBlock.java:94)
+[torque-data-model] 	at org.apache.velocity.runtime.parser.node.ASTIfStatement.render(ASTIfStatement.java:109)
+[torque-data-model] 	at org.apache.velocity.runtime.parser.node.ASTBlock.render(ASTBlock.java:94)
+[torque-data-model] 	at org.apache.velocity.runtime.parser.node.ASTIfStatement.render(ASTIfStatement.java:109)
+[torque-data-model] 	at org.apache.velocity.runtime.parser.node.ASTBlock.render(ASTBlock.java:94)
+[torque-data-model] 	at org.apache.velocity.runtime.directive.Foreach.render(Foreach.java:344)
+[torque-data-model] 	at org.apache.velocity.runtime.parser.node.ASTDirective.render(ASTDirective.java:153)
+[torque-data-model] 	at org.apache.velocity.runtime.parser.node.ASTBlock.render(ASTBlock.java:94)
+[torque-data-model] 	at org.apache.velocity.runtime.directive.Foreach.render(Foreach.java:344)
+[torque-data-model] 	at org.apache.velocity.runtime.parser.node.ASTDirective.render(ASTDirective.java:153)
+[torque-data-model] 	at org.apache.velocity.runtime.parser.node.ASTBlock.render(ASTBlock.java:94)
+[torque-data-model] 	at org.apache.velocity.runtime.directive.Foreach.render(Foreach.java:344)
+[torque-data-model] 	at org.apache.velocity.runtime.parser.node.ASTDirective.render(ASTDirective.java:153)
+[torque-data-model] 	at org.apache.velocity.runtime.parser.node.SimpleNode.render(SimpleNode.java:271)
+[torque-data-model] 	at org.apache.velocity.Template.merge(Template.java:296)
+[torque-data-model] 	at org.apache.velocity.texen.Generator.parse(Generator.java:451)
+[torque-data-model] 	at org.apache.velocity.texen.ant.TexenTask.execute(TexenTask.java:552)
+[torque-data-model] 	at org.seasar.dbflute.task.bs.DfAbstractTexenTask.fireSuperExecute(DfAbstractTexenTask.java:140)
+[torque-data-model] 	at org.seasar.dbflute.task.bs.DfAbstractDbMetaTexenTask.doExecute(DfAbstractDbMetaTexenTask.java:178)
+[torque-data-model] 	at org.seasar.dbflute.task.bs.DfAbstractTexenTask.execute(DfAbstractTexenTask.java:120)
+[torque-data-model] 	at org.apache.tools.ant.UnknownElement.execute(UnknownElement.java:275)
+[torque-data-model] 	at org.apache.tools.ant.Task.perform(Task.java:364)
+[torque-data-model] 	at org.apache.tools.ant.Target.execute(Target.java:341)
+[torque-data-model] 	at org.apache.tools.ant.Target.performTasks(Target.java:369)
+[torque-data-model] 	at org.apache.tools.ant.Project.executeSortedTargets(Project.java:1216)
+[torque-data-model] 	at org.apache.tools.ant.helper.SingleCheckExecutor.executeTargets(SingleCheckExecutor.java:37)
+[torque-data-model] 	at org.apache.tools.ant.Project.executeTargets(Project.java:1068)
+[torque-data-model] 	at org.apache.tools.ant.taskdefs.Ant.execute(Ant.java:382)
+[torque-data-model] 	at org.apache.tools.ant.taskdefs.CallTarget.execute(CallTarget.java:107)
+[torque-data-model] 	at org.apache.tools.ant.UnknownElement.execute(UnknownElement.java:275)
+[torque-data-model] 	at org.apache.tools.ant.Task.perform(Task.java:364)
+[torque-data-model] 	at org.apache.tools.ant.Target.execute(Target.java:341)
+[torque-data-model] 	at org.apache.tools.ant.Target.performTasks(Target.java:369)
+[torque-data-model] 	at org.apache.tools.ant.Project.executeSortedTargets(Project.java:1216)
+[torque-data-model] 	at org.apache.tools.ant.Project.executeTarget(Project.java:1185)
+[torque-data-model] 	at org.apache.tools.ant.helper.DefaultExecutor.executeTargets(DefaultExecutor.java:40)
+[torque-data-model] 	at org.apache.tools.ant.Project.executeTargets(Project.java:1068)
+[torque-data-model] 	at org.apache.tools.ant.Main.runBuild(Main.java:668)
+[torque-data-model] 	at org.apache.tools.ant.Main.startAnt(Main.java:187)
+[torque-data-model] 	at org.apache.tools.ant.launch.Launcher.run(Launcher.java:246)
+[torque-data-model] 	at org.apache.tools.ant.launch.Launcher.main(Launcher.java:67)
+[torque-data-model] 2007-03-21 20:35:54,102 [main] INFO  (DfAbstractTexenTask#fireSuperExecute():142) - / * * * * * * * * * * * * * * * * * * * * * * * * * * *
+[torque-data-model] 2007-03-21 20:35:54,102 [main] ERROR (DfAbstractTexenTask#fireSuperExecute():143) - super#execute() threw the exception!
+[torque-data-model] Exception thrown by 'generator.parse'. For more information consult the velocity log, or invoke ant with the -debug flag.
+[torque-data-model] 	at org.apache.velocity.texen.ant.TexenTask.execute(TexenTask.java:564)
+[torque-data-model] 	at org.seasar.dbflute.task.bs.DfAbstractTexenTask.fireSuperExecute(DfAbstractTexenTask.java:140)
+[torque-data-model] 	at org.seasar.dbflute.task.bs.DfAbstractDbMetaTexenTask.doExecute(DfAbstractDbMetaTexenTask.java:178)
+[torque-data-model] 	at org.seasar.dbflute.task.bs.DfAbstractTexenTask.execute(DfAbstractTexenTask.java:120)
+[torque-data-model] 	at org.apache.tools.ant.UnknownElement.execute(UnknownElement.java:275)
+[torque-data-model] 	at org.apache.tools.ant.Task.perform(Task.java:364)
+[torque-data-model] 	at org.apache.tools.ant.Target.execute(Target.java:341)
+[torque-data-model] 	at org.apache.tools.ant.Target.performTasks(Target.java:369)
+[torque-data-model] 	at org.apache.tools.ant.Project.executeSortedTargets(Project.java:1216)
+[torque-data-model] 	at org.apache.tools.ant.helper.SingleCheckExecutor.executeTargets(SingleCheckExecutor.java:37)
+[torque-data-model] 	at org.apache.tools.ant.Project.executeTargets(Project.java:1068)
+[torque-data-model] 	at org.apache.tools.ant.taskdefs.Ant.execute(Ant.java:382)
+[torque-data-model] 	at org.apache.tools.ant.taskdefs.CallTarget.execute(CallTarget.java:107)
+[torque-data-model] 	at org.apache.tools.ant.UnknownElement.execute(UnknownElement.java:275)
+[torque-data-model] 	at org.apache.tools.ant.Task.perform(Task.java:364)
+[torque-data-model] 	at org.apache.tools.ant.Target.execute(Target.java:341)
+[torque-data-model] 	at org.apache.tools.ant.Target.performTasks(Target.java:369)
+[torque-data-model] 	at org.apache.tools.ant.Project.executeSortedTargets(Project.java:1216)
+[torque-data-model] 	at org.apache.tools.ant.Project.executeTarget(Project.java:1185)
+[torque-data-model] 	at org.apache.tools.ant.helper.DefaultExecutor.executeTargets(DefaultExecutor.java:40)
+[torque-data-model] 	at org.apache.tools.ant.Project.executeTargets(Project.java:1068)
+[torque-data-model] 	at org.apache.tools.ant.Main.runBuild(Main.java:668)
+[torque-data-model] 	at org.apache.tools.ant.Main.startAnt(Main.java:187)
+[torque-data-model] 	at org.apache.tools.ant.launch.Launcher.run(Launcher.java:246)
+[torque-data-model] 	at org.apache.tools.ant.launch.Launcher.main(Launcher.java:67)
+[torque-data-model] Caused by: org.apache.velocity.exception.MethodInvocationException: Invocation of method 'isUseSequence' in  class org.apache.torque.engine.database.model.Table threw exception class java.lang.IllegalArgumentException : Argument[mapString] must end with '}': mapString=map:{ company = company_ccode_seq
+[torque-data-model] 	at org.apache.velocity.runtime.parser.node.ASTMethod.execute(ASTMethod.java:309)
+[torque-data-model] 	at org.apache.velocity.runtime.parser.node.ASTReference.execute(ASTReference.java:207)
+[torque-data-model] 	at org.apache.velocity.runtime.parser.node.ASTReference.evaluate(ASTReference.java:337)
+[torque-data-model] 	at org.apache.velocity.runtime.parser.node.ASTExpression.evaluate(ASTExpression.java:84)
+[torque-data-model] 	at org.apache.velocity.runtime.parser.node.ASTIfStatement.render(ASTIfStatement.java:107)
+[torque-data-model] 	at org.apache.velocity.runtime.parser.node.SimpleNode.render(SimpleNode.java:271)
+[torque-data-model] 	at org.apache.velocity.Template.merge(Template.java:296)
+[torque-data-model] 	at org.apache.velocity.texen.Generator.parse(Generator.java:425)
+[torque-data-model] 	at org.apache.velocity.texen.Generator.parse(Generator.java:361)
+[torque-data-model] 	at sun.reflect.GeneratedMethodAccessor11.invoke(Unknown Source)
+[torque-data-model] 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:25)
+[torque-data-model] 	at java.lang.reflect.Method.invoke(Method.java:585)
+[torque-data-model] 	at org.apache.velocity.runtime.parser.node.ASTMethod.execute(ASTMethod.java:260)
+[torque-data-model] 	at org.apache.velocity.runtime.parser.node.ASTReference.execute(ASTReference.java:207)
+[torque-data-model] 	at org.apache.velocity.runtime.parser.node.ASTReference.render(ASTReference.java:250)
+[torque-data-model] 	at org.apache.velocity.runtime.parser.node.ASTBlock.render(ASTBlock.java:94)
+[torque-data-model] 	at org.apache.velocity.runtime.parser.node.SimpleNode.render(SimpleNode.java:271)
+[torque-data-model] 	at org.apache.velocity.runtime.parser.node.ASTIfStatement.render(ASTIfStatement.java:128)
+[torque-data-model] 	at org.apache.velocity.runtime.parser.node.ASTBlock.render(ASTBlock.java:94)
+[torque-data-model] 	at org.apache.velocity.runtime.parser.node.ASTIfStatement.render(ASTIfStatement.java:109)
+[torque-data-model] 	at org.apache.velocity.runtime.parser.node.ASTBlock.render(ASTBlock.java:94)
+[torque-data-model] 	at org.apache.velocity.runtime.parser.node.ASTIfStatement.render(ASTIfStatement.java:109)
+[torque-data-model] 	at org.apache.velocity.runtime.parser.node.ASTBlock.render(ASTBlock.java:94)
+[torque-data-model] 	at org.apache.velocity.runtime.directive.Foreach.render(Foreach.java:344)
+[torque-data-model] 	at org.apache.velocity.runtime.parser.node.ASTDirective.render(ASTDirective.java:153)
+[torque-data-model] 	at org.apache.velocity.runtime.parser.node.ASTBlock.render(ASTBlock.java:94)
+[torque-data-model] 	at org.apache.velocity.runtime.directive.Foreach.render(Foreach.java:344)
+[torque-data-model] 	at org.apache.velocity.runtime.parser.node.ASTDirective.render(ASTDirective.java:153)
+[torque-data-model] 	at org.apache.velocity.runtime.parser.node.ASTBlock.render(ASTBlock.java:94)
+[torque-data-model] 	at org.apache.velocity.runtime.directive.Foreach.render(Foreach.java:344)
+[torque-data-model] 	at org.apache.velocity.runtime.parser.node.ASTDirective.render(ASTDirective.java:153)
+[torque-data-model] 	at org.apache.velocity.runtime.parser.node.SimpleNode.render(SimpleNode.java:271)
+[torque-data-model] 	at org.apache.velocity.Template.merge(Template.java:296)
+[torque-data-model] 	at org.apache.velocity.texen.Generator.parse(Generator.java:451)
+[torque-data-model] 	at org.apache.velocity.texen.ant.TexenTask.execute(TexenTask.java:552)
+[torque-data-model] 	... 24 more
+[torque-data-model] --- Nested Exception ---
+[torque-data-model] org.apache.velocity.exception.MethodInvocationException: Invocation of method 'isUseSequence' in  class org.apache.torque.engine.database.model.Table threw exception class java.lang.IllegalArgumentException : Argument[mapString] must end with '}': mapString=map:{ company = company_ccode_seq
+[torque-data-model] 	at org.apache.velocity.runtime.parser.node.ASTMethod.execute(ASTMethod.java:309)
+[torque-data-model] 	at org.apache.velocity.runtime.parser.node.ASTReference.execute(ASTReference.java:207)
+[torque-data-model] 	at org.apache.velocity.runtime.parser.node.ASTReference.evaluate(ASTReference.java:337)
+[torque-data-model] 	at org.apache.velocity.runtime.parser.node.ASTExpression.evaluate(ASTExpression.java:84)
+[torque-data-model] 	at org.apache.velocity.runtime.parser.node.ASTIfStatement.render(ASTIfStatement.java:107)
+[torque-data-model] 	at org.apache.velocity.runtime.parser.node.SimpleNode.render(SimpleNode.java:271)
+[torque-data-model] 	at org.apache.velocity.Template.merge(Template.java:296)
+[torque-data-model] 	at org.apache.velocity.texen.Generator.parse(Generator.java:425)
+[torque-data-model] 	at org.apache.velocity.texen.Generator.parse(Generator.java:361)
+[torque-data-model] 	at sun.reflect.GeneratedMethodAccessor11.invoke(Unknown Source)
+[torque-data-model] 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:25)
+[torque-data-model] 	at java.lang.reflect.Method.invoke(Method.java:585)
+[torque-data-model] 	at org.apache.velocity.runtime.parser.node.ASTMethod.execute(ASTMethod.java:260)
+[torque-data-model] 	at org.apache.velocity.runtime.parser.node.ASTReference.execute(ASTReference.java:207)
+[torque-data-model] 	at org.apache.velocity.runtime.parser.node.ASTReference.render(ASTReference.java:250)
+[torque-data-model] 	at org.apache.velocity.runtime.parser.node.ASTBlock.render(ASTBlock.java:94)
+[torque-data-model] 	at org.apache.velocity.runtime.parser.node.SimpleNode.render(SimpleNode.java:271)
+[torque-data-model] 	at org.apache.velocity.runtime.parser.node.ASTIfStatement.render(ASTIfStatement.java:128)
+[torque-data-model] 	at org.apache.velocity.runtime.parser.node.ASTBlock.render(ASTBlock.java:94)
+[torque-data-model] 	at org.apache.velocity.runtime.parser.node.ASTIfStatement.render(ASTIfStatement.java:109)
+[torque-data-model] 	at org.apache.velocity.runtime.parser.node.ASTBlock.render(ASTBlock.java:94)
+[torque-data-model] 	at org.apache.velocity.runtime.parser.node.ASTIfStatement.render(ASTIfStatement.java:109)
+[torque-data-model] 	at org.apache.velocity.runtime.parser.node.ASTBlock.render(ASTBlock.java:94)
+[torque-data-model] 	at org.apache.velocity.runtime.directive.Foreach.render(Foreach.java:344)
+[torque-data-model] 	at org.apache.velocity.runtime.parser.node.ASTDirective.render(ASTDirective.java:153)
+[torque-data-model] 	at org.apache.velocity.runtime.parser.node.ASTBlock.render(ASTBlock.java:94)
+[torque-data-model] 	at org.apache.velocity.runtime.directive.Foreach.render(Foreach.java:344)
+[torque-data-model] 	at org.apache.velocity.runtime.parser.node.ASTDirective.render(ASTDirective.java:153)
+[torque-data-model] 	at org.apache.velocity.runtime.parser.node.ASTBlock.render(ASTBlock.java:94)
+[torque-data-model] 	at org.apache.velocity.runtime.directive.Foreach.render(Foreach.java:344)
+[torque-data-model] 	at org.apache.velocity.runtime.parser.node.ASTDirective.render(ASTDirective.java:153)
+[torque-data-model] 	at org.apache.velocity.runtime.parser.node.SimpleNode.render(SimpleNode.java:271)
+[torque-data-model] 	at org.apache.velocity.Template.merge(Template.java:296)
+[torque-data-model] 	at org.apache.velocity.texen.Generator.parse(Generator.java:451)
+[torque-data-model] 	at org.apache.velocity.texen.ant.TexenTask.execute(TexenTask.java:552)
+[torque-data-model] 	at org.seasar.dbflute.task.bs.DfAbstractTexenTask.fireSuperExecute(DfAbstractTexenTask.java:140)
+[torque-data-model] 	at org.seasar.dbflute.task.bs.DfAbstractDbMetaTexenTask.doExecute(DfAbstractDbMetaTexenTask.java:178)
+[torque-data-model] 	at org.seasar.dbflute.task.bs.DfAbstractTexenTask.execute(DfAbstractTexenTask.java:120)
+[torque-data-model] 	at org.apache.tools.ant.UnknownElement.execute(UnknownElement.java:275)
+[torque-data-model] 	at org.apache.tools.ant.Task.perform(Task.java:364)
+[torque-data-model] 	at org.apache.tools.ant.Target.execute(Target.java:341)
+[torque-data-model] 	at org.apache.tools.ant.Target.performTasks(Target.java:369)
+[torque-data-model] 	at org.apache.tools.ant.Project.executeSortedTargets(Project.java:1216)
+[torque-data-model] 	at org.apache.tools.ant.helper.SingleCheckExecutor.executeTargets(SingleCheckExecutor.java:37)
+[torque-data-model] 	at org.apache.tools.ant.Project.executeTargets(Project.java:1068)
+[torque-data-model] 	at org.apache.tools.ant.taskdefs.Ant.execute(Ant.java:382)
+[torque-data-model] 	at org.apache.tools.ant.taskdefs.CallTarget.execute(CallTarget.java:107)
+[torque-data-model] 	at org.apache.tools.ant.UnknownElement.execute(UnknownElement.java:275)
+[torque-data-model] 	at org.apache.tools.ant.Task.perform(Task.java:364)
+[torque-data-model] 	at org.apache.tools.ant.Target.execute(Target.java:341)
+[torque-data-model] 	at org.apache.tools.ant.Target.performTasks(Target.java:369)
+[torque-data-model] 	at org.apache.tools.ant.Project.executeSortedTargets(Project.java:1216)
+[torque-data-model] 	at org.apache.tools.ant.Project.executeTarget(Project.java:1185)
+[torque-data-model] 	at org.apache.tools.ant.helper.DefaultExecutor.executeTargets(DefaultExecutor.java:40)
+[torque-data-model] 	at org.apache.tools.ant.Project.executeTargets(Project.java:1068)
+[torque-data-model] 	at org.apache.tools.ant.Main.runBuild(Main.java:668)
+[torque-data-model] 	at org.apache.tools.ant.Main.startAnt(Main.java:187)
+[torque-data-model] 	at org.apache.tools.ant.launch.Launcher.run(Launcher.java:246)
+[torque-data-model] 	at org.apache.tools.ant.launch.Launcher.main(Launcher.java:67)
+[torque-data-model] 2007-03-21 20:35:54,133 [main] INFO  (DfAbstractTexenTask#fireSuperExecute():144) - / * * * * * * * * * /
+
+BUILD SUCCESSFUL
+Total time: 16 seconds
+続行するには何かキーを押してください . . . 
